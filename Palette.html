@@ -1,0 +1,829 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>AKC Palette — Color System</title>
+<link rel="stylesheet" href="colors_and_type.css">
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--color-bone);
+    color: var(--color-foundation);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 96px 64px 192px; }
+
+  /* document head — mirrors UI Kit.html register */
+  .doc-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--color-accent-quiet);
+    text-transform: lowercase;
+    margin-bottom: 24px;
+  }
+  .doc-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 96px;
+    letter-spacing: -0.025em;
+    line-height: 0.95;
+    margin: 0 0 24px;
+  }
+  .doc-lede {
+    font-size: 20px;
+    line-height: 1.55;
+    color: var(--color-foundation);
+    max-width: 720px;
+    margin: 0 0 16px;
+    text-wrap: pretty;
+  }
+  .doc-meta {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--color-accent-quiet);
+    letter-spacing: 0.04em;
+    text-transform: lowercase;
+  }
+
+  .toc {
+    margin: 64px 0 0;
+    padding: 24px 0;
+    border-top: 1px solid rgba(15,17,21,0.12);
+    border-bottom: 1px solid rgba(15,17,21,0.12);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px 32px;
+  }
+  .toc a {
+    color: var(--color-foundation);
+    text-decoration: none;
+    font-size: 15px;
+    display: flex;
+    gap: 16px;
+    align-items: baseline;
+    padding: 6px 0;
+    transition: color 150ms var(--ease);
+  }
+  .toc a:hover { color: var(--color-accent-loud); }
+  .toc a .num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-accent-quiet);
+    letter-spacing: 0.04em;
+    width: 28px;
+    flex: 0 0 28px;
+  }
+
+  section.sec {
+    padding: 96px 0;
+    border-top: 1px solid rgba(15,17,21,0.12);
+  }
+  section.sec:first-of-type { border-top: 0; padding-top: 96px; }
+  .sec-head {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 32px;
+    align-items: baseline;
+    margin-bottom: 48px;
+  }
+  .sec-num {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--color-accent-quiet);
+    letter-spacing: 0.04em;
+  }
+  .sec-title {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 32px;
+    letter-spacing: -0.005em;
+    margin: 0 0 12px;
+  }
+  .sec-desc {
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--color-foundation);
+    max-width: 640px;
+    margin: 0;
+    text-wrap: pretty;
+  }
+
+  /* ---------------- swatch row ---------------- */
+  .swatch-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .swatch {
+    display: flex;
+    flex-direction: column;
+  }
+  .swatch .chip {
+    aspect-ratio: 4/5;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    border: 1px solid rgba(15,17,21,0.1);
+  }
+  .swatch .chip .pantone {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    text-transform: lowercase;
+    opacity: 0.7;
+  }
+  .swatch .chip .hex {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 32px;
+    letter-spacing: -0.01em;
+    line-height: 1;
+  }
+  .swatch .meta {
+    margin-top: 16px;
+  }
+  .swatch .meta .name {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 16px;
+    margin: 0 0 4px;
+  }
+  .swatch .meta .token {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: var(--color-accent-quiet);
+    margin: 0 0 12px;
+  }
+  .swatch .specs {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 6px 12px;
+    font-size: 12px;
+    line-height: 1.4;
+    margin: 0;
+  }
+  .swatch .specs dt {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    color: var(--color-accent-quiet);
+    text-transform: lowercase;
+  }
+  .swatch .specs dd {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-foundation);
+  }
+  .swatch .use {
+    margin-top: 16px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--color-accent-quiet);
+  }
+
+  /* phosphor — single-feature treatment */
+  .lume-block {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 32px;
+    align-items: stretch;
+  }
+  .lume-chip {
+    background: var(--color-phosphor);
+    color: var(--color-foundation);
+    padding: 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 360px;
+    position: relative;
+    overflow: hidden;
+  }
+  .lume-chip .pantone {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    text-transform: lowercase;
+  }
+  .lume-chip .hex {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 64px;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .lume-chip .lume-mark {
+    position: absolute;
+    right: 32px;
+    top: 32px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    text-transform: lowercase;
+    background: var(--color-foundation);
+    color: var(--color-phosphor);
+    padding: 4px 10px;
+  }
+  .lume-rules {
+    background: var(--color-foundation);
+    color: var(--color-bone);
+    padding: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .lume-rules h4 {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    text-transform: lowercase;
+    color: var(--color-phosphor);
+    margin: 0;
+    font-weight: 500;
+  }
+  .lume-rules p {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+    margin: 0;
+    color: var(--color-bone);
+    text-wrap: pretty;
+  }
+  .lume-rules .where {
+    margin-top: 16px;
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 10px 16px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .lume-rules .where dt {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    color: rgba(240,235,225,0.6);
+    text-transform: lowercase;
+  }
+  .lume-rules .where dd {
+    margin: 0;
+    color: rgba(240,235,225,0.85);
+  }
+
+  /* gradients */
+  .grad-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .grad-card { display: flex; flex-direction: column; }
+  .grad-chip {
+    aspect-ratio: 16/7;
+    border: 1px solid rgba(15,17,21,0.1);
+  }
+  .grad-chip.kinetic { background: var(--gradient-kinetic); }
+  .grad-chip.depth { background: var(--gradient-depth); }
+  .grad-chip.tonal { background: var(--gradient-tonal); }
+  .grad-chip.drama { background: var(--gradient-drama); }
+  .grad-card .meta {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 14px;
+  }
+  .grad-card .meta .name {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 16px;
+    margin: 0;
+  }
+  .grad-card .meta .tier {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    text-transform: lowercase;
+    color: var(--color-accent-quiet);
+  }
+  .grad-card .meta .tier.locked { color: var(--color-foundation); }
+  .grad-card .desc {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--color-accent-quiet);
+    margin: 6px 0 0;
+    max-width: 480px;
+  }
+  .grad-card .token {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    color: var(--color-accent-quiet);
+    margin: 4px 0 0;
+  }
+
+  /* pairings */
+  .pair-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .pair {
+    padding: 32px 28px;
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    border: 1px solid rgba(15,17,21,0.06);
+  }
+  .pair .label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    text-transform: lowercase;
+    opacity: 0.75;
+  }
+  .pair .demo {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 36px;
+    letter-spacing: -0.015em;
+    line-height: 1;
+  }
+  .pair .demo small {
+    display: block;
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-style: normal;
+    font-size: 13px;
+    letter-spacing: 0;
+    margin-top: 10px;
+    opacity: 0.7;
+  }
+  .pair .ratio {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+  }
+  .pair .wcag {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    text-transform: lowercase;
+    align-self: flex-start;
+    padding: 2px 8px;
+    background: rgba(0,0,0,0.06);
+  }
+  .pair .wcag.fail {
+    background: rgba(0,0,0,0.18);
+  }
+
+  /* table */
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .table th, .table td {
+    text-align: left;
+    padding: 14px 16px;
+    border-bottom: 1px solid rgba(15,17,21,0.12);
+    vertical-align: top;
+  }
+  .table th {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: var(--color-accent-quiet);
+    text-transform: lowercase;
+    font-weight: 500;
+    border-bottom-color: var(--color-foundation);
+  }
+  .table td.mono {
+    font-family: var(--font-mono);
+    font-size: 12px;
+  }
+  .table .dot {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 1px solid rgba(15,17,21,0.2);
+    margin-right: 10px;
+    vertical-align: -2px;
+  }
+  .table .pass { color: var(--color-accent-loud); font-weight: 500; }
+  .table .fail { color: #b3261e; font-weight: 500; }
+
+  /* rules block */
+  .rules {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .rules .card {
+    border: 1px solid rgba(15,17,21,0.12);
+    padding: 28px;
+  }
+  .rules .card h4 {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    text-transform: lowercase;
+    color: var(--color-accent-quiet);
+    margin: 0 0 16px;
+    font-weight: 500;
+  }
+  .rules ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .rules li {
+    padding: 10px 0;
+    border-top: 1px solid rgba(15,17,21,0.08);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .rules li:first-child { border-top: 0; }
+  .rules li b { font-weight: 500; }
+
+  @media (max-width: 900px) {
+    .wrap { padding: 64px 24px 96px; }
+    .doc-title { font-size: 56px; }
+    .swatch-row { grid-template-columns: repeat(2, 1fr); }
+    .grad-row, .lume-block, .pair-grid, .rules { grid-template-columns: 1fr; }
+    .toc { grid-template-columns: 1fr; }
+    .sec-head { grid-template-columns: 1fr; gap: 8px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header>
+    <div class="doc-eyebrow">akc design system · color</div>
+    <h1 class="doc-title">Palette.</h1>
+    <p class="doc-lede">Five colors that do the whole job — four for ninety percent of the work, one for the lume. A library of four gradients built from the same set. No swatch is decorative; every one earns its place.</p>
+    <div class="doc-meta">v1.0 · phase 1 · pantone + cmyk + rgb + hsl · radius is always 0</div>
+
+    <nav class="toc">
+      <a href="#s1"><span class="num">4.2.1</span><span>Primary system</span></a>
+      <a href="#s2"><span class="num">4.2.2</span><span>Phosphor — the lume rule</span></a>
+      <a href="#s3"><span class="num">4.2.3</span><span>Gradients</span></a>
+      <a href="#s4"><span class="num">4.2.4</span><span>Pairings &amp; contrast</span></a>
+      <a href="#s5"><span class="num">4.2.5</span><span>Pantone &amp; print reference</span></a>
+      <a href="#s6"><span class="num">4.2.6</span><span>Hard rules</span></a>
+    </nav>
+  </header>
+
+  <!-- 4.2.1 Primary -->
+  <section class="sec" id="s1">
+    <div class="sec-head">
+      <div class="sec-num">4.2.1</div>
+      <div>
+        <h2 class="sec-title">Primary system</h2>
+        <p class="sec-desc">Four tokens cover almost every surface. Foundation and bone are the page; accent-quiet is the body emphasis and divider; accent-loud is the digital UI — links, buttons, focus.</p>
+      </div>
+    </div>
+
+    <div class="swatch-row">
+
+      <article class="swatch">
+        <div class="chip" style="background: var(--color-foundation); color: var(--color-bone);">
+          <span class="pantone">pantone black 6 c</span>
+          <span class="hex">#0F1115</span>
+        </div>
+        <div class="meta">
+          <p class="name">Foundation</p>
+          <p class="token">--color-foundation</p>
+          <dl class="specs">
+            <dt>rgb</dt><dd>15 · 17 · 21</dd>
+            <dt>hsl</dt><dd>220° · 17% · 7%</dd>
+            <dt>cmyk</dt><dd>17 · 17 · 0 · 93</dd>
+          </dl>
+          <p class="use">Primary text. Dark surfaces. The page floor when the brand goes loud.</p>
+        </div>
+      </article>
+
+      <article class="swatch">
+        <div class="chip" style="background: var(--color-bone); color: var(--color-foundation);">
+          <span class="pantone">pantone 7527 c</span>
+          <span class="hex">#F0EBE1</span>
+        </div>
+        <div class="meta">
+          <p class="name">Bone</p>
+          <p class="token">--color-bone</p>
+          <dl class="specs">
+            <dt>rgb</dt><dd>240 · 235 · 225</dd>
+            <dt>hsl</dt><dd>40° · 33% · 91%</dd>
+            <dt>cmyk</dt><dd>0 · 2 · 6 · 6</dd>
+          </dl>
+          <p class="use">Page background. Paper. Light surfaces. Warmer than white — calibrated, not clinical.</p>
+        </div>
+      </article>
+
+      <article class="swatch">
+        <div class="chip" style="background: var(--color-accent-quiet); color: var(--color-bone);">
+          <span class="pantone">pantone 296 c</span>
+          <span class="hex">#1B2A4E</span>
+        </div>
+        <div class="meta">
+          <p class="name">Accent — quiet</p>
+          <p class="token">--color-accent-quiet</p>
+          <dl class="specs">
+            <dt>rgb</dt><dd>27 · 42 · 78</dd>
+            <dt>hsl</dt><dd>222° · 49% · 21%</dd>
+            <dt>cmyk</dt><dd>65 · 46 · 0 · 69</dd>
+          </dl>
+          <p class="use">Secondary text. Dividers. Body emphasis. The print register of the accent family.</p>
+        </div>
+      </article>
+
+      <article class="swatch">
+        <div class="chip" style="background: var(--color-accent-loud); color: var(--color-bone);">
+          <span class="pantone">pantone 286 c</span>
+          <span class="hex">#0047FF</span>
+        </div>
+        <div class="meta">
+          <p class="name">Accent — loud</p>
+          <p class="token">--color-accent-loud</p>
+          <dl class="specs">
+            <dt>rgb</dt><dd>0 · 71 · 255</dd>
+            <dt>hsl</dt><dd>223° · 100% · 50%</dd>
+            <dt>cmyk</dt><dd>100 · 72 · 0 · 0</dd>
+          </dl>
+          <p class="use">Links. Buttons. Focus rings. The digital register of the accent family.</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- 4.2.2 Phosphor -->
+  <section class="sec" id="s2">
+    <div class="sec-head">
+      <div class="sec-num">4.2.2</div>
+      <div>
+        <h2 class="sec-title">Phosphor — the lume rule</h2>
+        <p class="sec-desc">A watch dial has one signature color and a separate lume — a luminous compound that only activates in defined conditions. Phosphor works the same way. Fill only, foundation black on top, roughly one surface in ten.</p>
+      </div>
+    </div>
+
+    <div class="lume-block">
+      <div class="lume-chip">
+        <span class="lume-mark">lume · fill only</span>
+        <span class="hex">#D8FF3D</span>
+        <div>
+          <p class="pantone" style="margin: 0 0 4px;">pantone 389 c</p>
+          <p style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.04em; margin: 0; opacity: 0.8;">rgb 216 · 255 · 61 — hsl 70° · 100% · 62% — cmyk 15 · 0 · 76 · 0</p>
+        </div>
+      </div>
+      <div class="lume-rules">
+        <h4>the rule</h4>
+        <p>Present, structural, but only visible in defined contexts — and always with foundation black sitting on top.</p>
+        <dl class="where">
+          <dt>appears in</dt><dd>Time-stamps · kinetic showcases · single hero highlights · ai-content tags · generative samples · hover states on dark surfaces.</dd>
+          <dt>never in</dt><dd>Stationery · email signature · print proposals · as a text color · the logo.</dd>
+          <dt>budget</dt><dd>~1 surface in 10. If it lives everywhere, it lives nowhere.</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4.2.3 Gradients -->
+  <section class="sec" id="s3">
+    <div class="sec-head">
+      <div class="sec-num">4.2.3</div>
+      <div>
+        <h2 class="sec-title">Gradients</h2>
+        <p class="sec-desc">Four gradients built strictly from the primary system plus phosphor. Two are locked into hero / dark-mode use; two are situational and count against the lume budget when phosphor is involved.</p>
+      </div>
+    </div>
+
+    <div class="grad-row">
+
+      <article class="grad-card">
+        <div class="grad-chip kinetic"></div>
+        <div class="meta">
+          <p class="name">Kinetic</p>
+          <p class="tier locked">tier · locked</p>
+        </div>
+        <p class="token">--gradient-kinetic — linear-gradient(90deg, #0047FF → #D8FF3D)</p>
+        <p class="desc">Hero kinetic moments, motion intros, generative title cards. Loud-register signature.</p>
+      </article>
+
+      <article class="grad-card">
+        <div class="grad-chip depth"></div>
+        <div class="meta">
+          <p class="name">Depth</p>
+          <p class="tier locked">tier · locked</p>
+        </div>
+        <p class="token">--gradient-depth — linear-gradient(135deg, #0F1115 → #0047FF)</p>
+        <p class="desc">Dark-mode hero, video lower-third backgrounds, premium content tiles.</p>
+      </article>
+
+      <article class="grad-card">
+        <div class="grad-chip tonal"></div>
+        <div class="meta">
+          <p class="name">Tonal</p>
+          <p class="tier">tier · situational</p>
+        </div>
+        <p class="token">--gradient-tonal — linear-gradient(135deg, #1B2A4E → #0047FF)</p>
+        <p class="desc">Backgrounds, photography overlays, deep-color washes. No phosphor — free to use.</p>
+      </article>
+
+      <article class="grad-card">
+        <div class="grad-chip drama"></div>
+        <div class="meta">
+          <p class="name">Drama</p>
+          <p class="tier">tier · situational · counts vs. lume</p>
+        </div>
+        <p class="token">--gradient-drama — linear-gradient(90deg, #0F1115 → #D8FF3D)</p>
+        <p class="desc">Rare drama only. Counts against the phosphor budget — earn it before you spend it.</p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- 4.2.4 Pairings & contrast -->
+  <section class="sec" id="s4">
+    <div class="sec-head">
+      <div class="sec-num">4.2.4</div>
+      <div>
+        <h2 class="sec-title">Pairings &amp; contrast</h2>
+        <p class="sec-desc">Every pair has a job. Body text on bone or foundation passes AAA at any size. Accent-loud on bone is the link register. Phosphor as a text color fails — it's always a fill.</p>
+      </div>
+    </div>
+
+    <div class="pair-grid">
+
+      <div class="pair" style="background: var(--color-bone); color: var(--color-foundation);">
+        <span class="wcag">wcag aaa</span>
+        <div>
+          <div class="demo">Aa Aa<small>Foundation on bone · primary body text</small></div>
+        </div>
+        <span class="ratio">contrast · 16:1</span>
+      </div>
+
+      <div class="pair" style="background: var(--color-foundation); color: var(--color-bone);">
+        <span class="wcag" style="background: rgba(255,255,255,0.12); color: var(--color-bone);">wcag aaa</span>
+        <div>
+          <div class="demo">Aa Aa<small>Bone on foundation · dark-mode primary</small></div>
+        </div>
+        <span class="ratio">contrast · 16:1</span>
+      </div>
+
+      <div class="pair" style="background: var(--color-bone); color: var(--color-accent-loud);">
+        <span class="wcag">wcag aaa</span>
+        <div>
+          <div class="demo">Aa Aa<small style="color: var(--color-accent-quiet);">Accent-loud on bone · links + CTAs</small></div>
+        </div>
+        <span class="ratio" style="color: var(--color-accent-quiet);">contrast · 9:1</span>
+      </div>
+
+      <div class="pair" style="background: var(--color-bone); color: var(--color-accent-quiet);">
+        <span class="wcag">wcag aaa</span>
+        <div>
+          <div class="demo">Aa Aa<small>Accent-quiet on bone · secondary text</small></div>
+        </div>
+        <span class="ratio">contrast · 13:1</span>
+      </div>
+
+      <div class="pair" style="background: var(--color-foundation); color: var(--color-accent-loud);">
+        <span class="wcag" style="background: rgba(255,255,255,0.12); color: var(--color-bone);">wcag aa · large only</span>
+        <div>
+          <div class="demo">Aa Aa<small style="color: rgba(240,235,225,0.7);">Accent-loud on foundation · large text only</small></div>
+        </div>
+        <span class="ratio" style="color: rgba(240,235,225,0.7);">contrast · 3.5:1</span>
+      </div>
+
+      <div class="pair" style="background: var(--color-phosphor); color: var(--color-foundation);">
+        <span class="wcag">wcag aaa</span>
+        <div>
+          <div class="demo">Aa Aa<small>Foundation on phosphor · the lume pair</small></div>
+        </div>
+        <span class="ratio">contrast · 14:1</span>
+      </div>
+
+    </div>
+
+    <p style="margin: 24px 0 0; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.04em; color: var(--color-accent-quiet); text-transform: lowercase;">
+      phosphor as a text color → fails accessibility on every background. always a fill with foundation black on top.
+    </p>
+  </section>
+
+  <!-- 4.2.5 Reference table -->
+  <section class="sec" id="s5">
+    <div class="sec-head">
+      <div class="sec-num">4.2.5</div>
+      <div>
+        <h2 class="sec-title">Pantone &amp; print reference</h2>
+        <p class="sec-desc">One table for the print shop. Tokens, hex, RGB, HSL, CMYK, Pantone. Copy/paste-ready.</p>
+      </div>
+    </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th style="width: 28%;">name &amp; token</th>
+          <th>hex</th>
+          <th>rgb</th>
+          <th>hsl</th>
+          <th>cmyk</th>
+          <th>pantone</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="dot" style="background: var(--color-foundation);"></span><b>Foundation</b><br><span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-accent-quiet);">--color-foundation</span></td>
+          <td class="mono">#0F1115</td>
+          <td class="mono">15, 17, 21</td>
+          <td class="mono">220°, 17%, 7%</td>
+          <td class="mono">17 / 17 / 0 / 93</td>
+          <td class="mono">Black 6 C</td>
+        </tr>
+        <tr>
+          <td><span class="dot" style="background: var(--color-bone);"></span><b>Bone</b><br><span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-accent-quiet);">--color-bone</span></td>
+          <td class="mono">#F0EBE1</td>
+          <td class="mono">240, 235, 225</td>
+          <td class="mono">40°, 33%, 91%</td>
+          <td class="mono">0 / 2 / 6 / 6</td>
+          <td class="mono">7527 C</td>
+        </tr>
+        <tr>
+          <td><span class="dot" style="background: var(--color-accent-quiet);"></span><b>Accent — quiet</b><br><span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-accent-quiet);">--color-accent-quiet</span></td>
+          <td class="mono">#1B2A4E</td>
+          <td class="mono">27, 42, 78</td>
+          <td class="mono">222°, 49%, 21%</td>
+          <td class="mono">65 / 46 / 0 / 69</td>
+          <td class="mono">296 C</td>
+        </tr>
+        <tr>
+          <td><span class="dot" style="background: var(--color-accent-loud);"></span><b>Accent — loud</b><br><span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-accent-quiet);">--color-accent-loud</span></td>
+          <td class="mono">#0047FF</td>
+          <td class="mono">0, 71, 255</td>
+          <td class="mono">223°, 100%, 50%</td>
+          <td class="mono">100 / 72 / 0 / 0</td>
+          <td class="mono">286 C</td>
+        </tr>
+        <tr>
+          <td><span class="dot" style="background: var(--color-phosphor);"></span><b>Phosphor</b><br><span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-accent-quiet);">--color-phosphor · lume rule</span></td>
+          <td class="mono">#D8FF3D</td>
+          <td class="mono">216, 255, 61</td>
+          <td class="mono">70°, 100%, 62%</td>
+          <td class="mono">15 / 0 / 76 / 0</td>
+          <td class="mono">389 C</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 4.2.6 Hard rules -->
+  <section class="sec" id="s6">
+    <div class="sec-head">
+      <div class="sec-num">4.2.6</div>
+      <div>
+        <h2 class="sec-title">Hard rules</h2>
+        <p class="sec-desc">If the palette breaks, it breaks here. Six rules, no exceptions, no soft enforcement.</p>
+      </div>
+    </div>
+
+    <div class="rules">
+      <div class="card">
+        <h4>do</h4>
+        <ul>
+          <li><b>01.</b> Use the four primary tokens for ~90% of every surface. The system is small on purpose.</li>
+          <li><b>02.</b> Reach for accent-loud for digital UI, accent-quiet for print and body emphasis. They are a register pair, not interchangeable.</li>
+          <li><b>03.</b> Place phosphor only as a fill — and always with foundation black sitting on top.</li>
+          <li><b>04.</b> Treat the four gradients as a finished library. Build with them, not around them.</li>
+          <li><b>05.</b> Specify Pantone for any printed surface; CMYK only when Pantone is unavailable.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>don't</h4>
+        <ul>
+          <li><b>01.</b> Use phosphor as a text color. Ever. On any background.</li>
+          <li><b>02.</b> Add a new color. The palette is closed — extend by rhythm, scale or composition instead.</li>
+          <li><b>03.</b> Recolor the logo to phosphor or to accent-loud. Black or white only.</li>
+          <li><b>04.</b> Pair accent-loud as body copy on foundation — fails AA at small sizes. Large display only.</li>
+          <li><b>05.</b> Let phosphor cover more than ~1 surface in 10 across a campaign. Scarcity is the source of its weight.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+</body>
+</html>

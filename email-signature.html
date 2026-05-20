@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>AKC — Email Signature</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+@font-face { font-family: 'Roboto'; font-style: normal; font-weight: 400; src: url('fonts/Roboto-Regular.ttf')  format('truetype'); font-display: swap; }
+@font-face { font-family: 'Roboto'; font-style: normal; font-weight: 500; src: url('fonts/Roboto-Medium.ttf')   format('truetype'); font-display: swap; }
+@font-face { font-family: 'Roboto'; font-style: normal; font-weight: 600; src: url('fonts/Roboto-SemiBold.ttf') format('truetype'); font-display: swap; }
+@font-face { font-family: 'Migra';  font-style: normal; font-weight: 500; src: url('fonts/migra-medium.otf')    format('opentype'); font-display: swap; }
+@font-face { font-family: 'Migra';  font-style: normal; font-weight: 400; src: url('fonts/migra-regular.otf')   format('opentype'); font-display: swap; }
+@font-face { font-family: 'Migra';  font-style: italic; font-weight: 400; src: url('fonts/migraitalic-italic.otf') format('opentype'); font-display: swap; }
+
+:root {
+  --foundation: #0F1115;
+  --bone:       #F0EBE1;
+  --quiet:      #1B2A4E;
+  --loud:       #0047FF;
+  --phosphor:   #D8FF3D;
+  --muted:      #787066;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #e2ddd6;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 56px 24px 80px;
+  gap: 0;
+}
+
+/* ── Page header ── */
+.page-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.page-header h1 {
+  font-family: 'Migra', Georgia, serif;
+  font-weight: 400;
+  font-size: 20px;
+  color: var(--foundation);
+  letter-spacing: 0.01em;
+  margin-bottom: 6px;
+}
+.page-header p {
+  font-size: 12px;
+  color: var(--quiet);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+/* ── Card shell ── */
+.card {
+  background: var(--bone);
+  width: 100%;
+  max-width: 560px;
+  border: 1px solid rgba(15,17,21,0.12);
+}
+
+.card + .card { margin-top: 24px; }
+
+.card-label {
+  padding: 14px 24px;
+  border-bottom: 1px solid rgba(15,17,21,0.08);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-body { padding: 32px 28px; }
+
+/* ── Signature preview (brand fonts) ── */
+.sig-name {
+  font-family: 'Migra', Georgia, serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--foundation);
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+
+.sig-role {
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--quiet);
+  letter-spacing: 0.01em;
+  margin-bottom: 14px;
+}
+
+.sig-proof {
+  font-family: 'Migra', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 14px;
+  line-height: 1.5;
+}
+
+.sig-links {
+  font-size: 11px;
+  color: var(--quiet);
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+.sig-links a {
+  color: var(--loud);
+  text-decoration: none;
+  font-weight: 500;
+}
+.sig-links a:hover { text-decoration: underline; }
+.sig-links .dot { color: var(--quiet); padding: 0 5px; }
+
+.sig-rule {
+  width: 240px;
+  height: 1px;
+  background: var(--foundation);
+  margin-bottom: 16px;
+}
+
+.sig-tagline {
+  font-family: 'Migra', Georgia, serif;
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--foundation);
+  letter-spacing: 0.01em;
+  line-height: 1.4;
+}
+
+/* ── Copy button ── */
+.copy-btn {
+  background: var(--foundation);
+  color: var(--bone);
+  border: none;
+  padding: 7px 16px;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.15s;
+  line-height: 1;
+}
+.copy-btn:hover  { background: var(--quiet); }
+.copy-btn.copied { background: #1b6b3f; }
+
+/* ── Instructions panel ── */
+.instructions-card {
+  background: var(--foundation);
+  width: 100%;
+  max-width: 560px;
+  padding: 28px 28px 32px;
+  margin-top: 24px;
+}
+.instructions-card h2 {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--phosphor);
+  margin-bottom: 20px;
+}
+.instructions-card ol {
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.instructions-card li {
+  font-size: 12px;
+  line-height: 1.65;
+  color: rgba(240,235,225,0.75);
+}
+.instructions-card strong { color: var(--bone); }
+.instructions-card .rule {
+  height: 1px;
+  background: rgba(240,235,225,0.12);
+  margin: 20px 0;
+}
+
+/* ── Off-screen sig for copy ── */
+#email-sig-copy {
+  position: fixed;
+  left: -9999px;
+  top: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+</style>
+</head>
+<body>
+
+<header class="page-header">
+  <h1>AKC — Email Signature</h1>
+  <p>Preview with brand fonts &nbsp;·&nbsp; Copy delivers email-safe HTML</p>
+</header>
+
+<!-- PREVIEW CARD -->
+<div class="card">
+  <div class="card-label">
+    <span>Preview — Migra + Roboto (browser only)</span>
+    <button class="copy-btn" id="copyBtn" onclick="copySignature()">Copy for email</button>
+  </div>
+  <div class="card-body">
+    <div class="sig-name">Alessandro Kuhn Contes</div>
+    <div class="sig-role">Creative Director &nbsp;·&nbsp; Brand &amp; UX &nbsp;·&nbsp; TGR Studio</div>
+    <div class="sig-proof">Technology evolves. Excellence doesn&rsquo;t.</div>
+    <div class="sig-links">
+      <a href="https://akcontes.com">akcontes.com</a><span class="dot">·</span><a href="https://linkedin.com/in/akcontes">linkedin.com/in/akcontes</a>
+    </div>
+    <div class="sig-rule"></div>
+    <div class="sig-tagline">Calibrated by craft. Built for the long game.</div>
+  </div>
+</div>
+
+<!-- INSTRUCTIONS -->
+<div class="instructions-card">
+  <h2>How to install</h2>
+  <ol>
+    <li>Click <strong>Copy for email</strong> above.</li>
+    <li><strong>Gmail:</strong> Settings → See all settings → General → Signature → Create new → paste with <strong>⌘ Shift V</strong> (Mac) or <strong>Ctrl Shift V</strong> (Win) to paste formatted.</li>
+    <li><strong>Apple Mail:</strong> Paste into a new compose window, select all, drag into Mail → Settings → Signatures.</li>
+    <li><strong>Outlook:</strong> File → Options → Mail → Signatures → New → paste into the rich-text editor.</li>
+  </ol>
+  <div class="rule"></div>
+  <ol>
+    <li><strong>Font note:</strong> email clients don&rsquo;t load web fonts. This version renders in Georgia (serif) and Arial — fallbacks chosen to preserve the brand character.</li>
+    <li><strong>Image note:</strong> no logo in this version — avoids image-blocking issues in enterprise clients. A logo variant can be added once a hosted URL for the SVG is confirmed.</li>
+  </ol>
+</div>
+
+<!-- EMAIL-SAFE SIGNATURE (off-screen — copied to clipboard) -->
+<div id="email-sig-copy" aria-hidden="true">
+<table cellpadding="0" cellspacing="0" border="0" role="presentation" style="font-family:Arial,Helvetica,sans-serif;color:#0F1115;max-width:480px;border-collapse:collapse;">
+  <tbody>
+    <tr>
+      <td style="padding:0 0 4px 0;">
+        <span style="font-family:Georgia,'Times New Roman',serif;font-size:16px;font-weight:normal;color:#0F1115;letter-spacing:0.01em;line-height:1.2;">Alessandro Kuhn Contes</span>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding:0 0 14px 0;">
+        <span style="font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:normal;color:#1B2A4E;letter-spacing:0.01em;">Creative Director &nbsp;&middot;&nbsp; Brand &amp; UX &nbsp;&middot;&nbsp; TGR Studio</span>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding:0 0 14px 0;">
+        <span style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:11px;font-weight:normal;color:#787066;line-height:1.5;">Technology evolves. Excellence doesn&rsquo;t.</span>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding:0 0 16px 0;">
+        <a href="https://akcontes.com" style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:600;color:#0047FF;text-decoration:none;">akcontes.com</a><span style="font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#1B2A4E;padding:0 5px;">&middot;</span><a href="https://linkedin.com/in/akcontes" style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:600;color:#0047FF;text-decoration:none;">linkedin.com/in/akcontes</a>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding:0 0 16px 0;">
+        <table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;width:240px;"><tbody><tr><td style="height:1px;background-color:#0F1115;font-size:0;line-height:0;mso-line-height-rule:exactly;">&nbsp;</td></tr></tbody></table>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding:0;">
+        <span style="font-family:Georgia,'Times New Roman',serif;font-size:12px;font-weight:normal;color:#0F1115;letter-spacing:0.01em;line-height:1.4;">Calibrated by craft. Built for the long game.</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<script>
+function copySignature() {
+  const sigEl = document.getElementById('email-sig-copy');
+  const btn   = document.getElementById('copyBtn');
+
+  if (window.ClipboardItem) {
+    const html = sigEl.innerHTML;
+    const text = sigEl.innerText || sigEl.textContent;
+    const item = new ClipboardItem({
+      'text/html':  new Blob([html],  { type: 'text/html'  }),
+      'text/plain': new Blob([text],  { type: 'text/plain' }),
+    });
+    navigator.clipboard.write([item])
+      .then(() => flash(btn))
+      .catch(() => fallback(sigEl, btn));
+  } else {
+    fallback(sigEl, btn);
+  }
+}
+
+function fallback(el, btn) {
+  const tmp = el.cloneNode(true);
+  tmp.style.position = 'static';
+  tmp.style.left = '0';
+  tmp.style.opacity = '1';
+  tmp.style.pointerEvents = 'auto';
+  document.body.appendChild(tmp);
+  const range = document.createRange();
+  range.selectNode(tmp);
+  const sel = window.getSelection();
+  sel.removeAllRanges();
+  sel.addRange(range);
+  document.execCommand('copy');
+  sel.removeAllRanges();
+  document.body.removeChild(tmp);
+  flash(btn);
+}
+
+function flash(btn) {
+  btn.textContent = 'Copied!';
+  btn.classList.add('copied');
+  setTimeout(() => {
+    btn.textContent = 'Copy for email';
+    btn.classList.remove('copied');
+  }, 2200);
+}
+</script>
+</body>
+</html>

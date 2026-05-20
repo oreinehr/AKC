@@ -1,0 +1,222 @@
+/* ============================================================
+   AKC Design System — colors & type tokens
+   Source of truth: reference/AKC_Brand_System.md (§4)
+   Display: Migra (Pangram Pangram, paid — self-hosted in /fonts)
+   Sans:    Roboto (self-hosted in /fonts)
+   Mono:    JetBrains Mono (Google Fonts) — Phase 2 swap to GT America Mono
+   Border-radius is ALWAYS 0. No exceptions.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ---------- Roboto (self-hosted) ---------- */
+@font-face { font-family: 'Roboto'; font-style: normal; font-weight: 400; src: url('fonts/Roboto-Regular.ttf')      format('truetype'); font-display: swap; }
+@font-face { font-family: 'Roboto'; font-style: normal; font-weight: 500; src: url('fonts/Roboto-Medium.ttf')       format('truetype'); font-display: swap; }
+@font-face { font-family: 'Roboto'; font-style: normal; font-weight: 600; src: url('fonts/Roboto-SemiBold.ttf')     format('truetype'); font-display: swap; }
+@font-face { font-family: 'Roboto'; font-style: normal; font-weight: 700; src: url('fonts/Roboto-Bold.ttf')         format('truetype'); font-display: swap; }
+@font-face { font-family: 'Roboto'; font-style: italic; font-weight: 400; src: url('fonts/Roboto-Italic.ttf')       format('truetype'); font-display: swap; }
+@font-face { font-family: 'Roboto'; font-style: italic; font-weight: 500; src: url('fonts/Roboto-MediumItalic.ttf') format('truetype'); font-display: swap; }
+
+/* ---------- Migra (self-hosted, paid) ---------- */
+@font-face { font-family: 'Migra'; font-style: normal; font-weight: 200; src: url('fonts/migra-extralight.otf') format('opentype'); font-display: swap; }
+@font-face { font-family: 'Migra'; font-style: normal; font-weight: 300; src: url('fonts/migra-light.otf')      format('opentype'); font-display: swap; }
+@font-face { font-family: 'Migra'; font-style: normal; font-weight: 400; src: url('fonts/migra-regular.otf')    format('opentype'); font-display: swap; }
+@font-face { font-family: 'Migra'; font-style: normal; font-weight: 500; src: url('fonts/migra-medium.otf')     format('opentype'); font-display: swap; }
+@font-face { font-family: 'Migra'; font-style: normal; font-weight: 600; src: url('fonts/migra-semibold.otf')   format('opentype'); font-display: swap; }
+@font-face { font-family: 'Migra'; font-style: normal; font-weight: 700; src: url('fonts/migra-bold.otf')       format('opentype'); font-display: swap; }
+@font-face { font-family: 'Migra'; font-style: normal; font-weight: 800; src: url('fonts/migra-extrabold.otf')  format('opentype'); font-display: swap; }
+@font-face { font-family: 'Migra'; font-style: normal; font-weight: 900; src: url('fonts/migra-black.otf')      format('opentype'); font-display: swap; }
+@font-face { font-family: 'Migra'; font-style: italic; font-weight: 200; src: url('fonts/migraitalic-extralightitalic.otf') format('opentype'); font-display: swap; }
+@font-face { font-family: 'Migra'; font-style: italic; font-weight: 300; src: url('fonts/migraitalic-lightitalic.otf')      format('opentype'); font-display: swap; }
+@font-face { font-family: 'Migra'; font-style: italic; font-weight: 400; src: url('fonts/migraitalic-italic.otf')           format('opentype'); font-display: swap; }
+@font-face { font-family: 'Migra'; font-style: italic; font-weight: 500; src: url('fonts/migraitalic-mediumitalic.otf')     format('opentype'); font-display: swap; }
+@font-face { font-family: 'Migra'; font-style: italic; font-weight: 600; src: url('fonts/migraitalic-semibolditalic.otf')   format('opentype'); font-display: swap; }
+@font-face { font-family: 'Migra'; font-style: italic; font-weight: 700; src: url('fonts/migraitalic-bolditalic.otf')       format('opentype'); font-display: swap; }
+@font-face { font-family: 'Migra'; font-style: italic; font-weight: 800; src: url('fonts/migraitalic-extrabolditalic.otf')  format('opentype'); font-display: swap; }
+@font-face { font-family: 'Migra'; font-style: italic; font-weight: 900; src: url('fonts/migraitalic-blackitalic.otf')      format('opentype'); font-display: swap; }
+
+:root {
+  /* ---------- Color tokens (primary) ---------- */
+  --color-foundation:    #0F1115;   /* Pantone Black 6 C — text, dark surfaces */
+  --color-bone:          #F0EBE1;   /* Pantone 7527 C — page bg */
+  --color-accent-quiet:  #1B2A4E;   /* Pantone 296 C — body emphasis, divider */
+  --color-accent-loud:   #0047FF;   /* Pantone 286 C — links, buttons, UI */
+
+  /* ---------- Exception accent — phosphor (LUME RULE) ---------- */
+  /* Fill only. Foundation black on top. ~1 of 10 surfaces max.
+     Allowed: time-stamps, kinetic moments. Never as text. */
+  --color-phosphor:      #D8FF3D;   /* Pantone 389 C */
+
+  /* ---------- Gradients (placeholders, not the look) ---------- */
+  --gradient-kinetic:    linear-gradient(90deg,  #0047FF 0%, #D8FF3D 100%);
+  --gradient-depth:      linear-gradient(135deg, #0F1115 0%, #0047FF 100%);
+  --gradient-tonal:      linear-gradient(135deg, #1B2A4E 0%, #0047FF 100%);
+  --gradient-drama:      linear-gradient(90deg,  #0F1115 0%, #D8FF3D 100%);
+
+  /* ---------- Semantic foreground / background ---------- */
+  --fg-primary:    var(--color-foundation);
+  --fg-secondary:  var(--color-accent-quiet);
+  --fg-link:       var(--color-accent-loud);
+  --fg-on-dark:    var(--color-bone);
+  --bg-page:       var(--color-bone);
+  --bg-dark:       var(--color-foundation);
+  --bg-scrim:      rgba(15, 17, 21, 0.45);
+
+  --rule-light:    rgba(15, 17, 21, 0.12);
+  --rule-dark:     rgba(240, 235, 225, 0.20);
+
+  /* ---------- Type families ---------- */
+  --font-sans:     'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  --font-display:  'Migra', 'Times New Roman', Georgia, serif;
+  --font-mono:     'JetBrains Mono', ui-monospace, 'SF Mono', 'Menlo', monospace;
+
+  /* ---------- Type scale (desktop) ---------- */
+  --type-display-1-size:  96px;  --type-display-1-lh: 1.0;   --type-display-1-tracking: -0.02em;
+  --type-display-2-size:  64px;  --type-display-2-lh: 1.05;  --type-display-2-tracking: -0.015em;
+  --type-h1-size:         48px;  --type-h1-lh:        1.15;  --type-h1-tracking:        -0.01em;
+  --type-h2-size:         32px;  --type-h2-lh:        1.20;  --type-h2-tracking:        -0.005em;
+  --type-h3-size:         22px;  --type-h3-lh:        1.30;  --type-h3-tracking:        0;
+  --type-body-large-size: 20px;  --type-body-large-lh:1.55;
+  --type-body-size:       16px;  --type-body-lh:      1.65;
+  --type-small-size:      14px;  --type-small-lh:     1.50;
+  --type-micro-size:      12px;  --type-micro-lh:     1.40;  --type-micro-tracking:     0.04em;
+
+  /* ---------- Spacing (8px base) ---------- */
+  --space-xs:  4px;
+  --space-s:   8px;
+  --space-m:   16px;
+  --space-l:   24px;
+  --space-xl:  32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  --space-4xl: 96px;
+  --space-5xl: 128px;
+  --space-6xl: 192px;
+
+  /* ---------- Layout ---------- */
+  --container-max: 1200px;
+  --container-pad: 64px;
+  --nav-height:    72px;
+
+  /* ---------- Borders & corners ---------- */
+  --radius:        0;          /* ALWAYS 0. No exceptions. */
+  --rule-weight:   1px;
+  --focus-ring:    2px solid var(--color-accent-loud);
+  --focus-offset:  2px;
+
+  /* ---------- Motion ---------- */
+  --ease:          cubic-bezier(0.2, 0.6, 0.2, 1);
+  --t-fast:        150ms;
+  --t-med:         250ms;
+}
+
+/* ============================================================
+   Semantic role classes — apply these in markup directly
+   ============================================================ */
+
+.t-display-1 {
+  font-family: var(--font-display);
+  font-weight: 600;  /* Migra Semibold — the calibrated register */
+  font-size: var(--type-display-1-size);
+  line-height: var(--type-display-1-lh);
+  letter-spacing: var(--type-display-1-tracking);
+  color: var(--fg-primary);
+  margin: 0;
+}
+
+.t-display-2 {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: var(--type-display-2-size);
+  line-height: var(--type-display-2-lh);
+  letter-spacing: var(--type-display-2-tracking);
+  color: var(--fg-primary);
+  margin: 0;
+}
+
+.t-h1 {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: var(--type-h1-size);
+  line-height: var(--type-h1-lh);
+  letter-spacing: var(--type-h1-tracking);
+  color: var(--fg-primary);
+  margin: 0;
+}
+
+.t-h2 {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: var(--type-h2-size);
+  line-height: var(--type-h2-lh);
+  letter-spacing: var(--type-h2-tracking);
+  color: var(--fg-primary);
+  margin: 0;
+}
+
+.t-h3 {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: var(--type-h3-size);
+  line-height: var(--type-h3-lh);
+  color: var(--fg-primary);
+  margin: 0;
+}
+
+.t-body-large {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--type-body-large-size);
+  line-height: var(--type-body-large-lh);
+  color: var(--fg-primary);
+  margin: 0;
+}
+
+.t-body {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-lh);
+  color: var(--fg-primary);
+  margin: 0;
+}
+
+.t-small {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--type-small-size);
+  line-height: var(--type-small-lh);
+  color: var(--fg-primary);
+  margin: 0;
+}
+
+.t-micro {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: var(--type-micro-size);
+  line-height: var(--type-micro-lh);
+  letter-spacing: var(--type-micro-tracking);
+  color: var(--fg-secondary);
+  text-transform: lowercase;
+  margin: 0;
+}
+
+.t-italic-proof {
+  font-family: var(--font-sans);
+  font-style: italic;
+  color: var(--fg-secondary);
+}
+
+/* ============================================================
+   Mobile type scale (≤ 768px)
+   ============================================================ */
+@media (max-width: 768px) {
+  .t-display-1 { font-size: 56px; }
+  .t-display-2 { font-size: 40px; }
+  .t-h1 { font-size: 32px; }
+  .t-h2 { font-size: 24px; }
+  .t-h3 { font-size: 18px; }
+  .t-body-large { font-size: 18px; }
+  .t-small { font-size: 13px; }
+  .t-micro { font-size: 11px; }
+}

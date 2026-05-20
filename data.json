@@ -1,0 +1,1365 @@
+{
+  "meta": {
+    "name": "Alessandro Kuhn Contes",
+    "role": {
+      "en": "Creative Director · Brand & UX",
+      "pt": "Diretor Criativo · Marca & UX"
+    },
+    "location": "Novo Hamburgo, RS",
+    "timezone": "BRT",
+    "email": "hello@akcontes.com",
+    "linkedin": "linkedin.com/in/akcontes",
+    "domain": "akcontes.com"
+  },
+  "hero": {
+    "eyebrow": {
+      "en": "Calibrated by craft. Built for the long game.",
+      "pt": "Calibrado pelo ofício. Construído para o longo prazo."
+    },
+    "proof": {
+      "en": "Technology evolves. Excellence holds.",
+      "pt": "A tecnologia evolui. A excelência permanece."
+    },
+    "leadA": {
+      "en": "Creative direction, calibrated.",
+      "pt": "Direção criativa, calibrada."
+    },
+    "highlight": {
+      "en": "calibrated",
+      "pt": "calibrada"
+    },
+    "roleLine": {
+      "en": "Twenty years across Brazil and the United States. Currently leading creative at TGR Studio.",
+      "pt": "Vinte anos entre Brasil e Estados Unidos. Atualmente liderando a criação na TGR Studio."
+    },
+    "tag1": {
+      "en": "Creative Direction",
+      "pt": "Direção Criativa"
+    },
+    "tag2": {
+      "en": "Brand & UX",
+      "pt": "Marca & UX"
+    },
+    "tag3": "BR ↔ US"
+  },
+  "about": {
+    "proof": {
+      "en": "Technology evolves. Excellence holds.",
+      "pt": "A tecnologia evolui. A excelência permanece."
+    },
+    "body": {
+      "en": "I'm Alessandro Kuhn Contes — a Creative Director and UX Designer working between Brazil and the United States. Currently leading creative at TGR Studio. The work sits at the intersection of brand, UX, and creative leadership. What makes it hold up across formats and decades isn't taste or trend — it's a calibration bar tuned in cultures that don't tolerate slack.",
+      "pt": "Sou Alessandro Kuhn Contes — Diretor Criativo e Designer de UX atuando entre Brasil e Estados Unidos. Atualmente liderando a criação na TGR Studio. O trabalho situa-se na interseção de marca, UX e liderança criativa. O que o sustenta ao longo de formatos e décadas não é gosto ou tendência — é uma barra de calibração afinada em culturas que não toleram imprecisão."
+    },
+    "bullets": [
+      [
+        "01",
+        {
+          "en": "274% productivity lift inside K2 (K1 Group), in twelve months.",
+          "pt": "274% de aumento de produtividade na K2 (K1 Group), em doze meses."
+        }
+      ],
+      [
+        "02",
+        {
+          "en": "25% revenue growth at TGR through rebuilt client trust.",
+          "pt": "25% de crescimento de receita na TGR por meio da reconstrução da confiança dos clientes."
+        }
+      ],
+      [
+        "03",
+        {
+          "en": "Public campaign work for NYC Service, distributed across the New York City subway system.",
+          "pt": "Campanha pública para o NYC Service, distribuída pelo metrô de Nova York."
+        }
+      ]
+    ],
+    "signoff": {
+      "en": "Calibrated by craft. Built for the long game.",
+      "pt": "Calibrado pelo ofício. Construído para o longo prazo."
+    }
+  },
+  "work": [
+    {
+      "client": "TGR Studio",
+      "year": "2024–present",
+      "title": {
+        "en": "Creative direction at TGR",
+        "pt": "Direção criativa na TGR"
+      },
+      "summary": {
+        "en": "UX and brand work across enterprise web platforms.",
+        "pt": "Trabalho de UX e marca em plataformas web corporativas."
+      },
+      "tone": "depth",
+      "caseSlug": "tgr-studio"
+    },
+    {
+      "client": "K2 · K1 Group",
+      "year": "2022–2024",
+      "title": {
+        "en": "Productivity rebuild",
+        "pt": "Reconstrução de produtividade"
+      },
+      "summary": {
+        "en": "Team and process reset; 274% lift inside twelve months.",
+        "pt": "Reset de time e processo; 274% de ganho em doze meses."
+      },
+      "tone": "tonal",
+      "caseSlug": "k2-k1-group"
+    },
+    {
+      "client": "NYC Service",
+      "year": "2018",
+      "title": {
+        "en": "Subway campaign system",
+        "pt": "Sistema de campanha no metrô"
+      },
+      "summary": {
+        "en": "Public-facing identity distributed across the NYC transit network.",
+        "pt": "Identidade pública distribuída pela rede de transporte de NYC."
+      },
+      "tone": "kinetic",
+      "caseSlug": "nyc-service"
+    },
+    {
+      "client": "Bureau Blank · NY",
+      "year": "2016–2018",
+      "title": {
+        "en": "Civic brand work",
+        "pt": "Trabalho de marca cívica"
+      },
+      "summary": {
+        "en": "Senior creative leadership across public-sector accounts.",
+        "pt": "Liderança criativa sênior em contas do setor público."
+      },
+      "tone": "depth",
+      "caseSlug": null
+    },
+    {
+      "client": "Confidential · BR",
+      "year": "2020–2022",
+      "title": {
+        "en": "Enterprise platform reset",
+        "pt": "Reset de plataforma enterprise"
+      },
+      "summary": {
+        "en": "Brand + UX system for a multi-product surface.",
+        "pt": "Sistema de marca + UX para uma superfície multi-produto."
+      },
+      "tone": "tonal",
+      "caseSlug": null
+    },
+    {
+      "client": "Personal",
+      "year": "2025",
+      "title": {
+        "en": "AI-native practice notes",
+        "pt": "Notas de prática nativa com IA"
+      },
+      "summary": {
+        "en": "Working method for AI as a daily teammate, not a tagline.",
+        "pt": "Método de trabalho com IA como parceira diária, não como slogan."
+      },
+      "tone": "kinetic",
+      "caseSlug": null
+    }
+  ],
+  "blog": [
+    {
+      "slug": "lume-rule",
+      "date": "2026",
+      "read": "8 min",
+      "title": {
+        "en": "The lume rule: scarcity as design discipline",
+        "pt": "A regra do lume: escassez como disciplina de design"
+      },
+      "excerpt": {
+        "en": "Why a signature accent earns its place by appearing on roughly one surface in ten.",
+        "pt": "Por que um acento de assinatura se justifica aparecendo em apenas uma de cada dez superfícies."
+      },
+      "subtitle": {
+        "en": "Why a signature accent earns its place by appearing on roughly one surface in ten.",
+        "pt": "Por que um acento de assinatura se justifica aparecendo em apenas uma de cada dez superfícies."
+      },
+      "section": "Practice",
+      "body": [
+        {
+          "kind": "p",
+          "text": {
+            "en": "A watch dial has one signature color and a lume — a separate luminous compound that only activates in defined conditions: low light, motion. The lume is structural to the watch's identity, but it's not always visible. Designed in, dosed precisely, deployed sparingly.",
+            "pt": "O mostrador de um relógio tem uma cor de assinatura e um lume — um composto luminoso separado que só se ativa em condições definidas: pouca luz, movimento. O lume é estrutural à identidade do relógio, mas nem sempre está visível. Projetado dentro, dosado com precisão, aplicado com parcimônia."
+          }
+        },
+        {
+          "kind": "p",
+          "text": {
+            "en": "That's the model. Most personal-brand visual systems fail not because the accent is wrong but because the accent is everywhere. A signature color used on every surface is wallpaper. A signature color used on roughly one surface in ten reads as discipline.",
+            "pt": "Esse é o modelo. A maioria dos sistemas visuais de marca pessoal falha não porque o acento está errado, mas porque o acento está em todo lugar. Uma cor de assinatura usada em todas as superfícies é papel de parede. Uma cor de assinatura usada em aproximadamente uma de cada dez superfícies transmite disciplina."
+          }
+        },
+        {
+          "kind": "h2",
+          "text": {
+            "en": "What the rule actually does",
+            "pt": "O que a regra realmente faz"
+          }
+        },
+        {
+          "kind": "p",
+          "text": {
+            "en": "Three things, in order. First, it gives the brand a primary register — the working palette that holds 90% of surfaces. That's the calibration bar. Second, it earns the right to a moment — the 10% — by holding the other 90%. Third, it forces honest conversation about what counts as a moment: if everything's loud, nothing is.",
+            "pt": "Três coisas, em ordem. Primeiro, ela dá à marca um registro primário — a paleta de trabalho que sustenta 90% das superfícies. Essa é a barra de calibração. Segundo, ela conquista o direito a um momento — os 10% — ao segurar os outros 90%. Terceiro, ela força uma conversa honesta sobre o que conta como momento: se tudo é barulhento, nada é."
+          }
+        },
+        {
+          "kind": "figure",
+          "label": "specimen · phosphor block with black type · 16:10",
+          "aspect": "16/10",
+          "caption": {
+            "en": "Phosphor only appears in defined contexts — time-stamped graphics, kinetic moments, AI-forward tags. Never as text.",
+            "pt": "O fósforo aparece apenas em contextos definidos — gráficos com marcação de tempo, momentos cinéticos, tags de orientação para IA. Nunca como texto."
+          }
+        },
+        {
+          "kind": "h2",
+          "text": {
+            "en": "Where the rule allows the accent",
+            "pt": "Onde a regra permite o acento"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Time-stamped or year-stamped graphics — \"2026\" campaign tags, newsletter issue numbers.",
+              "pt": "Gráficos com marcação de tempo ou ano — tags de campanha \"2026\", números de edições de newsletter."
+            },
+            {
+              "en": "Motion / kinetic work showcases — video accents, generative samples, moving-image tiles.",
+              "pt": "Showcases de trabalho em motion / cinético — acentos em vídeo, amostras generativas, tiles de imagem em movimento."
+            },
+            {
+              "en": "AI-content or technology-forward tags — signals current without putting the buzzword in copy.",
+              "pt": "Tags de conteúdo com IA ou orientadas à tecnologia — sinalizam atualidade sem colocar o buzzword no copy."
+            },
+            {
+              "en": "Single hero highlights on a landing page section. Not all of them.",
+              "pt": "Destaques hero pontuais em uma seção de landing page. Não em todas."
+            }
+          ]
+        },
+        {
+          "kind": "quote",
+          "text": {
+            "en": "If phosphor is everywhere, it becomes wallpaper. If it's never used, why have it. Aim for ~1 of every 10 surfaces.",
+            "pt": "Se o fósforo está em todo lugar, vira papel de parede. Se nunca é usado, para que tê-lo. Mire em ~1 de cada 10 superfícies."
+          },
+          "attribution": "from the brand system, locked 2026-04-29"
+        },
+        {
+          "kind": "h2",
+          "text": {
+            "en": "Where the rule keeps the accent out",
+            "pt": "Onde a regra mantém o acento fora"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Stationery — letterhead, business cards. Primary palette only.",
+              "pt": "Papelaria — timbrado, cartões de visita. Somente paleta primária."
+            },
+            {
+              "en": "Email signature — primary only.",
+              "pt": "Assinatura de e-mail — somente primária."
+            },
+            {
+              "en": "Print proposals, RFPs, decks — primary only.",
+              "pt": "Propostas impressas, RFPs, decks — somente primária."
+            },
+            {
+              "en": "As text. Phosphor fails contrast as type. Always a fill with black type on top.",
+              "pt": "Como texto. O fósforo falha em contraste como tipografia. Sempre como fundo com texto preto por cima."
+            },
+            {
+              "en": "The logo — never recolor the mark.",
+              "pt": "O logo — nunca recolorir a marca."
+            }
+          ]
+        },
+        {
+          "kind": "h3",
+          "text": {
+            "en": "The carryable lesson",
+            "pt": "A lição que se carrega"
+          }
+        },
+        {
+          "kind": "p",
+          "text": {
+            "en": "Calibration is mostly restraint. The bar moves up when the system gives one thing the room to land — and refuses to spend that room on filler. The lume rule is one shape of that restraint. The deeper rule is older: scarcity is what makes a signal a signal.",
+            "pt": "Calibração é, em grande parte, contenção. A barra sobe quando o sistema dá a uma coisa o espaço para pousar — e recusa gastar esse espaço com filler. A regra do lume é uma forma dessa contenção. A regra mais profunda é mais antiga: escassez é o que faz um sinal ser um sinal."
+          }
+        }
+      ],
+      "tags": [
+        "brand systems",
+        "color discipline",
+        "personal-brand work"
+      ]
+    },
+    {
+      "slug": "harder-rooms",
+      "date": "2026",
+      "read": "6 min",
+      "title": {
+        "en": "Calibrated by harder rooms",
+        "pt": "Calibrado por salas mais difíceis"
+      },
+      "excerpt": {
+        "en": "Twenty years across Brazil and the U.S. tunes a different ear for what enterprise creative is supposed to do.",
+        "pt": "Vinte anos entre Brasil e EUA afinam um ouvido diferente para o que a criação enterprise deve fazer."
+      },
+      "subtitle": {
+        "en": "Working in cultures that don't tolerate slack changes how you set the bar.",
+        "pt": "Trabalhar em culturas que não toleram imprecisão muda como você define a barra."
+      },
+      "section": "Practice",
+      "body": [
+        {
+          "kind": "p",
+          "text": {
+            "en": "The phrase \"calibrated by craft\" earns its weight from where the calibration happened. Brazil teaches you to ship inside constraints — budget, timeline, client patience — without dropping the bar. The U.S. teaches you to defend the bar at scale, in rooms with louder voices and bigger numbers.",
+            "pt": "A expressão \"calibrado pelo ofício\" ganha peso de onde a calibração aconteceu. O Brasil ensina a entregar dentro de restrições — orçamento, prazo, paciência do cliente — sem baixar a barra. Os EUA ensinam a defender a barra em escala, em salas com vozes mais altas e números maiores."
+          }
+        },
+        {
+          "kind": "p",
+          "text": {
+            "en": "Twenty years inside both means the bar gets set by the harder room you've been in this week, not the softer one. That's the deal. The work either survives the harder room or it doesn't.",
+            "pt": "Vinte anos dentro dos dois significa que a barra é definida pela sala mais difícil em que você esteve nessa semana, não pela mais fácil. Esse é o acordo. O trabalho ou sobrevive à sala mais difícil ou não sobrevive."
+          }
+        },
+        {
+          "kind": "h2",
+          "text": {
+            "en": "What harder rooms teach",
+            "pt": "O que salas mais difíceis ensinam"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "en": "Defending a decision in the language of business outcomes, not aesthetics.",
+              "pt": "Defender uma decisão na linguagem de resultados de negócio, não de estética."
+            },
+            {
+              "en": "Translating a creative call into a number an operator will recognize.",
+              "pt": "Traduzir uma decisão criativa em um número que um operador reconheça."
+            },
+            {
+              "en": "Knowing which fights to take and which to log and walk away from.",
+              "pt": "Saber quais brigas travar e quais registrar e deixar passar."
+            },
+            {
+              "en": "Reading the room before opening the file.",
+              "pt": "Ler a sala antes de abrir o arquivo."
+            }
+          ]
+        },
+        {
+          "kind": "p",
+          "text": {
+            "en": "None of these are taught. All of them are calibrated — by being in the room enough times that the next room reads cleaner.",
+            "pt": "Nenhuma dessas coisas é ensinada. Todas são calibradas — por estar na sala vezes suficientes para que a próxima sala pareça mais clara."
+          }
+        }
+      ],
+      "tags": [
+        "practice",
+        "career notes"
+      ]
+    },
+    {
+      "slug": "platform-shift",
+      "date": "soon",
+      "read": "—",
+      "title": "What survives a platform shift",
+      "excerpt": "On what was never the work in the first place — and what holds when the tools change.",
+      "subtitle": "Coming soon.",
+      "section": "Practice",
+      "coming": true,
+      "body": [],
+      "tags": []
+    }
+  ],
+  "inspiration": [
+    {
+      "artist": "Felipe Pantone",
+      "note": "generative · 2024",
+      "tone": "depth"
+    },
+    {
+      "artist": "A. Lange & Söhne",
+      "note": "watch · ref. 1815",
+      "tone": "tonal"
+    },
+    {
+      "artist": "Maceo Plex",
+      "note": "set art · awakenings",
+      "tone": "kinetic"
+    },
+    {
+      "artist": "Massimo Vignelli",
+      "note": "specimen · 1972",
+      "tone": "depth"
+    },
+    {
+      "artist": "Rafa Nadal",
+      "note": "roland-garros · 2022",
+      "tone": "tonal"
+    },
+    {
+      "artist": "Casey Reas",
+      "note": "process · 2023",
+      "tone": "kinetic"
+    },
+    {
+      "artist": "Jeremy Cowart",
+      "note": "portrait · 2021",
+      "tone": "depth"
+    }
+  ],
+  "marks": {
+    "home": {
+      "heroVersion": "v 0.3 · lo-fi",
+      "heroDate": "2026-05-14",
+      "aboutNum": "02 · about",
+      "aboutAnno": "about · medium bio",
+      "workNum": "03 · selected work",
+      "workAnno": "3-up grid · §5.4",
+      "blogNum": "04 · blog",
+      "blogAnno": "text-led · §5.5",
+      "inspNum": "05 · weekly inspiration"
+    },
+    "case": {
+      "coverAnno": "case study · template",
+      "briefNum": "01 · brief",
+      "briefAnno": "the problem · template",
+      "approachNum": "02 · approach",
+      "approachAnno": "four moves · template",
+      "outputNum": "03 · output",
+      "outputAnno": "artifacts · placeholders",
+      "resultsNum": "04 · results",
+      "resultsAnno": "numbers · template",
+      "creditsNum": "05 · credits",
+      "creditsAnno": "team · static"
+    },
+    "post": {
+      "tagsLabel": "filed under",
+      "relatedNum": "related notes"
+    },
+    "about": {
+      "practiceNum": "01 · practice",
+      "practiceAnno": "scope · template",
+      "timelineNum": "02 · timeline",
+      "timelineAnno": "20 years · selected",
+      "clientsNum": "03 · clients",
+      "clientsAnno": "selected · public",
+      "recogNum": "04 · recognition",
+      "recogAnno": "light · honest"
+    },
+    "contact": {
+      "fitNum": "01 · what to email about",
+      "fitAnno": "honest framing",
+      "formAnno": "form · mailto fallback"
+    }
+  },
+  "lang": "en",
+  "dark": true,
+  "contact": {
+    "head": {
+      "en": "Let's talk.",
+      "pt": "Vamos conversar."
+    },
+    "lede": {
+      "en": "For senior creative direction and brand work — currently leading at TGR Studio, open to the right conversation.",
+      "pt": "Para direção criativa sênior e trabalho de marca — atualmente liderando na TGR Studio, aberto à conversa certa."
+    }
+  },
+  "newsletter": {
+    "title": {
+      "en": "Newsletter",
+      "pt": "Newsletter"
+    },
+    "blurb": {
+      "en": "The blog, delivered. Low cadence, signal only — one note when there's something to send.",
+      "pt": "O blog, entregue. Baixa cadência, apenas sinal — uma nota quando há algo a enviar."
+    },
+    "placeholder": {
+      "en": "your@email.com",
+      "pt": "seu@email.com"
+    },
+    "cta": {
+      "en": "Subscribe",
+      "pt": "Inscrever-se"
+    },
+    "success": {
+      "en": "Subscribed. See you in your inbox.",
+      "pt": "Inscrito. Até mais na sua caixa de entrada."
+    },
+    "provider": "buttondown",
+    "listId": "akc-notes"
+  },
+  "socials": [
+    {
+      "label": "hello@akcontes.com",
+      "href": "mailto:hello@akcontes.com"
+    },
+    {
+      "label": "+55 51 99699 9909",
+      "href": "tel:+5551996999909"
+    },
+    {
+      "label": "linkedin.com/in/akcontes",
+      "href": "https://www.linkedin.com/in/akcontes/"
+    },
+    {
+      "label": "instagram.com/akcontes",
+      "href": "https://www.instagram.com/akcontes/"
+    }
+  ],
+  "cases": [
+    {
+      "slug": "tgr-studio",
+      "meta": {
+        "num": "case 01",
+        "client": "TGR Studio",
+        "project": "Creative direction at TGR",
+        "year": "2024–present",
+        "role": {
+          "en": "Creative Director · Brand & UX",
+          "pt": "Diretor Criativo · Marca & UX"
+        },
+        "status": "ongoing",
+        "sector": "Enterprise B2B · Brazil",
+        "deliverables": [
+          "Brand system",
+          "Platform UX",
+          "Marketing surfaces",
+          "Sales enablement"
+        ]
+      },
+      "brief": {
+        "head": {
+          "en": "Rebuild client trust. Grow the practice. Ship the work.",
+          "pt": "Reconstruir a confiança dos clientes. Fazer a prática crescer. Entregar o trabalho."
+        },
+        "body": {
+          "en": "TGR Studio asked for senior creative leadership to reset the relationship with key enterprise accounts and turn the team into something that consistently ships at the bar the brief implies. The work sits at the intersection of brand, UX, and pipeline — the practice has to feel calibrated end-to-end, not just at the cover.",
+          "pt": "A TGR Studio precisou de liderança criativa sênior para resetar o relacionamento com as principais contas enterprise e transformar o time em algo que entrega consistentemente no nível que o brief implica. O trabalho fica na interseção de marca, UX e pipeline — a prática precisa soar calibrada do início ao fim, não apenas na capa."
+        },
+        "callouts": [
+          [
+            "scope",
+            {
+              "en": "Cross-functional. Creative, UX, account, sales.",
+              "pt": "Interfuncional. Criação, UX, atendimento, vendas."
+            }
+          ],
+          [
+            "timeline",
+            {
+              "en": "12 months for the operational reset; brand + UX system overhaul is rolling.",
+              "pt": "12 meses para o reset operacional; o redesenho do sistema de marca + UX está em andamento."
+            }
+          ],
+          [
+            "constraint",
+            {
+              "en": "No reset of the staff — same team, sharper bar.",
+              "pt": "Sem troca de equipe — mesmo time, barra mais alta."
+            }
+          ]
+        ]
+      },
+      "approach": [
+        {
+          "num": "01",
+          "title": {
+            "en": "Audit",
+            "pt": "Auditoria"
+          },
+          "body": {
+            "en": "Read every shipping artifact, sit in every recurring meeting, watch every client touchpoint. Map the gap between intent and output.",
+            "pt": "Ler todos os artefatos entregues, participar de todas as reuniões recorrentes, acompanhar cada touchpoint com o cliente. Mapear a distância entre intenção e output."
+          }
+        },
+        {
+          "num": "02",
+          "title": {
+            "en": "Set the bar",
+            "pt": "Definir a barra"
+          },
+          "body": {
+            "en": "Define the calibration register the studio operates at — visual + writing + interaction — then make the bar legible to the team in artifacts they can copy.",
+            "pt": "Definir o registro de calibração em que o estúdio opera — visual + escrita + interação — e tornar essa barra legível para o time em artefatos que possam ser copiados."
+          }
+        },
+        {
+          "num": "03",
+          "title": {
+            "en": "Process reset",
+            "pt": "Reset de processo"
+          },
+          "body": {
+            "en": "Rebuild the critique loop, the design review cadence, and the client-facing language. Reduce ceremony, raise the floor.",
+            "pt": "Reconstruir o loop de crítica, a cadência de revisão de design e a linguagem voltada ao cliente. Reduzir cerimônia, elevar o piso."
+          }
+        },
+        {
+          "num": "04",
+          "title": {
+            "en": "Ship",
+            "pt": "Entregar"
+          },
+          "body": {
+            "en": "Every new pitch and platform goes through the new register. Compound the work — each engagement raises the bar for the next.",
+            "pt": "Cada novo pitch e plataforma passa pelo novo registro. O trabalho se acumula — cada projeto eleva a barra para o próximo."
+          }
+        }
+      ],
+      "output": [
+        {
+          "kind": "full",
+          "label": "platform cover · 16:9",
+          "note": {
+            "en": "TGR's flagship enterprise UX engagement — landing surface.",
+            "pt": "Principal engajamento de UX enterprise da TGR — superfície de entrada."
+          }
+        },
+        {
+          "kind": "twin",
+          "labels": [
+            "component system · 4:5",
+            "type specimen · 4:5"
+          ],
+          "note": {
+            "en": "Internal design system + Migra-anchored brand typography.",
+            "pt": "Design system interno + tipografia de marca ancorada na Migra."
+          }
+        },
+        {
+          "kind": "wide",
+          "label": "in-platform UI · 16:9",
+          "note": {
+            "en": "Dashboard-tier interaction patterns. Real client app, redacted.",
+            "pt": "Padrões de interação em nível de dashboard. App real do cliente, redatado."
+          }
+        },
+        {
+          "kind": "detail",
+          "label": "detail · 3:2",
+          "note": {
+            "en": "Pitch artifact. Foil-stamped cobalt on bone.",
+            "pt": "Artefato de pitch. Hot stamping cobalto sobre bone."
+          }
+        },
+        {
+          "kind": "twin",
+          "labels": [
+            "mobile flow · 9:19",
+            "tablet · 4:3"
+          ],
+          "note": {
+            "en": "Responsive system across three breakpoints.",
+            "pt": "Sistema responsivo em três breakpoints."
+          }
+        }
+      ],
+      "results": [
+        {
+          "stat": "+25%",
+          "note": {
+            "en": "Revenue growth, year over year.",
+            "pt": "Crescimento de receita, ano a ano."
+          }
+        },
+        {
+          "stat": "12 mo.",
+          "note": {
+            "en": "From audit to operational reset.",
+            "pt": "Do audit ao reset operacional."
+          }
+        },
+        {
+          "stat": "6",
+          "note": {
+            "en": "Enterprise platforms shipped under the new register.",
+            "pt": "Plataformas enterprise entregues sob o novo registro."
+          }
+        }
+      ],
+      "quote": {
+        "text": {
+          "en": "It took twelve months to feel like the work matches the intent. The bar moved — and now it stays there.",
+          "pt": "Levou doze meses para o trabalho começar a corresponder à intenção. A barra subiu — e agora ela se mantém."
+        },
+        "author": "(client testimonial)",
+        "role": {
+          "en": "TGR Studio · senior stakeholder",
+          "pt": "TGR Studio · stakeholder sênior"
+        }
+      },
+      "credits": [
+        [
+          "Creative Direction",
+          "Alessandro Kuhn Contes"
+        ],
+        [
+          "Brand & UX team",
+          "TGR Studio creative"
+        ],
+        [
+          "Client",
+          "TGR Studio leadership"
+        ],
+        [
+          "Period",
+          "2024 — present"
+        ],
+        [
+          "Status",
+          "Ongoing engagement"
+        ]
+      ],
+      "nextSlug": "k2-k1-group"
+    },
+    {
+      "slug": "k2-k1-group",
+      "meta": {
+        "num": "case 02",
+        "client": "K2 · K1 Group",
+        "project": "Productivity rebuild",
+        "year": "2022–2024",
+        "role": {
+          "en": "Creative Director · Operations",
+          "pt": "Diretor Criativo · Operações"
+        },
+        "status": "shipped",
+        "sector": "Holding company · Brazil",
+        "deliverables": [
+          "Team reset",
+          "Process redesign",
+          "Tool stack",
+          "Output system"
+        ]
+      },
+      "brief": {
+        "head": {
+          "en": "Turn a creative team from output-bound to outcome-bound.",
+          "pt": "Transformar um time criativo de orientado a output para orientado a resultado."
+        },
+        "body": {
+          "en": "K2 (inside K1 Group) had the talent and the budget — the throughput wasn't there. The mandate: rebuild the team's operating model without firing anyone, and make the gain legible at the holding-company level inside twelve months.",
+          "pt": "A K2 (dentro do K1 Group) tinha o talento e o orçamento — o throughput não estava lá. O mandato: reconstruir o modelo operacional do time sem demitir ninguém, e tornar o ganho legível no nível da holding em doze meses."
+        },
+        "callouts": [
+          [
+            "scope",
+            {
+              "en": "Internal creative org. ~22 people across creative, copy, motion.",
+              "pt": "Organização criativa interna. ~22 pessoas entre criação, copy e motion."
+            }
+          ],
+          [
+            "timeline",
+            {
+              "en": "12 months, two operational milestones at month 4 and 9.",
+              "pt": "12 meses, dois marcos operacionais no mês 4 e no mês 9."
+            }
+          ],
+          [
+            "constraint",
+            {
+              "en": "Zero staff reset. Same people, new system.",
+              "pt": "Zero reset de equipe. Mesmas pessoas, sistema novo."
+            }
+          ]
+        ]
+      },
+      "approach": [
+        {
+          "num": "01",
+          "title": {
+            "en": "Measure",
+            "pt": "Medir"
+          },
+          "body": {
+            "en": "Instrument the team. Track hours, briefs, revision cycles, time-to-first-draft, accept rate. Get a baseline that's defensible.",
+            "pt": "Instrumentar o time. Rastrear horas, briefs, ciclos de revisão, tempo até o primeiro rascunho, taxa de aprovação. Estabelecer uma baseline defensável."
+          }
+        },
+        {
+          "num": "02",
+          "title": {
+            "en": "Cut ceremony",
+            "pt": "Cortar cerimônia"
+          },
+          "body": {
+            "en": "Identify every meeting, hand-off, and approval gate that doesn't make the work better. Kill or compress.",
+            "pt": "Identificar cada reunião, handoff e gate de aprovação que não melhora o trabalho. Eliminar ou comprimir."
+          }
+        },
+        {
+          "num": "03",
+          "title": {
+            "en": "Re-tool",
+            "pt": "Re-ferramentar"
+          },
+          "body": {
+            "en": "Swap brittle tooling for a stack the team can actually move inside. Standardize the creative file model so handoffs aren't fragile.",
+            "pt": "Trocar ferramentas frágeis por um stack dentro do qual o time consiga se mover de verdade. Padronizar o modelo de arquivo criativo para que os handoffs não sejam frágeis."
+          }
+        },
+        {
+          "num": "04",
+          "title": {
+            "en": "Compound",
+            "pt": "Acumular"
+          },
+          "body": {
+            "en": "Every brief now ships through the new model. Throughput stacks every quarter as the team internalizes the rhythm.",
+            "pt": "Cada brief agora passa pelo novo modelo. O throughput cresce a cada trimestre conforme o time internaliza o ritmo."
+          }
+        }
+      ],
+      "output": [
+        {
+          "kind": "full",
+          "label": "ops dashboard · 16:9",
+          "note": {
+            "en": "Throughput tracking — visible to the team and the holding C-suite.",
+            "pt": "Rastreamento de throughput — visível para o time e para o C-suite da holding."
+          }
+        },
+        {
+          "kind": "twin",
+          "labels": [
+            "brief template · 4:5",
+            "review rubric · 4:5"
+          ],
+          "note": {
+            "en": "Two artifacts that did most of the work.",
+            "pt": "Dois artefatos que fizeram a maior parte do trabalho."
+          }
+        },
+        {
+          "kind": "wide",
+          "label": "creative system overview · 16:9",
+          "note": {
+            "en": "File model + handoff specification.",
+            "pt": "Modelo de arquivo + especificação de handoff."
+          }
+        }
+      ],
+      "results": [
+        {
+          "stat": "+274%",
+          "note": {
+            "en": "Team productivity lift, year over year.",
+            "pt": "Aumento de produtividade do time, ano a ano."
+          }
+        },
+        {
+          "stat": "12 mo.",
+          "note": {
+            "en": "Audit → fully re-tooled team.",
+            "pt": "Audit → time totalmente re-ferramentado."
+          }
+        },
+        {
+          "stat": "0",
+          "note": {
+            "en": "People let go in the reset.",
+            "pt": "Pessoas dispensadas no reset."
+          }
+        }
+      ],
+      "quote": {
+        "text": {
+          "en": "The team's better at the same headcount. The numbers are real, and they hold quarter over quarter.",
+          "pt": "O time está melhor com o mesmo headcount. Os números são reais e se mantêm trimestre a trimestre."
+        },
+        "author": "(K1 Group leadership)",
+        "role": {
+          "en": "K1 Group · senior leadership",
+          "pt": "K1 Group · liderança sênior"
+        }
+      },
+      "credits": [
+        [
+          "Creative Direction",
+          "Alessandro Kuhn Contes"
+        ],
+        [
+          "Team",
+          "K2 creative · 22 people"
+        ],
+        [
+          "Client",
+          "K1 Group leadership"
+        ],
+        [
+          "Period",
+          "2022 — 2024"
+        ],
+        [
+          "Status",
+          "Shipped · still in use"
+        ]
+      ],
+      "nextSlug": "nyc-service"
+    },
+    {
+      "slug": "nyc-service",
+      "meta": {
+        "num": "case 03",
+        "client": "NYC Service",
+        "project": "Subway campaign system",
+        "year": "2018",
+        "role": {
+          "en": "Senior Creative · Bureau Blank",
+          "pt": "Criativo Sênior · Bureau Blank"
+        },
+        "status": "shipped",
+        "sector": "Public-sector · New York City",
+        "deliverables": [
+          "Identity system",
+          "Transit campaign",
+          "Out-of-home rollout",
+          "Print collateral"
+        ]
+      },
+      "brief": {
+        "head": {
+          "en": "Public-facing identity, distributed across the New York City subway system.",
+          "pt": "Identidade pública, distribuída pelo sistema de metrô de Nova York."
+        },
+        "body": {
+          "en": "NYC Service needed an identity strong enough to live next to MTA's permanent signage without disappearing — and to feel like a civic invitation, not an ad. Designed at Bureau Blank, rolled out across the transit network.",
+          "pt": "O NYC Service precisava de uma identidade forte o suficiente para conviver com a sinalização permanente do MTA sem desaparecer — e para soar como um convite cívico, não como um anúncio. Desenhada na Bureau Blank, distribuída por toda a rede de transporte."
+        },
+        "callouts": [
+          [
+            "scope",
+            {
+              "en": "Identity + campaign system + transit rollout.",
+              "pt": "Identidade + sistema de campanha + distribuição em trânsito."
+            }
+          ],
+          [
+            "timeline",
+            {
+              "en": "Identity 6 weeks. Rollout staged across 4 months.",
+              "pt": "Identidade em 6 semanas. Distribuição em etapas ao longo de 4 meses."
+            }
+          ],
+          [
+            "constraint",
+            {
+              "en": "Public-sector procurement timeline. Print-first.",
+              "pt": "Cronograma de aquisição do setor público. Print primeiro."
+            }
+          ]
+        ]
+      },
+      "approach": [
+        {
+          "num": "01",
+          "title": {
+            "en": "Civic register",
+            "pt": "Registro cívico"
+          },
+          "body": {
+            "en": "Find a visual register that's distinct from commercial OOH but doesn't read as government wallpaper. Civic, not corporate.",
+            "pt": "Encontrar um registro visual distinto do OOH comercial, mas que não pareça papelão de governo. Cívico, não corporativo."
+          }
+        },
+        {
+          "num": "02",
+          "title": {
+            "en": "Live with MTA",
+            "pt": "Conviver com o MTA"
+          },
+          "body": {
+            "en": "Test every layout against the actual subway environment — fluorescent light, sticker tags, crowd density.",
+            "pt": "Testar cada layout no ambiente real do metrô — luz fluorescente, etiquetas de adesivo, densidade de passageiros."
+          }
+        },
+        {
+          "num": "03",
+          "title": {
+            "en": "Print system",
+            "pt": "Sistema de impressão"
+          },
+          "body": {
+            "en": "Production-real specs from day one. The identity has to survive offset, riso, large-format print, vinyl.",
+            "pt": "Especificações reais de produção desde o primeiro dia. A identidade precisa sobreviver a offset, riso, impressão em grande formato e vinil."
+          }
+        },
+        {
+          "num": "04",
+          "title": {
+            "en": "Ship into the city",
+            "pt": "Lançar na cidade"
+          },
+          "body": {
+            "en": "Stage the rollout across stations. Every placement is documented and feeds back into refinement.",
+            "pt": "Distribuir nas estações em etapas. Cada placement é documentado e retorna como input para refinamento."
+          }
+        }
+      ],
+      "output": [
+        {
+          "kind": "full",
+          "label": "platform poster · 16:9",
+          "note": {
+            "en": "Hero rollout across major subway hubs.",
+            "pt": "Distribuição hero pelos principais hubs do metrô."
+          }
+        },
+        {
+          "kind": "twin",
+          "labels": [
+            "station signage · 4:5",
+            "in-car ad · 4:5"
+          ],
+          "note": {
+            "en": "Two of the eight distinct placements.",
+            "pt": "Dois dos oito placements distintos."
+          }
+        },
+        {
+          "kind": "wide",
+          "label": "print specimen · 16:9",
+          "note": {
+            "en": "Identity specimen, production-spec.",
+            "pt": "Espécime de identidade, spec de produção."
+          }
+        },
+        {
+          "kind": "detail",
+          "label": "detail · 3:2",
+          "note": {
+            "en": "Type detail · custom letterforms.",
+            "pt": "Detalhe tipográfico · letterforms customizados."
+          }
+        }
+      ],
+      "results": [
+        {
+          "stat": "8",
+          "note": {
+            "en": "Distinct placements across the subway system.",
+            "pt": "Placements distintos pelo sistema de metrô."
+          }
+        },
+        {
+          "stat": "4 mo.",
+          "note": {
+            "en": "End-to-end identity rollout.",
+            "pt": "Rollout de identidade do início ao fim."
+          }
+        },
+        {
+          "stat": "—",
+          "note": {
+            "en": "Lives in the city since 2018. Still cited.",
+            "pt": "Vive na cidade desde 2018. Ainda referenciado."
+          }
+        }
+      ],
+      "quote": {
+        "text": {
+          "en": "It still reads right when I'm standing on the platform. That's the whole job.",
+          "pt": "Ainda funciona quando estou parado na plataforma. Esse era o trabalho inteiro."
+        },
+        "author": "(self · 2023 retrospective)",
+        "role": {
+          "en": "Looking back, five years on",
+          "pt": "Olhando para trás, cinco anos depois"
+        }
+      },
+      "credits": [
+        [
+          "Studio",
+          "Bureau Blank · New York"
+        ],
+        [
+          "Senior Creative",
+          "Alessandro Kuhn Contes"
+        ],
+        [
+          "Client",
+          "NYC Service"
+        ],
+        [
+          "Period",
+          "2018"
+        ],
+        [
+          "Status",
+          "Shipped · live in the system"
+        ]
+      ],
+      "nextSlug": "tgr-studio"
+    }
+  ],
+  "activeCaseSlug": null,
+  "activePostSlug": null,
+  "aboutPage": {
+    "eyebrow": {
+      "en": "About · the practice",
+      "pt": "Sobre · a prática"
+    },
+    "title": {
+      "en": "Twenty years calibrating creative across two cultures.",
+      "pt": "Vinte anos calibrando criatividade entre duas culturas."
+    },
+    "intro": {
+      "en": "I'm Alessandro Kuhn Contes — Creative Director and UX Designer working between Brazil and the United States. Currently leading creative at TGR Studio. The work sits at the intersection of brand, UX, and creative leadership.",
+      "pt": "Sou Alessandro Kuhn Contes — Diretor Criativo e Designer de UX atuando entre Brasil e Estados Unidos. Atualmente liderando a criação na TGR Studio. O trabalho situa-se na interseção de marca, UX e liderança criativa."
+    },
+    "body": {
+      "en": "What makes the practice hold up across formats and decades isn't taste or trend — it's a calibration bar tuned in cultures that don't tolerate slack. Brazil teaches you to ship inside constraints; the U.S. teaches you to make the bar legible at scale. The output is a working method that ages: a brand system that reads the same in 2026 and 2036, a UX rhythm that survives the next platform shift, and a creative team that knows how to run without you in the room.",
+      "pt": "O que sustenta a prática ao longo de formatos e décadas não é gosto ou tendência — é uma barra de calibração afinada em culturas que não toleram imprecisão. O Brasil ensina a entregar dentro de restrições; os EUA ensinam a tornar a barra legível em escala. O resultado é um método de trabalho que envelhece bem: um sistema de marca que lê igual em 2026 e 2036, um ritmo de UX que sobrevive à próxima virada de plataforma, e um time criativo que sabe funcionar sem você na sala."
+    },
+    "practice": [
+      [
+        "how",
+        {
+          "en": "Senior creative direction, brand systems, UX leadership, team operating models.",
+          "pt": "Direção criativa sênior, sistemas de marca, liderança em UX, modelos operacionais de time."
+        }
+      ],
+      [
+        "where",
+        {
+          "en": "Remote-first from Novo Hamburgo. Travel for client work — São Paulo, New York, Lisbon.",
+          "pt": "Remote-first de Novo Hamburgo. Viagens para trabalho com clientes — São Paulo, Nova York, Lisboa."
+        }
+      ],
+      [
+        "when",
+        {
+          "en": "Selective. One major engagement at a time. Currently leading at TGR Studio.",
+          "pt": "Seletivo. Um grande projeto por vez. Atualmente liderando na TGR Studio."
+        }
+      ],
+      [
+        "who for",
+        {
+          "en": "Enterprise B2B, civic + public-sector creative, senior personal brands.",
+          "pt": "Enterprise B2B, criativo cívico e setor público, marcas pessoais sênior."
+        }
+      ]
+    ]
+  },
+  "timeline": [
+    {
+      "year": "2024 — present",
+      "chapter": "TGR Studio",
+      "role": "Creative Director",
+      "location": "São Paulo, BR",
+      "note": "Brand, UX, and senior creative leadership across enterprise platforms. Live engagement."
+    },
+    {
+      "year": "2022 — 2024",
+      "chapter": "K2 · K1 Group",
+      "role": "Creative Director",
+      "location": "São Paulo, BR",
+      "note": "Productivity rebuild — operational reset of the creative org. 274% throughput lift."
+    },
+    {
+      "year": "2020 — 2022",
+      "chapter": "Confidential · BR",
+      "role": "Senior Creative",
+      "location": "Porto Alegre, BR",
+      "note": "Brand + UX system for a multi-product enterprise platform."
+    },
+    {
+      "year": "2018 — 2020",
+      "chapter": "Independent",
+      "role": "Creative Direction",
+      "location": "São Paulo · NY",
+      "note": "Bridge years — selective enterprise and civic brand work across markets."
+    },
+    {
+      "year": "2016 — 2018",
+      "chapter": "Bureau Blank",
+      "role": "Senior Creative",
+      "location": "New York, US",
+      "note": "Civic and public-sector brand leadership. NYC Service subway campaign system."
+    },
+    {
+      "year": "2014 — 2016",
+      "chapter": "—",
+      "role": "Creative",
+      "location": "São Paulo, BR",
+      "note": "Agency-side senior creative on enterprise accounts."
+    },
+    {
+      "year": "2006 — 2014",
+      "chapter": "Early career",
+      "role": "Designer → Creative",
+      "location": "Porto Alegre · Curitiba",
+      "note": "Eight years calibrating the bar across editorial, brand, and digital."
+    }
+  ],
+  "clients": [
+    "TGR Studio",
+    "K1 Group / K2",
+    "NYC Service",
+    "Bureau Blank",
+    "Confidential · enterprise BR",
+    "Independent senior brands",
+    "Civic + public sector NY",
+    "Editorial · longform clients"
+  ],
+  "recognition": [
+    {
+      "year": "2024",
+      "item": "Featured speaker · Brazil enterprise UX summit (private)"
+    },
+    {
+      "year": "2022",
+      "item": "K1 Group leadership recognition · productivity reset case study"
+    },
+    {
+      "year": "2018",
+      "item": "NYC Service · subway campaign — public archive"
+    },
+    {
+      "year": "—",
+      "item": "Selected work across two decades. No award-show entries — by choice."
+    }
+  ],
+  "contactPage": {
+    "eyebrow": {
+      "en": "Contact",
+      "pt": "Contato"
+    },
+    "title": {
+      "en": "Let's talk.",
+      "pt": "Vamos conversar."
+    },
+    "intro": {
+      "en": "For senior creative direction and brand work. Currently leading at TGR Studio — open to the right conversation.",
+      "pt": "Para direção criativa sênior e trabalho de marca. Atualmente liderando na TGR Studio — aberto à conversa certa."
+    },
+    "fit": [
+      {
+        "kind": "yes",
+        "title": {
+          "en": "A good fit",
+          "pt": "Um bom encaixe"
+        },
+        "items": [
+          {
+            "en": "Senior creative direction (interim, fractional, or full-time)",
+            "pt": "Direção criativa sênior (interim, fracionada ou integral)"
+          },
+          {
+            "en": "Brand system work for enterprise or personal brands at the senior level",
+            "pt": "Sistemas de marca para empresas ou marcas pessoais em nível sênior"
+          },
+          {
+            "en": "Creative operating-model resets — team, process, throughput",
+            "pt": "Resets de modelo operacional criativo — time, processo, throughput"
+          },
+          {
+            "en": "Speaking + advisory engagements on the above",
+            "pt": "Palestras e consultorias sobre os temas acima"
+          }
+        ]
+      },
+      {
+        "kind": "no",
+        "title": {
+          "en": "Probably not a fit",
+          "pt": "Provavelmente não é o encaixe certo"
+        },
+        "items": [
+          {
+            "en": "Junior creative or single-deliverable freelance work",
+            "pt": "Trabalho criativo júnior ou freelance de entrega única"
+          },
+          {
+            "en": "Crypto, gambling, sectors with reputational drag",
+            "pt": "Cripto, apostas, setores com arrasto reputacional"
+          },
+          {
+            "en": "Spec work, contests, unpaid pitches",
+            "pt": "Trabalho especulativo, concursos, pitches não remunerados"
+          },
+          {
+            "en": "Recruiter outreach for unrelated roles",
+            "pt": "Abordagem de recrutadores para vagas sem relação com a prática"
+          }
+        ]
+      }
+    ],
+    "response": {
+      "en": "Response within 48 hours, Monday — Friday. Weekend mail is read but answered Monday.",
+      "pt": "Resposta em até 48 horas, segunda a sexta. E-mails de fim de semana são lidos, mas respondidos na segunda."
+    },
+    "form": {
+      "head": {
+        "en": "Or send a note directly.",
+        "pt": "Ou envie uma mensagem diretamente."
+      },
+      "blurb": {
+        "en": "The fastest path is email. Form below routes to the same inbox.",
+        "pt": "O caminho mais rápido é o e-mail. O formulário abaixo vai para a mesma caixa de entrada."
+      }
+    }
+  },
+  "sections": {
+    "aboutTitle": {
+      "en": "The practice in 200 words.",
+      "pt": "A prática em 200 palavras."
+    },
+    "aboutSub": {
+      "en": "Calibration sources, three numbers, sign-off.",
+      "pt": "Fontes de calibração, três números, encerramento."
+    },
+    "workTitle": {
+      "en": "Selected work.",
+      "pt": "Trabalhos selecionados."
+    },
+    "workSub": {
+      "en": "Six pieces. Placeholder images in phase 1 — real imagery via the CMS.",
+      "pt": "Seis peças. Imagens de rascunho na fase 1 — imagens reais via CMS."
+    },
+    "blogTitle": {
+      "en": "Notes.",
+      "pt": "Notas."
+    },
+    "blogSub": {
+      "en": "Low cadence, high substance.",
+      "pt": "Baixa cadência, alto conteúdo."
+    },
+    "inspTitle": {
+      "en": "What I'm looking at.",
+      "pt": "O que estou observando."
+    },
+    "inspWeek": "Week of Apr 27, 2026",
+    "footerQuote": "If you want to be a better designer, don't study design books. Study sculpture. Study paintings. Study cars, watches, philosophers, movies, fiction, music, people. Study the world.",
+    "footerQuoteAuthor": "Tobias van Schneider",
+    "footerVersion": "v 0.3 · lo-fi"
+  }
+}
