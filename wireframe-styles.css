@@ -332,7 +332,6 @@
   object-fit: cover;
   object-position: center 28%;
   transition: opacity var(--t-med) var(--ease);
-  filter: grayscale(0%);
 }
 .wf .heroB .doc-head .portrait .p-hover {
   opacity: 0;
@@ -392,6 +391,7 @@
   font-weight: 600;
   position: relative;
   z-index: 1;
+  color: var(--color-foundation);
 }
 .wf .heroB .lead em::before {
   content: "";
@@ -2934,6 +2934,50 @@
   height: 1.5px;
   background: var(--fg);
   width: 100%;
+}
+
+/* mobile nav overlay — fullscreen black, links centered in display font */
+.wf .nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--color-foundation);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wf .nav-overlay ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.wf .nav-overlay ul li a {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 52px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--color-bone);
+  text-decoration: none;
+  text-align: center;
+}
+.wf .nav-overlay ul li a:hover { color: var(--color-phosphor); }
+.wf .nav-overlay-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  color: var(--color-bone);
+  font-size: 32px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 8px;
 }
 
 /* hero B — compact 2-col doc-head: small thumb + condensed metadata

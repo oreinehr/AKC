@@ -311,88 +311,34 @@
       ]
     },
     {
-      "slug": "harder-rooms",
+      "slug": "g",
       "date": "2026",
-      "read": "6 min",
+      "read": "5 min",
       "title": {
-        "en": "Calibrated by harder rooms",
-        "pt": "Calibrado por salas mais difíceis"
+        "en": "O Autismo de Vinicius Apollo",
+        "pt": "Vinicius Apollo's Autism"
       },
       "excerpt": {
-        "en": "Twenty years across Brazil and the U.S. tunes a different ear for what enterprise creative is supposed to do.",
-        "pt": "Vinte anos entre Brasil e EUA afinam um ouvido diferente para o que a criação enterprise deve fazer."
+        "en": "An exploration of Vinicius Apollo's journey with autism, highlighting his experiences, challenges, strengths, and unique perspective on the world.",
+        "pt": "Uma exploração da jornada de Vinicius Apollo com o autismo, destacando suas experiências, desafios, potencialidades e sua perspectiva única sobre o mundo."
       },
       "subtitle": {
-        "en": "Working in cultures that don't tolerate slack changes how you set the bar.",
-        "pt": "Trabalhar em culturas que não toleram imprecisão muda como você define a barra."
+        "en": "A journey of self-discovery, challenges, and uniqueness.",
+        "pt": "Uma jornada de autodescoberta, desafios e singularidade."
       },
-      "section": "Practice",
+      "section": "Practdgsa",
+      "coming": false,
       "body": [
         {
-          "kind": "p",
-          "text": {
-            "en": "The phrase \"calibrated by craft\" earns its weight from where the calibration happened. Brazil teaches you to ship inside constraints — budget, timeline, client patience — without dropping the bar. The U.S. teaches you to defend the bar at scale, in rooms with louder voices and bigger numbers.",
-            "pt": "A expressão \"calibrado pelo ofício\" ganha peso de onde a calibração aconteceu. O Brasil ensina a entregar dentro de restrições — orçamento, prazo, paciência do cliente — sem baixar a barra. Os EUA ensinam a defender a barra em escala, em salas com vozes mais altas e números maiores."
-          }
-        },
-        {
-          "kind": "p",
-          "text": {
-            "en": "Twenty years inside both means the bar gets set by the harder room you've been in this week, not the softer one. That's the deal. The work either survives the harder room or it doesn't.",
-            "pt": "Vinte anos dentro dos dois significa que a barra é definida pela sala mais difícil em que você esteve nessa semana, não pela mais fácil. Esse é o acordo. O trabalho ou sobrevive à sala mais difícil ou não sobrevive."
-          }
-        },
-        {
-          "kind": "h2",
-          "text": {
-            "en": "What harder rooms teach",
-            "pt": "O que salas mais difíceis ensinam"
-          }
-        },
-        {
-          "kind": "list",
-          "items": [
-            {
-              "en": "Defending a decision in the language of business outcomes, not aesthetics.",
-              "pt": "Defender uma decisão na linguagem de resultados de negócio, não de estética."
-            },
-            {
-              "en": "Translating a creative call into a number an operator will recognize.",
-              "pt": "Traduzir uma decisão criativa em um número que um operador reconheça."
-            },
-            {
-              "en": "Knowing which fights to take and which to log and walk away from.",
-              "pt": "Saber quais brigas travar e quais registrar e deixar passar."
-            },
-            {
-              "en": "Reading the room before opening the file.",
-              "pt": "Ler a sala antes de abrir o arquivo."
-            }
-          ]
-        },
-        {
-          "kind": "p",
-          "text": {
-            "en": "None of these are taught. All of them are calibrated — by being in the room enough times that the next room reads cleaner.",
-            "pt": "Nenhuma dessas coisas é ensinada. Todas são calibradas — por estar na sala vezes suficientes para que a próxima sala pareça mais clara."
+          "kind": "figure",
+          "label": "figure · 16:9",
+          "aspect": "16/9",
+          "caption": {
+            "en": "",
+            "pt": ""
           }
         }
       ],
-      "tags": [
-        "practice",
-        "career notes"
-      ]
-    },
-    {
-      "slug": "platform-shift",
-      "date": "soon",
-      "read": "—",
-      "title": "What survives a platform shift",
-      "excerpt": "On what was never the work in the first place — and what holds when the tools change.",
-      "subtitle": "Coming soon.",
-      "section": "Practice",
-      "coming": true,
-      "body": [],
       "tags": []
     }
   ],
@@ -512,7 +458,7 @@
       "pt": "Inscrito. Até mais na sua caixa de entrada."
     },
     "provider": "buttondown",
-    "listId": "akc-notes"
+    "listId": "akcontes"
   },
   "socials": [
     {

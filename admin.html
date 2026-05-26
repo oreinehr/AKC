@@ -4,10 +4,52 @@
 <meta charset="utf-8" />
 <title>AKC · Admin</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" href="assets/akc_logo_white.svg" type="image/svg+xml" />
 <link rel="stylesheet" href="colors_and_type.css" />
 <link rel="stylesheet" href="wireframe-styles.css" />
 <style>
   html, body { margin: 0; padding: 0; min-height: 100%; }
+
+  .login-screen {
+    position: fixed; inset: 0;
+    background: var(--color-foundation);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .login-box {
+    display: flex; flex-direction: column; gap: 32px; width: 320px;
+  }
+  .login-wordmark {
+    font-family: var(--font-display); font-weight: 600; font-size: 32px;
+    color: var(--color-bone); letter-spacing: -0.015em; line-height: 1;
+  }
+  .login-wordmark span {
+    color: rgba(240,235,225,0.35); font-weight: 400;
+  }
+  .login-field { display: flex; flex-direction: column; gap: 8px; }
+  .login-label {
+    font-family: var(--font-mono); font-size: 11px; text-transform: lowercase;
+    color: rgba(240,235,225,0.4); letter-spacing: 0.06em;
+  }
+  .login-input {
+    background: transparent; border: 1px solid rgba(240,235,225,0.18);
+    border-radius: 0; color: var(--color-bone);
+    font-family: var(--font-sans); font-size: 16px;
+    padding: 12px 14px; outline: none; width: 100%; box-sizing: border-box;
+    transition: border-color 0.15s;
+  }
+  .login-input:focus { border-color: var(--color-accent-loud); }
+  .login-btn {
+    background: var(--color-accent-loud); color: var(--color-bone);
+    font-family: var(--font-sans); font-weight: 500; font-size: 14px;
+    border: none; padding: 14px; cursor: pointer; width: 100%;
+    border-radius: 0; letter-spacing: 0.04em; transition: background 0.15s;
+  }
+  .login-btn:hover { background: #0038CC; }
+  .login-btn:disabled { opacity: 0.5; cursor: default; }
+  .login-error {
+    font-family: var(--font-mono); font-size: 11px; text-transform: lowercase;
+    color: #FF5555; letter-spacing: 0.04em;
+  }
 </style>
 </head>
 <body>
@@ -28,10 +70,64 @@
 <script type="text/babel" src="app.jsx"></script>
 
 <script type="text/babel">
-function AdminApp() {
+function LoginScreen({ onLogin }) {
+  const [password, setPassword] = React.useState('');
+  const [error, setError]       = React.useState('');
+  const [loading, setLoading]   = React.useState(false);
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setLoading(true); setError('');
+    try {
+      const res = await fetch('/api/auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password }),
+      });
+      const data = await res.json();
+      if (!res.ok) { setError('senha incorreta'); setLoading(false); return; }
+      sessionStorage.setItem('akc-admin-token', data.token);
+      onLogin(data.token);
+    } catch {
+      setError('erro de conexão'); setLoading(false);
+    }
+  }
+
+  return (
+    <div className="login-screen">
+      <form className="login-box" onSubmit={handleSubmit}>
+        <div className="login-wordmark">AKC <span>· admin</span></div>
+        <div className="login-field">
+          <label className="login-label">password</label>
+          <input
+            className="login-input"
+            type="password"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+            autoFocus
+            autoComplete="current-password"
+          />
+        </div>
+        {error && <div className="login-error">{error}</div>}
+        <button className="login-btn" type="submit" disabled={loading || !password}>
+          {loading ? 'checking...' : 'enter'}
+        </button>
+      </form>
+    </div>
+  );
+}
+
+function AuthenticatedAdmin() {
   const [data, setData] = useStore();
   return <AdminView data={data} setData={setData} />;
 }
+
+function AdminApp() {
+  const [token, setToken] = React.useState(() => sessionStorage.getItem('akc-admin-token'));
+  if (!token) return <LoginScreen onLogin={setToken} />;
+  return <AuthenticatedAdmin />;
+}
+
 ReactDOM.createRoot(document.getElementById("root")).render(<AdminApp />);
 </script>
 </body>

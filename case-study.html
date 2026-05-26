@@ -36,6 +36,7 @@ function App() {
   const setDark = (v) => setData((s) => ({ ...s, dark: !!v }));
   const lang    = data.lang || "en";
   const setLang = (v) => setData((s) => ({ ...s, lang: v }));
+  const { mobile, tablet } = useBreakpoint();
 
   const slug = new URLSearchParams(window.location.search).get("slug");
   const cases = data.cases || [];
@@ -46,6 +47,7 @@ function App() {
       data={data}
       dark={dark} setDark={setDark}
       lang={lang} setLang={setLang}
+      mobile={mobile} tablet={tablet}
       caseData={caseData}
     />
   );

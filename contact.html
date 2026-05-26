@@ -38,7 +38,8 @@ function App() {
   const setDark = (v) => setData((s) => ({ ...s, dark: !!v }));
   const lang    = data.lang || "en";
   const setLang = (v) => setData((s) => ({ ...s, lang: v }));
-  return <ContactPage data={data} dark={dark} setDark={setDark} lang={lang} setLang={setLang} />;
+  const { mobile, tablet } = useBreakpoint();
+  return <ContactPage data={data} dark={dark} setDark={setDark} lang={lang} setLang={setLang} mobile={mobile} tablet={tablet} />;
 }
 ReactDOM.createRoot(document.getElementById("root")).render(<App />);
 </script>

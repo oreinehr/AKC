@@ -38,6 +38,7 @@ function App() {
   const setDark = (v) => setData((s) => ({ ...s, dark: !!v }));
   const lang    = data.lang || "en";
   const setLang = (v) => setData((s) => ({ ...s, lang: v }));
+  const { mobile, tablet } = useBreakpoint();
   const navigate = {
     openCase: (slug) => { if (slug) window.location.href = `case-study.html?slug=${slug}`; },
     openPost: (slug) => { if (slug) window.location.href = `blog-post.html?slug=${slug}`; },
@@ -47,6 +48,7 @@ function App() {
       data={data}
       dark={dark} setDark={setDark}
       lang={lang} setLang={setLang}
+      mobile={mobile} tablet={tablet}
       navigate={navigate}
       activeCaseSlug={data.activeCaseSlug}
       activePostSlug={data.activePostSlug}

@@ -177,7 +177,7 @@ const DEFAULTS = {
     cta: { en: "Subscribe", pt: "Inscrever-se" },
     success: { en: "Subscribed. See you in your inbox.", pt: "Inscrito. Até mais na sua caixa de entrada." },
     provider: "buttondown",
-    listId: "akc-notes",
+    listId: "akcontes",
   },
   socials: [
     { label: "hello@akcontes.com", href: "mailto:hello@akcontes.com" },
@@ -469,7 +469,10 @@ function useStore() {
     const t = setTimeout(() => {
       fetch('/api/data', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${sessionStorage.getItem('akc-admin-token') || ''}`,
+        },
         body: JSON.stringify(state),
       }).catch(() => {});
     }, 600);
@@ -621,6 +624,8 @@ function NewsletterForm({ n, lang = "en" }) {
 }
 
 function Nav({ darkOn, onToggleDark, lang = "en", onLang, location, mobile }) {
+  const [open, setOpen] = useState(false);
+  const close = () => setOpen(false);
   return (
     <div className="nav"><div className="nav-inner">
       <a href="/" className="brand" aria-label="AKC — home">
@@ -644,9 +649,20 @@ function Nav({ darkOn, onToggleDark, lang = "en", onLang, location, mobile }) {
         </span>
       </div>
       {mobile && (
-        <button className="nav-burger" aria-label="menu">
+        <button className="nav-burger" aria-label="menu" onClick={() => setOpen(o => !o)}>
           <span /><span /><span />
         </button>
+      )}
+      {mobile && open && (
+        <div className="nav-overlay">
+          <button className="nav-overlay-close" onClick={close} aria-label="close menu">×</button>
+          <ul>
+            <li><a href="/about.html" onClick={close}>{lang === "pt" ? "Sobre" : "About"}</a></li>
+            <li><a href="/work.html" onClick={close}>{lang === "pt" ? "Trabalhos" : "Work"}</a></li>
+            <li><a href="/blog.html" onClick={close}>Blog</a></li>
+            <li><a href="/contact.html" onClick={close}>{lang === "pt" ? "Contato" : "Contact"}</a></li>
+          </ul>
+        </div>
       )}
     </div></div>
   );
@@ -885,10 +901,12 @@ function VariationB({ data, dark, setDark, lang, setLang, mobile, tablet, naviga
     if (!hl) return [{ t: lead, h: false }];
     const idx = lead.toLowerCase().indexOf(hl.toLowerCase());
     if (idx < 0) return [{ t: lead, h: false }];
+    const end = idx + hl.length;
+    const tail = /^[.,!?]/.test(lead.slice(end)) ? 1 : 0;
     return [
       { t: lead.slice(0, idx), h: false },
-      { t: lead.slice(idx, idx + hl.length), h: true },
-      { t: lead.slice(idx + hl.length), h: false },
+      { t: lead.slice(idx, end + tail), h: true },
+      { t: lead.slice(end + tail), h: false },
     ];
   }, [lead, hl]);
   const m = (data.marks && data.marks.home) || {};
@@ -936,7 +954,18 @@ function VariationB({ data, dark, setDark, lang, setLang, mobile, tablet, naviga
 // Expose shared components to window so other Babel scripts (case-study.jsx,
 // about-contact.jsx, etc.) can reference them regardless of load order or
 // whether the main App ever renders.
-Object.assign(window, { Placeholder, ImgSlot, Nav, PageShell, LiveTime, NewsletterForm, t, useCobaltCursor });
+function useBreakpoint() {
+  const get = () => ({ mobile: window.innerWidth < 768, tablet: window.innerWidth >= 768 && window.innerWidth < 1280 });
+  const [bp, setBp] = useState(get);
+  useEffect(() => {
+    const onResize = () => setBp(get());
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
+  return bp;
+}
+
+Object.assign(window, { Placeholder, ImgSlot, Nav, PageShell, LiveTime, NewsletterForm, t, useCobaltCursor, useBreakpoint });
 
 // ─── Admin / CMS ───────────────────────────────────────────────────
 const ADMIN_TABS = [
@@ -1053,7 +1082,7 @@ function AdminView({ data, setData }) {
           {tab === "contactPage" && <ContactPagePane data={data} set={set} setData={setData} />}
           {tab === "work" && <WorkPane data={data} setData={setData} />}
           {tab === "cases" && <CasesPane data={data} setData={setData} />}
-          {tab === "blog" && <ListPane title="Blog" subtitle="Notes. Low cadence, high substance. Each post is also sent as a newsletter to subscribers." data={data} setData={setData} field="blog" cols={[["date","Date"],["read","Read time"],["title","Title"],["excerpt","Excerpt"]]} />}
+          {tab === "blog" && <BlogPane data={data} setData={setData} />}
           {tab === "newsletter" && <NewsletterPane data={data} set={set} />}
           {tab === "socials" && <ListPane title="Socials" subtitle="Plain-text contact and profile links. Appears in the footer Connect column." data={data} setData={setData} field="socials" cols={[["label","Label"],["href","URL or mailto:/tel:"]]} />}
           {tab === "inspiration" && <ListPane title="Inspiration" subtitle="Weekly cadence. 5–10 items per week." data={data} setData={setData} field="inspiration" cols={[["artist","Artist"],["note","Caption"]]} />}
@@ -1751,6 +1780,216 @@ function WorkPane({ data, setData }) {
     </div>
   );
 }
+function BlogPane({ data, setData }) {
+  const posts = data.blog || [];
+  const [selSlug, setSelSlug] = useState((posts[0] && posts[0].slug) || null);
+  const idx = Math.max(0, posts.findIndex((p) => p.slug === selSlug));
+  const p = posts[idx];
+
+  const setPost = (path, value) => {
+    setData((s) => {
+      const n = JSON.parse(JSON.stringify(s));
+      let o = n.blog[idx];
+      for (let i = 0; i < path.length - 1; i++) {
+        if (o[path[i]] == null) o[path[i]] = typeof path[i + 1] === "number" ? [] : {};
+        o = o[path[i]];
+      }
+      o[path[path.length - 1]] = value;
+      return n;
+    });
+  };
+
+  const addPost = () => {
+    const slug = `post-${Date.now()}`;
+    setData((s) => ({
+      ...s,
+      blog: [...(s.blog || []), {
+        slug,
+        date: "2026",
+        read: "5 min",
+        title: { en: "New post", pt: "Novo post" },
+        excerpt: { en: "", pt: "" },
+        subtitle: { en: "", pt: "" },
+        section: "Practice",
+        coming: false,
+        body: [],
+        tags: [],
+      }],
+    }));
+    setSelSlug(slug);
+  };
+
+  const removePost = () => {
+    if (!confirm("Delete this post? This cannot be undone.")) return;
+    const remaining = posts.filter((x) => x.slug !== selSlug);
+    setData((s) => ({ ...s, blog: remaining }));
+    if (remaining[0]) setSelSlug(remaining[0].slug);
+    else setSelSlug(null);
+  };
+
+  const blankBlock = (kind) => ({
+    p:      { kind: "p",      text: { en: "", pt: "" } },
+    h2:     { kind: "h2",     text: { en: "", pt: "" } },
+    h3:     { kind: "h3",     text: { en: "", pt: "" } },
+    list:   { kind: "list",   items: [{ en: "", pt: "" }] },
+    quote:  { kind: "quote",  text: { en: "", pt: "" }, attribution: "" },
+    figure: { kind: "figure", label: "figure · 16:9", aspect: "16/9", caption: { en: "", pt: "" } },
+  }[kind]);
+
+  const addBlock    = (kind) => setPost(["body"], [...(p.body || []), blankBlock(kind)]);
+  const removeBlock = (i)    => setPost(["body"], p.body.filter((_, k) => k !== i));
+  const moveBlock   = (i, dir) => {
+    const arr = [...p.body];
+    const j = i + dir;
+    if (j < 0 || j >= arr.length) return;
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+    setPost(["body"], arr);
+  };
+  const changeBlockKind = (i, kind) => {
+    const arr = [...p.body];
+    arr[i] = blankBlock(kind);
+    setPost(["body"], arr);
+  };
+
+  if (!p) {
+    return (
+      <div>
+        <h1>Blog</h1>
+        <p className="subhead">No posts yet.</p>
+        <button className="add-btn" onClick={addPost}>+ add post</button>
+      </div>
+    );
+  }
+
+  const postTitle = (pp) => typeof pp.title === "object" ? pp.title.en : pp.title;
+
+  return (
+    <div className="cases-pane">
+      <div className="cases-top">
+        <h1>Blog</h1>
+        <p className="subhead">Notes. Low cadence, high substance. <b>{posts.length}</b> posts.</p>
+      </div>
+      <div className="cases-layout">
+        {/* Left: post list */}
+        <div className="cases-list">
+          <div className="cases-list-head">posts</div>
+          <ul>
+            {posts.map((pp) => (
+              <li key={pp.slug}>
+                <button className={pp.slug === selSlug ? "on" : ""} onClick={() => setSelSlug(pp.slug)}>
+                  <span className="cl-num">{pp.date || "—"}</span>
+                  <span className="cl-title">{postTitle(pp) || "—"}</span>
+                  <span className="cl-client">{pp.section || "—"}{pp.coming ? " · coming" : ""}</span>
+                </button>
+              </li>
+            ))}
+          </ul>
+          <button className="add-btn" onClick={addPost}>+ add post</button>
+        </div>
+
+        {/* Right: detail editor */}
+        <div className="cases-detail">
+          <div className="cases-detail-head">
+            <div>
+              <div className="cl-num">{p.date || "—"}</div>
+              <h2>{postTitle(p) || "—"}</h2>
+            </div>
+            <button className="add-btn" style={{ color: "var(--color-accent-quiet)" }} onClick={removePost}>delete post</button>
+          </div>
+
+          <div className="group-head">meta</div>
+          <div className="row2">
+            <div className="field"><label>Slug</label><input value={p.slug || ""} onChange={(e) => setPost(["slug"], e.target.value)} /></div>
+            <div className="field"><label>Section</label><input value={p.section || ""} onChange={(e) => setPost(["section"], e.target.value)} /></div>
+            <div className="field"><label>Date</label><input value={p.date || ""} onChange={(e) => setPost(["date"], e.target.value)} /></div>
+            <div className="field"><label>Read time</label><input value={p.read || ""} onChange={(e) => setPost(["read"], e.target.value)} /></div>
+          </div>
+          <div className="field" style={{ marginBottom: 8 }}>
+            <label>Tags (comma-separated)</label>
+            <input value={(p.tags || []).join(", ")} onChange={(e) => setPost(["tags"], e.target.value.split(",").map((s) => s.trim()).filter(Boolean))} />
+          </div>
+          <div className="field" style={{ marginBottom: 16 }}>
+            <label style={{ display: "flex", alignItems: "center", gap: 8, cursor: "pointer", fontWeight: "normal" }}>
+              <input type="checkbox" checked={!!p.coming} onChange={(e) => setPost(["coming"], e.target.checked)} style={{ width: "auto", margin: 0 }} />
+              Coming soon (esconde o corpo, mostra placeholder)
+            </label>
+          </div>
+
+          <div className="group-head">copy</div>
+          <BiField label="Title"    value={p.title}    path={["title"]}    set={setPost} />
+          <BiField label="Excerpt"  value={p.excerpt}  path={["excerpt"]}  set={setPost} multiline />
+          <BiField label="Subtitle" value={p.subtitle} path={["subtitle"]} set={setPost} multiline />
+
+          <div className="group-head" style={{ marginTop: 24 }}>body blocks</div>
+          <p className="subhead" style={{ margin: "0 0 16px" }}>Compõe o artigo. Cada bloco é um parágrafo, heading, lista, quote ou figura.</p>
+
+          {(p.body || []).map((blk, i) => (
+            <div key={i} style={{ border: "1px solid var(--border)", padding: "12px 14px", marginBottom: 10 }}>
+              <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 10 }}>
+                <select value={blk.kind} onChange={(e) => changeBlockKind(i, e.target.value)}
+                  style={{ fontFamily: "var(--font-mono)", fontSize: 11, padding: "4px 6px", background: "var(--input-bg)", color: "var(--fg)", border: "1px solid var(--border)" }}>
+                  <option value="p">paragraph</option>
+                  <option value="h2">heading 2</option>
+                  <option value="h3">heading 3</option>
+                  <option value="list">list</option>
+                  <option value="quote">quote</option>
+                  <option value="figure">figure</option>
+                </select>
+                <button onClick={() => moveBlock(i, -1)}>↑</button>
+                <button onClick={() => moveBlock(i, +1)}>↓</button>
+                <button onClick={() => removeBlock(i)} style={{ marginLeft: "auto" }}>remove</button>
+              </div>
+
+              {["p", "h2", "h3"].includes(blk.kind) && (
+                <BiField label="text" value={blk.text} path={["body", i, "text"]} set={setPost} multiline={blk.kind === "p"} />
+              )}
+
+              {blk.kind === "list" && (
+                <div>
+                  {(blk.items || []).map((item, j) => (
+                    <div key={j} className="row2" style={{ gridTemplateColumns: "1fr 1fr 60px", alignItems: "end", marginBottom: 8 }}>
+                      <div className="field" style={{ marginBottom: 0 }}><label>EN</label><input value={item.en || ""} onChange={(e) => setPost(["body", i, "items", j, "en"], e.target.value)} /></div>
+                      <div className="field" style={{ marginBottom: 0 }}><label>PT</label><input value={item.pt || ""} onChange={(e) => setPost(["body", i, "items", j, "pt"], e.target.value)} /></div>
+                      <button className="add-btn" style={{ height: 38 }} onClick={() => setPost(["body", i, "items"], blk.items.filter((_, k) => k !== j))}>rem</button>
+                    </div>
+                  ))}
+                  <button className="add-btn" onClick={() => setPost(["body", i, "items"], [...(blk.items || []), { en: "", pt: "" }])}>+ item</button>
+                </div>
+              )}
+
+              {blk.kind === "quote" && (
+                <div>
+                  <BiField label="quote" value={blk.text} path={["body", i, "text"]} set={setPost} multiline />
+                  <div className="field" style={{ marginTop: 8, marginBottom: 0 }}>
+                    <label>attribution</label>
+                    <input value={blk.attribution || ""} onChange={(e) => setPost(["body", i, "attribution"], e.target.value)} />
+                  </div>
+                </div>
+              )}
+
+              {blk.kind === "figure" && (
+                <div>
+                  <div className="row2" style={{ marginBottom: 8 }}>
+                    <div className="field" style={{ marginBottom: 0 }}><label>label</label><input value={blk.label || ""} onChange={(e) => setPost(["body", i, "label"], e.target.value)} /></div>
+                    <div className="field" style={{ marginBottom: 0 }}><label>aspect ratio (ex: 16/9)</label><input value={blk.aspect || "16/9"} onChange={(e) => setPost(["body", i, "aspect"], e.target.value)} /></div>
+                  </div>
+                  <BiField label="caption" value={blk.caption} path={["body", i, "caption"]} set={setPost} />
+                </div>
+              )}
+            </div>
+          ))}
+
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 4 }}>
+            {["p", "h2", "h3", "list", "quote", "figure"].map((kind) => (
+              <button key={kind} className="add-btn" onClick={() => addBlock(kind)}>+ {kind}</button>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function ListPane({ title, subtitle, data, setData, field, cols }) {
   const items = data[field] || [];
   const update = (i, key, val) => {

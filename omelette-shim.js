@@ -5,7 +5,10 @@ if (!window.omelette) {
     writeFile: function(filePath, content) {
       return fetch('/api/slots', {
         method: 'POST',
-        headers: { 'Content-Type': 'text/plain' },
+        headers: {
+          'Content-Type': 'text/plain',
+          'Authorization': `Bearer ${sessionStorage.getItem('akc-admin-token') || ''}`,
+        },
         body: content,
       });
     },

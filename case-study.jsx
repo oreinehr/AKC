@@ -170,7 +170,7 @@ function CaseStudy({ data, dark, setDark, lang, setLang, mobile, tablet, caseDat
                 return (
                   <figure className="g g--full" key={i}>
                     <ImgSlot id={baseId} label={blk.label} aspect="16/9" />
-                    <figcaption>{blk.note}</figcaption>
+                    <figcaption>{t(blk.note, lang)}</figcaption>
                   </figure>
                 );
               }
@@ -178,7 +178,7 @@ function CaseStudy({ data, dark, setDark, lang, setLang, mobile, tablet, caseDat
                 return (
                   <figure className="g g--wide" key={i}>
                     <ImgSlot id={baseId} label={blk.label} aspect="16/9" />
-                    <figcaption>{blk.note}</figcaption>
+                    <figcaption>{t(blk.note, lang)}</figcaption>
                   </figure>
                 );
               }
@@ -186,7 +186,7 @@ function CaseStudy({ data, dark, setDark, lang, setLang, mobile, tablet, caseDat
                 return (
                   <figure className="g g--detail" key={i}>
                     <ImgSlot id={baseId} label={blk.label} aspect="3/2" />
-                    <figcaption>{blk.note}</figcaption>
+                    <figcaption>{t(blk.note, lang)}</figcaption>
                   </figure>
                 );
               }
@@ -221,7 +221,7 @@ function CaseStudy({ data, dark, setDark, lang, setLang, mobile, tablet, caseDat
             {c.results.map((r, i) => (
               <div className="kpi" key={i}>
                 <div className="kpi-stat">{r.stat}</div>
-                <div className="kpi-note">{r.note}</div>
+                <div className="kpi-note">{t(r.note, lang)}</div>
               </div>
             ))}
           </div>
