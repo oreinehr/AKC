@@ -167,175 +167,468 @@
   ],
   "blog": [
     {
-      "slug": "lume-rule",
+      "slug": "post-1779818449908",
       "date": "2026",
-      "read": "8 min",
+      "read": "5 min",
       "title": {
-        "en": "The lume rule: scarcity as design discipline",
-        "pt": "A regra do lume: escassez como disciplina de design"
+        "en": "IMPERFECTION",
+        "pt": "IMPERFEIÇÃO"
       },
       "excerpt": {
-        "en": "Why a signature accent earns its place by appearing on roughly one surface in ten.",
-        "pt": "Por que um acento de assinatura se justifica aparecendo em apenas uma de cada dez superfícies."
+        "en": "The next brand goal nobody is selling yet.",
+        "pt": "O próximo objetivo de marca que ninguém ainda está vendendo."
       },
       "subtitle": {
-        "en": "Why a signature accent earns its place by appearing on roughly one surface in ten.",
-        "pt": "Por que um acento de assinatura se justifica aparecendo em apenas uma de cada dez superfícies."
+        "en": "The next brand goal nobody is selling yet.",
+        "pt": "O próximo objetivo de marca que ninguém ainda está vendendo."
       },
       "section": "Practice",
+      "coming": false,
       "body": [
         {
           "kind": "p",
           "text": {
-            "en": "A watch dial has one signature color and a lume — a separate luminous compound that only activates in defined conditions: low light, motion. The lume is structural to the watch's identity, but it's not always visible. Designed in, dosed precisely, deployed sparingly.",
-            "pt": "O mostrador de um relógio tem uma cor de assinatura e um lume — um composto luminoso separado que só se ativa em condições definidas: pouca luz, movimento. O lume é estrutural à identidade do relógio, mas nem sempre está visível. Projetado dentro, dosado com precisão, aplicado com parcimônia."
+            "en": "I said it in an interview last year and couldn't stop thinking about it after: imperfection might become the next brand goal. It came out almost accidentally, the way the best ideas do, mid-conversation, no time to second-guess it. And the more AI perfects execution around us, the more I believe it.",
+            "pt": "Falei isso em uma entrevista no ano passado e não consegui parar de pensar no assunto depois: a imperfeição pode ser o próximo objetivo de marca. Saiu como por acidente, do jeito que as melhores ideias costumam nascer, no meio de uma conversa, sem tempo de me arrepender. E quanto mais a IA aperfeiçoa a execução ao nosso redor, mais eu acredito nisso."
           }
         },
         {
           "kind": "p",
           "text": {
-            "en": "That's the model. Most personal-brand visual systems fail not because the accent is wrong but because the accent is everywhere. A signature color used on every surface is wallpaper. A signature color used on roughly one surface in ten reads as discipline.",
-            "pt": "Esse é o modelo. A maioria dos sistemas visuais de marca pessoal falha não porque o acento está errado, mas porque o acento está em todo lugar. Uma cor de assinatura usada em todas as superfícies é papel de parede. Uma cor de assinatura usada em aproximadamente uma de cada dez superfícies transmite disciplina."
-          }
-        },
-        {
-          "kind": "h2",
-          "text": {
-            "en": "What the rule actually does",
-            "pt": "O que a regra realmente faz"
+            "en": "\nWe spent decades chasing the clean. Pixel-perfect layouts. Copy without a rough edge in sight. Campaigns so polished they felt like a work of art. Perfection was the proof of professionalism. It was what craft was all about. Then everyone got access to the same tools, and perfection became the default. Which means it stopped being a differentiator.",
+            "pt": "Passamos décadas atrás do clean. Lustramos pixels. Textos sem uma vírgula fora do lugar. Campanhas tão polidas que pareciam mais obras de arte do que sentimento. A perfeição era a prova de profissionalismo. Era o que o craft significava. Aí todo mundo teve acesso às mesmas ferramentas e a perfeição virou padrão. O que significa que deixou de ser diferencial."
           }
         },
         {
           "kind": "p",
           "text": {
-            "en": "Three things, in order. First, it gives the brand a primary register — the working palette that holds 90% of surfaces. That's the calibration bar. Second, it earns the right to a moment — the 10% — by holding the other 90%. Third, it forces honest conversation about what counts as a moment: if everything's loud, nothing is.",
-            "pt": "Três coisas, em ordem. Primeiro, ela dá à marca um registro primário — a paleta de trabalho que sustenta 90% das superfícies. Essa é a barra de calibração. Segundo, ela conquista o direito a um momento — os 10% — ao segurar os outros 90%. Terceiro, ela força uma conversa honesta sobre o que conta como momento: se tudo é barulhento, nada é."
+            "en": "\nTennis taught me something about this. Watch Alcaraz play a five-set match. There are moments where he overcooks a forehand, double-faults at the worst time, argues with his coaching team between points. None of it looks controlled. All of it looks human. And somehow that's what makes it riveting, pure magic. It's like you're watching someone who could lose, choosing not to. A perfect machine winning a match is just a machine running its code. A person winning the same match, visibly fighting themselves to do it, is a story.",
+            "pt": "O tênis me ensinou algo sobre isso. Assista o Alcaraz jogar um jogo de cinco sets. Tem momentos em que ele força demais um forehand, dá dupla falta na hora errada, discute com a comissão técnica entre os pontos. Nada disso parece controlado. Tudo parece humano. E de alguma forma é exatamente isso que torna o jogo hipnotizante, pura magia. É como assistir alguém que poderia perder, escolhendo não perder. Uma máquina perfeita vencendo uma partida é só uma máquina rodando o seu código. Uma pessoa vencendo a mesma partida, visivelmente brigando consigo mesma pra conseguir, é uma história."
           }
         },
         {
-          "kind": "figure",
-          "label": "specimen · phosphor block with black type · 16:10",
-          "aspect": "16/10",
-          "caption": {
-            "en": "Phosphor only appears in defined contexts — time-stamped graphics, kinetic moments, AI-forward tags. Never as text.",
-            "pt": "O fósforo aparece apenas em contextos definidos — gráficos com marcação de tempo, momentos cinéticos, tags de orientação para IA. Nunca como texto."
-          }
-        },
-        {
-          "kind": "h2",
+          "kind": "p",
           "text": {
-            "en": "Where the rule allows the accent",
-            "pt": "Onde a regra permite o acento"
+            "en": "Advertising is slower to learn the lesson, but it's getting there. The brands that feel alive right now are the ones willing to be a little awkward, a little honest, a little rough around the edges. They admit uncertainty. They use humor that doesn't quite land perfectly. They look like people made them, not committees. Or maybe it's just me cherry-picking my favorites from Clube de Criação de São Paulo, or Cannes. Nevertheless my point still stands... hello Liquid Death.",
+            "pt": "A publicidade aprende mais devagar, mas está chegando lá. As marcas que parecem vivas agora são as que topam ser um pouco estranhas, um pouco honestas, um pouco cruas nas bordas. Elas admitem incerteza. Usam humor que não cai redondo. Parecem feitas por pessoas, não por comitês. Ou talvez eu esteja só garimpando meus favoritos do Clube de Criação de São Paulo, ou de Cannes. Mesmo assim o meu ponto continua de pé... olá, Liquid Death.\n"
           }
         },
         {
-          "kind": "list",
-          "items": [
-            {
-              "en": "Time-stamped or year-stamped graphics — \"2026\" campaign tags, newsletter issue numbers.",
-              "pt": "Gráficos com marcação de tempo ou ano — tags de campanha \"2026\", números de edições de newsletter."
-            },
-            {
-              "en": "Motion / kinetic work showcases — video accents, generative samples, moving-image tiles.",
-              "pt": "Showcases de trabalho em motion / cinético — acentos em vídeo, amostras generativas, tiles de imagem em movimento."
-            },
-            {
-              "en": "AI-content or technology-forward tags — signals current without putting the buzzword in copy.",
-              "pt": "Tags de conteúdo com IA ou orientadas à tecnologia — sinalizam atualidade sem colocar o buzzword no copy."
-            },
-            {
-              "en": "Single hero highlights on a landing page section. Not all of them.",
-              "pt": "Destaques hero pontuais em uma seção de landing page. Não em todas."
-            }
-          ]
-        },
-        {
-          "kind": "quote",
+          "kind": "p",
           "text": {
-            "en": "If phosphor is everywhere, it becomes wallpaper. If it's never used, why have it. Aim for ~1 of every 10 surfaces.",
-            "pt": "Se o fósforo está em todo lugar, vira papel de parede. Se nunca é usado, para que tê-lo. Mire em ~1 de cada 10 superfícies."
-          },
-          "attribution": "from the brand system, locked 2026-04-29"
-        },
-        {
-          "kind": "h2",
-          "text": {
-            "en": "Where the rule keeps the accent out",
-            "pt": "Onde a regra mantém o acento fora"
+            "en": "AI can generate a hundred campaign concepts overnight, all of them technically competent, none of them surprising. What it can't do is make the accidental choice. The one that breaks the brief in exactly the right way, the line that shouldn't work but does, the design decision that came from a bad day (or a nap) and became a signature. Those come from imperfect people working under real pressure with real stakes.",
+            "pt": "A IA consegue gerar cem conceitos de campanha da noite pro dia, todos tecnicamente competentes, nenhum surpreendente. O que ela não consegue fazer é a escolha acidental. Aquela que quebra o briefing do jeito certo, o título que não deveria funcionar mas funciona, a decisão de design que veio de um dia ruim (ou de uma sonequinha) e virou assinatura. Essas vêm de pessoas imperfeitas trabalhando sob pressão real, com consequências reais."
           }
         },
         {
-          "kind": "list",
-          "items": [
-            {
-              "en": "Stationery — letterhead, business cards. Primary palette only.",
-              "pt": "Papelaria — timbrado, cartões de visita. Somente paleta primária."
-            },
-            {
-              "en": "Email signature — primary only.",
-              "pt": "Assinatura de e-mail — somente primária."
-            },
-            {
-              "en": "Print proposals, RFPs, decks — primary only.",
-              "pt": "Propostas impressas, RFPs, decks — somente primária."
-            },
-            {
-              "en": "As text. Phosphor fails contrast as type. Always a fill with black type on top.",
-              "pt": "Como texto. O fósforo falha em contraste como tipografia. Sempre como fundo com texto preto por cima."
-            },
-            {
-              "en": "The logo — never recolor the mark.",
-              "pt": "O logo — nunca recolorir a marca."
-            }
-          ]
+          "kind": "p",
+          "text": {
+            "en": "\nI'm not arguing against craft. Craft is still everything. But craft isn't the same as perfection. Craft is the deliberate shaping of something until it earns its own personality. Which includes the parts that weren't planned, the misfires, even self-sabotage.",
+            "pt": "Não estou argumentando contra o craft. O craft ainda é tudo. Mas craft não é a mesma coisa que perfeição. Craft é o ato deliberado de moldar algo até que ganhe personalidade própria. O que inclui as partes que não foram planejadas, os erros, até a autossabotagem."
+          }
+        },
+        {
+          "kind": "p",
+          "text": {
+            "en": "The brands that win the next decade won't be the most polished. They'll be the most recognizably human. And human, by definition, means flawed, emotionally driven. All made with the helping hands of AI agents, AI planners, AI this and that.\n",
+            "pt": "As marcas que vão vencer a próxima década não serão as mais polidas. Serão as mais reconhecivelmente humanas. E humano, por definição, significa imperfeito, movido pela emoção. E, claro, tudo feito com a ajuda de agentes de IA, planejadores de IA, IA pra cá e pra lá.\n"
+          }
+        },
+        {
+          "kind": "p",
+          "text": {
+            "en": "The accident is the signature. Leave it in.",
+            "pt": "O acidente é a assinatura. Deixa ele lá."
+          }
+        },
+        {
+          "kind": "p",
+          "text": {
+            "en": "Abraços,\n[Alessandro Contes](https://www.linkedin.com/in/akcontes/)",
+            "pt": "Abraços,\n[Alessandro Contes](https://www.linkedin.com/in/akcontes/)"
+          }
+        }
+      ],
+      "tags": []
+    },
+    {
+      "slug": "post-1779817975943",
+      "date": "2026",
+      "read": "5 min",
+      "title": {
+        "en": "CHANGE",
+        "pt": "MUDANÇA"
+      },
+      "excerpt": {
+        "en": "Constant, inevitable, sometimes painful, and very necessary.",
+        "pt": "Constante, inevitável, às vezes dolorosa, e muito necessária."
+      },
+      "subtitle": {
+        "en": "Constant, inevitable, sometimes painful, and very necessary.",
+        "pt": "Constante, inevitável, às vezes dolorosa, e muito necessária."
+      },
+      "section": "Practice",
+      "coming": false,
+      "body": [
+        {
+          "kind": "p",
+          "text": {
+            "en": "For companies, changing is more than stepping outside your comfort zone — it's like jumping off a fast-moving boat into a stormy sea. It feels bad, and for a while, it keeps feeling bad. But the ability to see past that first step is what separates the winners from the rest, the pioneers from the followers. The brands that get uncomfortable with inertia even when they're happy and profitable tend to develop not just their products, but their people.",
+            "pt": "Para empresas, mudar é mais que sair da sua zona de conforto; é como pular de um barco em alta velocidade em um mar tempestuoso. Parece ruim e, por um tempo, continua ruim mesmo, entretanto a habilidade de enxergar além desse primeiro passo é característica dos vencedores, dos pioneiros. As marcas que, mesmo felizes e lucrativas, se incomodam com a inércia tendem a desenvolver não só seus produtos, mas também seu capital humano."
+          }
+        },
+        {
+          "kind": "p",
+          "text": {
+            "en": "In a scene from the third season of The Bear, Carmy receives his first instructions on how to prepare an ingredient perfectly, and when he finishes, the chef says: \"Got it? Now do that every day, getting a little better each time.\" That mindset makes all the difference. Improving 1% every day seems insignificant, but after one year or ten, it puts you closer to something like perfect.",
+            "pt": "Em uma cena da terceira temporada de \"The Bear\", Carmy recebe as primeiras instruções de como preparar um ingrediente de forma perfeita, e ao finalizar, o chef comenta: \"Aprendeu? Agora é fazer isso dia após dia, melhorando um pouco.\" Essa mentalidade faz toda a diferença. Melhorar 1% todos os dias parece insignificante, mas após 1 ou 10 anos, culmina em estar mais próximo do perfeito."
+          }
+        },
+        {
+          "kind": "p",
+          "text": {
+            "en": "A company that adopts the 1% strategy also gets one of the smartest and most meaningful side effects the market demands: the continuous growth of the people in it. Professionally, obviously. But personally too. We need challenges. We need support. We need the right environment.",
+            "pt": "Uma empresa que adota essa estratégia de 1% possui também um dos efeitos colaterais mais inteligentes e significativos que o mercado requer: o contínuo crescimento dos colaboradores. Obviamente no âmbito profissional, mas também no pessoal. Precisamos de desafios, precisamos de suporte, precisamos de ambiente."
+          }
+        },
+        {
+          "kind": "p",
+          "text": {
+            "en": "When confronted with new briefs and new goals, we're forced to leave the familiar and develop new skills, challenging even our own perspectives. That's essential for continuous improvement. Change drives self-discovery, letting people explore their limits and capabilities. As we overcome obstacles and adapt to new circumstances, the product gets better and the company earns the chance to be disruptive.",
+            "pt": "Quando confrontados com novos briefings e metas, somos forçados a sair do lugar comum e desenvolver novas habilidades, confrontando até nossas próprias perspectivas. Isso é essencial para o aprimoramento contínuo. A mudança incentiva a autodescoberta, permitindo que indivíduos explorem suas capacidades e limites. À medida que superamos obstáculos e nos adaptamos a novas circunstâncias, o produto melhora e a empresa tem a chance de ser disruptiva.\n"
+          }
+        },
+        {
+          "kind": "p",
+          "text": {
+            "en": "In change lives the capacity to drive growth, spark innovation, and build resilience — making it not just an element, but the element, of any brand's success.",
+            "pt": "Nela reside a capacidade de impulsionar o crescimento, estimular a inovação e promover a resiliência, tornando-se um elemento, ou O elemento, crucial para o sucesso de qualquer marca."
+          }
+        },
+        {
+          "kind": "p",
+          "text": {
+            "en": "Today I change something in the agency's identity; tomorrow it'll be the next item on a long list.\n",
+            "pt": "Hoje mudo algo na identidade da agência; amanhã será outro item de uma longa lista.\n"
+          }
+        },
+        {
+          "kind": "p",
+          "text": {
+            "en": "Abraços,\n[Alessandro Contes](https://www.linkedin.com/in/akcontes/)",
+            "pt": "Abraços,\n[Alessandro Contes](https://www.linkedin.com/in/akcontes/)"
+          }
+        }
+      ],
+      "tags": []
+    },
+    {
+      "slug": "post-1779817578341",
+      "date": "2026",
+      "read": "5 min",
+      "title": {
+        "en": "RESILIENCE",
+        "pt": "RESILIÊNCIA"
+      },
+      "excerpt": {
+        "en": "If you could go back to the start of your career, what advice would you give yourself?",
+        "pt": "Se você pudesse voltar ao início da sua carreira, qual conselho daria a si mesmo?"
+      },
+      "subtitle": {
+        "en": "If you could go back to the start of your career, what advice would you give yourself?",
+        "pt": "Se você pudesse voltar ao início da sua carreira, qual conselho daria a si mesmo?"
+      },
+      "section": "Practice",
+      "coming": false,
+      "body": [
+        {
+          "kind": "p",
+          "text": {
+            "en": "This question, which came up in countless conversations with Diego, is interesting because, even though everyone has a different answer, they all point in the same direction.",
+            "pt": "Essa reflexão, que surgiu em inúmeras conversas com o Diego, é interessante porque, apesar de cada um ter uma resposta diferente, todas apontam para o mesmo caminho."
+          }
         },
         {
           "kind": "h3",
           "text": {
-            "en": "The carryable lesson",
-            "pt": "A lição que se carrega"
+            "en": "Ale",
+            "pt": "Ale"
           }
         },
         {
           "kind": "p",
           "text": {
-            "en": "Calibration is mostly restraint. The bar moves up when the system gives one thing the room to land — and refuses to spend that room on filler. The lume rule is one shape of that restraint. The deeper rule is older: scarcity is what makes a signal a signal.",
-            "pt": "Calibração é, em grande parte, contenção. A barra sobe quando o sistema dá a uma coisa o espaço para pousar — e recusa gastar esse espaço com filler. A regra do lume é uma forma dessa contenção. A regra mais profunda é mais antiga: escassez é o que faz um sinal ser um sinal."
+            "en": "I'd say: \"Learn from the pain.\" Problems and discomfort sharpen critical thinking. Simple.",
+            "pt": "Eu diria: \"Aprenda com a dor.\" Problemas e desconfortos refinam nosso pensamento crítico. Simples."
+          }
+        },
+        {
+          "kind": "p",
+          "text": {
+            "en": "Neuroplasticity shows us that the brain can restructure itself in response to stress or new learning, creating new connections or increasing its density. Our minds were shaped by evolution to be high-adaptability machines. When we face crises, our survival system pushes us to find shortcuts or explore new paths toward our goals.",
+            "pt": "A neuroplasticidade nos mostra que o cérebro pode se reestruturar diante do estresse ou de novos aprendizados, criando novas conexões ou aumentando sua densidade. Nossa mente foi moldada pela evolução para ser uma máquina de alta adaptabilidade. Quando enfrentamos crises, nosso sistema de sobrevivência nos leva a criar atalhos ou explorar novos caminhos para alcançar nossos objetivos."
+          }
+        },
+        {
+          "kind": "p",
+          "text": {
+            "en": "Through a learning process that never ends, we learn to anticipate problems, identify what truly matters, and separate it from what's outside our control. That's where Stoic philosophy has something real to offer.",
+            "pt": "Ao longo de um processo de aprendizado que nunca termina, aprendemos a antecipar problemas, a identificar o que é realmente importante e o que está fora do nosso controle. Neste ponto, a filosofia estóica pode oferecer insights valiosos."
+          }
+        },
+        {
+          "kind": "p",
+          "text": {
+            "en": "Pain leads to learning, which elevates critical thinking, which builds adaptability. You grow a skin.",
+            "pt": "A dor leva ao aprendizado, que eleva nosso pensamento crítico e, por fim, nossa capacidade de adaptação. Você cria casca."
+          }
+        },
+        {
+          "kind": "h3",
+          "text": {
+            "en": "Diego",
+            "pt": "Diego"
+          }
+        },
+        {
+          "kind": "p",
+          "text": {
+            "en": "There are many lessons I wish I'd learned earlier. At the start, we know less than we think. I regret chasing shortcuts and titles before I was ready.",
+            "pt": "Há muitas lições que gostaria de ter aprendido no início da minha carreira. No começo, sabemos menos do que imaginamos. Me arrependo de ter buscado atalhos e títulos antes da hora."
+          }
+        },
+        {
+          "kind": "p",
+          "text": {
+            "en": "A experiência vem dos desafios, não dos cargos.",
+            "pt": "Experience comes from challenges, not job titles."
+          }
+        },
+        {
+          "kind": "p",
+          "text": {
+            "en": "Looking back, I would have been more strategic — identifying key areas to master, professionals to learn from, lessons worth chasing. I would have curated my career more consciously: \"I'll work with X to learn Y, then move to that agency to sharpen Z.\" That way I would have built more tools, learning from the right mentors.",
+            "pt": "Olhando para trás, eu teria sido mais estratégico, identificando áreas-chave para dominar, profissionais de quem aprender e lições que valem a pena. Teria feito uma curadoria mais consciente da minha carreira: \"Vou trabalhar com X para aprender Y, depois para aquela agência para aprimorar a área Z.\" Assim, teria adquirido mais ferramentas, aprendendo com os mentores certos."
+          }
+        },
+        {
+          "kind": "p",
+          "text": {
+            "en": "Every career beginning comes with enormous energy. We feel like time is moving slowly and that we need to sprint — but our minds are deceiving us. As Alessandro said, we're more resilient than we think. That's why it's so important to resist the temptation of premature promotions and give things time.",
+            "pt": "Todo início de carreira vem com uma energia imensa. Pensamos que o tempo passa devagar e que precisamos correr, mas nossa mente nos engana. Como disse o Alessandro, somos mais resilientes do que pensamos. Por isso, é essencial resistir à tentação de promoções precipitadas e dar tempo ao tempo."
+          }
+        },
+        {
+          "kind": "p",
+          "text": {
+            "en": "The best way to navigate the beginning of a career is to keep focus and clarity of purpose, adjusting course as needed.",
+            "pt": "A melhor forma de navegar nesse início de carreira é manter o foco e a clareza de propósito, ajustando o rumo conforme necessário."
+          }
+        },
+        {
+          "kind": "p",
+          "text": {
+            "en": "Enjoy the (pain) ride.",
+            "pt": "Enjoy the (pain) ride."
+          }
+        },
+        {
+          "kind": "p",
+          "text": {
+            "en": "Abraços,\n[Alessandro Contes](https://www.linkedin.com/in/akcontes/) e [Diego Heinz](https://www.linkedin.com/in/diegohnz/)\n*(Diego é Creative Strategist na OPPO, China)*",
+            "pt": "Abraços,\n[Alessandro Contes](https://www.linkedin.com/in/akcontes/) and [Diego Heinz](https://www.linkedin.com/in/diegohnz/)\n*(Diego is Creative Strategist at OPPO, China)*"
           }
         }
       ],
-      "tags": [
-        "brand systems",
-        "color discipline",
-        "personal-brand work"
-      ]
+      "tags": []
     },
     {
-      "slug": "g",
+      "slug": "post-1779817342877",
       "date": "2026",
       "read": "5 min",
       "title": {
-        "en": "O Autismo de Vinicius Apollo",
-        "pt": "Vinicius Apollo's Autism"
+        "en": "CURIOSITY",
+        "pt": "CURIOSIDADE"
       },
       "excerpt": {
-        "en": "An exploration of Vinicius Apollo's journey with autism, highlighting his experiences, challenges, strengths, and unique perspective on the world.",
-        "pt": "Uma exploração da jornada de Vinicius Apollo com o autismo, destacando suas experiências, desafios, potencialidades e sua perspectiva única sobre o mundo."
+        "en": "Stay hungry. Stay foolish.",
+        "pt": "Stay hungry. Stay foolish."
       },
       "subtitle": {
-        "en": "A journey of self-discovery, challenges, and uniqueness.",
-        "pt": "Uma jornada de autodescoberta, desafios e singularidade."
+        "en": "Stay hungry. Stay foolish.",
+        "pt": "Stay hungry. Stay foolish."
       },
-      "section": "Practdgsa",
+      "section": "Practice",
       "coming": false,
       "body": [
         {
-          "kind": "figure",
-          "label": "figure · 16:9",
-          "aspect": "16/9",
-          "caption": {
-            "en": "",
-            "pt": ""
+          "kind": "p",
+          "text": {
+            "en": "That quote brought back a vivid memory from when I was 4 or 5, when my parents would give me Legos to play with. In my mind, building the manual version was fine, but what really thrilled me was knowing I could take it apart right after and rebuild it differently. I'd mix the new pieces with my existing collection and let imagination take over. I was labeled creative early on. As a teenager, I only saw advertising as my career destination. Today, what makes more sense is that I'm simply curious.",
+            "pt": "That quote brought back a vivid memory from when I was 4 or 5, when my parents would give me Legos to play with. In my mind, building the manual version was fine, but what really thrilled me was knowing I could take it apart right after and rebuild it differently. I'd mix the new pieces with my existing collection and let imagination take over. I was labeled creative early on. As a teenager, I only saw advertising as my career destination. Today, what makes more sense is that I'm simply curious."
+          }
+        },
+        {
+          "kind": "p",
+          "text": {
+            "en": "Curiosity is the fuel of humanity, but in this mechanized world, it's being pasteurized by AI. Curiosity drives creativity, knowledge, and evolution. Without it, we can't ask the right questions, or accidentally stumble onto solutions in our daily labs and experiments. Without it, I wouldn't test different string tensions, try new racket brands, and experiment with my game on the court. And yet, in an era dominated by GPTs and generic processes, I feel this essential capacity being suffocated.",
+            "pt": "A curiosidade é o combustível da humanidade, mas, neste mundo mecanizado, está sendo pasteurizada pela IA. A curiosidade impulsiona a criatividade, o conhecimento e a evolução. Sem ela, não conseguimos fazer as perguntas certas, nem criar acidentalmente soluções em nossos laboratórios e experimentações cotidianas. Sem ela, eu não testaria libragens diferentes, marcas variadas de cordas e raquetes no meu jogo dentro das quadras. No entanto, em uma era dominada pelas GPTs e processos genéricos, sinto que essa capacidade tão essencial está sendo sufocada."
+          }
+        },
+        {
+          "kind": "p",
+          "text": {
+            "en": "The late Sir Ken Robinson, one of the greatest advocates for creativity in education, said: \"Curiosity is the engine of achievement.\" He criticized traditional schooling for shaping students to follow rules instead of encouraging them to question, explore, and innovate. Curiosity should be a soft skill with a measurable index (laughs). It should come up in job interviews — what's the last life project that gave you goosebumps?",
+            "pt": "O saudoso Sir Ken Robinson, um dos maiores defensores da criatividade na educação, afirmou: \"A curiosidade é o motor da realização.\" Ele criticava a escola tradicional por moldar alunos para seguir regras, em vez de encorajá-los a questionar, explorar e inovar. A curiosidade deveria ser uma soft skill com índice mensurável (risos). Deveria ser tópico de entrevistas de emprego — qual foi o último projeto de vida que arrepiou seus pelos do braço?"
+          }
+        },
+        {
+          "kind": "p",
+          "text": {
+            "en": "We need to cultivate curiosity as an intrinsic skill, at school, at work, in life. In a time when answers are just one good prompt away, the right question might be what separates us from being led by the Skynet from leading the next revolution.",
+            "pt": "Devemos cultivar a curiosidade como uma habilidade intrínseca na escola, no trabalho, na vida. Em um tempo em que respostas estão a um (bom) prompt de distância, a pergunta certa pode ser o diferencial entre sermos liderados pela Skynet ou liderarmos a próxima revolução."
+          }
+        },
+        {
+          "kind": "p",
+          "text": {
+            "en": "As long as we stay curious, we'll keep asking, breaking rules, taking steps into the unknown — and ultimately, staying human.",
+            "pt": "Enquanto formos curiosos, continuaremos perguntando, quebrando regras, dando um passo rumo ao desconhecido e, em última instância, sendo humanos."
+          }
+        },
+        {
+          "kind": "p",
+          "text": {
+            "en": "Abraços,\n[Alessandro Contes](https://www.linkedin.com/in/akcontes/)",
+            "pt": "Abraços,\n[Alessandro Contes](https://www.linkedin.com/in/akcontes/)"
+          }
+        }
+      ],
+      "tags": []
+    },
+    {
+      "slug": "post-1779817108573",
+      "date": "2026",
+      "read": "5 min",
+      "title": {
+        "en": "DISCIPLINE",
+        "pt": "DISCIPLINA"
+      },
+      "excerpt": {
+        "en": "Talent without process is pure mediocrity juice.",
+        "pt": "Talento sem processo é puro suco de mediocridade."
+      },
+      "subtitle": {
+        "en": "Talent without process is pure mediocrity juice.",
+        "pt": "Talento sem processo é puro suco de mediocridade."
+      },
+      "section": "Practice",
+      "coming": false,
+      "body": [
+        {
+          "kind": "p",
+          "text": {
+            "en": "The ancient Stoics saw discipline as the instrument of freedom. Yes, it sounds contradictory — like ice cream in winter — but it makes sense: the more you master your impulses, the freer you are to live with purpose. They called it enkrateia, self-mastery.",
+            "pt": "Os estoicos gregos viam a disciplina como o instrumento para a liberdade. Sim, soa contraditório — tipo sorvete no inverno —, mas faz sentido: quanto mais você domina seus impulsos, mais livre está para viver com propósito. Eles chamavam isso de enkrateia, o domínio de si."
+          }
+        },
+        {
+          "kind": "p",
+          "text": {
+            "en": "I approach simple and complex briefs the same way. Break it into smaller parts, build a sprint, use whatever creative method makes the most sense today, and do it. Make one version, make two, three, as many as the time the market demands will allow. That discipline is what minimizes problems down the road.",
+            "pt": "Encaro briefings simples e complexos da mesma forma. Desagrupo em partes menores, crio um sprint, utilizo o método criativo que mais faz sentido hoje e faço. Faço uma versão, faço duas, três, quantas puder no tempo limitado que o mercado exige. Essa disciplina é fundamental para minimizar problemas futuros."
+          }
+        },
+        {
+          "kind": "p",
+          "text": {
+            "en": "I don't have the luxury of waiting for the muse of creativity to descend and enlighten me. She does show up, but usually after countless iterations, conversations with colleagues, YouTube tutorials, and a good deal of wishful thinking. Projects don't get delivered on goodwill and coffee alone. They get delivered with process, routine, method — in other words: discipline — that metaphorical whip I've learned to respect.",
+            "pt": "\nNão me dou ao luxo de esperar a musa da criatividade descer e me iluminar. Ela até vem, mas geralmente chega depois de inúmeras interações, papos com colegas, tutoriais no Youtube e reza braba. Projetos não se entregam apenas com boa vontade e cafezinho. Se entregam com processo, rotina, método — ou seja: disciplina — esse chicote metafórico que aprendi a respeitar."
+          }
+        },
+        {
+          "kind": "p",
+          "text": {
+            "en": "I'm efficient because, more than talented, I'm disciplined. And I work with clients who respect what I do because they can tell I'm not brilliant by accident: I'm disciplined even when everything in me wants to run.",
+            "pt": "Sou eficiente porque, mais do que talentoso, sou disciplinado. E atendo clientes que respeitam o que faço, porque percebem que não sou brilhante por acaso: sou disciplinado até quando a vontade é de sair correndo."
+          }
+        },
+        {
+          "kind": "p",
+          "text": {
+            "en": "\nDiscipline isn't sexy. You don't see anyone selling discipline out there. But I'd rather take the less glamorous path — the one that actually delivers. And delivers with the care the client's product deserves.",
+            "pt": "Disciplina não é algo sexy. Você não vê ninguém vendendo disciplina por aí. Mas prefiro o caminho menos glamouroso — aquele que entrega. E entrega com o cuidado que o produto do cliente merece."
+          }
+        },
+        {
+          "kind": "p",
+          "text": {
+            "en": "Abraços,\n[Alessandro Contes](https://www.linkedin.com/in/akcontes/)",
+            "pt": "Abraços,\n[Alessandro Contes](https://www.linkedin.com/in/akcontes/)"
+          }
+        }
+      ],
+      "tags": []
+    },
+    {
+      "slug": "post-1779816049890",
+      "date": "2026",
+      "read": "5 min",
+      "title": {
+        "en": "HONESTY",
+        "pt": "HONESTIDADE"
+      },
+      "excerpt": {
+        "en": "Nadal's brutal virtue and legacy.",
+        "pt": "A brutal virtude e legado de Nadal"
+      },
+      "subtitle": {
+        "en": "Nadal's brutal virtue and legacy.",
+        "pt": "A brutal virtude e legado de Nadal"
+      },
+      "section": "Practice",
+      "coming": false,
+      "body": [
+        {
+          "kind": "p",
+          "text": {
+            "en": "Many people know that tennis is one of my forms of therapy. And Rafael Nadal's recent farewell at Roland Garros was more than emotional, inspiring, and unique — it was a masterclass in posture. Among all the tributes to his talent, victories, and fighting spirit, one virtue caught my attention. Maybe because it's one of the least explored: his pragmatic honesty. The humility to face any adversity with an objective, often painful, honesty.",
+            "pt": "Muitos sabem que uma das minhas formas de terapia é o tênis. E a recente despedida de Rafael Nadal em Roland Garros foi mais que emocionante, inspiradora e única — foi uma aula de postura. Em meio de tantas homenagens ao seu talento, vitórias e espírito de luta, uma virtude me chamou a atenção. Talvez por ser uma das menos exploradas: sua pragmática honestidade. A humildade frente a qualquer adversidade ser tratada com uma objetiva, muitas vezes dolorosa, honestidade."
+          }
+        },
+        {
+          "kind": "p",
+          "text": {
+            "en": "For me, and for any company, honesty carries a range of meanings well beyond a feel-good bullet point on a values board. Being honest means knowing where you are before deciding where to go. It means not romanticizing results or hiding failures. Honesty about the moment allows for clearer decisions. It also acts as a compass for integrity, especially under pressure. And ultimately, it means changing course without drama — telling the truth, inward and outward.",
+            "pt": "Para mim, e qualquer empresa, a honestidade tem um leque de significados muito além de um tópico perfumado no quadro de valores. Ser honesto é saber onde estamos antes de decidir para onde ir. É não romantizar resultados, nem esconder falhas. A honestidade com o momento permite decisões mais lúcidas. Também serve como bússola da integridade, principalmente em momentos de pressão. E, por fim, mudar de rota sem drama, falar a verdade — para dentro e para fora."
+          }
+        },
+        {
+          "kind": "p",
+          "text": {
+            "en": "The clients I choose to work with thank me, pressure me, curse me, and value me, precisely because I prefer to stay grounded and brutally honest. I won't always please everyone, but I can't afford to cave. Because the opposite of honesty, in this context, is a broken trust. And trust is something built over years of sweat and blood.",
+            "pt": "Os clientes que escolho trabalhar agradecem, cobram, xingam, prezam, justamente porque prefiro ser pé no chão e brutalmente honesto. Nem sempre vou agradar, mas não posso dar o braço a torcer. Pois o oposto de honestidade, nesse caso, é a quebra de confiança. E confiança é algo que se constrói com anos de suor e sangue."
+          }
+        },
+        {
+          "kind": "p",
+          "text": {
+            "en": "Nadal hammers honesty into every interview, every gesture. The simplicity of his communication is what makes it all accessible, direct, no noise. He proves that being great doesn't require constant spectacle or smoke screens. Sometimes, being great means speaking softly but with clarity.",
+            "pt": "tudo isso acessível, direto, sem ruídos. Ele prova que ser gigante não exige espetáculo constante nem a cortina de fumaça. Às vezes, ser grande é falar baixo, mas com clareza."
+          }
+        },
+        {
+          "kind": "p",
+          "text": {
+            "en": "That's the foundation of how I look for partners, how I develop and create, how I talk and deliver. And it makes a difference. In the end, honesty is a superpower that transforms businesses.",
+            "pt": "Essa é a base de como busco parceiros, como desenvolvo e crio, converso e entrego. E isso faz diferença. No fim, a honestidade é um superpoder que transforma negócios."
+          }
+        },
+        {
+          "kind": "p",
+          "text": {
+            "en": "Abraços,\n[Alessandro Contes](https://www.linkedin.com/in/akcontes/)",
+            "pt": "Abraços,\n[Alessandro Contes](https://www.linkedin.com/in/akcontes/)"
           }
         }
       ],
@@ -1065,7 +1358,7 @@
       "nextSlug": "tgr-studio"
     }
   ],
-  "activeCaseSlug": null,
+  "activeCaseSlug": "k2-k1-group",
   "activePostSlug": null,
   "aboutPage": {
     "eyebrow": {

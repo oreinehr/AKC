@@ -14,6 +14,19 @@ if (!process.env.ADMIN_PASSWORD) {
   console.warn('⚠  ADMIN_PASSWORD not set — using default "akc". Set it before going to production.');
 }
 
+// True when Vercel Marketplace KV + Blob env vars are present
+const USE_KV   = !!(process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN);
+const USE_BLOB = !!(process.env.BLOB_READ_WRITE_TOKEN);
+
+let redis, put;
+if (USE_KV) {
+  const { Redis } = require('@upstash/redis');
+  redis = new Redis({ url: process.env.KV_REST_API_URL, token: process.env.KV_REST_API_TOKEN });
+}
+if (USE_BLOB) {
+  put = require('@vercel/blob').put;
+}
+
 function requireAuth(req, res, next) {
   if (req.headers.authorization === `Bearer ${ADMIN_TOKEN}`) return next();
   res.status(401).json({ error: 'Unauthorized' });
@@ -30,9 +43,19 @@ app.use(express.static(__dirname));
 
 app.get('/admin', (req, res) => res.redirect('/admin.html'));
 
+// POST /api/auth — validate password, return token
+app.post('/api/auth', (req, res) => {
+  if (req.body && req.body.password === ADMIN_PASSWORD) return res.json({ token: ADMIN_TOKEN });
+  res.status(401).json({ error: 'Invalid password' });
+});
+
 // GET /api/data — read persisted content
-app.get('/api/data', (req, res) => {
+app.get('/api/data', async (req, res) => {
   try {
+    if (USE_KV) {
+      const data = await redis.get('akc:data');
+      return res.json(data || null);
+    }
     if (!fs.existsSync(DATA_FILE)) return res.json(null);
     res.json(JSON.parse(fs.readFileSync(DATA_FILE, 'utf8')));
   } catch (e) {
@@ -40,15 +63,13 @@ app.get('/api/data', (req, res) => {
   }
 });
 
-// POST /api/auth — validate password, return token
-app.post('/api/auth', (req, res) => {
-  if (req.body && req.body.password === ADMIN_PASSWORD) return res.json({ token: ADMIN_TOKEN });
-  res.status(401).json({ error: 'Invalid password' });
-});
-
 // POST /api/data — persist content
-app.post('/api/data', requireAuth, (req, res) => {
+app.post('/api/data', requireAuth, async (req, res) => {
   try {
+    if (USE_KV) {
+      await redis.set('akc:data', req.body);
+      return res.json({ ok: true });
+    }
     fs.writeFileSync(DATA_FILE, JSON.stringify(req.body, null, 2));
     res.json({ ok: true });
   } catch (e) {
@@ -57,8 +78,14 @@ app.post('/api/data', requireAuth, (req, res) => {
 });
 
 // GET /.image-slots.state.json — image-slot.js reads this on page load
-app.get('/.image-slots.state.json', (req, res) => {
+app.get('/.image-slots.state.json', async (req, res) => {
   try {
+    if (USE_KV) {
+      const slots = await redis.get('akc:slots');
+      if (!slots) return res.status(404).end();
+      res.set('Content-Type', 'application/json');
+      return res.json(slots);
+    }
     if (!fs.existsSync(SLOTS_FILE)) return res.status(404).end();
     res.set('Content-Type', 'application/json');
     res.send(fs.readFileSync(SLOTS_FILE, 'utf8'));
@@ -68,8 +95,32 @@ app.get('/.image-slots.state.json', (req, res) => {
 });
 
 // POST /api/slots — image-slot.js writes here after every drop/reframe
-app.post('/api/slots', requireAuth, express.text({ limit: '50mb' }), (req, res) => {
+// On Vercel: extracts base64 images → uploads to Blob → stores URLs in KV
+app.post('/api/slots', requireAuth, express.text({ limit: '50mb' }), async (req, res) => {
   try {
+    if (USE_KV) {
+      const slots = JSON.parse(req.body);
+      if (USE_BLOB) {
+        for (const [id, val] of Object.entries(slots)) {
+          if (val && typeof val.u === 'string' && val.u.startsWith('data:image/')) {
+            const match = val.u.match(/^data:(image\/[\w+]+);base64,(.+)$/);
+            if (match) {
+              const [, mime, b64] = match;
+              const ext = mime === 'image/jpeg' ? 'jpg' : mime.split('/')[1] || 'webp';
+              const buf = Buffer.from(b64, 'base64');
+              const blob = await put(`slots/${id}.${ext}`, buf, {
+                access: 'public',
+                contentType: mime,
+                addRandomSuffix: false,
+              });
+              val.u = blob.url;
+            }
+          }
+        }
+      }
+      await redis.set('akc:slots', slots);
+      return res.json({ ok: true });
+    }
     fs.writeFileSync(SLOTS_FILE, req.body);
     res.json({ ok: true });
   } catch (e) {

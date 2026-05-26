@@ -1552,6 +1552,14 @@ function CasesPane({ data, setData }) {
     setSelSlug(slug);
   };
 
+  const moveCase = (dir) => {
+    const arr = [...cases];
+    const j = idx + dir;
+    if (j < 0 || j >= arr.length) return;
+    [arr[idx], arr[j]] = [arr[j], arr[idx]];
+    setData((s) => ({ ...s, cases: arr }));
+  };
+
   const removeCase = () => {
     if (!confirm(`Delete "${c.meta.client}"? This can't be undone.`)) return;
     const remaining = cases.filter((x) => x.slug !== c.slug);
@@ -1594,13 +1602,19 @@ function CasesPane({ data, setData }) {
         <div className="cases-list">
           <div className="cases-list-head">cases</div>
           <ul>
-            {cases.map((cc) => (
-              <li key={cc.slug}>
-                <button className={cc.slug === selSlug ? "on" : ""} onClick={() => setActive(cc.slug)}>
+            {cases.map((cc, ci) => (
+              <li key={cc.slug} style={{ display: "flex", alignItems: "stretch" }}>
+                <button className={cc.slug === selSlug ? "on" : ""} onClick={() => setActive(cc.slug)} style={{ flex: 1 }}>
                   <span className="cl-num">{cc.meta.num}</span>
                   <span className="cl-title">{cc.meta.project}</span>
                   <span className="cl-client">{cc.meta.client.toLowerCase()} · {cc.meta.year}</span>
                 </button>
+                {cc.slug === selSlug && (
+                  <div style={{ display: "flex", flexDirection: "column" }}>
+                    <button onClick={() => moveCase(-1)} disabled={ci === 0} style={{ flex: 1, padding: "0 6px", fontSize: 11 }}>↑</button>
+                    <button onClick={() => moveCase(+1)} disabled={ci === cases.length - 1} style={{ flex: 1, padding: "0 6px", fontSize: 11 }}>↓</button>
+                  </div>
+                )}
               </li>
             ))}
           </ul>
@@ -1617,7 +1631,10 @@ function CasesPane({ data, setData }) {
             <button className="add-btn" style={{ color: "var(--color-accent-quiet)" }} onClick={removeCase}>delete case</button>
           </div>
 
-          <div className="group-head">cover meta</div>
+          <div className="group-head">cover image</div>
+          <ImgSlot id={`case-cover-${c.slug}`} label="cover · 21:9" aspect="21/9" />
+
+          <div className="group-head" style={{ marginTop: 24 }}>cover meta</div>
           <div className="row2">
             <div className="field"><label>Slug</label><input value={c.slug} onChange={(e) => setCase(["slug"], e.target.value)} /></div>
             <div className="field"><label>Case number label</label><input value={c.meta.num} onChange={(e) => setCase(["meta", "num"], e.target.value)} /></div>
@@ -1666,22 +1683,48 @@ function CasesPane({ data, setData }) {
           <button className="add-btn" onClick={() => arrPush("approach", { num: String((c.approach || []).length + 1).padStart(2, "0"), title: "Step", body: "—" })}>+ step</button>
 
           <div className="group-head">03 output</div>
-          <p className="subhead" style={{ margin: "0 0 12px" }}>Image blocks. Real images upload separately — the kind drives the layout.</p>
-          {(c.output || []).map((o, i) => (
-            <div key={i} className="row2" style={{ gridTemplateColumns: "120px 1fr 80px", alignItems: "end", marginBottom: 12 }}>
-              <div className="field" style={{ marginBottom: 0 }}>
-                <label>kind</label>
-                <select value={o.kind} onChange={(e) => setCase(["output", i, "kind"], e.target.value)}>
-                  <option value="full">full · 16:9</option>
-                  <option value="wide">wide · 16:9</option>
-                  <option value="detail">detail · 3:2 (offset)</option>
-                  <option value="twin">twin · two 4:5</option>
-                </select>
+          {(c.output || []).map((o, i) => {
+            const base = `case-output-${c.slug}-${i}`;
+            const isTwin = o.kind === "twin";
+            return (
+              <div key={i} style={{ border: "1px solid var(--border)", padding: "12px 14px", marginBottom: 10 }}>
+                <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 10 }}>
+                  <select value={o.kind} onChange={(e) => setCase(["output", i, "kind"], e.target.value)}
+                    style={{ fontFamily: "var(--font-mono)", fontSize: 11, padding: "4px 6px", background: "var(--input-bg)", color: "var(--fg)", border: "1px solid var(--border)" }}>
+                    <option value="full">full · 16:9</option>
+                    <option value="wide">wide · 16:9</option>
+                    <option value="detail">detail · 3:2 (offset)</option>
+                    <option value="twin">twin · two 4:5</option>
+                  </select>
+                  <button onClick={() => arrSplice("output", i)} style={{ marginLeft: "auto" }}>remove</button>
+                </div>
+                {isTwin ? (
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 8 }}>
+                    <div>
+                      <ImgSlot id={`${base}-a`} label={(o.labels && o.labels[0]) || "twin a · 4:5"} aspect="4/5" />
+                      <div className="field" style={{ marginTop: 6, marginBottom: 0 }}>
+                        <label>label a</label>
+                        <input value={(o.labels && o.labels[0]) || ""} onChange={(e) => setCase(["output", i, "labels", 0], e.target.value)} />
+                      </div>
+                    </div>
+                    <div>
+                      <ImgSlot id={`${base}-b`} label={(o.labels && o.labels[1]) || "twin b · 4:5"} aspect="4/5" />
+                      <div className="field" style={{ marginTop: 6, marginBottom: 0 }}>
+                        <label>label b</label>
+                        <input value={(o.labels && o.labels[1]) || ""} onChange={(e) => setCase(["output", i, "labels", 1], e.target.value)} />
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <ImgSlot id={base} label={o.label || o.kind} aspect={o.kind === "detail" ? "3/2" : "16/9"} style={{ marginBottom: 8 }} />
+                )}
+                <div className="field" style={{ marginBottom: 0 }}>
+                  <label>caption</label>
+                  <input value={o.note || ""} onChange={(e) => setCase(["output", i, "note"], e.target.value)} />
+                </div>
               </div>
-              <div className="field" style={{ marginBottom: 0 }}><label>caption</label><input value={o.note || ""} onChange={(e) => setCase(["output", i, "note"], e.target.value)} /></div>
-              <button className="add-btn" style={{ height: 38 }} onClick={() => arrSplice("output", i)}>remove</button>
-            </div>
-          ))}
+            );
+          })}
           <button className="add-btn" onClick={() => arrPush("output", { kind: "full", label: "image · 16:9", note: "—" })}>+ block</button>
 
           <div className="group-head">04 results</div>
@@ -1819,6 +1862,14 @@ function BlogPane({ data, setData }) {
     setSelSlug(slug);
   };
 
+  const movePost = (dir) => {
+    const arr = [...posts];
+    const j = idx + dir;
+    if (j < 0 || j >= arr.length) return;
+    [arr[idx], arr[j]] = [arr[j], arr[idx]];
+    setData((s) => ({ ...s, blog: arr }));
+  };
+
   const removePost = () => {
     if (!confirm("Delete this post? This cannot be undone.")) return;
     const remaining = posts.filter((x) => x.slug !== selSlug);
@@ -1874,13 +1925,19 @@ function BlogPane({ data, setData }) {
         <div className="cases-list">
           <div className="cases-list-head">posts</div>
           <ul>
-            {posts.map((pp) => (
-              <li key={pp.slug}>
-                <button className={pp.slug === selSlug ? "on" : ""} onClick={() => setSelSlug(pp.slug)}>
+            {posts.map((pp, pi) => (
+              <li key={pp.slug} style={{ display: "flex", alignItems: "stretch" }}>
+                <button className={pp.slug === selSlug ? "on" : ""} onClick={() => setSelSlug(pp.slug)} style={{ flex: 1 }}>
                   <span className="cl-num">{pp.date || "—"}</span>
                   <span className="cl-title">{postTitle(pp) || "—"}</span>
                   <span className="cl-client">{pp.section || "—"}{pp.coming ? " · coming" : ""}</span>
                 </button>
+                {pp.slug === selSlug && (
+                  <div style={{ display: "flex", flexDirection: "column" }}>
+                    <button onClick={() => movePost(-1)} disabled={pi === 0} style={{ flex: 1, padding: "0 6px", fontSize: 11 }}>↑</button>
+                    <button onClick={() => movePost(+1)} disabled={pi === posts.length - 1} style={{ flex: 1, padding: "0 6px", fontSize: 11 }}>↓</button>
+                  </div>
+                )}
               </li>
             ))}
           </ul>
@@ -1915,7 +1972,10 @@ function BlogPane({ data, setData }) {
             </label>
           </div>
 
-          <div className="group-head">copy</div>
+          <div className="group-head">cover image</div>
+          <ImgSlot id={`post-cover-${p.slug}`} label="cover · 16:9" aspect="16/9" />
+
+          <div className="group-head" style={{ marginTop: 24 }}>copy</div>
           <BiField label="Title"    value={p.title}    path={["title"]}    set={setPost} />
           <BiField label="Excerpt"  value={p.excerpt}  path={["excerpt"]}  set={setPost} multiline />
           <BiField label="Subtitle" value={p.subtitle} path={["subtitle"]} set={setPost} multiline />
@@ -1969,6 +2029,7 @@ function BlogPane({ data, setData }) {
 
               {blk.kind === "figure" && (
                 <div>
+                  <ImgSlot id={`post-fig-${p.slug}-${i}`} label={blk.label || "figure"} aspect={blk.aspect || "16/9"} style={{ marginBottom: 12 }} />
                   <div className="row2" style={{ marginBottom: 8 }}>
                     <div className="field" style={{ marginBottom: 0 }}><label>label</label><input value={blk.label || ""} onChange={(e) => setPost(["body", i, "label"], e.target.value)} /></div>
                     <div className="field" style={{ marginBottom: 0 }}><label>aspect ratio (ex: 16/9)</label><input value={blk.aspect || "16/9"} onChange={(e) => setPost(["body", i, "aspect"], e.target.value)} /></div>
