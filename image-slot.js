@@ -56,6 +56,7 @@
   // re-encode keeps only the first frame, so an animated GIF would silently
   // go still — better to reject than surprise.
   const ACCEPT = ['image/png', 'image/jpeg', 'image/webp', 'image/avif'];
+  const ACCEPT_VIDEO = ['video/mp4', 'video/webm', 'video/quicktime', 'video/ogg', 'video/mpeg'];
 
   // ── Shared sidecar store ────────────────────────────────────────────────
   // One fetch + immediate write-on-change for every <image-slot> on the
@@ -248,7 +249,7 @@
         '</div>' +
         '<div class="ctl"><button data-act="replace" title="Replace image">Replace</button>' +
         '  <button data-act="clear" title="Remove image">Remove</button></div>' +
-        '<input type="file" accept="' + ACCEPT.join(',') + '" hidden>';
+        '<input type="file" accept="' + [...ACCEPT, ...ACCEPT_VIDEO].join(',') + '" hidden>';
       this._frame = root.querySelector('.frame');
       this._ring = root.querySelector('.ring');
       this._img = root.querySelector('.frame img');
@@ -466,25 +467,52 @@
 
     async _ingest(file) {
       this._setError(null);
-      if (!file || ACCEPT.indexOf(file.type) < 0) {
-        this._setError('Drop a PNG, JPEG, WebP, or AVIF image.');
+      const isVideo = ACCEPT_VIDEO.indexOf(file.type) >= 0;
+      if (!file || (!isVideo && ACCEPT.indexOf(file.type) < 0)) {
+        this._setError('Drop a PNG, JPEG, WebP or AVIF image — or MP4/WebM video.');
         return;
       }
-      // toDataUrl can take hundreds of ms on a large photo. A Clear or a
-      // newer drop during that window would be clobbered when this await
-      // resumes — bump + capture a generation so stale encodes bail.
+
+      if (isVideo) {
+        // Videos are too large for base64 — upload directly to the server.
+        const token = (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('akc-admin-token')) || '';
+        if (!token) { this._setError('Admin login required for video upload.'); return; }
+        const gen = ++this._gen;
+        const ext = (file.name.split('.').pop() || 'mp4').toLowerCase().replace(/[^a-z0-9]/g, '');
+        const safeName = (this.id || 'video').replace(/[^a-z0-9_-]/gi, '_') + '-' + Date.now() + '.' + ext;
+        this._setError('Uploading…');
+        try {
+          const res = await fetch('/api/upload?name=' + encodeURIComponent(safeName), {
+            method: 'POST',
+            headers: { 'Authorization': 'Bearer ' + token, 'Content-Type': file.type || 'video/mp4' },
+            body: file,
+          });
+          if (gen !== this._gen) return;
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          const d = await res.json();
+          if (gen !== this._gen) return;
+          if (!d.url) throw new Error('No URL returned');
+          this._setError(null);
+          const val = { u: d.url, type: 'video' };
+          setSlot(this.id || '', val);
+          if (!this.id) { this._local = val; this._render(); }
+        } catch (err) {
+          if (gen !== this._gen) return;
+          this._setError('Video upload failed.');
+          console.warn('<image-slot> video upload failed:', err);
+        }
+        return;
+      }
+
+      // ── Image path (unchanged) ──────────────────────────────────────────
       const gen = ++this._gen;
       try {
         const w = this.clientWidth || this.offsetWidth || MAX_DIM;
         const url = await toDataUrl(file, w);
         if (gen !== this._gen) return;
-        // Only exit reframe once the new image is in hand — a rejected type
-        // or decode failure leaves the in-progress crop untouched.
         this._exitReframe(false);
         const val = { u: url, s: 1, x: 0, y: 0 };
         setSlot(this.id || '', val);
-        // Keep a session-local copy for id-less slots so the drop still
-        // shows, even though it cannot persist.
         if (!this.id) { this._local = val; this._render(); }
       } catch (err) {
         if (gen !== this._gen) return;
@@ -612,20 +640,44 @@
           y: stored && Number.isFinite(stored.y) ? stored.y : 0,
         };
       }
-      this._cap.textContent = this.getAttribute('placeholder') || 'Drop an image';
+      this._cap.textContent = this.getAttribute('placeholder') || 'Drop an image or video';
+      const isVideoSlot = stored && stored.type === 'video';
+
       // Toggle via style.display — the [hidden] attribute alone loses to
       // the display:flex / display:block rules in the stylesheet above.
       if (url) {
-        if (this._img.getAttribute('src') !== url) {
-          this._img.src = url;
-          this._ghost.src = url;
+        if (isVideoSlot) {
+          // ── Video display ──────────────────────────────────────────────
+          if (!this._video) {
+            this._video = document.createElement('video');
+            this._video.setAttribute('controls', '');
+            this._video.setAttribute('playsinline', '');
+            this._video.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;' +
+              'object-fit:contain;background:#000;display:none';
+            this._frame.appendChild(this._video);
+          }
+          if (this._video.getAttribute('src') !== url) this._video.src = url;
+          this._video.style.display = 'block';
+          this._img.style.display = 'none';
+          this._img.removeAttribute('src');
+          this._ghost.removeAttribute('src');
+          this._empty.style.display = 'none';
+          this.setAttribute('data-filled', '');
+        } else {
+          // ── Image display (unchanged) ──────────────────────────────────
+          if (this._video) this._video.style.display = 'none';
+          if (this._img.getAttribute('src') !== url) {
+            this._img.src = url;
+            this._ghost.src = url;
+          }
+          this._img.style.display = 'block';
+          this._empty.style.display = 'none';
+          this.setAttribute('data-filled', '');
+          this._clampView();
+          this._applyView();
         }
-        this._img.style.display = 'block';
-        this._empty.style.display = 'none';
-        this.setAttribute('data-filled', '');
-        this._clampView();
-        this._applyView();
       } else {
+        if (this._video) this._video.style.display = 'none';
         this._img.style.display = 'none';
         this._img.removeAttribute('src');
         this._ghost.removeAttribute('src');
