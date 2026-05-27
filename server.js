@@ -112,6 +112,7 @@ app.post('/api/slots', requireAuth, express.text({ limit: '50mb' }), async (req,
                 access: 'public',
                 contentType: mime,
                 addRandomSuffix: false,
+                allowOverwrite: true,
               });
               val.u = blob.url;
             }
