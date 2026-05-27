@@ -1190,6 +1190,7 @@ function ImagesPane({ data }) {
   const caseGroups = (data.cases || []).map((c) => {
     const cover = { id: `case-cover-${c.slug}`, label: "cover · 16:9", aspect: "16/9" };
     const outputs = (c.output || []).flatMap((blk, i) => {
+      if (blk.kind === "video") return []; // vídeos não têm image slot
       const base = `case-output-${c.slug}-${i}`;
       if (blk.kind === "twin") return [
         { id: `${base}-a`, label: blk.labels[0], aspect: "4/5" },
