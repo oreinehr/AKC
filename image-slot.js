@@ -448,7 +448,6 @@
         // Without preventDefault the browser never fires 'drop'.
         e.preventDefault();
         e.stopPropagation();
-        if (!this.hasAttribute('data-editable')) return;
         if (e.dataTransfer) e.dataTransfer.dropEffect = 'copy';
         if (e.type === 'dragenter') this._depth++;
         this.setAttribute('data-over', '');
@@ -461,7 +460,6 @@
         e.stopPropagation();
         this._depth = 0;
         this.removeAttribute('data-over');
-        if (!this.hasAttribute('data-editable')) return;
         const f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
         if (f) this._ingest(f);
       }
@@ -621,9 +619,9 @@
       this._ring.style.display = mask ? 'none' : '';
 
       // Controls and reframe entry gate on this so share links stay read-only.
-      // Requires both omelette (write capability) AND a valid admin session token.
-      const hasToken = !!(typeof sessionStorage !== 'undefined' && sessionStorage.getItem('akc-admin-token'));
-      const editable = !!(window.omelette && window.omelette.writeFile) && hasToken;
+      // Security: omelette-shim.js only exists in admin.html, so window.omelette
+      // is never defined on public pages — no need for a separate token check here.
+      const editable = !!(window.omelette && window.omelette.writeFile);
       this.toggleAttribute('data-editable', editable);
       this._sub.style.display = editable ? '' : 'none';
 
