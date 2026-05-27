@@ -563,6 +563,82 @@ function ImgSlot({ id, label, aspect = "16/9", shape = "rect", style }) {
     </div>
   );
 }
+
+// Renders a video from a URL. Detects YouTube/Vimeo → iframe; otherwise → <video>.
+// Used both in the public case-study page and the admin preview.
+function VideoBlock({ url, aspect = "16/9", style }) {
+  if (!url) return (
+    <div className="ph" style={{ aspectRatio: aspect, ...style }}>
+      <span className="ph-label">video · placeholder</span>
+    </div>
+  );
+  const ytMatch = url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([\w-]+)/);
+  if (ytMatch) return (
+    <div style={{ aspectRatio: aspect, position: "relative", overflow: "hidden", background: "#000", ...style }}>
+      <iframe
+        src={`https://www.youtube.com/embed/${ytMatch[1]}`}
+        style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: "none" }}
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+      />
+    </div>
+  );
+  const vimeoMatch = url.match(/vimeo\.com\/(\d+)/);
+  if (vimeoMatch) return (
+    <div style={{ aspectRatio: aspect, position: "relative", overflow: "hidden", background: "#000", ...style }}>
+      <iframe
+        src={`https://player.vimeo.com/video/${vimeoMatch[1]}`}
+        style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: "none" }}
+        allow="autoplay; fullscreen; picture-in-picture"
+        allowFullScreen
+      />
+    </div>
+  );
+  return (
+    <div style={{ aspectRatio: aspect, background: "#000", ...style }}>
+      <video controls style={{ width: "100%", height: "100%", display: "block" }} src={url} />
+    </div>
+  );
+}
+
+// Admin-only video slot: URL input + file upload button + preview.
+function VideoAdminSlot({ id, url, onUrlChange, aspect = "16/9" }) {
+  const [uploading, setUploading] = useState(false);
+  const fileRef = React.useRef(null);
+  const upload = async (file) => {
+    setUploading(true);
+    try {
+      const token = sessionStorage.getItem('akc-admin-token') || '';
+      const safeName = `${id}-${Date.now()}.${(file.name.split('.').pop() || 'mp4').toLowerCase()}`;
+      const res = await fetch(`/api/upload?name=${encodeURIComponent(safeName)}`, {
+        method: 'POST',
+        headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': file.type || 'video/mp4' },
+        body: file,
+      });
+      const d = await res.json();
+      if (d.url) onUrlChange(d.url);
+    } catch (e) { alert('Upload falhou: ' + e.message); }
+    finally { setUploading(false); }
+  };
+  return (
+    <div style={{ marginBottom: 8 }}>
+      <div className="field" style={{ marginBottom: 6 }}>
+        <label>URL do vídeo (YouTube, Vimeo ou .mp4 direto)</label>
+        <input value={url || ""} onChange={(e) => onUrlChange(e.target.value)}
+          placeholder="https://youtube.com/watch?v=... · https://vimeo.com/..." />
+      </div>
+      <div style={{ display: "flex", gap: 8, marginBottom: 8 }}>
+        <button className="add-btn" disabled={uploading}
+          onClick={() => fileRef.current && fileRef.current.click()}>
+          {uploading ? "enviando…" : "↑ upload vídeo"}
+        </button>
+        <input ref={fileRef} type="file" accept="video/*" style={{ display: "none" }}
+          onChange={(e) => e.target.files[0] && upload(e.target.files[0])} />
+      </div>
+      <VideoBlock url={url} aspect={aspect} />
+    </div>
+  );
+}
 function LiveTime({ tz = "America/Sao_Paulo", code = "BRT" }) {
   const [t, setT] = useState("");
   useEffect(() => {
@@ -965,7 +1041,7 @@ function useBreakpoint() {
   return bp;
 }
 
-Object.assign(window, { Placeholder, ImgSlot, Nav, PageShell, LiveTime, NewsletterForm, t, useCobaltCursor, useBreakpoint });
+Object.assign(window, { Placeholder, ImgSlot, VideoBlock, Nav, PageShell, LiveTime, NewsletterForm, t, useCobaltCursor, useBreakpoint });
 
 // ─── Admin / CMS ───────────────────────────────────────────────────
 const ADMIN_TABS = [
@@ -1536,17 +1612,26 @@ function CasesPane({ data, setData }) {
 
   const addCase = () => {
     const n = cases.length + 1;
-    const slug = `case-${n}`;
+    const slug = `case-${Date.now()}`;
+    const newCase = {
+      slug,
+      meta: { num: `case 0${n}`, client: "New client", project: "New project", year: "2026",
+        role: { en: "Creative Director", pt: "Diretor Criativo" }, status: "draft", sector: "—", deliverables: [] },
+      brief: { head: { en: "—", pt: "—" }, body: { en: "—", pt: "—" }, callouts: [] },
+      approach: [], output: [], results: [],
+      quote: { text: { en: "", pt: "" }, author: "", role: { en: "", pt: "" } },
+      credits: [],
+      nextSlug: cases[0] ? cases[0].slug : null,
+    };
     setData((s) => ({
       ...s,
-      cases: [...s.cases, {
-        slug,
-        meta: { num: `case 0${n}`, client: "New client", project: "New project", year: "2026", role: "Creative Director", status: "draft", sector: "—", deliverables: [] },
-        brief: { head: "—", body: "—", callouts: [] },
-        approach: [], output: [], results: [],
-        quote: { text: "", author: "", role: "" },
-        credits: [],
-        nextSlug: cases[0] ? cases[0].slug : null,
+      cases: [...s.cases, newCase],
+      // Auto-create a linked Work entry so the case appears in the work grid
+      work: [...s.work, {
+        client: "New client", year: "2026",
+        title: { en: "New project", pt: "Novo projeto" },
+        summary: { en: "—", pt: "—" },
+        tone: "depth", caseSlug: slug,
       }],
     }));
     setSelSlug(slug);
@@ -1562,9 +1647,17 @@ function CasesPane({ data, setData }) {
 
   const removeCase = () => {
     if (!confirm(`Delete "${c.meta.client}"? This can't be undone.`)) return;
-    const remaining = cases.filter((x) => x.slug !== c.slug);
-    setData((s) => ({ ...s, cases: remaining, activeCaseSlug: remaining[0] ? remaining[0].slug : null }));
+    const slug = c.slug;
+    const remaining = cases.filter((x) => x.slug !== slug);
+    setData((s) => ({
+      ...s,
+      cases: remaining,
+      activeCaseSlug: remaining[0] ? remaining[0].slug : null,
+      // Unlink any Work entries that pointed to this case
+      work: s.work.map((w) => w.caseSlug === slug ? { ...w, caseSlug: null } : w),
+    }));
     if (remaining[0]) setSelSlug(remaining[0].slug);
+    else setSelSlug(null);
   };
 
   if (!c) {
@@ -1655,14 +1748,14 @@ function CasesPane({ data, setData }) {
           </div>
 
           <div className="group-head">01 brief</div>
-          <div className="field"><label>Headline</label><input value={c.brief.head} onChange={(e) => setCase(["brief", "head"], e.target.value)} /></div>
-          <div className="field"><label>Body</label><textarea rows={5} value={c.brief.body} onChange={(e) => setCase(["brief", "body"], e.target.value)} /></div>
+          <BiField label="Headline" value={c.brief.head} path={["brief", "head"]} set={setCase} />
+          <BiField label="Body" value={c.brief.body} path={["brief", "body"]} set={setCase} multiline />
           <label className="mini-label">Callouts (key / value)</label>
           {(c.brief.callouts || []).map((co, i) => (
             <div key={i} className="row2" style={{ gridTemplateColumns: "140px 1fr 80px", alignItems: "end", marginBottom: 10 }}>
               <div className="field" style={{ marginBottom: 0 }}><input value={co[0]} placeholder="key" onChange={(e) => setCase(["brief", "callouts", i, 0], e.target.value)} /></div>
-              <div className="field" style={{ marginBottom: 0 }}><input value={co[1]} placeholder="value" onChange={(e) => setCase(["brief", "callouts", i, 1], e.target.value)} /></div>
-              <button className="add-btn" style={{ height: 38 }} onClick={() => arrSplice("brief.callouts", i) || setData((s) => {
+              <div className="field" style={{ marginBottom: 0 }}><input value={typeof co[1] === "object" ? (co[1].en || "") : (co[1] || "")} placeholder="value" onChange={(e) => setCase(["brief", "callouts", i, 1], e.target.value)} /></div>
+              <button className="add-btn" style={{ height: 38 }} onClick={() => setData((s) => {
                 const n = JSON.parse(JSON.stringify(s));
                 n.cases[idx].brief.callouts = n.cases[idx].brief.callouts.filter((_, k) => k !== i);
                 return n;
@@ -1673,32 +1766,43 @@ function CasesPane({ data, setData }) {
 
           <div className="group-head">02 approach</div>
           {(c.approach || []).map((s, i) => (
-            <div key={i} className="row2" style={{ gridTemplateColumns: "70px 140px 1fr 80px", alignItems: "end", marginBottom: 12 }}>
-              <div className="field" style={{ marginBottom: 0 }}><label>num</label><input value={s.num} onChange={(e) => setCase(["approach", i, "num"], e.target.value)} /></div>
-              <div className="field" style={{ marginBottom: 0 }}><label>title</label><input value={s.title} onChange={(e) => setCase(["approach", i, "title"], e.target.value)} /></div>
-              <div className="field" style={{ marginBottom: 0 }}><label>body</label><input value={s.body} onChange={(e) => setCase(["approach", i, "body"], e.target.value)} /></div>
-              <button className="add-btn" style={{ height: 38 }} onClick={() => arrSplice("approach", i)}>remove</button>
+            <div key={i} style={{ border: "1px solid var(--border)", padding: "10px 12px", marginBottom: 10 }}>
+              <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 8 }}>
+                <div className="field" style={{ marginBottom: 0, width: 70 }}><label>num</label><input value={s.num} onChange={(e) => setCase(["approach", i, "num"], e.target.value)} /></div>
+                <button className="add-btn" style={{ height: 36, marginLeft: "auto" }} onClick={() => arrSplice("approach", i)}>remove</button>
+              </div>
+              <BiField label="title" value={s.title} path={["approach", i, "title"]} set={setCase} />
+              <BiField label="body" value={s.body} path={["approach", i, "body"]} set={setCase} multiline />
             </div>
           ))}
-          <button className="add-btn" onClick={() => arrPush("approach", { num: String((c.approach || []).length + 1).padStart(2, "0"), title: "Step", body: "—" })}>+ step</button>
+          <button className="add-btn" onClick={() => arrPush("approach", { num: String((c.approach || []).length + 1).padStart(2, "0"), title: { en: "Step", pt: "Passo" }, body: { en: "—", pt: "—" } })}>+ step</button>
 
           <div className="group-head">03 output</div>
           {(c.output || []).map((o, i) => {
             const base = `case-output-${c.slug}-${i}`;
             const isTwin = o.kind === "twin";
+            const isVideo = o.kind === "video";
             return (
               <div key={i} style={{ border: "1px solid var(--border)", padding: "12px 14px", marginBottom: 10 }}>
                 <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 10 }}>
                   <select value={o.kind} onChange={(e) => setCase(["output", i, "kind"], e.target.value)}
                     style={{ fontFamily: "var(--font-mono)", fontSize: 11, padding: "4px 6px", background: "var(--input-bg)", color: "var(--fg)", border: "1px solid var(--border)" }}>
-                    <option value="full">full · 16:9</option>
-                    <option value="wide">wide · 16:9</option>
-                    <option value="detail">detail · 3:2 (offset)</option>
-                    <option value="twin">twin · two 4:5</option>
+                    <option value="full">imagem · full 16:9</option>
+                    <option value="wide">imagem · wide 16:9</option>
+                    <option value="detail">imagem · detail 3:2</option>
+                    <option value="twin">imagem · twin 4:5</option>
+                    <option value="video">vídeo · 16:9</option>
                   </select>
                   <button onClick={() => arrSplice("output", i)} style={{ marginLeft: "auto" }}>remove</button>
                 </div>
-                {isTwin ? (
+                {isVideo ? (
+                  <VideoAdminSlot
+                    id={base}
+                    url={o.url || ""}
+                    onUrlChange={(url) => setCase(["output", i, "url"], url)}
+                    aspect="16/9"
+                  />
+                ) : isTwin ? (
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 8 }}>
                     <div>
                       <ImgSlot id={`${base}-a`} label={(o.labels && o.labels[0]) || "twin a · 4:5"} aspect="4/5" />
@@ -1718,31 +1822,39 @@ function CasesPane({ data, setData }) {
                 ) : (
                   <ImgSlot id={base} label={o.label || o.kind} aspect={o.kind === "detail" ? "3/2" : "16/9"} style={{ marginBottom: 8 }} />
                 )}
-                <div className="field" style={{ marginBottom: 0 }}>
-                  <label>caption</label>
-                  <input value={o.note || ""} onChange={(e) => setCase(["output", i, "note"], e.target.value)} />
-                </div>
+                {!isVideo && (
+                  <div className="field" style={{ marginBottom: 4 }}>
+                    <label>label</label>
+                    <input value={o.label || ""} onChange={(e) => setCase(["output", i, "label"], e.target.value)} />
+                  </div>
+                )}
+                <BiField label="caption" value={o.note} path={["output", i, "note"]} set={setCase} />
               </div>
             );
           })}
-          <button className="add-btn" onClick={() => arrPush("output", { kind: "full", label: "image · 16:9", note: "—" })}>+ block</button>
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+            <button className="add-btn" onClick={() => arrPush("output", { kind: "full", label: "image · 16:9", note: { en: "", pt: "" } })}>+ imagem</button>
+            <button className="add-btn" onClick={() => arrPush("output", { kind: "video", url: "", note: { en: "", pt: "" } })}>+ vídeo</button>
+          </div>
 
           <div className="group-head">04 results</div>
           {(c.results || []).map((r, i) => (
-            <div key={i} className="row2" style={{ gridTemplateColumns: "120px 1fr 80px", alignItems: "end", marginBottom: 12 }}>
-              <div className="field" style={{ marginBottom: 0 }}><label>stat</label><input value={r.stat} onChange={(e) => setCase(["results", i, "stat"], e.target.value)} /></div>
-              <div className="field" style={{ marginBottom: 0 }}><label>caption</label><input value={r.note} onChange={(e) => setCase(["results", i, "note"], e.target.value)} /></div>
-              <button className="add-btn" style={{ height: 38 }} onClick={() => arrSplice("results", i)}>remove</button>
+            <div key={i} style={{ border: "1px solid var(--border)", padding: "10px 12px", marginBottom: 10 }}>
+              <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 8 }}>
+                <div className="field" style={{ marginBottom: 0, width: 120 }}><label>stat</label><input value={r.stat} onChange={(e) => setCase(["results", i, "stat"], e.target.value)} /></div>
+                <button className="add-btn" style={{ height: 36, marginLeft: "auto" }} onClick={() => arrSplice("results", i)}>remove</button>
+              </div>
+              <BiField label="caption" value={r.note} path={["results", i, "note"]} set={setCase} />
             </div>
           ))}
-          <button className="add-btn" onClick={() => arrPush("results", { stat: "—", note: "—" })}>+ kpi</button>
+          <button className="add-btn" onClick={() => arrPush("results", { stat: "—", note: { en: "—", pt: "—" } })}>+ kpi</button>
 
           <div className="group-head">quote</div>
-          <div className="field"><label>Quote text</label><textarea rows={3} value={c.quote.text} onChange={(e) => setCase(["quote", "text"], e.target.value)} /></div>
+          <BiField label="Quote text" value={c.quote.text} path={["quote", "text"]} set={setCase} multiline />
           <div className="row2">
             <div className="field"><label>Author</label><input value={c.quote.author} onChange={(e) => setCase(["quote", "author"], e.target.value)} /></div>
-            <div className="field"><label>Role / context</label><input value={c.quote.role} onChange={(e) => setCase(["quote", "role"], e.target.value)} /></div>
           </div>
+          <BiField label="Role / context" value={c.quote.role} path={["quote", "role"]} set={setCase} />
 
           <div className="group-head">05 credits</div>
           {(c.credits || []).map((cr, i) => (

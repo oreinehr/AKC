@@ -128,6 +128,31 @@ app.post('/api/slots', requireAuth, express.text({ limit: '50mb' }), async (req,
   }
 });
 
+// POST /api/upload — raw binary file upload to Vercel Blob (or local /uploads)
+// Used by video uploads from the admin panel. Query: ?name=filename.ext
+app.post('/api/upload', requireAuth, express.raw({ limit: '500mb', type: '*/*' }), async (req, res) => {
+  try {
+    const raw = (req.query.name || `upload-${Date.now()}`);
+    const name = raw.replace(/[^a-z0-9._-]/gi, '_');
+    const mime = req.headers['content-type'] || 'application/octet-stream';
+    if (USE_BLOB) {
+      const blob = await put(`uploads/${name}`, req.body, {
+        access: 'public',
+        contentType: mime,
+        addRandomSuffix: false,
+      });
+      return res.json({ ok: true, url: blob.url });
+    }
+    // Local fallback
+    const dir = path.join(__dirname, 'uploads');
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir);
+    fs.writeFileSync(path.join(dir, name), req.body);
+    res.json({ ok: true, url: `/uploads/${name}` });
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
 if (require.main === module) {
   app.listen(PORT, () => console.log(`AKC → http://localhost:${PORT}`));
 }

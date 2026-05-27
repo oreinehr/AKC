@@ -204,6 +204,14 @@ function CaseStudy({ data, dark, setDark, lang, setLang, mobile, tablet, caseDat
                   </figure>
                 );
               }
+              if (blk.kind === "video") {
+                return (
+                  <figure className="g g--full" key={i}>
+                    <VideoBlock url={blk.url} aspect="16/9" />
+                    <figcaption>{t(blk.note, lang)}</figcaption>
+                  </figure>
+                );
+              }
               return null;
             })}
           </div>
