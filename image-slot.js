@@ -105,13 +105,24 @@
   // completion with the then-current slots.
   let saving = false;
   let saveDirty = false;
-  function save() {
+  // onError(message) is an optional callback; if the server returns a non-OK
+  // response the error is both logged to the console and forwarded to the caller
+  // so the slot that triggered the write can show it in its error overlay.
+  function save(onError) {
     if (saving) { saveDirty = true; return; }
     const w = window.omelette && window.omelette.writeFile;
     if (!w) return;
     saving = true;
     Promise.resolve(w(STATE_FILE, JSON.stringify(slots)))
-      .catch(() => {})
+      .then((res) => {
+        if (res && typeof res.ok === 'boolean' && !res.ok) {
+          return res.text().then((t) => { throw new Error('HTTP ' + res.status + ': ' + t); });
+        }
+      })
+      .catch((err) => {
+        console.error('[image-slot] save failed:', err);
+        if (onError) onError(err.message || 'Upload failed');
+      })
       .then(() => { saving = false; if (saveDirty) { saveDirty = false; save(); } });
   }
 
@@ -126,7 +137,7 @@
     return typeof v === 'string' ? { u: v, s: 1, x: 0, y: 0 } : v;
   }
 
-  function setSlot(id, val) {
+  function setSlot(id, val, onSaveError) {
     if (!id) return;
     if (val) { slots[id] = val; tombstones.delete(id); }
     else { delete slots[id]; if (!loaded) tombstones.add(id); }
@@ -134,7 +145,7 @@
     // A drop is rare + high-value — write immediately so nav-away can't lose
     // it. Gate on the initial read so we don't overwrite a sidecar we haven't
     // merged yet; the merge in load() keeps this change once the read lands.
-    if (loaded) save(); else load().then(save);
+    if (loaded) save(onSaveError); else load().then(() => save(onSaveError));
   }
 
   // ── Image downscale ─────────────────────────────────────────────────────
@@ -266,7 +277,10 @@
       this._subFn = () => this._render();
       // Shadow-DOM listeners live with the shadow DOM — bound once here so
       // disconnect/reconnect (e.g. React remount) doesn't stack handlers.
-      this._empty.addEventListener('click', () => this._input.click());
+      this._empty.addEventListener('click', () => {
+        if (!this.hasAttribute('data-editable')) return;
+        this._input.click();
+      });
       root.addEventListener('click', (e) => {
         const act = e.target && e.target.getAttribute && e.target.getAttribute('data-act');
         if (act === 'replace') { this._exitReframe(true); this._input.click(); }
@@ -460,6 +474,9 @@
         e.stopPropagation();
         this._depth = 0;
         this.removeAttribute('data-over');
+        // Only allow uploads in edit-enabled contexts (admin). Without the
+        // omelette-shim, data-editable is false and drops are silently ignored.
+        if (!this.hasAttribute('data-editable')) return;
         const f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
         if (f) this._ingest(f);
       }
@@ -494,7 +511,7 @@
           if (!d.url) throw new Error('No URL returned');
           this._setError(null);
           const val = { u: d.url, type: 'video' };
-          setSlot(this.id || '', val);
+          setSlot(this.id || '', val, (msg) => this._setError('Save failed: ' + msg));
           if (!this.id) { this._local = val; this._render(); }
         } catch (err) {
           if (gen !== this._gen) return;
@@ -504,7 +521,7 @@
         return;
       }
 
-      // ── Image path (unchanged) ──────────────────────────────────────────
+      // ── Image path ──────────────────────────────────────────────────────
       const gen = ++this._gen;
       try {
         const w = this.clientWidth || this.offsetWidth || MAX_DIM;
@@ -512,7 +529,7 @@
         if (gen !== this._gen) return;
         this._exitReframe(false);
         const val = { u: url, s: 1, x: 0, y: 0 };
-        setSlot(this.id || '', val);
+        setSlot(this.id || '', val, (msg) => this._setError('Save failed: ' + msg));
         if (!this.id) { this._local = val; this._render(); }
       } catch (err) {
         if (gen !== this._gen) return;
@@ -528,7 +545,9 @@
       d.className = 'err'; d.textContent = msg;
       this.shadowRoot.appendChild(d);
       this._err = d;
-      setTimeout(() => { if (this._err === d) { d.remove(); this._err = null; } }, 3000);
+      // Longer timeout for save errors so the user can read the message
+      const ms = msg.startsWith('Save failed') ? 8000 : 4000;
+      setTimeout(() => { if (this._err === d) { d.remove(); this._err = null; } }, ms);
     }
 
     // Reframing (pan/resize) is only meaningful for fit=cover — contain/fill
