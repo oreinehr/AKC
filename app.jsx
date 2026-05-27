@@ -125,7 +125,7 @@ const DEFAULTS = {
   // CMS-editable. Page surfaces read from data.marks[surface][key].
   marks: {
     home: {
-      heroVersion: "v 0.3 · lo-fi",
+      heroVersion: "v 0.3 · hi-fi",
       heroDate: "2026-05-14",
       aboutNum: "02 · about",
       aboutAnno: "about · medium bio",
@@ -414,7 +414,7 @@ const DEFAULTS = {
     inspWeek: "Week of Apr 27, 2026",
     footerQuote: "If you want to be a better designer, don't study design books. Study sculpture. Study paintings. Study cars, watches, philosophers, movies, fiction, music, people. Study the world.",
     footerQuoteAuthor: "Tobias van Schneider",
-    footerVersion: "v 0.3 · lo-fi",
+    footerVersion: "v 0.3 · hi-fi",
   },
 };
 
@@ -761,12 +761,11 @@ function PageShell({ data, dark, setDark, lang, setLang, hero, mobile, tablet, n
         <div className="page">
           <div className="sec-head">
             <div><div className="num">{m.aboutNum || "02 · about"}</div><span className="anno">{m.aboutAnno || "about · medium bio"}</span></div>
-            <div><h2>{t(sc.aboutTitle, lang) || "The practice in 200 words."}</h2><p className="sub">{t(sc.aboutSub, lang) || "Calibration sources, three numbers, sign-off."}</p></div>
+            <div><h2>{t(sc.aboutTitle, lang)}</h2><p className="sub">{t(sc.aboutSub, lang)}</p></div>
           </div>
           <div className="about-grid">
             <div />
             <div className="body">
-              <p className="proof">{t(data.about.proof, lang)}</p>
               <p>{t(data.about.body, lang)}</p>
               <ul>
                 {data.about.bullets.map(([n, btext], i) => (
@@ -784,10 +783,10 @@ function PageShell({ data, dark, setDark, lang, setLang, hero, mobile, tablet, n
         <div className="page">
           <div className="sec-head">
             <div><div className="num">{m.workNum || "03 · selected work"}</div><span className="anno">{m.workAnno || "3-up grid · §5.4"}</span></div>
-            <div><h2>{t(sc.workTitle, lang) || "Selected work."}</h2><p className="sub">{t(sc.workSub, lang) || "Six pieces. Placeholder images in phase 1."}</p></div>
+            <div><h2>{t(sc.workTitle, lang)}</h2><p className="sub">{t(sc.workSub, lang)}</p></div>
           </div>
           <div className="work-grid">
-            {data.work.map((w, i) => {
+            {data.work.slice(0, 6).map((w, i) => {
               const linked = !!w.caseSlug;
               const active = linked && w.caseSlug === activeCaseSlug;
               return (
@@ -799,7 +798,7 @@ function PageShell({ data, dark, setDark, lang, setLang, hero, mobile, tablet, n
                   aria-disabled={!linked}
                 >
                   <ImgSlot
-                    id={`work-thumb-${w.caseSlug || `unlinked-${i}`}`}
+                    id={w.caseSlug ? `case-cover-${w.caseSlug}` : `work-thumb-unlinked-${i}`}
                     label={`work · ${w.tone}`}
                     aspect="16/9"
                   />
@@ -814,6 +813,13 @@ function PageShell({ data, dark, setDark, lang, setLang, hero, mobile, tablet, n
               );
             })}
           </div>
+          {data.work.length > 6 && (
+            <div className="work-see-all">
+              <a href="/work.html" className="work-see-all__link">
+                {lang === "pt" ? `ver todos (${data.work.length}) →` : `view all (${data.work.length}) →`}
+              </a>
+            </div>
+          )}
         </div>
       </section>
 
@@ -822,7 +828,7 @@ function PageShell({ data, dark, setDark, lang, setLang, hero, mobile, tablet, n
         <div className="page">
           <div className="sec-head">
             <div><div className="num">{m.blogNum || "04 · blog"}</div><span className="anno">{m.blogAnno || "text-led · §5.5"}</span></div>
-            <div><h2>{t(sc.blogTitle, lang) || "Notes."}</h2><p className="sub">{t(sc.blogSub, lang) || "Low cadence, high substance."}</p></div>
+            <div><h2>{t(sc.blogTitle, lang)}</h2><p className="sub">{t(sc.blogSub, lang)}</p></div>
           </div>
           <div className="blog-list">
             {data.blog.map((b, i) => {
@@ -856,7 +862,7 @@ function PageShell({ data, dark, setDark, lang, setLang, hero, mobile, tablet, n
           <div className="insp-head">
             <div>
               <div className="num" style={{ fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: "0.04em", textTransform: "lowercase", color: "var(--muted)", marginBottom: 6 }}>{m.inspNum || "05 · weekly inspiration"}</div>
-              <h2>{t(sc.inspTitle, lang) || "What I'm looking at."}</h2>
+              <h2>{t(sc.inspTitle, lang)}</h2>
             </div>
             {sc.inspWeek && <div className="pill">{sc.inspWeek}</div>}
           </div>
@@ -881,8 +887,8 @@ function PageShell({ data, dark, setDark, lang, setLang, hero, mobile, tablet, n
             <div className="f-col f-brand">
               <img src="assets/akc_logo_white.svg" alt="AKC" className="f-logo" />
               <blockquote className="f-quote">
-                <p>{sc.footerQuote || "If you want to be a better designer, don't study design books. Study sculpture. Study paintings. Study cars, watches, philosophers, movies, fiction, music, people. Study the world."}</p>
-                <cite>— {sc.footerQuoteAuthor || "Tobias van Schneider"}</cite>
+                <p>{sc.footerQuote}</p>
+                <cite>— {sc.footerQuoteAuthor}</cite>
               </blockquote>
             </div>
 
@@ -924,7 +930,7 @@ function PageShell({ data, dark, setDark, lang, setLang, hero, mobile, tablet, n
               <span className="dot">·</span>
               <span>{data.meta.location.toLowerCase()}, br · <LiveTime /></span>
             </div>
-            <div className="f-version">{sc.footerVersion || "v 0.3 · lo-fi"}</div>
+            <div className="f-version">{sc.footerVersion}</div>
             <a href="#top" className="f-top-link">back to top <span className="arr">↑</span></a>
           </div>
         </div>
@@ -993,8 +999,8 @@ function VariationB({ data, dark, setDark, lang, setLang, mobile, tablet, naviga
           <div className="col">
             <h4>document</h4>
             <p>akc — landing</p>
-            <p>{m.heroVersion || "v 0.3 · lo-fi"}</p>
-            <p className="stamp">{m.heroDate || "2026-05-14"}</p>
+            <p>{m.heroVersion}</p>
+            <p className="stamp">{m.heroDate}</p>
           </div>
           <div className="col">
             <h4>filed under</h4>
@@ -1054,8 +1060,7 @@ const ADMIN_TABS = [
   ["clients", "Clients"],
   ["recognition", "Recognition"],
   ["contactPage", "Contact page"],
-  ["work", "Selected work"],
-  ["cases", "Case studies"],
+  ["cases", "Cases & work"],
   ["blog", "Blog"],
   ["newsletter", "Newsletter"],
   ["socials", "Socials"],
@@ -1110,7 +1115,7 @@ function AdminView({ data, setData }) {
     clients: (data.clients || []).length,
     recognition: (data.recognition || []).length,
     contactPage: 4 + ((data.contactPage?.fit || []).reduce((a, f) => a + (f.items?.length || 0), 0)),
-    work: data.work.length, cases: (data.cases || []).length,
+    cases: (data.cases || []).length + (data.work || []).filter((w) => !w.caseSlug).length,
     blog: data.blog.length,
     newsletter: 5, socials: data.socials.length,
     inspiration: data.inspiration.length,
@@ -1123,7 +1128,7 @@ function AdminView({ data, setData }) {
     <div className="admin">
       <div className="topbar">
         <div className="brand">AKC · CMS</div>
-        <div className="crumb">/admin · lo-fi sketch</div>
+        <div className="crumb">/admin · hi-fi sketch</div>
         <div className="actions">
           <button className="btn" onClick={() => { if (confirm("Reset to defaults?")) { localStorage.removeItem(STORE_KEY); location.reload(); } }}>Reset</button>
           <button className="btn btn--primary">Publish</button>
@@ -1156,7 +1161,6 @@ function AdminView({ data, setData }) {
           {tab === "clients" && <StringListPane title="Clients" subtitle="Selected clients, displayed in two columns on the About page. One line per client." data={data} setData={setData} field="clients" />}
           {tab === "recognition" && <ListPane title="Recognition" subtitle="Light and honest. Talks, mentions, press. Drives the About page recognition section." data={data} setData={setData} field="recognition" cols={[["year","Year"],["item","Item"]]} />}
           {tab === "contactPage" && <ContactPagePane data={data} set={set} setData={setData} />}
-          {tab === "work" && <WorkPane data={data} setData={setData} />}
           {tab === "cases" && <CasesPane data={data} setData={setData} />}
           {tab === "blog" && <BlogPane data={data} setData={setData} />}
           {tab === "newsletter" && <NewsletterPane data={data} set={set} />}
@@ -1176,16 +1180,15 @@ function ImagesPane({ data }) {
   const monoLabel = { fontSize: 11, fontFamily: "var(--font-mono)", color: "var(--muted)", marginBottom: 6, textTransform: "lowercase", letterSpacing: "0.03em" };
   const grid2 = { display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "24px 20px", marginBottom: 32 };
 
-  // Home — work card thumbnails (one per row entry)
-  const workSlots = (data.work || []).map((w, i) => ({
-    id: `work-thumb-${w.caseSlug || `unlinked-${i}`}`,
-    label: `${w.client} · ${w.year}`,
-    aspect: "16/9",
-  }));
+  // Home — only unlinked work cards (linked ones share case-cover-{slug}, shown below)
+  const workSlots = (data.work || []).flatMap((w, i) => {
+    if (w.caseSlug) return [];
+    return [{ id: `work-thumb-unlinked-${i}`, label: `${w.client || "card"} · ${w.year || "—"}`, aspect: "16/9" }];
+  });
 
   // Cases — each case is its own section
   const caseGroups = (data.cases || []).map((c) => {
-    const cover = { id: `case-cover-${c.slug}`, label: "cover · 21:9", aspect: "21/9" };
+    const cover = { id: `case-cover-${c.slug}`, label: "cover · 16:9", aspect: "16/9" };
     const outputs = (c.output || []).flatMap((blk, i) => {
       const base = `case-output-${c.slug}-${i}`;
       if (blk.kind === "twin") return [
@@ -1305,13 +1308,13 @@ function MetaPane({ data, set }) {
       <h1>Site & contact</h1>
       <p className="subhead">Identity — appears in nav, contact, footer, signature.</p>
       <div className="row2">
-        <div className="field"><label>Name</label><input value={m.name} onChange={(e) => set(["meta", "name"], e.target.value)} /></div>
-        <div className="field"><label>Role</label><input value={m.role} onChange={(e) => set(["meta", "role"], e.target.value)} /></div>
-        <div className="field"><label>Email</label><input value={m.email} onChange={(e) => set(["meta", "email"], e.target.value)} /></div>
-        <div className="field"><label>LinkedIn</label><input value={m.linkedin} onChange={(e) => set(["meta", "linkedin"], e.target.value)} /></div>
-        <div className="field"><label>Location</label><input value={m.location} onChange={(e) => set(["meta", "location"], e.target.value)} /></div>
-        <div className="field"><label>Domain</label><input value={m.domain} onChange={(e) => set(["meta", "domain"], e.target.value)} /></div>
+        <div className="field"><label>Name</label><input value={m.name || ""} onChange={(e) => set(["meta", "name"], e.target.value)} /></div>
+        <div className="field"><label>Email</label><input value={m.email || ""} onChange={(e) => set(["meta", "email"], e.target.value)} /></div>
+        <div className="field"><label>LinkedIn</label><input value={m.linkedin || ""} onChange={(e) => set(["meta", "linkedin"], e.target.value)} /></div>
+        <div className="field"><label>Location</label><input value={m.location || ""} onChange={(e) => set(["meta", "location"], e.target.value)} /></div>
+        <div className="field"><label>Domain</label><input value={m.domain || ""} onChange={(e) => set(["meta", "domain"], e.target.value)} /></div>
       </div>
+      <BiField label="Role / title" value={m.role} path={["meta", "role"]} set={set} />
     </div>
   );
 }
@@ -1335,31 +1338,38 @@ function HeroPane({ data, set }) {
 }
 function AboutPane({ data, set, setData }) {
   const a = data.about;
-  const setBullet = (i, j, v) => {
-    setData((s) => {
-      const n = JSON.parse(JSON.stringify(s));
-      n.about.bullets[i][j] = v;
-      return n;
-    });
-  };
-  const addBullet = () => setData((s) => ({ ...s, about: { ...s.about, bullets: [...s.about.bullets, [String(s.about.bullets.length + 1).padStart(2, "0"), "New proof point."]] } }));
+  const setBulletCopy = (i, val) => setData((s) => {
+    const n = JSON.parse(JSON.stringify(s));
+    n.about.bullets[i][1] = val;
+    return n;
+  });
+  const setBulletNum = (i, val) => setData((s) => {
+    const n = JSON.parse(JSON.stringify(s));
+    n.about.bullets[i][0] = val;
+    return n;
+  });
+  const addBullet = () => setData((s) => ({ ...s, about: { ...s.about, bullets: [...s.about.bullets, [String(s.about.bullets.length + 1).padStart(2, "0"), { en: "New proof point.", pt: "Novo ponto de prova." }]] } }));
   const removeBullet = (i) => setData((s) => ({ ...s, about: { ...s.about, bullets: s.about.bullets.filter((_, k) => k !== i) } }));
   return (
     <div>
       <h1>About</h1>
       <p className="subhead">Medium bio surface. Proof phrase, paragraph, three quantified bullets, sign-off.</p>
-      <div className="field"><label>Proof phrase (opener)</label><input value={a.proof} onChange={(e) => set(["about", "proof"], e.target.value)} /></div>
-      <div className="field"><label>Paragraph</label><textarea rows={5} value={a.body} onChange={(e) => set(["about", "body"], e.target.value)} /></div>
+      <BiField label="Proof phrase (opener)" value={a.proof} path={["about", "proof"]} set={set} />
+      <BiField label="Paragraph" value={a.body} path={["about", "body"]} set={set} multiline />
       <div className="group-head">proof points</div>
       {a.bullets.map((b, i) => (
-        <div key={i} className="row2" style={{ gridTemplateColumns: "60px 1fr 80px", alignItems: "end", marginBottom: 12 }}>
-          <div className="field"><label>num</label><input value={b[0]} onChange={(e) => setBullet(i, 0, e.target.value)} /></div>
-          <div className="field"><label>copy</label><input value={b[1]} onChange={(e) => setBullet(i, 1, e.target.value)} /></div>
-          <button className="add-btn" style={{ height: 38 }} onClick={() => removeBullet(i)}>remove</button>
+        <div key={i} style={{ border: "1px solid var(--border)", padding: "10px 12px", marginBottom: 10 }}>
+          <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 8 }}>
+            <div className="field" style={{ marginBottom: 0, width: 60 }}><label>num</label><input value={b[0]} onChange={(e) => setBulletNum(i, e.target.value)} /></div>
+            <button className="add-btn" style={{ height: 36, marginLeft: "auto" }} onClick={() => removeBullet(i)}>remove</button>
+          </div>
+          <BiField label="copy" value={b[1]} path={null} set={(_, val) => setBulletCopy(i, val)} />
         </div>
       ))}
       <button className="add-btn" onClick={addBullet}>+ add proof point</button>
-      <div className="field" style={{ marginTop: 24 }}><label>Sign-off</label><input value={a.signoff} onChange={(e) => set(["about", "signoff"], e.target.value)} /></div>
+      <div style={{ marginTop: 24 }}>
+        <BiField label="Sign-off" value={a.signoff} path={["about", "signoff"]} set={set} />
+      </div>
     </div>
   );
 }
@@ -1501,7 +1511,7 @@ function NewsletterPane({ data, set }) {
       </div>
       <div className="callout">
         <span className="dot" /> blog → newsletter
-        <p>Each row in the <b>Blog</b> table is published to this list as a broadcast on save. Existing rows can be re-sent from the row's action menu (lo-fi: not wired in this prototype).</p>
+        <p>Each row in the <b>Blog</b> table is published to this list as a broadcast on save. Existing rows can be re-sent from the row's action menu (hi-fi: not wired in this prototype).</p>
       </div>
     </div>
   );
@@ -1601,6 +1611,17 @@ function CasesPane({ data, setData }) {
         o = o[path[i]];
       }
       o[path[path.length - 1]] = value;
+      return next;
+    });
+  };
+
+  // setWork(key, value) — patch the work entry linked to this case
+  const setWork = (key, value) => {
+    setData((s) => {
+      const next = JSON.parse(JSON.stringify(s));
+      const wi = next.work.findIndex((w) => w.caseSlug === c.slug);
+      if (wi === -1) return s;
+      next.work[wi][key] = value;
       return next;
     });
   };
@@ -1724,8 +1745,35 @@ function CasesPane({ data, setData }) {
             <button className="add-btn" style={{ color: "var(--color-accent-quiet)" }} onClick={removeCase}>delete case</button>
           </div>
 
+          {/* ── Home card ── */}
+          {(() => {
+            const w = (data.work || []).find((w) => w.caseSlug === c.slug);
+            if (!w) return (
+              <div className="group-head" style={{ color: "var(--muted)" }}>home card · not linked to a work entry</div>
+            );
+            return (
+              <>
+                <div className="group-head">home card</div>
+                <div className="row2">
+                  <div className="field"><label>Client</label><input value={w.client || ""} onChange={(e) => setWork("client", e.target.value)} /></div>
+                  <div className="field"><label>Year</label><input value={w.year || ""} onChange={(e) => setWork("year", e.target.value)} /></div>
+                </div>
+                <BiField label="Title" value={w.title} path={null} set={(_, val) => setWork("title", val)} />
+                <BiField label="Summary" value={w.summary} path={null} set={(_, val) => setWork("summary", val)} multiline />
+                <div className="field">
+                  <label>Tone</label>
+                  <select value={w.tone || "depth"} onChange={(e) => setWork("tone", e.target.value)}>
+                    <option value="depth">depth</option>
+                    <option value="tonal">tonal</option>
+                    <option value="kinetic">kinetic</option>
+                  </select>
+                </div>
+              </>
+            );
+          })()}
+
           <div className="group-head">cover image</div>
-          <ImgSlot id={`case-cover-${c.slug}`} label="cover · 21:9" aspect="21/9" />
+          <ImgSlot id={`case-cover-${c.slug}`} label="cover · 16:9" aspect="16/9" />
 
           <div className="group-head" style={{ marginTop: 24 }}>cover meta</div>
           <div className="row2">
@@ -1734,7 +1782,6 @@ function CasesPane({ data, setData }) {
             <div className="field"><label>Client</label><input value={c.meta.client} onChange={(e) => setCase(["meta", "client"], e.target.value)} /></div>
             <div className="field"><label>Project title</label><input value={c.meta.project} onChange={(e) => setCase(["meta", "project"], e.target.value)} /></div>
             <div className="field"><label>Year(s)</label><input value={c.meta.year} onChange={(e) => setCase(["meta", "year"], e.target.value)} /></div>
-            <div className="field"><label>Role</label><input value={c.meta.role} onChange={(e) => setCase(["meta", "role"], e.target.value)} /></div>
             <div className="field"><label>Sector</label><input value={c.meta.sector} onChange={(e) => setCase(["meta", "sector"], e.target.value)} /></div>
             <div className="field"><label>Status</label>
               <select value={c.meta.status} onChange={(e) => setCase(["meta", "status"], e.target.value)}>
@@ -1742,6 +1789,7 @@ function CasesPane({ data, setData }) {
               </select>
             </div>
           </div>
+          <BiField label="Role" value={c.meta.role} path={["meta", "role"]} set={setCase} />
           <div className="field">
             <label>Deliverables (one per line)</label>
             <textarea rows={4} value={(c.meta.deliverables || []).join("\n")} onChange={(e) => setCase(["meta", "deliverables"], e.target.value.split("\n").filter(Boolean))} />
@@ -1877,6 +1925,49 @@ function CasesPane({ data, setData }) {
           </div>
         </div>
       </div>
+
+      {/* Standalone work cards (no case linked) */}
+      {(() => {
+        const unlinked = (data.work || []).filter((w) => !w.caseSlug);
+        if (!unlinked.length) return null;
+        const updateUnlinked = (slug_or_i, key, val) => setData((s) => {
+          const n = JSON.parse(JSON.stringify(s));
+          const wi = n.work.findIndex((w, i) => !w.caseSlug && (w._id === slug_or_i || i === slug_or_i));
+          if (wi === -1) return s;
+          n.work[wi][key] = val;
+          return n;
+        });
+        const removeUnlinked = (wi) => setData((s) => ({ ...s, work: s.work.filter((_, k) => k !== wi) }));
+        return (
+          <div style={{ marginTop: 48, borderTop: "1px solid var(--border)", paddingTop: 24 }}>
+            <div className="cases-top">
+              <h2 style={{ fontSize: 18, marginBottom: 4 }}>Cards sem case</h2>
+              <p className="subhead">Entradas na grade da home que não têm um case study vinculado.</p>
+            </div>
+            <div className="card-list" style={{ marginTop: 16 }}>
+              {(data.work || []).map((w, wi) => {
+                if (w.caseSlug) return null;
+                return (
+                  <div className="card-row" key={wi}>
+                    <div className="info" style={{ display: "flex", flexDirection: "column", gap: 6, flex: 1 }}>
+                      <div className="row2">
+                        <div className="field" style={{ marginBottom: 0 }}><label>client</label><input value={w.client || ""} onChange={(e) => { const n = JSON.parse(JSON.stringify(data)); n.work[wi].client = e.target.value; setData(() => n); }} /></div>
+                        <div className="field" style={{ marginBottom: 0 }}><label>year</label><input value={w.year || ""} onChange={(e) => { const n = JSON.parse(JSON.stringify(data)); n.work[wi].year = e.target.value; setData(() => n); }} /></div>
+                      </div>
+                      <div className="field" style={{ marginBottom: 0 }}><label>title</label><input value={typeof w.title === "object" ? (w.title.en || "") : (w.title || "")} onChange={(e) => { const n = JSON.parse(JSON.stringify(data)); n.work[wi].title = e.target.value; setData(() => n); }} /></div>
+                      <div className="field" style={{ marginBottom: 0 }}><label>summary</label><input value={typeof w.summary === "object" ? (w.summary.en || "") : (w.summary || "")} onChange={(e) => { const n = JSON.parse(JSON.stringify(data)); n.work[wi].summary = e.target.value; setData(() => n); }} /></div>
+                    </div>
+                    <div className="ctrls">
+                      <button onClick={() => removeUnlinked(wi)}>delete</button>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+            <button className="add-btn" onClick={() => setData((s) => ({ ...s, work: [...s.work, { client: "", year: "", title: "", summary: "", tone: "depth", caseSlug: null }] }))}>+ add card</button>
+          </div>
+        );
+      })()}
     </div>
   );
 }

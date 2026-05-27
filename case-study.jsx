@@ -96,8 +96,8 @@ function CaseStudy({ data, dark, setDark, lang, setLang, mobile, tablet, caseDat
         <div className="cover-image">
           <ImgSlot
             id={`case-cover-${c.slug || c.meta.client}`}
-            label={c.meta.client + " · cover · 21:9"}
-            aspect="21/9"
+            label={c.meta.client + " · cover · 16:9"}
+            aspect="16/9"
           />
         </div>
       </div>

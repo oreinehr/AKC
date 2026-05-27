@@ -674,7 +674,7 @@
   ],
   "marks": {
     "home": {
-      "heroVersion": "v 0.3 · lo-fi",
+      "heroVersion": "v 0.3 · hi-fi",
       "heroDate": "2026-05-14",
       "aboutNum": "02 · about",
       "aboutAnno": "about · medium bio",
@@ -1599,6 +1599,6 @@
     "inspWeek": "Week of Apr 27, 2026",
     "footerQuote": "If you want to be a better designer, don't study design books. Study sculpture. Study paintings. Study cars, watches, philosophers, movies, fiction, music, people. Study the world.",
     "footerQuoteAuthor": "Tobias van Schneider",
-    "footerVersion": "v 0.3 · lo-fi"
+    "footerVersion": "v 0.3 · hi-fi"
   }
 }

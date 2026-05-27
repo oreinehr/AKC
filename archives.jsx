@@ -1,8 +1,8 @@
-/* global React, Placeholder, ImgSlot, Nav, LiveTime */
+/* global React, Placeholder, ImgSlot, Nav, LiveTime, useCobaltCursor */
 // Archive pages — /work (all cases) and /notes (all posts).
 // Filterable by year + (sector | tag). Same dark register as the rest.
 
-const { useState: useStateA, useMemo: useMemoA } = React;
+const { useState: useStateA, useMemo: useMemoA, useRef: useRefA } = React;
 
 // Small filter-chip strip used by both archives.
 function FilterStrip({ label, options, value, onChange }) {
@@ -20,6 +20,8 @@ function FilterStrip({ label, options, value, onChange }) {
 }
 
 function ArchiveWork({ data, dark, setDark, lang, setLang, mobile, navigate }) {
+  const rootRef = useRefA(null);
+  useCobaltCursor(rootRef);
   const openCase = (navigate && navigate.openCase) || (() => {});
   const items = data.work || [];
 
@@ -43,7 +45,7 @@ function ArchiveWork({ data, dark, setDark, lang, setLang, mobile, navigate }) {
   });
 
   return (
-    <div className={`wf ${dark ? "dark" : ""} ${mobile ? "wf--mobile" : ""} archive archive-work`} id="top">
+    <div ref={rootRef} className={`wf ${dark ? "dark" : ""} ${mobile ? "wf--mobile" : ""} archive archive-work`} id="top">
       <Nav darkOn={dark} onToggleDark={setDark} lang={lang} onLang={setLang} location={data.meta.location.toLowerCase()} mobile={mobile} />
 
       <section className="ar-head">
@@ -78,7 +80,7 @@ function ArchiveWork({ data, dark, setDark, lang, setLang, mobile, navigate }) {
                   aria-disabled={!linked}
                 >
                   <div className="ar-work-thumb">
-                    <ImgSlot id={`archive-work-${w.caseSlug || i}`} label={`work · ${w.tone}`} aspect="16/9" />
+                    <ImgSlot id={w.caseSlug ? `case-cover-${w.caseSlug}` : `archive-work-unlinked-${i}`} label={`work · ${w.tone}`} aspect="16/9" />
                   </div>
                   <div className="ar-work-meta">
                     <div className="ar-meta-row">
@@ -106,6 +108,8 @@ function ArchiveWork({ data, dark, setDark, lang, setLang, mobile, navigate }) {
 }
 
 function ArchiveNotes({ data, dark, setDark, lang, setLang, mobile, navigate }) {
+  const rootRef = useRefA(null);
+  useCobaltCursor(rootRef);
   const openPost = (navigate && navigate.openPost) || (() => {});
   const items = data.blog || [];
 
@@ -126,7 +130,7 @@ function ArchiveNotes({ data, dark, setDark, lang, setLang, mobile, navigate }) 
   });
 
   return (
-    <div className={`wf ${dark ? "dark" : ""} ${mobile ? "wf--mobile" : ""} archive archive-notes`} id="top">
+    <div ref={rootRef} className={`wf ${dark ? "dark" : ""} ${mobile ? "wf--mobile" : ""} archive archive-notes`} id="top">
       <Nav darkOn={dark} onToggleDark={setDark} lang={lang} onLang={setLang} location={data.meta.location.toLowerCase()} mobile={mobile} />
 
       <section className="ar-head">
