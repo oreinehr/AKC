@@ -523,10 +523,12 @@
 
       // ── Image path ──────────────────────────────────────────────────────
       const gen = ++this._gen;
+      this._setError('Processing…');
       try {
         const w = this.clientWidth || this.offsetWidth || MAX_DIM;
         const url = await toDataUrl(file, w);
         if (gen !== this._gen) return;
+        this._setError(null);
         this._exitReframe(false);
         const val = { u: url, s: 1, x: 0, y: 0 };
         setSlot(this.id || '', val, (msg) => this._setError('Save failed: ' + msg));
