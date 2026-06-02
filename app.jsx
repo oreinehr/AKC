@@ -1776,6 +1776,14 @@ function CasesPane({ data, setData }) {
           <div className="group-head">cover image</div>
           <ImgSlot id={`case-cover-${c.slug}`} label="cover · 16:9" aspect="16/9" />
 
+          <div className="group-head" style={{ marginTop: 16 }}>cover vídeo <span style={{ fontWeight: 400, opacity: 0.55 }}>(opcional — substitui a imagem na página do case)</span></div>
+          <VideoAdminSlot
+            id={`case-cover-video-${c.slug}`}
+            url={c.coverVideo || ""}
+            onUrlChange={(url) => setCase(["coverVideo"], url || null)}
+            aspect="16/9"
+          />
+
           <div className="group-head" style={{ marginTop: 24 }}>cover meta</div>
           <div className="row2">
             <div className="field"><label>Slug</label><input value={c.slug} onChange={(e) => setCase(["slug"], e.target.value)} /></div>

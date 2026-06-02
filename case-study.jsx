@@ -94,11 +94,15 @@ function CaseStudy({ data, dark, setDark, lang, setLang, mobile, tablet, caseDat
           <div className="col"><h4>{lang === "pt" ? "status" : "status"}</h4><p>{c.meta.status}</p></div>
         </div>
         <div className="cover-image">
-          <ImgSlot
-            id={`case-cover-${c.slug || c.meta.client}`}
-            label={c.meta.client + " · cover · 16:9"}
-            aspect="16/9"
-          />
+          {c.coverVideo ? (
+            <VideoBlock url={c.coverVideo} aspect="16/9" />
+          ) : (
+            <ImgSlot
+              id={`case-cover-${c.slug || c.meta.client}`}
+              label={c.meta.client + " · cover · 16:9"}
+              aspect="16/9"
+            />
+          )}
         </div>
       </div>
     </section>
