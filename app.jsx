@@ -38,7 +38,6 @@ const DEFAULTS = {
   work: [
     { client: "TGR Studio", year: "2024–present", title: { en: "Creative direction at TGR", pt: "Direção criativa na TGR" }, summary: { en: "UX and brand work across enterprise web platforms.", pt: "Trabalho de UX e marca em plataformas web corporativas." }, tone: "depth", caseSlug: "tgr-studio" },
     { client: "K2 · K1 Group", year: "2022–2024", title: { en: "Productivity rebuild", pt: "Reconstrução de produtividade" }, summary: { en: "Team and process reset; 274% lift inside twelve months.", pt: "Reset de time e processo; 274% de ganho em doze meses." }, tone: "tonal", caseSlug: "k2-k1-group" },
-    { client: "NYC Service", year: "2018", title: { en: "Subway campaign system", pt: "Sistema de campanha no metrô" }, summary: { en: "Public-facing identity distributed across the NYC transit network.", pt: "Identidade pública distribuída pela rede de transporte de NYC." }, tone: "kinetic", caseSlug: "nyc-service" },
     { client: "Bureau Blank · NY", year: "2016–2018", title: { en: "Civic brand work", pt: "Trabalho de marca cívica" }, summary: { en: "Senior creative leadership across public-sector accounts.", pt: "Liderança criativa sênior em contas do setor público." }, tone: "depth", caseSlug: null },
     { client: "Confidential · BR", year: "2020–2022", title: { en: "Enterprise platform reset", pt: "Reset de plataforma enterprise" }, summary: { en: "Brand + UX system for a multi-product surface.", pt: "Sistema de marca + UX para uma superfície multi-produto." }, tone: "tonal", caseSlug: null },
     { client: "Personal", year: "2025", title: { en: "AI-native practice notes", pt: "Notas de prática nativa com IA" }, summary: { en: "Working method for AI as a daily teammate, not a tagline.", pt: "Método de trabalho com IA como parceira diária, não como slogan." }, tone: "kinetic", caseSlug: null },
@@ -289,58 +288,6 @@ const DEFAULTS = {
         ["Client", "K1 Group leadership"],
         ["Period", "2022 — 2024"],
         ["Status", "Shipped · still in use"],
-      ],
-      nextSlug: "nyc-service",
-    },
-    {
-      slug: "nyc-service",
-      meta: {
-        num: "case 03",
-        client: "NYC Service",
-        project: "Subway campaign system",
-        year: "2018",
-        role: { en: "Senior Creative · Bureau Blank", pt: "Criativo Sênior · Bureau Blank" },
-        status: "shipped",
-        sector: "Public-sector · New York City",
-        deliverables: ["Identity system", "Transit campaign", "Out-of-home rollout", "Print collateral"],
-      },
-      brief: {
-        head: { en: "Public-facing identity, distributed across the New York City subway system.", pt: "Identidade pública, distribuída pelo sistema de metrô de Nova York." },
-        body: { en: "NYC Service needed an identity strong enough to live next to MTA's permanent signage without disappearing — and to feel like a civic invitation, not an ad. Designed at Bureau Blank, rolled out across the transit network.", pt: "O NYC Service precisava de uma identidade forte o suficiente para conviver com a sinalização permanente do MTA sem desaparecer — e para soar como um convite cívico, não como um anúncio. Desenhada na Bureau Blank, distribuída por toda a rede de transporte." },
-        callouts: [
-          ["scope", { en: "Identity + campaign system + transit rollout.", pt: "Identidade + sistema de campanha + distribuição em trânsito." }],
-          ["timeline", { en: "Identity 6 weeks. Rollout staged across 4 months.", pt: "Identidade em 6 semanas. Distribuição em etapas ao longo de 4 meses." }],
-          ["constraint", { en: "Public-sector procurement timeline. Print-first.", pt: "Cronograma de aquisição do setor público. Print primeiro." }],
-        ],
-      },
-      approach: [
-        { num: "01", title: { en: "Civic register", pt: "Registro cívico" }, body: { en: "Find a visual register that's distinct from commercial OOH but doesn't read as government wallpaper. Civic, not corporate.", pt: "Encontrar um registro visual distinto do OOH comercial, mas que não pareça papelão de governo. Cívico, não corporativo." } },
-        { num: "02", title: { en: "Live with MTA", pt: "Conviver com o MTA" }, body: { en: "Test every layout against the actual subway environment — fluorescent light, sticker tags, crowd density.", pt: "Testar cada layout no ambiente real do metrô — luz fluorescente, etiquetas de adesivo, densidade de passageiros." } },
-        { num: "03", title: { en: "Print system", pt: "Sistema de impressão" }, body: { en: "Production-real specs from day one. The identity has to survive offset, riso, large-format print, vinyl.", pt: "Especificações reais de produção desde o primeiro dia. A identidade precisa sobreviver a offset, riso, impressão em grande formato e vinil." } },
-        { num: "04", title: { en: "Ship into the city", pt: "Lançar na cidade" }, body: { en: "Stage the rollout across stations. Every placement is documented and feeds back into refinement.", pt: "Distribuir nas estações em etapas. Cada placement é documentado e retorna como input para refinamento." } },
-      ],
-      output: [
-        { kind: "full", label: "platform poster · 16:9", note: { en: "Hero rollout across major subway hubs.", pt: "Distribuição hero pelos principais hubs do metrô." } },
-        { kind: "twin", labels: ["station signage · 4:5", "in-car ad · 4:5"], note: { en: "Two of the eight distinct placements.", pt: "Dois dos oito placements distintos." } },
-        { kind: "wide", label: "print specimen · 16:9", note: { en: "Identity specimen, production-spec.", pt: "Espécime de identidade, spec de produção." } },
-        { kind: "detail", label: "detail · 3:2", note: { en: "Type detail · custom letterforms.", pt: "Detalhe tipográfico · letterforms customizados." } },
-      ],
-      results: [
-        { stat: "8", note: { en: "Distinct placements across the subway system.", pt: "Placements distintos pelo sistema de metrô." } },
-        { stat: "4 mo.", note: { en: "End-to-end identity rollout.", pt: "Rollout de identidade do início ao fim." } },
-        { stat: "—", note: { en: "Lives in the city since 2018. Still cited.", pt: "Vive na cidade desde 2018. Ainda referenciado." } },
-      ],
-      quote: {
-        text: { en: "It still reads right when I'm standing on the platform. That's the whole job.", pt: "Ainda funciona quando estou parado na plataforma. Esse era o trabalho inteiro." },
-        author: "(self · 2023 retrospective)",
-        role: { en: "Looking back, five years on", pt: "Olhando para trás, cinco anos depois" },
-      },
-      credits: [
-        ["Studio", "Bureau Blank · New York"],
-        ["Senior Creative", "Alessandro Kuhn Contes"],
-        ["Client", "NYC Service"],
-        ["Period", "2018"],
-        ["Status", "Shipped · live in the system"],
       ],
       nextSlug: "tgr-studio",
     },
@@ -1768,7 +1715,7 @@ function CasesPane({ data, setData }) {
                     <option value="tonal">tonal</option>
                     <option value="kinetic">kinetic</option>
                   </select>
-                </div>
+w                </div>
               </>
             );
           })()}
