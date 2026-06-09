@@ -1023,7 +1023,7 @@ function VariationB({ data, dark, setDark, lang, setLang, mobile, tablet, naviga
               <img src="assets/Alessandro 2.jpg" alt={data.meta.name} className="p-rest" />
               <img src="assets/Alessandro_hover.jpg" alt="" className="p-hover" aria-hidden="true" />
             </div>
-            <div className="caption">{lang === "pt" ? "retrato por barreto content" : "portrait by barreto content"}</div>
+            <div className="caption">{lang === "pt" ? "retrato por " : "portrait by "}<a href="https://www.instagram.com/barreto.content/" target="_blank" rel="noreferrer" className="caption-link">barreto content</a></div>
           </div>
         </div>
 
