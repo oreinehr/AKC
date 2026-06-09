@@ -1,4 +1,4 @@
-/* global React, Placeholder, Nav, PageShell, LiveTime */
+/* global React, Placeholder, Nav, PageShell, LiveTime, FullFooter */
 // Work case study template — desktop + mobile via wf--mobile modifier.
 // Uses the shared Nav + footer scaffold so the chrome stays consistent
 // with the home wireframe.
@@ -278,37 +278,11 @@ function CaseStudy({ data, dark, setDark, lang, setLang, mobile, tablet, caseDat
         </div>
       </section>
 
-      {/* Footer — borrow from home; minimal version for case page */}
-      <CaseFooter data={data} lang={lang} />
+      {/* Footer */}
+      <FullFooter data={data} lang={lang} />
     </div>
   );
 }
 
-// Slimmer footer specific to case pages — same brand language as home,
-// but the sign-off swaps to "more work" instead of newsletter capture.
-function CaseFooter({ data, lang }) {
-  return (
-    <footer className="footer case-footer">
-      <div className="page footer-inner">
-        <div className="cf-row">
-          <a href="/" className="cf-mark">
-            <img src="assets/akc_logo_white.svg" alt="AKC" />
-          </a>
-          <div className="cf-links">
-            <a href="/work.html">{lang === "pt" ? "Todos os trabalhos" : "All work"}</a>
-            <a href="/about.html">About</a>
-            <a href={`mailto:${data.meta.email}`}>Email</a>
-            <a href={`https://${data.meta.linkedin}`} target="_blank" rel="noreferrer">LinkedIn</a>
-          </div>
-        </div>
-        <div className="cf-bottom">
-          <span>© 2026 · {data.meta.name.toLowerCase()}</span>
-          <span className="dot">·</span>
-          <span>{data.meta.location.toLowerCase()}, br · <LiveTime /></span>
-        </div>
-      </div>
-    </footer>
-  );
-}
 
 Object.assign(window, { CaseStudy });

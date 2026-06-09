@@ -1,4 +1,4 @@
-/* global React, Placeholder, Nav, LiveTime, NewsletterForm */
+/* global React, Placeholder, Nav, LiveTime, NewsletterForm, FullFooter */
 // Blog post template — desktop + mobile.
 // Long-form reading layout. In-line images, pull-quotes, related posts,
 // newsletter capture at the bottom (loops back to the publish pipeline).
@@ -178,27 +178,8 @@ function BlogPost({ data, dark, setDark, lang, setLang, mobile, tablet, postData
         </div>
       </section>
 
-      {/* slim footer — same as case template */}
-      <footer className="footer case-footer">
-        <div className="page footer-inner">
-          <div className="cf-row">
-            <a href="#" className="cf-mark">
-              <img src="assets/akc_logo_white.svg" alt="AKC" />
-            </a>
-            <div className="cf-links">
-              <a href="/blog.html">{lang === "pt" ? "Todas as notas" : "All notes"}</a>
-              <a href="/about.html">About</a>
-              <a href={`mailto:${data.meta.email}`}>Email</a>
-              <a href={`https://${data.meta.linkedin}`} target="_blank" rel="noreferrer">LinkedIn</a>
-            </div>
-          </div>
-          <div className="cf-bottom">
-            <span>© 2026 · {data.meta.name.toLowerCase()}</span>
-            <span className="dot">·</span>
-            <span>{data.meta.location.toLowerCase()}, br · <LiveTime /></span>
-          </div>
-        </div>
-      </footer>
+      {/* Footer */}
+      <FullFooter data={data} lang={lang} />
     </div>
   );
 }

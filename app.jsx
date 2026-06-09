@@ -691,6 +691,59 @@ function Nav({ darkOn, onToggleDark, lang = "en", onLang, location, mobile }) {
   );
 }
 
+function FullFooter({ data, lang }) {
+  const sc = data.sections || {};
+  return (
+    <footer className="footer">
+      <div className="page footer-inner">
+        <div className="f-grid">
+          <div className="f-col f-brand">
+            <a href="/"><img src="assets/akc_logo_white.svg" alt="AKC" className="f-logo" /></a>
+            <blockquote className="f-quote">
+              <p>{sc.footerQuote}</p>
+              <cite>— {sc.footerQuoteAuthor}</cite>
+            </blockquote>
+          </div>
+          <div className="f-col">
+            <h4>{lang === "pt" ? "Mapa do site" : "Sitemap"}</h4>
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="/about.html">{lang === "pt" ? "Sobre" : "About"}</a></li>
+              <li><a href="/work.html">{lang === "pt" ? "Trabalhos" : "Work"}</a></li>
+              <li><a href="/blog.html">Blog</a></li>
+              <li><a href="/contact.html">{lang === "pt" ? "Contato" : "Contact"}</a></li>
+            </ul>
+          </div>
+          <div className="f-col">
+            <h4>{lang === "pt" ? "Contato" : "Connect"}</h4>
+            <ul>
+              {data.socials.map((s, i) => (
+                <li key={i}>
+                  <a href={s.href} target={s.href.startsWith("http") ? "_blank" : undefined} rel="noreferrer">{s.label}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="f-col f-news">
+            <h4>{t(data.newsletter.title, lang)}</h4>
+            <p className="f-news-blurb">{t(data.newsletter.blurb, lang)}</p>
+            <NewsletterForm n={data.newsletter} lang={lang} />
+          </div>
+        </div>
+        <div className="f-bottom">
+          <div className="f-meta">
+            <span>© 2026 · {data.meta.name.toLowerCase()}</span>
+            <span className="dot">·</span>
+            <span>{data.meta.location.toLowerCase()}, br · <LiveTime /></span>
+          </div>
+          <div className="f-version">{sc.footerVersion}</div>
+          <a href="#top" className="f-top-link">back to top <span className="arr">↑</span></a>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
 function PageShell({ data, dark, setDark, lang, setLang, hero, mobile, tablet, navigate, activeCaseSlug, activePostSlug }) {
   const openCase = (navigate && navigate.openCase) || (() => {});
   const openPost = (navigate && navigate.openPost) || (() => {});
@@ -827,61 +880,7 @@ function PageShell({ data, dark, setDark, lang, setLang, hero, mobile, tablet, n
       {/* Contact — removed; reach-out lives in the footer Connect column */}
 
       {/* Footer */}
-      <footer className="footer">
-        <div className="page footer-inner">
-          <div className="f-grid">
-            {/* Col 1 — Logo + Tobias quote */}
-            <div className="f-col f-brand">
-              <img src="assets/akc_logo_white.svg" alt="AKC" className="f-logo" />
-              <blockquote className="f-quote">
-                <p>{sc.footerQuote}</p>
-                <cite>— {sc.footerQuoteAuthor}</cite>
-              </blockquote>
-            </div>
-
-            {/* Col 2 — Sitemap */}
-            <div className="f-col">
-              <h4>{lang === "pt" ? "Mapa do site" : "Sitemap"}</h4>
-              <ul>
-                <li><a href="#top">Home</a></li>
-                <li><a href="#about">{lang === "pt" ? "Sobre" : "About"}</a></li>
-                <li><a href="#work">{lang === "pt" ? "Trabalhos" : "Work"}</a></li>
-                <li><a href="#blog">{lang === "pt" ? "Blog" : "Blog"}</a></li>
-                <li><a href="#inspiration">{lang === "pt" ? "Inspiração" : "Inspiration"}</a></li>
-              </ul>
-            </div>
-
-            {/* Col 3 — Socials (plain text, linked) */}
-            <div className="f-col">
-              <h4>{lang === "pt" ? "Contato" : "Connect"}</h4>
-              <ul>
-                {data.socials.map((s, i) => (
-                  <li key={i}>
-                    <a href={s.href} target={s.href.startsWith("http") ? "_blank" : undefined} rel="noreferrer">{s.label}</a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Col 4 — Newsletter signup */}
-            <div className="f-col f-news">
-              <h4>{t(data.newsletter.title, lang)}</h4>
-              <p className="f-news-blurb">{t(data.newsletter.blurb, lang)}</p>
-              <NewsletterForm n={data.newsletter} lang={lang} />
-            </div>
-          </div>
-
-          <div className="f-bottom">
-            <div className="f-meta">
-              <span>© 2026 · {data.meta.name.toLowerCase()}</span>
-              <span className="dot">·</span>
-              <span>{data.meta.location.toLowerCase()}, br · <LiveTime /></span>
-            </div>
-            <div className="f-version">{sc.footerVersion}</div>
-            <a href="#top" className="f-top-link">back to top <span className="arr">↑</span></a>
-          </div>
-        </div>
-      </footer>
+      <FullFooter data={data} lang={lang} />
     </div>
   );
 }
@@ -994,7 +993,7 @@ function useBreakpoint() {
   return bp;
 }
 
-Object.assign(window, { Placeholder, ImgSlot, VideoBlock, Nav, PageShell, LiveTime, NewsletterForm, t, useCobaltCursor, useBreakpoint });
+Object.assign(window, { Placeholder, ImgSlot, VideoBlock, Nav, PageShell, FullFooter, LiveTime, NewsletterForm, t, useCobaltCursor, useBreakpoint });
 
 // ─── Admin / CMS ───────────────────────────────────────────────────
 const ADMIN_TABS = [

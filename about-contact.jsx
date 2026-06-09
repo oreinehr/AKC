@@ -1,4 +1,4 @@
-/* global React, Placeholder, Nav, LiveTime, NewsletterForm */
+/* global React, Placeholder, Nav, LiveTime, NewsletterForm, FullFooter */
 // About + Contact pages.
 // Same document-opener register as the home / case / post templates.
 // Slim footer (.case-footer) imported from the case study template.
@@ -112,7 +112,7 @@ function AboutPage({ data, dark, setDark, lang, setLang, mobile, tablet }) {
         </div>
       </section>
 
-      <SlimFooter data={data} />
+      <FullFooter data={data} lang={lang} />
     </div>
   );
 }
@@ -189,7 +189,7 @@ function ContactPage({ data, dark, setDark, lang, setLang, mobile, tablet }) {
         </div>
       </section>
 
-      <SlimFooter data={data} />
+      <FullFooter data={data} lang={lang} />
     </div>
   );
 }
@@ -247,32 +247,4 @@ function ContactForm({ data, lang = "en" }) {
   );
 }
 
-// Shared slim footer (case + post + about + contact use this).
-function SlimFooter({ data }) {
-  return (
-    <footer className="footer case-footer">
-      <div className="page footer-inner">
-        <div className="cf-row">
-          <a href="#" className="cf-mark">
-            <img src="assets/akc_logo_white.svg" alt="AKC" />
-          </a>
-          <div className="cf-links">
-            <a href="/">{data.lang === "pt" ? "Início" : "Home"}</a>
-            <a href="/about.html">About</a>
-            <a href="/work.html">Work</a>
-            <a href="/blog.html">Blog</a>
-            <a href="/contact.html">Contact</a>
-            <a href={`mailto:${data.meta.email}`}>Email</a>
-          </div>
-        </div>
-        <div className="cf-bottom">
-          <span>© 2026 · {data.meta.name.toLowerCase()}</span>
-          <span className="dot">·</span>
-          <span>{data.meta.location.toLowerCase()}, br · <LiveTime /></span>
-        </div>
-      </div>
-    </footer>
-  );
-}
-
-Object.assign(window, { AboutPage, ContactPage, SlimFooter });
+Object.assign(window, { AboutPage, ContactPage });

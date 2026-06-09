@@ -1,4 +1,4 @@
-/* global React, Placeholder, ImgSlot, Nav, LiveTime, useCobaltCursor */
+/* global React, Placeholder, ImgSlot, Nav, LiveTime, useCobaltCursor, FullFooter */
 // Archive pages — /work (all cases) and /notes (all posts).
 // Filterable by year + (sector | tag). Same dark register as the rest.
 
@@ -102,7 +102,7 @@ function ArchiveWork({ data, dark, setDark, lang, setLang, mobile, navigate }) {
         </div>
       </section>
 
-      <ArchiveSlimFooter data={data} />
+      <ArchiveSlimFooter data={data} lang={lang} />
     </div>
   );
 }
@@ -180,16 +180,14 @@ function ArchiveNotes({ data, dark, setDark, lang, setLang, mobile, navigate }) 
         </div>
       </section>
 
-      <ArchiveSlimFooter data={data} />
+      <ArchiveSlimFooter data={data} lang={lang} />
     </div>
   );
 }
 
-// Slim footer is defined in about-contact.jsx and lives on window.
-// Read it lazily at render time so it's the real component, not this file.
-function ArchiveSlimFooter(props) {
-  const F = window.SlimFooter;
-  return F ? <F {...props} /> : null;
+function ArchiveSlimFooter({ data, lang }) {
+  const F = window.FullFooter;
+  return F ? <F data={data} lang={lang} /> : null;
 }
 
 Object.assign(window, { ArchiveWork, ArchiveNotes });
