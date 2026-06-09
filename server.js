@@ -18,13 +18,14 @@ if (!process.env.ADMIN_PASSWORD) {
 const USE_KV   = !!(process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN);
 const USE_BLOB = !!(process.env.BLOB_READ_WRITE_TOKEN);
 
-let redis, put;
+let redis, put, generateBlobClientToken;
 if (USE_KV) {
   const { Redis } = require('@upstash/redis');
   redis = new Redis({ url: process.env.KV_REST_API_URL, token: process.env.KV_REST_API_TOKEN });
 }
 if (USE_BLOB) {
   put = require('@vercel/blob').put;
+  generateBlobClientToken = require('@vercel/blob/client').generateClientTokenFromReadWriteToken;
 }
 
 function requireAuth(req, res, next) {
@@ -123,6 +124,27 @@ app.post('/api/slots', requireAuth, express.text({ limit: '50mb' }), async (req,
     }
     fs.writeFileSync(SLOTS_FILE, req.body);
     res.json({ ok: true });
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+// POST /api/blob-token — issues a short-lived Vercel Blob client token so the
+// browser can PUT videos directly to the Blob CDN (bypasses the 4.5 MB serverless
+// request-body limit). Returns { local: true } when Blob is not configured.
+app.post('/api/blob-token', requireAuth, async (req, res) => {
+  if (!USE_BLOB || !generateBlobClientToken) return res.json({ local: true });
+  try {
+    const name = (req.body.name || `video-${Date.now()}`).replace(/[^a-z0-9._-]/gi, '_');
+    const contentType = req.body.contentType || 'video/mp4';
+    const pathname = `uploads/${name}`;
+    const clientToken = await generateBlobClientToken({
+      token: process.env.BLOB_READ_WRITE_TOKEN,
+      pathname,
+      allowedContentTypes: [contentType, 'application/octet-stream'],
+      maximumSizeInBytes: 500 * 1024 * 1024,
+    });
+    res.json({ clientToken, pathname });
   } catch (e) {
     res.status(500).json({ error: e.message });
   }

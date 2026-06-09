@@ -491,7 +491,6 @@
       }
 
       if (isVideo) {
-        // Videos are too large for base64 — upload directly to the server.
         const token = (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('akc-admin-token')) || '';
         if (!token) { this._setError('Admin login required for video upload.'); return; }
         const gen = ++this._gen;
@@ -499,18 +498,48 @@
         const safeName = (this.id || 'video').replace(/[^a-z0-9_-]/gi, '_') + '-' + Date.now() + '.' + ext;
         this._setError('Uploading…');
         try {
-          const res = await fetch('/api/upload?name=' + encodeURIComponent(safeName), {
+          // Ask server whether to use Blob client upload (Vercel) or local upload.
+          const tokenRes = await fetch('/api/blob-token', {
             method: 'POST',
-            headers: { 'Authorization': 'Bearer ' + token, 'Content-Type': file.type || 'video/mp4' },
-            body: file,
+            headers: { 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name: safeName, contentType: file.type || 'video/mp4' }),
           });
+          if (!tokenRes.ok) throw new Error('Token request failed: ' + tokenRes.status);
+          const tokenData = await tokenRes.json();
+          if (tokenData.error) throw new Error(tokenData.error);
+
+          let blobUrl;
+          if (tokenData.local) {
+            const res = await fetch('/api/upload?name=' + encodeURIComponent(safeName), {
+              method: 'POST',
+              headers: { 'Authorization': 'Bearer ' + token, 'Content-Type': file.type || 'video/mp4' },
+              body: file,
+            });
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            const d = await res.json();
+            if (!d.url) throw new Error('No URL returned');
+            blobUrl = d.url;
+          } else {
+            const { clientToken, pathname } = tokenData;
+            const uploadRes = await fetch('https://vercel.com/api/blob/?pathname=' + encodeURIComponent(pathname), {
+              method: 'PUT',
+              headers: {
+                'Authorization': 'Bearer ' + clientToken,
+                'x-api-version': '12',
+                'x-vercel-blob-access': 'public',
+                'x-content-type': file.type || 'video/mp4',
+              },
+              body: file,
+            });
+            if (!uploadRes.ok) throw new Error('Blob upload failed: ' + uploadRes.status);
+            const result = await uploadRes.json();
+            if (!result.url) throw new Error('No URL in Blob response');
+            blobUrl = result.url;
+          }
+
           if (gen !== this._gen) return;
-          if (!res.ok) throw new Error('HTTP ' + res.status);
-          const d = await res.json();
-          if (gen !== this._gen) return;
-          if (!d.url) throw new Error('No URL returned');
           this._setError(null);
-          const val = { u: d.url, type: 'video' };
+          const val = { u: blobUrl, type: 'video' };
           setSlot(this.id || '', val, (msg) => this._setError('Save failed: ' + msg));
           if (!this.id) { this._local = val; this._render(); }
         } catch (err) {

@@ -80,35 +80,12 @@ function AboutPage({ data, dark, setDark, lang, setLang, mobile, tablet }) {
         </div>
       </section>
 
-      {/* 04 recognition */}
-      <section className="sec ap-recognition" id="recognition">
-        <div className="page">
-          <div className="sec-head">
-            <div><div className="num">{m.recogNum || "04 · recognition"}</div><span className="anno">{m.recogAnno || "light · honest"}</span></div>
-            <div><h2>{lang === "pt" ? "Reconhecimento." : "Recognition."}</h2></div>
-          </div>
-          <ul className="ap-recognition-list">
-            {data.recognition.map((r, i) => (
-              <li key={i}>
-                <span className="r-year">{r.year}</span>
-                <span className="r-item">{r.item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
       {/* contact teaser */}
-      <section className="next-case" id="next">
+      <section className="sec ap-contact-closer" id="next">
         <div className="page">
-          <div className="nc-row">
-            <div className="nc-num">contact · next</div>
-            <a href="/contact.html" className="nc-link">
-              <span className="nc-client">{data.meta.email}</span>
-              <span className="nc-title">{lang === "pt" ? "Vamos conversar." : "Let's talk."}</span>
-              <span className="nc-arrow" aria-hidden="true">→</span>
-            </a>
-          </div>
+          <div className="cp-eyebrow">{lang === "pt" ? "contato · próximo" : "contact · next"}</div>
+          <h2 className="ap-closer-title">{lang === "pt" ? "Vamos conversar." : "Let's talk."}</h2>
+          <a href={`mailto:${data.meta.email}`} className="ap-closer-email">{data.meta.email}</a>
         </div>
       </section>
 

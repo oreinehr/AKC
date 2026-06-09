@@ -95,7 +95,7 @@ function CaseStudy({ data, dark, setDark, lang, setLang, mobile, tablet, caseDat
         </div>
         <div className="cover-image">
           {c.coverVideo ? (
-            <VideoBlock url={c.coverVideo} aspect="16/9" />
+            <VideoBlock url={c.coverVideo} aspect="16/9" autoPlay />
           ) : (
             <ImgSlot
               id={`case-cover-${c.slug || c.meta.client}`}
@@ -211,7 +211,7 @@ function CaseStudy({ data, dark, setDark, lang, setLang, mobile, tablet, caseDat
               if (blk.kind === "video") {
                 return (
                   <figure className="g g--full" key={i}>
-                    <VideoBlock url={blk.url} aspect="16/9" />
+                    <VideoBlock url={blk.url} aspect="16/9" autoPlay />
                     <figcaption>{t(blk.note, lang)}</figcaption>
                   </figure>
                 );
