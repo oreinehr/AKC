@@ -1008,6 +1008,7 @@ const ADMIN_TABS = [
   ["recognition", "Recognition"],
   ["contactPage", "Contact page"],
   ["cases", "Cases & work"],
+  ["work", "Work entries"],
   ["blog", "Blog"],
   ["newsletter", "Newsletter"],
   ["socials", "Socials"],
@@ -1109,6 +1110,7 @@ function AdminView({ data, setData }) {
           {tab === "recognition" && <ListPane title="Recognition" subtitle="Light and honest. Talks, mentions, press. Drives the About page recognition section." data={data} setData={setData} field="recognition" cols={[["year","Year"],["item","Item"]]} />}
           {tab === "contactPage" && <ContactPagePane data={data} set={set} setData={setData} />}
           {tab === "cases" && <CasesPane data={data} setData={setData} />}
+          {tab === "work" && <WorkPane data={data} setData={setData} />}
           {tab === "blog" && <BlogPane data={data} setData={setData} />}
           {tab === "newsletter" && <NewsletterPane data={data} set={set} />}
           {tab === "socials" && <ListPane title="Socials" subtitle="Plain-text contact and profile links. Appears in the footer Connect column." data={data} setData={setData} field="socials" cols={[["label","Label"],["href","URL or mailto:/tel:"]]} />}
