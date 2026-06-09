@@ -2018,7 +2018,7 @@ function WorkPane({ data, setData }) {
         {items.map((w, i) => {
           const thumbId = w.caseSlug ? `work-thumb-${w.caseSlug}` : `work-thumb-unlinked-${i}`;
           return (
-            <div key={i} style={{ borderTop: "1px solid var(--rule-light)", padding: "16px 0", display: "grid", gridTemplateColumns: "120px 1fr auto", gap: 16, alignItems: "start" }}>
+            <div key={i} style={{ borderTop: "1px solid var(--rule-light)", padding: "16px 0", display: "grid", gridTemplateColumns: "320px 1fr auto", gap: 16, alignItems: "start" }}>
               <ImgSlot id={thumbId} label={w.client || "thumbnail"} aspect="16/9" />
               <div className="info" style={{ display: "flex", flexDirection: "column", gap: 6 }}>
                 <div className="row2">
