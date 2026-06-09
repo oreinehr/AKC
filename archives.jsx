@@ -1,4 +1,4 @@
-/* global React, Placeholder, ImgSlot, Nav, LiveTime, useCobaltCursor, FullFooter */
+/* global React, Placeholder, ImgSlot, Nav, LiveTime, useCobaltCursor, FullFooter, NewsletterForm, t */
 // Archive pages — /work (all cases) and /notes (all posts).
 // Filterable by year + (sector | tag). Same dark register as the rest.
 
@@ -80,7 +80,7 @@ function ArchiveWork({ data, dark, setDark, lang, setLang, mobile, navigate }) {
                   aria-disabled={!linked}
                 >
                   <div className="ar-work-thumb">
-                    <ImgSlot id={w.caseSlug ? `case-cover-${w.caseSlug}` : `archive-work-unlinked-${i}`} label={`work · ${w.tone}`} aspect="16/9" />
+                    <ImgSlot id={w.caseSlug ? `work-thumb-${w.caseSlug}` : `archive-work-unlinked-${i}`} label={`work · ${w.tone}`} aspect="16/9" />
                   </div>
                   <div className="ar-work-meta">
                     <div className="ar-meta-row">
@@ -176,6 +176,19 @@ function ArchiveNotes({ data, dark, setDark, lang, setLang, mobile, navigate }) 
                 </a>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      <section className="post-news" id="news">
+        <div className="page">
+          <div className="pn-grid">
+            <div>
+              <div className="pn-num">{(typeof data.newsletter.title === "object" ? (data.newsletter.title[lang] || data.newsletter.title.en) : data.newsletter.title).toLowerCase()}</div>
+              <h2>Get the next one in your inbox.</h2>
+              <p>{t(data.newsletter.blurb, lang)}</p>
+            </div>
+            <NewsletterForm n={data.newsletter} lang={lang} />
           </div>
         </div>
       </section>
