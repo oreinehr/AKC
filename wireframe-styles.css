@@ -1054,6 +1054,18 @@
   padding: 32px 40px 80px;
   max-width: 980px;
 }
+.admin .img-slot {
+  position: relative;
+  width: 100%;
+}
+.admin .img-slot image-slot {
+  outline: 1px solid var(--rule-light);
+  outline-offset: 0;
+  background-color: var(--bg-muted, #f0f0ee);
+  display: block;
+  width: 100%;
+  height: 100%;
+}
 .admin h1 {
   font-family: var(--font-display);
   font-weight: 600;
