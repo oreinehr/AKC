@@ -513,39 +513,95 @@ function ImgSlot({ id, label, aspect = "16/9", shape = "rect", style }) {
 
 // Renders a video from a URL. Detects YouTube/Vimeo → iframe; otherwise → <video>.
 // Used both in the public case-study page and the admin preview.
-function VideoBlock({ url, aspect = "16/9", style }) {
+function VideoBlock({ url, aspect = "16/9", style, autoPlay = false }) {
   if (!url) return (
     <div className="ph" style={{ aspectRatio: aspect, ...style }}>
       <span className="ph-label">video · placeholder</span>
     </div>
   );
   const ytMatch = url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([\w-]+)/);
-  if (ytMatch) return (
-    <div style={{ aspectRatio: aspect, position: "relative", overflow: "hidden", background: "#000", ...style }}>
-      <iframe
-        src={`https://www.youtube.com/embed/${ytMatch[1]}`}
-        style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: "none" }}
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-      />
-    </div>
-  );
+  if (ytMatch) {
+    const params = autoPlay ? "?autoplay=1&mute=1&loop=1&playlist=" + ytMatch[1] : "";
+    return (
+      <div style={{ aspectRatio: aspect, position: "relative", overflow: "hidden", background: "#000", ...style }}>
+        <iframe
+          src={`https://www.youtube.com/embed/${ytMatch[1]}${params}`}
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: "none" }}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        />
+      </div>
+    );
+  }
   const vimeoMatch = url.match(/vimeo\.com\/(\d+)/);
-  if (vimeoMatch) return (
-    <div style={{ aspectRatio: aspect, position: "relative", overflow: "hidden", background: "#000", ...style }}>
-      <iframe
-        src={`https://player.vimeo.com/video/${vimeoMatch[1]}`}
-        style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: "none" }}
-        allow="autoplay; fullscreen; picture-in-picture"
-        allowFullScreen
-      />
-    </div>
-  );
+  if (vimeoMatch) {
+    const params = autoPlay ? "?autoplay=1&muted=1&loop=1" : "";
+    return (
+      <div style={{ aspectRatio: aspect, position: "relative", overflow: "hidden", background: "#000", ...style }}>
+        <iframe
+          src={`https://player.vimeo.com/video/${vimeoMatch[1]}${params}`}
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: "none" }}
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowFullScreen
+        />
+      </div>
+    );
+  }
   return (
     <div style={{ aspectRatio: aspect, background: "#000", ...style }}>
-      <video controls style={{ width: "100%", height: "100%", display: "block" }} src={url} />
+      <video
+        style={{ width: "100%", height: "100%", display: "block" }}
+        src={url}
+        controls={!autoPlay}
+        autoPlay={autoPlay}
+        muted={autoPlay}
+        loop={autoPlay}
+        playsInline={autoPlay}
+      />
     </div>
   );
+}
+
+// Uploads a video file. On Vercel, uses client-side Blob upload (bypasses the
+// 4.5 MB serverless body limit). On localhost, falls back to /api/upload.
+async function uploadVideoFile(file, adminToken, slotId) {
+  const safeName = `${slotId || 'video'}-${Date.now()}.${(file.name.split('.').pop() || 'mp4').toLowerCase()}`;
+  const tokenRes = await fetch('/api/blob-token', {
+    method: 'POST',
+    headers: { 'Authorization': `Bearer ${adminToken}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name: safeName, contentType: file.type || 'video/mp4' }),
+  });
+  if (!tokenRes.ok) throw new Error(`Token request failed: ${tokenRes.status}`);
+  const tokenData = await tokenRes.json();
+  if (tokenData.error) throw new Error(tokenData.error);
+
+  if (tokenData.local) {
+    const res = await fetch(`/api/upload?name=${encodeURIComponent(safeName)}`, {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${adminToken}`, 'Content-Type': file.type || 'video/mp4' },
+      body: file,
+    });
+    if (!res.ok) throw new Error(`Upload failed: ${res.status}`);
+    const d = await res.json();
+    if (!d.url) throw new Error('No URL returned');
+    return d.url;
+  }
+
+  const { clientToken, pathname } = tokenData;
+  const uploadRes = await fetch(`https://vercel.com/api/blob/?pathname=${encodeURIComponent(pathname)}`, {
+    method: 'PUT',
+    headers: {
+      'Authorization': `Bearer ${clientToken}`,
+      'x-api-version': '12',
+      'x-vercel-blob-access': 'public',
+      'x-content-type': file.type || 'video/mp4',
+    },
+    body: file,
+  });
+  if (!uploadRes.ok) throw new Error(`Blob upload failed: ${uploadRes.status}`);
+  const result = await uploadRes.json();
+  if (!result.url) throw new Error('No URL in Blob response');
+  return result.url;
 }
 
 // Admin-only video slot: URL input + file upload button + preview.
@@ -556,14 +612,9 @@ function VideoAdminSlot({ id, url, onUrlChange, aspect = "16/9" }) {
     setUploading(true);
     try {
       const token = sessionStorage.getItem('akc-admin-token') || '';
-      const safeName = `${id}-${Date.now()}.${(file.name.split('.').pop() || 'mp4').toLowerCase()}`;
-      const res = await fetch(`/api/upload?name=${encodeURIComponent(safeName)}`, {
-        method: 'POST',
-        headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': file.type || 'video/mp4' },
-        body: file,
-      });
-      const d = await res.json();
-      if (d.url) onUrlChange(d.url);
+      if (!token) throw new Error('Faça login no admin primeiro');
+      const blobUrl = await uploadVideoFile(file, token, id);
+      onUrlChange(blobUrl);
     } catch (e) { alert('Upload falhou: ' + e.message); }
     finally { setUploading(false); }
   };
@@ -649,34 +700,37 @@ function NewsletterForm({ n, lang = "en" }) {
 function Nav({ darkOn, onToggleDark, lang = "en", onLang, location, mobile }) {
   const [open, setOpen] = useState(false);
   const close = () => setOpen(false);
+
   return (
-    <div className="nav"><div className="nav-inner">
-      <a href="/" className="brand" aria-label="AKC — home">
-        <img src={darkOn ? "assets/akc_logo_white.svg" : "assets/akc_logo_black.svg"} alt="AKC" className="brand-mark" />
-      </a>
-      <ul>
-        <li><a href="/about.html">{lang === "pt" ? "Sobre" : "About"}</a></li>
-        <li><a href="/work.html">{lang === "pt" ? "Trabalhos" : "Work"}</a></li>
-        <li><a href="/blog.html">Blog</a></li>
-        <li><a href="/contact.html">{lang === "pt" ? "Contato" : "Contact"}</a></li>
-      </ul>
-      <div className="nav-right">
-        <span className="meta"><span className="now-dot" />{location} · <LiveTime /></span>
-        <span className="lang">
-          <button className={lang === "en" ? "on" : ""} onClick={() => onLang && onLang("en")}>EN</button>|
-          <button className={lang === "pt" ? "on" : ""} onClick={() => onLang && onLang("pt")}>PT</button>
-        </span>
-        <span className="mode">
-          <button className={!darkOn ? "on" : ""} onClick={() => onToggleDark(false)}>light</button>|
-          <button className={darkOn ? "on" : ""} onClick={() => onToggleDark(true)}>dark</button>
-        </span>
-      </div>
-      {mobile && (
-        <button className="nav-burger" aria-label="menu" onClick={() => setOpen(o => !o)}>
-          <span /><span /><span />
-        </button>
-      )}
-      {mobile && open && (
+    <>
+      <div className="nav"><div className="nav-inner">
+        <a href="/" className="brand" aria-label="AKC — home">
+          <img src={darkOn ? "assets/akc_logo_white.svg" : "assets/akc_logo_black.svg"} alt="AKC" className="brand-mark" />
+        </a>
+        <ul>
+          <li><a href="/about.html">{lang === "pt" ? "Sobre" : "About"}</a></li>
+          <li><a href="/work.html">{lang === "pt" ? "Trabalhos" : "Work"}</a></li>
+          <li><a href="/blog.html">Blog</a></li>
+          <li><a href="/contact.html">{lang === "pt" ? "Contato" : "Contact"}</a></li>
+        </ul>
+        <div className="nav-right">
+          <span className="meta"><span className="now-dot" />{location} · <LiveTime /></span>
+          <span className="lang">
+            <button className={lang === "en" ? "on" : ""} onClick={() => onLang && onLang("en")}>EN</button>|
+            <button className={lang === "pt" ? "on" : ""} onClick={() => onLang && onLang("pt")}>PT</button>
+          </span>
+          <span className="mode">
+            <button className={!darkOn ? "on" : ""} onClick={() => onToggleDark(false)}>light</button>|
+            <button className={darkOn ? "on" : ""} onClick={() => onToggleDark(true)}>dark</button>
+          </span>
+        </div>
+        {mobile && (
+          <button className="nav-burger" aria-label="menu" onClick={() => setOpen(o => !o)}>
+            <span /><span /><span />
+          </button>
+        )}
+      </div></div>
+      {open && (
         <div className="nav-overlay">
           <button className="nav-overlay-close" onClick={close} aria-label="close menu">×</button>
           <ul>
@@ -685,9 +739,19 @@ function Nav({ darkOn, onToggleDark, lang = "en", onLang, location, mobile }) {
             <li><a href="/blog.html" onClick={close}>Blog</a></li>
             <li><a href="/contact.html" onClick={close}>{lang === "pt" ? "Contato" : "Contact"}</a></li>
           </ul>
+          <div className="nav-overlay-footer">
+            <span className="lang">
+              <button className={lang === "en" ? "on" : ""} onClick={() => { onLang && onLang("en"); }}>EN</button>|
+              <button className={lang === "pt" ? "on" : ""} onClick={() => { onLang && onLang("pt"); }}>PT</button>
+            </span>
+            <span className="mode">
+              <button className={!darkOn ? "on" : ""} onClick={() => onToggleDark(false)}>light</button>|
+              <button className={darkOn ? "on" : ""} onClick={() => onToggleDark(true)}>dark</button>
+            </span>
+          </div>
         </div>
       )}
-    </div></div>
+    </>
   );
 }
 
@@ -798,7 +862,7 @@ function PageShell({ data, dark, setDark, lang, setLang, hero, mobile, tablet, n
                   aria-disabled={!linked}
                 >
                   <ImgSlot
-                    id={w.caseSlug ? `case-cover-${w.caseSlug}` : `work-thumb-unlinked-${i}`}
+                    id={w.caseSlug ? `work-thumb-${w.caseSlug}` : `work-thumb-unlinked-${i}`}
                     label={`work · ${w.tone}`}
                     aspect="16/9"
                   />
@@ -859,12 +923,12 @@ function PageShell({ data, dark, setDark, lang, setLang, hero, mobile, tablet, n
       {/* Inspiration */}
       <section className="sec" id="inspiration">
         <div className="page">
-          <div className="insp-head">
+          <div className="sec-head">
+            <div><div className="num">{m.inspNum || "05 · weekly inspiration"}</div><span className="anno">{m.inspAnno || "weekly cadence"}</span></div>
             <div>
-              <div className="num" style={{ fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: "0.04em", textTransform: "lowercase", color: "var(--muted)", marginBottom: 6 }}>{m.inspNum || "05 · weekly inspiration"}</div>
               <h2>{t(sc.inspTitle, lang)}</h2>
+              {sc.inspWeek && <p className="sub">{sc.inspWeek}</p>}
             </div>
-            {sc.inspWeek && <div className="pill">{sc.inspWeek}</div>}
           </div>
           <div className="carousel">
             {data.inspiration.map((it, i) => (
@@ -959,7 +1023,7 @@ function VariationB({ data, dark, setDark, lang, setLang, mobile, tablet, naviga
               <img src="assets/Alessandro 2.jpg" alt={data.meta.name} className="p-rest" />
               <img src="assets/Alessandro_hover.jpg" alt="" className="p-hover" aria-hidden="true" />
             </div>
-            <div className="caption">akc · portrait · hover ↔</div>
+            <div className="caption">{lang === "pt" ? "retrato por barreto content" : "portrait by barreto content"}</div>
           </div>
         </div>
 
@@ -1004,7 +1068,6 @@ const ADMIN_TABS = [
   ["aboutPage", "About page"],
   ["timeline", "Timeline"],
   ["clients", "Clients"],
-  ["recognition", "Recognition"],
   ["contactPage", "Contact page"],
   ["cases", "Cases & work"],
   ["work", "Work entries"],
@@ -1106,14 +1169,13 @@ function AdminView({ data, setData }) {
           {tab === "aboutPage" && <AboutPagePane data={data} set={set} setData={setData} />}
           {tab === "timeline" && <ListPane title="Timeline" subtitle="Career chapters, in chronological order. Drives the About page timeline section." data={data} setData={setData} field="timeline" cols={[["year","Year"],["chapter","Chapter"],["role","Role"],["location","Location"],["note","Note"]]} />}
           {tab === "clients" && <StringListPane title="Clients" subtitle="Selected clients, displayed in two columns on the About page. One line per client." data={data} setData={setData} field="clients" />}
-          {tab === "recognition" && <ListPane title="Recognition" subtitle="Light and honest. Talks, mentions, press. Drives the About page recognition section." data={data} setData={setData} field="recognition" cols={[["year","Year"],["item","Item"]]} />}
           {tab === "contactPage" && <ContactPagePane data={data} set={set} setData={setData} />}
           {tab === "cases" && <CasesPane data={data} setData={setData} />}
           {tab === "work" && <WorkPane data={data} setData={setData} />}
           {tab === "blog" && <BlogPane data={data} setData={setData} />}
           {tab === "newsletter" && <NewsletterPane data={data} set={set} />}
           {tab === "socials" && <ListPane title="Socials" subtitle="Plain-text contact and profile links. Appears in the footer Connect column." data={data} setData={setData} field="socials" cols={[["label","Label"],["href","URL or mailto:/tel:"]]} />}
-          {tab === "inspiration" && <ListPane title="Inspiration" subtitle="Weekly cadence. 5–10 items per week." data={data} setData={setData} field="inspiration" cols={[["artist","Artist"],["note","Caption"]]} />}
+          {tab === "inspiration" && <InspirationPane data={data} set={set} setData={setData} />}
           {tab === "images" && <ImagesPane data={data} />}
           {tab === "marks" && <MarksPane data={data} set={set} />}
           {tab === "lang" && <LangPane data={data} setData={setData} />}
@@ -1129,10 +1191,11 @@ function ImagesPane({ data }) {
   const grid2 = { display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "24px 20px", marginBottom: 32 };
 
   // Home — only unlinked work cards (linked ones share case-cover-{slug}, shown below)
-  const workSlots = (data.work || []).flatMap((w, i) => {
-    if (w.caseSlug) return [];
-    return [{ id: `work-thumb-unlinked-${i}`, label: `${w.client || "card"} · ${w.year || "—"}`, aspect: "16/9" }];
-  });
+  const workSlots = (data.work || []).map((w, i) => ({
+    id: w.caseSlug ? `work-thumb-${w.caseSlug}` : `work-thumb-unlinked-${i}`,
+    label: `${w.client || "card"} · ${w.year || "—"}`,
+    aspect: "16/9",
+  }));
 
   // Cases — each case is its own section
   const caseGroups = (data.cases || []).map((c) => {
@@ -1716,7 +1779,8 @@ function CasesPane({ data, setData }) {
                     <option value="tonal">tonal</option>
                     <option value="kinetic">kinetic</option>
                   </select>
-w                </div>
+w
+                </div>
               </>
             );
           })()}
@@ -1951,33 +2015,36 @@ function WorkPane({ data, setData }) {
       <h1>Selected work</h1>
       <p className="subhead">Cada entrada aparece na grade da home. Linke a um case study pelo slug para ativar o link "read →".</p>
       <div className="card-list">
-        {items.map((w, i) => (
-          <div className="card-row" key={i}>
-            <div className="thumb" />
-            <div className="info" style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-              <div className="row2">
-                <div className="field" style={{ marginBottom: 0 }}><label>client</label><input value={w.client || ""} onChange={(e) => update(i, "client", e.target.value)} /></div>
-                <div className="field" style={{ marginBottom: 0 }}><label>year</label><input value={w.year || ""} onChange={(e) => update(i, "year", e.target.value)} /></div>
+        {items.map((w, i) => {
+          const thumbId = w.caseSlug ? `work-thumb-${w.caseSlug}` : `work-thumb-unlinked-${i}`;
+          return (
+            <div key={i} style={{ borderTop: "1px solid var(--rule-light)", padding: "16px 0", display: "grid", gridTemplateColumns: "120px 1fr auto", gap: 16, alignItems: "start" }}>
+              <ImgSlot id={thumbId} label={w.client || "thumbnail"} aspect="16/9" />
+              <div className="info" style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                <div className="row2">
+                  <div className="field" style={{ marginBottom: 0 }}><label>client</label><input value={w.client || ""} onChange={(e) => update(i, "client", e.target.value)} /></div>
+                  <div className="field" style={{ marginBottom: 0 }}><label>year</label><input value={w.year || ""} onChange={(e) => update(i, "year", e.target.value)} /></div>
+                </div>
+                <div className="field" style={{ marginBottom: 0 }}><label>title</label><input value={w.title || ""} onChange={(e) => update(i, "title", e.target.value)} /></div>
+                <div className="field" style={{ marginBottom: 0 }}><label>summary</label><input value={w.summary || ""} onChange={(e) => update(i, "summary", e.target.value)} /></div>
+                <div className="field" style={{ marginBottom: 0 }}>
+                  <label>case study link</label>
+                  <select value={w.caseSlug || ""} onChange={(e) => update(i, "caseSlug", e.target.value || null)}>
+                    <option value="">— sem link —</option>
+                    {cases.map((c) => (
+                      <option key={c.slug} value={c.slug}>{c.meta.client} · {c.meta.project}</option>
+                    ))}
+                  </select>
+                </div>
               </div>
-              <div className="field" style={{ marginBottom: 0 }}><label>title</label><input value={w.title || ""} onChange={(e) => update(i, "title", e.target.value)} /></div>
-              <div className="field" style={{ marginBottom: 0 }}><label>summary</label><input value={w.summary || ""} onChange={(e) => update(i, "summary", e.target.value)} /></div>
-              <div className="field" style={{ marginBottom: 0 }}>
-                <label>case study link</label>
-                <select value={w.caseSlug || ""} onChange={(e) => update(i, "caseSlug", e.target.value || null)}>
-                  <option value="">— sem link —</option>
-                  {cases.map((c) => (
-                    <option key={c.slug} value={c.slug}>{c.meta.client} · {c.meta.project}</option>
-                  ))}
-                </select>
+              <div className="ctrls">
+                <button onClick={() => move(i, -1)}>↑</button>
+                <button onClick={() => move(i, +1)}>↓</button>
+                <button onClick={() => remove(i)}>delete</button>
               </div>
             </div>
-            <div className="ctrls">
-              <button onClick={() => move(i, -1)}>↑</button>
-              <button onClick={() => move(i, +1)}>↓</button>
-              <button onClick={() => remove(i)}>delete</button>
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
       <button className="add-btn" onClick={add}>+ add work entry</button>
     </div>
@@ -2207,6 +2274,55 @@ function BlogPane({ data, setData }) {
           </div>
         </div>
       </div>
+    </div>
+  );
+}
+
+function InspirationPane({ data, set, setData }) {
+  const items = data.inspiration || [];
+  const sc = data.sections || {};
+
+  const update = (i, key, val) => setData((s) => {
+    const n = JSON.parse(JSON.stringify(s));
+    n.inspiration[i][key] = val;
+    return n;
+  });
+  const add = () => setData((s) => ({ ...s, inspiration: [...(s.inspiration || []), { artist: "", note: "" }] }));
+  const remove = (i) => setData((s) => ({ ...s, inspiration: s.inspiration.filter((_, k) => k !== i) }));
+  const move = (i, dir) => setData((s) => {
+    const arr = [...s.inspiration];
+    const j = i + dir;
+    if (j < 0 || j >= arr.length) return s;
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+    return { ...s, inspiration: arr };
+  });
+
+  return (
+    <div>
+      <h1>Inspiration</h1>
+      <p className="subhead">Weekly cadence. Cada item tem imagem e texto.</p>
+
+      <div className="group-head">section header</div>
+      <BiField label="Title" value={sc.inspTitle} path={["sections", "inspTitle"]} set={set} />
+      <div className="field"><label>week pill</label><input value={sc.inspWeek || ""} onChange={(e) => set(["sections", "inspWeek"], e.target.value)} /></div>
+
+      <div className="group-head" style={{ marginTop: 24 }}>items</div>
+      {items.map((it, i) => (
+        <div key={i} style={{ borderTop: "1px solid var(--rule-light)", padding: "16px 0", display: "grid", gridTemplateColumns: "160px 1fr auto", gap: 20, alignItems: "start" }}>
+          <ImgSlot id={`insp-${i}`} label={it.artist || "drop image"} aspect="1/1" />
+          <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+            <div className="field" style={{ marginBottom: 0 }}><label>artist</label><input value={it.artist || ""} onChange={(e) => update(i, "artist", e.target.value)} /></div>
+            <div className="field" style={{ marginBottom: 0 }}><label>caption</label><input value={it.note || ""} onChange={(e) => update(i, "note", e.target.value)} /></div>
+          </div>
+          <div className="ctrls">
+            <button onClick={() => move(i, -1)}>↑</button>
+            <button onClick={() => move(i, +1)}>↓</button>
+            <button onClick={() => remove(i)}>delete</button>
+          </div>
+        </div>
+      ))}
+      {items.length > 0 && <div style={{ borderTop: "1px solid var(--rule-light)", marginBottom: 16 }} />}
+      <button className="add-btn" onClick={add}>+ add item</button>
     </div>
   );
 }
