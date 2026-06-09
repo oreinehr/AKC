@@ -859,19 +859,18 @@
   margin: 0 0 20px;
   max-width: 320px;
 }
-.wf .footer .news-form {
+.wf .news-form {
   display: flex;
   gap: 0;
   align-items: stretch;
-  max-width: 360px;
   border: 1px solid rgba(240, 235, 225, 0.28);
   background: transparent;
   transition: border-color var(--t-fast) var(--ease);
 }
-.wf .footer .news-form:focus-within {
+.wf .news-form:focus-within {
   border-color: var(--color-accent-loud);
 }
-.wf .footer .news-form input {
+.wf .news-form input {
   flex: 1 1 auto;
   min-width: 0;
   background: transparent;
@@ -881,10 +880,10 @@
   font: 400 14px/1.4 var(--font-sans);
   color: var(--color-bone);
 }
-.wf .footer .news-form input::placeholder {
+.wf .news-form input::placeholder {
   color: rgba(240, 235, 225, 0.45);
 }
-.wf .footer .news-form button {
+.wf .news-form button {
   flex: 0 0 auto;
   background: var(--color-accent-loud);
   color: var(--color-bone);
@@ -898,13 +897,14 @@
   gap: 8px;
   transition: background var(--t-fast) var(--ease);
 }
-.wf .footer .news-form button:hover { background: #1A56FF; }
-.wf .footer .news-form button .arr {
+.wf .news-form button:hover { background: #1A56FF; }
+.wf .news-form button .arr {
   font-family: var(--font-mono);
   font-size: 14px;
   transition: transform var(--t-fast) var(--ease);
 }
-.wf .footer .news-form button:hover .arr { transform: translateX(2px); }
+.wf .news-form button:hover .arr { transform: translateX(2px); }
+.wf .footer .news-form { max-width: 360px; }
 .wf .footer .news-success {
   font-family: var(--font-sans);
   font-size: 14px;
@@ -2120,12 +2120,7 @@
   margin: 0;
   max-width: 440px;
 }
-.wf .post-news .news-form {
-  border-color: rgba(240, 235, 225, 0.28);
-  background: transparent;
-  max-width: none;
-}
-.wf .post-news .news-form input { color: var(--color-bone); }
+.wf .post-news .news-form { max-width: none; }
 
 /* related posts */
 .wf.post .post-related {
