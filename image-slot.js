@@ -149,9 +149,9 @@
   }
 
   // ── Image downscale ─────────────────────────────────────────────────────
-  // Encode through a canvas. Longest side capped at MAX_DIM; smaller images
-  // pass through at native size. WebP at 0.92 quality keeps photos sharp.
-  async function toDataUrl(file) {
+  // Resize to MAX_DIM on longest side, encode as WebP 0.92.
+  // Returns a Blob (binary, no base64 overhead).
+  async function toWebpBlob(file) {
     const bitmap = await createImageBitmap(file);
     try {
       const scale = Math.min(1, MAX_DIM / Math.max(bitmap.width, bitmap.height));
@@ -160,10 +160,22 @@
       const canvas = document.createElement('canvas');
       canvas.width = w; canvas.height = h;
       canvas.getContext('2d').drawImage(bitmap, 0, 0, w, h);
-      return canvas.toDataURL('image/webp', 0.92);
+      return new Promise((resolve, reject) => {
+        canvas.toBlob((b) => b ? resolve(b) : reject(new Error('toBlob failed')), 'image/webp', 0.92);
+      });
     } finally {
       bitmap.close && bitmap.close();
     }
+  }
+
+  async function toDataUrl(file) {
+    const blob = await toWebpBlob(file);
+    return new Promise((resolve, reject) => {
+      const r = new FileReader();
+      r.onload = () => resolve(r.result);
+      r.onerror = reject;
+      r.readAsDataURL(blob);
+    });
   }
 
   // ── Custom element ──────────────────────────────────────────────────────
@@ -549,13 +561,66 @@
 
       // ── Image path ──────────────────────────────────────────────────────
       const gen = ++this._gen;
+      const adminToken = (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('akc-admin-token')) || '';
       this._setError('Processing…');
       try {
-        const url = await toDataUrl(file);
+        const webpBlob = await toWebpBlob(file);
+        if (gen !== this._gen) return;
+
+        let imageUrl = null;
+
+        // Try direct Blob upload to bypass 4.5MB serverless limit
+        if (adminToken) {
+          try {
+            const safeName = (this.id || 'img').replace(/[^a-z0-9_-]/gi, '_') + '-' + Date.now() + '.webp';
+            const tokenRes = await fetch('/api/blob-token', {
+              method: 'POST',
+              headers: { 'Authorization': 'Bearer ' + adminToken, 'Content-Type': 'application/json' },
+              body: JSON.stringify({ name: safeName, contentType: 'image/webp' }),
+            });
+            if (tokenRes.ok) {
+              const tokenData = await tokenRes.json();
+              if (!tokenData.error) {
+                if (tokenData.local) {
+                  const res = await fetch('/api/upload?name=' + encodeURIComponent(safeName), {
+                    method: 'POST',
+                    headers: { 'Authorization': 'Bearer ' + adminToken, 'Content-Type': 'image/webp' },
+                    body: webpBlob,
+                  });
+                  if (res.ok) { const d = await res.json(); imageUrl = d.url; }
+                } else {
+                  const { clientToken, pathname } = tokenData;
+                  const uploadRes = await fetch('https://vercel.com/api/blob/?pathname=' + encodeURIComponent(pathname), {
+                    method: 'PUT',
+                    headers: {
+                      'Authorization': 'Bearer ' + clientToken,
+                      'x-api-version': '12',
+                      'x-vercel-blob-access': 'public',
+                      'x-content-type': 'image/webp',
+                    },
+                    body: webpBlob,
+                  });
+                  if (uploadRes.ok) { const r = await uploadRes.json(); imageUrl = r.url; }
+                }
+              }
+            }
+          } catch (_) { /* fall through to base64 */ }
+        }
+
+        // Fallback: base64 dataURL (local dev without Blob, or token unavailable)
+        if (!imageUrl) {
+          imageUrl = await new Promise((resolve, reject) => {
+            const r = new FileReader();
+            r.onload = () => resolve(r.result);
+            r.onerror = reject;
+            r.readAsDataURL(webpBlob);
+          });
+        }
+
         if (gen !== this._gen) return;
         this._setError(null);
         this._exitReframe(false);
-        const val = { u: url, s: 1, x: 0, y: 0 };
+        const val = { u: imageUrl, s: 1, x: 0, y: 0 };
         setSlot(this.id || '', val, (msg) => this._setError('Save failed: ' + msg));
         if (!this.id) { this._local = val; this._render(); }
       } catch (err) {
