@@ -3157,14 +3157,22 @@
 }
 .wf--mobile .insp-head h2 { font-size: 24px; }
 .wf--mobile .carousel {
-  margin: 0 -20px;
-  padding: 0 20px 16px;
-  gap: 12px;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+  overflow-y: visible;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  gap: 12px;
+  margin: 0 -20px;
+  padding: 0 20px 16px;
+  box-sizing: content-box;
 }
+.wf--mobile .carousel::-webkit-scrollbar { display: none; }
 .wf--mobile .insp-item {
   flex: 0 0 75vw;
+  min-width: 0;
   scroll-snap-align: start;
 }
 .wf--mobile .insp-item .cap { font-size: 11px; }
