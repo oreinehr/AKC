@@ -3158,9 +3158,16 @@
 .wf--mobile .insp-head h2 { font-size: 24px; }
 .wf--mobile .carousel {
   margin: 0 -20px;
-  padding: 0 20px 8px;
+  padding: 0 20px 16px;
+  gap: 12px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
 }
-.wf--mobile .insp-item { flex: 0 0 180px; }
+.wf--mobile .insp-item {
+  flex: 0 0 75vw;
+  scroll-snap-align: start;
+}
+.wf--mobile .insp-item .cap { font-size: 11px; }
 
 /* footer — stack 4 columns into 1 */
 .wf--mobile .footer { padding: 64px 0 24px; }
