@@ -119,7 +119,15 @@ app.post('/api/slots', requireAuth, express.text({ limit: '50mb' }), async (req,
           }
         }
       }
-      await redis.set('akc:slots', slots);
+      // Merge into existing KV so stripped base64 entries (filtered on client)
+      // are preserved. Null values mean the slot was cleared — delete them.
+      const existing = (await redis.get('akc:slots')) || {};
+      const merged = { ...existing };
+      for (const [id, val] of Object.entries(slots)) {
+        if (val === null || val === undefined) delete merged[id];
+        else merged[id] = val;
+      }
+      await redis.set('akc:slots', merged);
       return res.json({ ok: true });
     }
     fs.writeFileSync(SLOTS_FILE, req.body);

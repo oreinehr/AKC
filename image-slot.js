@@ -113,7 +113,16 @@
     const w = window.omelette && window.omelette.writeFile;
     if (!w) return;
     saving = true;
-    Promise.resolve(w(STATE_FILE, JSON.stringify(slots)))
+    // Strip base64 data URLs — they're already in KV from a previous save and
+    // re-sending them would blow past Vercel's 4.5 MB serverless body limit.
+    // Server merges this payload with existing KV so stripped entries are preserved.
+    const out = {};
+    for (const k in slots) {
+      const v = slots[k];
+      if (v && typeof v.u === 'string' && v.u.startsWith('data:')) continue;
+      out[k] = v;
+    }
+    Promise.resolve(w(STATE_FILE, JSON.stringify(out)))
       .then((res) => {
         if (res && typeof res.ok === 'boolean' && !res.ok) {
           return res.text().then((t) => { throw new Error('HTTP ' + res.status + ': ' + t); });
