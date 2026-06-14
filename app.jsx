@@ -1767,6 +1767,7 @@ function CasesPane({ data, setData }) {
               <>
                 <div className="group-head">home card</div>
                 <div className="row2">
+
                   <div className="field"><label>Client</label><input value={w.client || ""} onChange={(e) => setWork("client", e.target.value)} /></div>
                   <div className="field"><label>Year</label><input value={w.year || ""} onChange={(e) => setWork("year", e.target.value)} /></div>
                 </div>
