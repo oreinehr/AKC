@@ -302,21 +302,21 @@ const DEFAULTS = {
     intro: { en: "I'm Alessandro Kuhn Contes — Creative Director and UX Designer working between Brazil and the United States. Currently leading creative at TGR Studio. The work sits at the intersection of brand, UX, and creative leadership.", pt: "Sou Alessandro Kuhn Contes — Diretor Criativo e Designer de UX atuando entre Brasil e Estados Unidos. Atualmente liderando a criação na TGR Studio. O trabalho situa-se na interseção de marca, UX e liderança criativa." },
     body: { en: "What makes the practice hold up across formats and decades isn't taste or trend — it's a calibration bar tuned in cultures that don't tolerate slack. Brazil teaches you to ship inside constraints; the U.S. teaches you to make the bar legible at scale. The output is a working method that ages: a brand system that reads the same in 2026 and 2036, a UX rhythm that survives the next platform shift, and a creative team that knows how to run without you in the room.", pt: "O que sustenta a prática ao longo de formatos e décadas não é gosto ou tendência — é uma barra de calibração afinada em culturas que não toleram imprecisão. O Brasil ensina a entregar dentro de restrições; os EUA ensinam a tornar a barra legível em escala. O resultado é um método de trabalho que envelhece bem: um sistema de marca que lê igual em 2026 e 2036, um ritmo de UX que sobrevive à próxima virada de plataforma, e um time criativo que sabe funcionar sem você na sala." },
     practice: [
-      ["how", { en: "Senior creative direction, brand systems, UX leadership, team operating models.", pt: "Direção criativa sênior, sistemas de marca, liderança em UX, modelos operacionais de time." }],
-      ["where", { en: "Remote-first from Novo Hamburgo. Travel for client work — São Paulo, New York, Lisbon.", pt: "Remote-first de Novo Hamburgo. Viagens para trabalho com clientes — São Paulo, Nova York, Lisboa." }],
-      ["when", { en: "Selective. One major engagement at a time. Currently leading at TGR Studio.", pt: "Seletivo. Um grande projeto por vez. Atualmente liderando na TGR Studio." }],
-      ["who for", { en: "Enterprise B2B, civic + public-sector creative, senior personal brands.", pt: "Enterprise B2B, criativo cívico e setor público, marcas pessoais sênior." }],
+      [{ en: "how", pt: "como" }, { en: "Senior creative direction, brand systems, UX leadership, team operating models.", pt: "Direção criativa sênior, sistemas de marca, liderança em UX, modelos operacionais de time." }],
+      [{ en: "where", pt: "onde" }, { en: "Remote-first from Novo Hamburgo. Travel for client work — São Paulo, New York, Lisbon.", pt: "Remote-first de Novo Hamburgo. Viagens para trabalho com clientes — São Paulo, Nova York, Lisboa." }],
+      [{ en: "when", pt: "quando" }, { en: "Selective. One major engagement at a time. Currently leading at TGR Studio.", pt: "Seletivo. Um grande projeto por vez. Atualmente liderando na TGR Studio." }],
+      [{ en: "who for", pt: "para quem" }, { en: "Enterprise B2B, civic + public-sector creative, senior personal brands.", pt: "Enterprise B2B, criativo cívico e setor público, marcas pessoais sênior." }],
     ],
   },
 
   timeline: [
-    { year: "2024 — present", chapter: "TGR Studio", role: "Creative Director", location: "São Paulo, BR", note: "Brand, UX, and senior creative leadership across enterprise platforms. Live engagement." },
-    { year: "2022 — 2024", chapter: "K2 · K1 Group", role: "Creative Director", location: "São Paulo, BR", note: "Productivity rebuild — operational reset of the creative org. 274% throughput lift." },
-    { year: "2020 — 2022", chapter: "Confidential · BR", role: "Senior Creative", location: "Porto Alegre, BR", note: "Brand + UX system for a multi-product enterprise platform." },
-    { year: "2018 — 2020", chapter: "Independent", role: "Creative Direction", location: "São Paulo · NY", note: "Bridge years — selective enterprise and civic brand work across markets." },
-    { year: "2016 — 2018", chapter: "Bureau Blank", role: "Senior Creative", location: "New York, US", note: "Civic and public-sector brand leadership. NYC Service subway campaign system." },
-    { year: "2014 — 2016", chapter: "—", role: "Creative", location: "São Paulo, BR", note: "Agency-side senior creative on enterprise accounts." },
-    { year: "2006 — 2014", chapter: "Early career", role: "Designer → Creative", location: "Porto Alegre · Curitiba", note: "Eight years calibrating the bar across editorial, brand, and digital." },
+    { year: "2024 — present", chapter: "TGR Studio", role: { en: "Creative Director", pt: "Diretor Criativo" }, location: "São Paulo, BR", note: { en: "Brand, UX, and senior creative leadership across enterprise platforms. Live engagement.", pt: "Liderança criativa sênior em marca, UX e plataformas enterprise. Projeto em andamento." } },
+    { year: "2022 — 2024", chapter: "K2 · K1 Group", role: { en: "Creative Director", pt: "Diretor Criativo" }, location: "São Paulo, BR", note: { en: "Productivity rebuild — operational reset of the creative org. 274% throughput lift.", pt: "Reconstrução de produtividade — reset operacional da organização criativa. Crescimento de 274% no throughput." } },
+    { year: "2020 — 2022", chapter: "Confidential · BR", role: { en: "Senior Creative", pt: "Criativo Sênior" }, location: "Porto Alegre, BR", note: { en: "Brand + UX system for a multi-product enterprise platform.", pt: "Sistema de marca + UX para plataforma enterprise multi-produto." } },
+    { year: "2018 — 2020", chapter: "Independent", role: { en: "Creative Direction", pt: "Direção Criativa" }, location: "São Paulo · NY", note: { en: "Bridge years — selective enterprise and civic brand work across markets.", pt: "Anos de transição — trabalho seletivo em marca enterprise e cívica em diferentes mercados." } },
+    { year: "2016 — 2018", chapter: "Bureau Blank", role: { en: "Senior Creative", pt: "Criativo Sênior" }, location: "New York, US", note: { en: "Civic and public-sector brand leadership. NYC Service subway campaign system.", pt: "Liderança de marca cívica e setor público. Sistema de campanha de metrô NYC Service." } },
+    { year: "2014 — 2016", chapter: "—", role: { en: "Creative", pt: "Criativo" }, location: "São Paulo, BR", note: { en: "Agency-side senior creative on enterprise accounts.", pt: "Criativo sênior em agência, atendendo contas enterprise." } },
+    { year: "2006 — 2014", chapter: "Early career", role: { en: "Designer → Creative", pt: "Designer → Criativo" }, location: "Porto Alegre · Curitiba", note: { en: "Eight years calibrating the bar across editorial, brand, and digital.", pt: "Oito anos calibrando a barra em editorial, marca e digital." } },
   ],
 
   clients: [
@@ -394,14 +394,19 @@ function useStore() {
   // skipSave prevents echoing server data back to the server on init
   const skipSave = React.useRef(false);
 
-  // On mount: fetch from server — server is the source of truth
+  // On mount: fetch from server — server is the source of truth for content,
+  // but dark/lang are local UI prefs and must not be overwritten by server data.
   useEffect(() => {
+    const localDark = loadStore().dark;
+    const localLang = loadStore().lang;
     fetch('/api/data')
       .then(r => r.ok ? r.json() : null)
       .then(saved => {
         if (saved && typeof saved === 'object') {
           skipSave.current = true;
           const merged = mergeWithDefaults(DEFAULTS, saved);
+          merged.dark = localDark !== undefined ? localDark : merged.dark;
+          merged.lang = localLang || merged.lang;
           setState(merged);
           saveStore(merged);
         }
@@ -513,7 +518,8 @@ function ImgSlot({ id, label, aspect = "16/9", shape = "rect", style }) {
 
 // Renders a video from a URL. Detects YouTube/Vimeo → iframe; otherwise → <video>.
 // Used both in the public case-study page and the admin preview.
-function VideoBlock({ url, aspect = "16/9", style, autoPlay = false }) {
+function VideoBlock({ url, aspect = "16/9", style, autoPlay = false, loop = false }) {
+  const shouldLoop = loop || autoPlay;
   if (!url) return (
     <div className="ph" style={{ aspectRatio: aspect, ...style }}>
       <span className="ph-label">video · placeholder</span>
@@ -521,11 +527,14 @@ function VideoBlock({ url, aspect = "16/9", style, autoPlay = false }) {
   );
   const ytMatch = url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([\w-]+)/);
   if (ytMatch) {
-    const params = autoPlay ? "?autoplay=1&mute=1&loop=1&playlist=" + ytMatch[1] : "";
+    const params = new URLSearchParams();
+    if (autoPlay) { params.set("autoplay", "1"); params.set("mute", "1"); }
+    if (shouldLoop) { params.set("loop", "1"); params.set("playlist", ytMatch[1]); }
+    const qs = params.toString() ? "?" + params.toString() : "";
     return (
       <div style={{ aspectRatio: aspect, position: "relative", overflow: "hidden", background: "#000", ...style }}>
         <iframe
-          src={`https://www.youtube.com/embed/${ytMatch[1]}${params}`}
+          src={`https://www.youtube.com/embed/${ytMatch[1]}${qs}`}
           style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: "none" }}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
@@ -535,11 +544,14 @@ function VideoBlock({ url, aspect = "16/9", style, autoPlay = false }) {
   }
   const vimeoMatch = url.match(/vimeo\.com\/(\d+)/);
   if (vimeoMatch) {
-    const params = autoPlay ? "?autoplay=1&muted=1&loop=1" : "";
+    const params = new URLSearchParams();
+    if (autoPlay) { params.set("autoplay", "1"); params.set("muted", "1"); }
+    if (shouldLoop) params.set("loop", "1");
+    const qs = params.toString() ? "?" + params.toString() : "";
     return (
       <div style={{ aspectRatio: aspect, position: "relative", overflow: "hidden", background: "#000", ...style }}>
         <iframe
-          src={`https://player.vimeo.com/video/${vimeoMatch[1]}${params}`}
+          src={`https://player.vimeo.com/video/${vimeoMatch[1]}${qs}`}
           style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: "none" }}
           allow="autoplay; fullscreen; picture-in-picture"
           allowFullScreen
@@ -547,15 +559,22 @@ function VideoBlock({ url, aspect = "16/9", style, autoPlay = false }) {
       </div>
     );
   }
+  const vRef = React.useRef(null);
+  React.useEffect(() => {
+    const v = vRef.current;
+    if (!v) return;
+    // React doesn't apply `muted` to the DOM (known bug) — must be set imperatively
+    v.muted = autoPlay;
+  }, [autoPlay]);
   return (
     <div style={{ aspectRatio: aspect, background: "#000", ...style }}>
       <video
+        ref={vRef}
         style={{ width: "100%", height: "100%", display: "block" }}
         src={url}
-        controls={!autoPlay}
         autoPlay={autoPlay}
-        muted={autoPlay}
-        loop={autoPlay}
+        loop={shouldLoop}
+        controls={!autoPlay}
         playsInline={autoPlay}
       />
     </div>
@@ -801,7 +820,7 @@ function FullFooter({ data, lang }) {
             <span>{data.meta.location.toLowerCase()}, br · <LiveTime /></span>
           </div>
           <div className="f-version">{sc.footerVersion}</div>
-          <a href="#top" className="f-top-link">back to top <span className="arr">↑</span></a>
+          <a href="#top" className="f-top-link">{lang === "pt" ? "voltar ao topo" : "back to top"} <span className="arr">↑</span></a>
         </div>
       </div>
     </footer>
@@ -824,7 +843,7 @@ function PageShell({ data, dark, setDark, lang, setLang, hero, mobile, tablet, n
       <section className="sec" id="about">
         <div className="page">
           <div className="sec-head">
-            <div><div className="num">{m.aboutNum || "02 · about"}</div><span className="anno">{m.aboutAnno || "about · medium bio"}</span></div>
+            <div><div className="num">{m.aboutNum || (lang === "pt" ? "02 · sobre" : "02 · about")}</div><span className="anno">{m.aboutAnno || (lang === "pt" ? "sobre · bio média" : "about · medium bio")}</span></div>
             <div><h2>{t(sc.aboutTitle, lang)}</h2><p className="sub">{t(sc.aboutSub, lang)}</p></div>
           </div>
           <div className="about-grid">
@@ -846,7 +865,7 @@ function PageShell({ data, dark, setDark, lang, setLang, hero, mobile, tablet, n
       <section className="sec" id="work">
         <div className="page">
           <div className="sec-head">
-            <div><div className="num">{m.workNum || "03 · selected work"}</div><span className="anno">{m.workAnno || "3-up grid · §5.4"}</span></div>
+            <div><div className="num">{m.workNum || (lang === "pt" ? "03 · trabalhos" : "03 · selected work")}</div><span className="anno">{m.workAnno || (lang === "pt" ? "grade 3 · §5.4" : "3-up grid · §5.4")}</span></div>
             <div><h2>{t(sc.workTitle, lang)}</h2><p className="sub">{t(sc.workSub, lang)}</p></div>
           </div>
           <div className="work-grid">
@@ -891,7 +910,7 @@ function PageShell({ data, dark, setDark, lang, setLang, hero, mobile, tablet, n
       <section className="sec" id="blog">
         <div className="page">
           <div className="sec-head">
-            <div><div className="num">{m.blogNum || "04 · blog"}</div><span className="anno">{m.blogAnno || "text-led · §5.5"}</span></div>
+            <div><div className="num">{m.blogNum || (lang === "pt" ? "04 · notas" : "04 · blog")}</div><span className="anno">{m.blogAnno || (lang === "pt" ? "texto-guia · §5.5" : "text-led · §5.5")}</span></div>
             <div><h2>{t(sc.blogTitle, lang)}</h2><p className="sub">{t(sc.blogSub, lang)}</p></div>
           </div>
           <div className="blog-list">
@@ -924,7 +943,7 @@ function PageShell({ data, dark, setDark, lang, setLang, hero, mobile, tablet, n
       <section className="sec" id="inspiration">
         <div className="page">
           <div className="sec-head">
-            <div><div className="num">{m.inspNum || "05 · weekly inspiration"}</div><span className="anno">{m.inspAnno || "weekly cadence"}</span></div>
+            <div><div className="num">{m.inspNum || (lang === "pt" ? "05 · inspiração semanal" : "05 · weekly inspiration")}</div><span className="anno">{m.inspAnno || (lang === "pt" ? "cadência semanal" : "weekly cadence")}</span></div>
             <div>
               <h2>{t(sc.inspTitle, lang)}</h2>
               {sc.inspWeek && <p className="sub">{sc.inspWeek}</p>}
@@ -1167,7 +1186,7 @@ function AdminView({ data, setData }) {
           {tab === "sections" && <HomeSectionsPane data={data} set={set} />}
           {tab === "about" && <AboutPane data={data} set={set} setData={setData} />}
           {tab === "aboutPage" && <AboutPagePane data={data} set={set} setData={setData} />}
-          {tab === "timeline" && <ListPane title="Timeline" subtitle="Career chapters, in chronological order. Drives the About page timeline section." data={data} setData={setData} field="timeline" cols={[["year","Year"],["chapter","Chapter"],["role","Role"],["location","Location"],["note","Note"]]} />}
+          {tab === "timeline" && <TimelinePane data={data} setData={setData} />}
           {tab === "clients" && <StringListPane title="Clients" subtitle="Selected clients, displayed in two columns on the About page. One line per client." data={data} setData={setData} field="clients" />}
           {tab === "contactPage" && <ContactPagePane data={data} set={set} setData={setData} />}
           {tab === "cases" && <CasesPane data={data} setData={setData} />}
@@ -1392,20 +1411,53 @@ function AboutPagePane({ data, set, setData }) {
     <div>
       <h1>About page</h1>
       <p className="subhead">Long-form bio surface. Opener copy, intro paragraph, body, and the practice key/value list.</p>
-      <div className="field"><label>Eyebrow</label><input value={a.eyebrow || ""} onChange={(e) => set(["aboutPage", "eyebrow"], e.target.value)} /></div>
-      <div className="field"><label>Title</label><textarea rows={2} value={a.title || ""} onChange={(e) => set(["aboutPage", "title"], e.target.value)} /></div>
-      <div className="field"><label>Intro (italic Migra paragraph)</label><textarea rows={3} value={a.intro || ""} onChange={(e) => set(["aboutPage", "intro"], e.target.value)} /></div>
-      <div className="field"><label>Body</label><textarea rows={6} value={a.body || ""} onChange={(e) => set(["aboutPage", "body"], e.target.value)} /></div>
+      <BiField label="Eyebrow" value={a.eyebrow} path={["aboutPage", "eyebrow"]} set={set} />
+      <BiField label="Title" value={a.title} path={["aboutPage", "title"]} set={set} multiline />
+      <BiField label="Intro (italic Migra paragraph)" value={a.intro} path={["aboutPage", "intro"]} set={set} multiline />
+      <BiField label="Body" value={a.body} path={["aboutPage", "body"]} set={set} multiline />
 
       <div className="group-head">practice (key / value)</div>
       {(a.practice || []).map((row, i) => (
-        <div key={i} className="row2" style={{ gridTemplateColumns: "160px 1fr 80px", alignItems: "end", marginBottom: 10 }}>
-          <div className="field" style={{ marginBottom: 0 }}><input value={row[0]} placeholder="key" onChange={(e) => setData((s) => { const n = JSON.parse(JSON.stringify(s)); n.aboutPage.practice[i][0] = e.target.value; return n; })} /></div>
-          <div className="field" style={{ marginBottom: 0 }}><input value={row[1]} placeholder="value" onChange={(e) => setData((s) => { const n = JSON.parse(JSON.stringify(s)); n.aboutPage.practice[i][1] = e.target.value; return n; })} /></div>
-          <button className="add-btn" style={{ height: 38 }} onClick={() => setData((s) => { const n = JSON.parse(JSON.stringify(s)); n.aboutPage.practice = n.aboutPage.practice.filter((_, k) => k !== i); return n; })}>remove</button>
+        <div key={i} style={{ border: "1px solid var(--border)", padding: "10px 12px", marginBottom: 8 }}>
+          <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 6 }}>
+            <button className="add-btn" onClick={() => setData((s) => { const n = JSON.parse(JSON.stringify(s)); n.aboutPage.practice = n.aboutPage.practice.filter((_, k) => k !== i); return n; })}>remove</button>
+          </div>
+          <BiField label="key" value={row[0]} path={[]} set={(_, v) => setData((s) => { const n = JSON.parse(JSON.stringify(s)); n.aboutPage.practice[i][0] = v; return n; })} />
+          <BiField label="value" value={row[1]} path={[]} set={(_, v) => setData((s) => { const n = JSON.parse(JSON.stringify(s)); n.aboutPage.practice[i][1] = v; return n; })} multiline />
         </div>
       ))}
-      <button className="add-btn" onClick={() => set(["aboutPage", "practice"], [...(a.practice || []), ["key", "value"]])}>+ row</button>
+      <button className="add-btn" onClick={() => set(["aboutPage", "practice"], [...(a.practice || []), [{ en: "key", pt: "chave" }, { en: "value", pt: "valor" }]])}>+ row</button>
+    </div>
+  );
+}
+
+function TimelinePane({ data, setData }) {
+  const items = data.timeline || [];
+  const upd = (i, k, v) => setData((s) => { const n = JSON.parse(JSON.stringify(s)); n.timeline[i][k] = v; return n; });
+  const add = () => setData((s) => ({ ...s, timeline: [...(s.timeline || []), { year: "", chapter: "", role: { en: "", pt: "" }, location: "", note: { en: "", pt: "" } }] }));
+  const remove = (i) => setData((s) => ({ ...s, timeline: s.timeline.filter((_, k) => k !== i) }));
+  const move = (i, dir) => setData((s) => { const arr = [...s.timeline]; const j = i + dir; if (j < 0 || j >= arr.length) return s; [arr[i], arr[j]] = [arr[j], arr[i]]; return { ...s, timeline: arr }; });
+  return (
+    <div>
+      <h1>Timeline</h1>
+      <p className="subhead">Career chapters, most recent first. Drives the About page timeline section.</p>
+      {items.map((it, i) => (
+        <div key={i} style={{ border: "1px solid var(--border)", padding: "12px 14px", marginBottom: 10 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr auto", gap: 8, marginBottom: 10 }}>
+            <div className="field" style={{ marginBottom: 0 }}><label>year</label><input value={it.year || ""} onChange={(e) => upd(i, "year", e.target.value)} /></div>
+            <div className="field" style={{ marginBottom: 0 }}><label>chapter</label><input value={it.chapter || ""} onChange={(e) => upd(i, "chapter", e.target.value)} /></div>
+            <div className="field" style={{ marginBottom: 0 }}><label>location</label><input value={it.location || ""} onChange={(e) => upd(i, "location", e.target.value)} /></div>
+            <div style={{ display: "flex", gap: 4, alignSelf: "end", paddingBottom: 1 }}>
+              <button onClick={() => move(i, -1)}>↑</button>
+              <button onClick={() => move(i, +1)}>↓</button>
+              <button onClick={() => remove(i)}>del</button>
+            </div>
+          </div>
+          <BiField label="role" value={it.role} path={[]} set={(_, v) => upd(i, "role", v)} />
+          <BiField label="note" value={it.note} path={[]} set={(_, v) => upd(i, "note", v)} multiline />
+        </div>
+      ))}
+      <button className="add-btn" onClick={add}>+ add chapter</button>
     </div>
   );
 }
