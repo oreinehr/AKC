@@ -1811,7 +1811,7 @@ function CasesPane({ data, setData }) {
               <h2>{c.meta.project || "—"}</h2>
             </div>
             <div style={{ display: "flex", gap: 8 }}>
-              <button className="add-btn" style={{ color: c.disabled ? "var(--color-phosphor)" : "var(--fg-secondary)" }} onClick={() => setCase(["disabled"], !c.disabled)}>
+              <button className="add-btn" style={{ color: "var(--fg-secondary)" }} onClick={() => setCase(["disabled"], !c.disabled)}>
                 {c.disabled ? "reativar case" : "desativar case"}
               </button>
               <button className="add-btn" style={{ color: "var(--color-accent-quiet)" }} onClick={removeCase}>delete case</button>
