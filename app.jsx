@@ -869,7 +869,11 @@ function PageShell({ data, dark, setDark, lang, setLang, hero, mobile, tablet, n
             <div><h2>{t(sc.workTitle, lang)}</h2><p className="sub">{t(sc.workSub, lang)}</p></div>
           </div>
           <div className="work-grid">
-            {data.work.slice(0, 6).map((w, i) => {
+            {data.work.filter((w) => {
+              if (!w.caseSlug) return true;
+              const c = (data.cases || []).find((c) => c.slug === w.caseSlug);
+              return !c || !c.disabled;
+            }).slice(0, 6).map((w, i) => {
               const linked = !!w.caseSlug;
               const active = linked && w.caseSlug === activeCaseSlug;
               return (
@@ -1782,10 +1786,10 @@ function CasesPane({ data, setData }) {
           <ul>
             {cases.map((cc, ci) => (
               <li key={cc.slug} style={{ display: "flex", alignItems: "stretch" }}>
-                <button className={cc.slug === selSlug ? "on" : ""} onClick={() => setActive(cc.slug)} style={{ flex: 1 }}>
+                <button className={cc.slug === selSlug ? "on" : ""} onClick={() => setActive(cc.slug)} style={{ flex: 1, opacity: cc.disabled ? 0.4 : 1 }}>
                   <span className="cl-num">{cc.meta.num}</span>
                   <span className="cl-title">{cc.meta.project}</span>
-                  <span className="cl-client">{cc.meta.client.toLowerCase()} · {cc.meta.year}</span>
+                  <span className="cl-client">{cc.meta.client.toLowerCase()} · {cc.meta.year}{cc.disabled ? " · off" : ""}</span>
                 </button>
                 {cc.slug === selSlug && (
                   <div style={{ display: "flex", flexDirection: "column" }}>
@@ -1806,7 +1810,12 @@ function CasesPane({ data, setData }) {
               <div className="cl-num">{c.meta.num}</div>
               <h2>{c.meta.project || "—"}</h2>
             </div>
-            <button className="add-btn" style={{ color: "var(--color-accent-quiet)" }} onClick={removeCase}>delete case</button>
+            <div style={{ display: "flex", gap: 8 }}>
+              <button className="add-btn" style={{ color: c.disabled ? "var(--color-phosphor)" : "var(--fg-secondary)" }} onClick={() => setCase(["disabled"], !c.disabled)}>
+                {c.disabled ? "reativar case" : "desativar case"}
+              </button>
+              <button className="add-btn" style={{ color: "var(--color-accent-quiet)" }} onClick={removeCase}>delete case</button>
+            </div>
           </div>
 
           {/* ── Home card ── */}

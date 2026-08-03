@@ -5,12 +5,12 @@
 const { useState: useStateA, useMemo: useMemoA, useRef: useRefA } = React;
 
 // Small filter-chip strip used by both archives.
-function FilterStrip({ label, options, value, onChange }) {
+function FilterStrip({ label, options, value, onChange, lang }) {
   return (
     <div className="ar-filter">
       <span className="ar-filter-k">{label}</span>
       <div className="ar-filter-chips">
-        <button className={!value ? "on" : ""} onClick={() => onChange(null)}>all</button>
+        <button className={!value ? "on" : ""} onClick={() => onChange(null)}>{lang === "pt" ? "todos" : "all"}</button>
         {options.map((o) => (
           <button key={o} className={value === o ? "on" : ""} onClick={() => onChange(o)}>{o}</button>
         ))}
@@ -23,7 +23,11 @@ function ArchiveWork({ data, dark, setDark, lang, setLang, mobile, navigate }) {
   const rootRef = useRefA(null);
   useCobaltCursor(rootRef);
   const openCase = (navigate && navigate.openCase) || (() => {});
-  const items = data.work || [];
+  const items = (data.work || []).filter((w) => {
+    if (!w.caseSlug) return true;
+    const c = (data.cases || []).find((c) => c.slug === w.caseSlug);
+    return !c || !c.disabled;
+  });
 
   // Build option lists from the data. Year first segment ("2024–present" → "2024").
   const yearOf = (s) => (s || "").split("–")[0].trim();
@@ -58,9 +62,9 @@ function ArchiveWork({ data, dark, setDark, lang, setLang, mobile, navigate }) {
 
       <section className="ar-filters">
         <div className="page">
-          <FilterStrip label="year" options={yearOpts} value={year} onChange={setYear} />
-          <FilterStrip label="sector" options={sectorOpts} value={sector} onChange={setSector} />
-          <div className="ar-count">{filtered.length} of {items.length}</div>
+          <FilterStrip label={lang === "pt" ? "ano" : "year"} options={yearOpts} value={year} onChange={setYear} lang={lang} />
+          <FilterStrip label={lang === "pt" ? "setor" : "sector"} options={sectorOpts} value={sector} onChange={setSector} lang={lang} />
+          <div className="ar-count">{filtered.length} {lang === "pt" ? "de" : "of"} {items.length}</div>
         </div>
       </section>
 
@@ -143,9 +147,9 @@ function ArchiveNotes({ data, dark, setDark, lang, setLang, mobile, navigate }) 
 
       <section className="ar-filters">
         <div className="page">
-          <FilterStrip label="year" options={yearOpts} value={year} onChange={setYear} />
-          <FilterStrip label="tag" options={tagOpts} value={tag} onChange={setTag} />
-          <div className="ar-count">{filtered.length} of {items.length}</div>
+          <FilterStrip label={lang === "pt" ? "ano" : "year"} options={yearOpts} value={year} onChange={setYear} lang={lang} />
+          <FilterStrip label="tag" options={tagOpts} value={tag} onChange={setTag} lang={lang} />
+          <div className="ar-count">{filtered.length} {lang === "pt" ? "de" : "of"} {items.length}</div>
         </div>
       </section>
 
@@ -185,7 +189,7 @@ function ArchiveNotes({ data, dark, setDark, lang, setLang, mobile, navigate }) 
           <div className="pn-grid">
             <div>
               <div className="pn-num">{(typeof data.newsletter.title === "object" ? (data.newsletter.title[lang] || data.newsletter.title.en) : data.newsletter.title).toLowerCase()}</div>
-              <h2>Get the next one in your inbox.</h2>
+              <h2>{lang === "pt" ? "Receba o próximo na sua caixa." : "Get the next one in your inbox."}</h2>
               <p>{t(data.newsletter.blurb, lang)}</p>
             </div>
             <NewsletterForm n={data.newsletter} lang={lang} />
