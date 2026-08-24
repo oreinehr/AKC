@@ -34,12 +34,11 @@ function AboutPage({ data, dark, setDark, lang, setLang, mobile, tablet }) {
       <section className="sec ap-practice" id="practice">
         <div className="page">
           <div className="sec-head">
-            <div><div className="num">{m.practiceNum || "01 · practice"}</div><span className="anno">{m.practiceAnno || "scope · template"}</span></div>
-            <div><h2>{lang === "pt" ? "Como a prática funciona." : "How the practice works."}</h2></div>
+            <div><div className="num">{m.practiceNum || (lang === "pt" ? "01 · prática" : "01 · practice")}</div><span className="anno">{m.practiceAnno || (lang === "pt" ? "escopo · modelo" : "scope · template")}</span></div>
           </div>
           <ul className="ap-practice-list">
-            {a.practice.map(([k, v], i) => (
-              <li key={i}><span className="k">{k}</span><span className="v">{t(v, lang)}</span></li>
+            {(a.practice || []).map(([k, v], i) => (
+              <li key={i}><span className="k">{t(k, lang)}</span><span className="v">{t(v, lang)}</span></li>
             ))}
           </ul>
         </div>
@@ -49,17 +48,16 @@ function AboutPage({ data, dark, setDark, lang, setLang, mobile, tablet }) {
       <section className="sec ap-timeline" id="timeline">
         <div className="page">
           <div className="sec-head">
-            <div><div className="num">{m.timelineNum || "02 · timeline"}</div><span className="anno">{m.timelineAnno || "20 years · selected"}</span></div>
-            <div><h2>{lang === "pt" ? "O trabalho, em ordem." : "The work, in order."}</h2></div>
+            <div><div className="num">{m.timelineNum || (lang === "pt" ? "02 · linha do tempo" : "02 · timeline")}</div><span className="anno">{m.timelineAnno || (lang === "pt" ? "20 anos · selecionado" : "20 years · selected")}</span></div>
           </div>
           <ol className="ap-tl">
-            {data.timeline.map((t, i) => (
+            {(data.timeline || []).map((tl, i) => (
               <li key={i} className="ap-tl-row">
-                <div className="ap-tl-year">{t.year}</div>
+                <div className="ap-tl-year">{tl.year}</div>
                 <div className="ap-tl-body">
-                  <div className="ap-tl-chapter">{t.chapter}<span className="dot">·</span><span className="ap-tl-role">{t.role}</span></div>
-                  <div className="ap-tl-loc">{t.location}</div>
-                  <div className="ap-tl-note">{t.note}</div>
+                  <div className="ap-tl-chapter">{tl.chapter}<span className="dot">·</span><span className="ap-tl-role">{t(tl.role, lang)}</span></div>
+                  <div className="ap-tl-loc">{tl.location}</div>
+                  <div className="ap-tl-note">{t(tl.note, lang)}</div>
                 </div>
               </li>
             ))}
@@ -71,8 +69,7 @@ function AboutPage({ data, dark, setDark, lang, setLang, mobile, tablet }) {
       <section className="sec ap-clients" id="clients">
         <div className="page">
           <div className="sec-head">
-            <div><div className="num">{m.clientsNum || "03 · clients"}</div><span className="anno">{m.clientsAnno || "selected · public"}</span></div>
-            <div><h2>{lang === "pt" ? "Clientes selecionados." : "Selected clients."}</h2><p className="sub">{lang === "pt" ? "Empresas e organizações representadas ao longo de duas décadas. Subconjunto exibido — lista completa disponível sob solicitação." : "Companies and organizations represented across two decades. Subset shown — full list available on request."}</p></div>
+            <div><div className="num">{m.clientsNum || (lang === "pt" ? "03 · clientes" : "03 · clients")}</div><span className="anno">{m.clientsAnno || (lang === "pt" ? "selecionados · público" : "selected · public")}</span></div>
           </div>
           <ul className="ap-clients-list">
             {data.clients.map((c, i) => <li key={i}>{c}</li>)}
@@ -138,7 +135,7 @@ function ContactPage({ data, dark, setDark, lang, setLang, mobile, tablet }) {
       <section className="sec cp-fit">
         <div className="page">
           <div className="sec-head">
-            <div><div className="num">{m.fitNum || "01 · what to email about"}</div><span className="anno">{m.fitAnno || "honest framing"}</span></div>
+            <div><div className="num">{m.fitNum || (lang === "pt" ? "01 · sobre o que escrever" : "01 · what to email about")}</div><span className="anno">{m.fitAnno || (lang === "pt" ? "enquadramento honesto" : "honest framing")}</span></div>
             <div><h2>{lang === "pt" ? "O que se encaixa." : "What's a fit."}</h2></div>
           </div>
           <div className="cp-fit-grid">
@@ -159,7 +156,7 @@ function ContactPage({ data, dark, setDark, lang, setLang, mobile, tablet }) {
       <section className="sec cp-form-sec">
         <div className="page">
           <div className="sec-head">
-            <div><div className="num">02 · {(typeof c.form.head === "object" ? (c.form.head[lang] || c.form.head.en) : c.form.head).toLowerCase()}</div><span className="anno">{m.formAnno || "form · mailto fallback"}</span></div>
+            <div><div className="num">02 · {(typeof c.form.head === "object" ? (c.form.head[lang] || c.form.head.en) : c.form.head).toLowerCase()}</div><span className="anno">{m.formAnno || (lang === "pt" ? "formulário · fallback mailto" : "form · mailto fallback")}</span></div>
             <div><h2>{t(c.form.head, lang)}</h2><p className="sub">{t(c.form.blurb, lang)}</p></div>
           </div>
           <ContactForm data={data} lang={lang} />
