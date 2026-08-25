@@ -2,8 +2,8 @@
   "meta": {
     "name": "Alessandro Kuhn Contes",
     "role": {
-      "en": "Creative Director · Brand & UX",
-      "pt": "Diretor Criativo · Marca & UX"
+      "en": "Creative Director | UX/UI Designer",
+      "pt": "Diretor de Criação | UX/UI Designer"
     },
     "location": "Novo Hamburgo, RS",
     "timezone": "BRT",
@@ -29,8 +29,8 @@
       "pt": "calibrada"
     },
     "roleLine": {
-      "en": "Twenty years across Brazil and the United States. Currently leading creative at TGR Studio.",
-      "pt": "Vinte anos entre Brasil e Estados Unidos. Atualmente liderando a criação na TGR Studio."
+      "en": "",
+      "pt": ""
     },
     "tag1": {
       "en": "Creative Direction",
@@ -48,114 +48,100 @@
       "pt": "A tecnologia evolui. A excelência permanece."
     },
     "body": {
-      "en": "I'm Alessandro Kuhn Contes — a Creative Director and UX Designer working between Brazil and the United States. Currently leading creative at TGR Studio. The work sits at the intersection of brand, UX, and creative leadership. What makes it hold up across formats and decades isn't taste or trend — it's a calibration bar tuned in cultures that don't tolerate slack.",
-      "pt": "Sou Alessandro Kuhn Contes — Diretor Criativo e Designer de UX atuando entre Brasil e Estados Unidos. Atualmente liderando a criação na TGR Studio. O trabalho situa-se na interseção de marca, UX e liderança criativa. O que o sustenta ao longo de formatos e décadas não é gosto ou tendência — é uma barra de calibração afinada em culturas que não toleram imprecisão."
+      "en": "I'm Alessandro Kuhn Contes, a Creative Director and UX Designer working between Brazil and the United States. Currently leading creative at TGR Studio. My work sits at the intersection of branding, UX, UI, AI, and creative leadership. And what makes it hold up across formats and decades isn't taste or trend: It's a benchmark calibrated in cultures that demand precision. Some highlights follow here:",
+      "pt": "Sou Alessandro Kuhn Contes, Diretor Criativo e Designer de UX atuando entre Brasil e Estados Unidos. Atualmente liderando a criação na TGR Studio. Meu trabalho situa-se na interseção de branding, UX, UI, IA e liderança criativa. E o que me sustenta ao longo de formatos e décadas não é gosto ou tendência: é uma régua calibrada em culturas que tratam a precisão como requisito. Alguns pontos altos seguem aqui:"
     },
     "bullets": [
       [
-        "01",
+        "K2",
         {
-          "en": "274% productivity lift inside K2 (K1 Group), in twelve months.",
-          "pt": "274% de aumento de produtividade na K2 (K1 Group), em doze meses."
+          "en": "274% productivity lift, in twelve months.",
+          "pt": "274% de aumento de produtividade, em doze meses."
         }
       ],
       [
-        "02",
+        "TGR",
         {
-          "en": "25% revenue growth at TGR through rebuilt client trust.",
-          "pt": "25% de crescimento de receita na TGR por meio da reconstrução da confiança dos clientes."
+          "en": "25% revenue growth through rebuilt client trust.",
+          "pt": "25% de crescimento de receita por meio da reconstrução da confiança dos clientes."
         }
       ],
       [
-        "03",
+        "NYC Service",
         {
-          "en": "Public campaign work for NYC Service, distributed across the New York City subway system.",
-          "pt": "Campanha pública para o NYC Service, distribuída pelo metrô de Nova York."
+          "en": "Public campaign work, distributed across the New York City subway system.",
+          "pt": "Campanha pública, distribuída pelo metrô de Nova York."
         }
       ]
     ],
     "signoff": {
-      "en": "Calibrated by craft. Built for the long game.",
-      "pt": "Calibrado pelo ofício. Construído para o longo prazo."
+      "en": "Work calibrated by craft. Built for the long game.",
+      "pt": "Trabalho calibrado pelo ofício. Construído para o longo prazo."
     }
   },
   "work": [
     {
-      "client": "TGR Studio",
-      "year": "2024–present",
+      "client": "Contextual Intel",
+      "year": "2026",
       "title": {
-        "en": "Creative direction at TGR",
-        "pt": "Direção criativa na TGR"
+        "en": "Not another personal CRM.",
+        "pt": "Não é outro CRM pessoal."
       },
       "summary": {
-        "en": "UX and brand work across enterprise web platforms.",
-        "pt": "Trabalho de UX e marca em plataformas web corporativas."
+        "en": "One blank brief, thirty days, a brand that knows who it's for.",
+        "pt": "Um brief em branco, trinta dias, uma marca que sabe exatamente para quem é."
       },
       "tone": "depth",
-      "caseSlug": "tgr-studio"
+      "caseSlug": "ci"
     },
     {
-      "client": "K2 · K1 Group",
-      "year": "2022–2024",
+      "client": "SETUR/DF",
+      "year": "2026",
       "title": {
-        "en": "Productivity rebuild",
-        "pt": "Reconstrução de produtividade"
+        "en": "IPÊ Fragment",
+        "pt": "IPÊ Fragmento"
       },
       "summary": {
-        "en": "Team and process reset; 274% lift inside twelve months.",
-        "pt": "Reset de time e processo; 274% de ganho em doze meses."
-      },
-      "tone": "tonal",
-      "caseSlug": "k2-k1-group"
-    },
-    {
-      "client": "Bureau Blank · NY",
-      "year": "2016–2018",
-      "title": {
-        "en": "Civic brand work",
-        "pt": "Trabalho de marca cívica"
-      },
-      "summary": {
-        "en": "Senior creative leadership across public-sector accounts.",
-        "pt": "Liderança criativa sênior em contas do setor público."
+        "en": "A live marketing bid to plant a fragment of Brasília on a Manhattan pier, and make American travelers go explore the rest.",
+        "pt": "Uma licitação para plantar um fragmento de Brasília num pier de Manhattan e fazer o americano explorar o resto."
       },
       "tone": "depth",
-      "caseSlug": null
+      "caseSlug": "IPE"
     },
     {
-      "client": "Confidential · BR",
-      "year": "2020–2022",
-      "title": {
-        "en": "Enterprise platform reset",
-        "pt": "Reset de plataforma enterprise"
-      },
-      "summary": {
-        "en": "Brand + UX system for a multi-product surface.",
-        "pt": "Sistema de marca + UX para uma superfície multi-produto."
-      },
-      "tone": "tonal",
-      "caseSlug": null
-    },
-    {
-      "client": "Personal",
+      "client": "Grupo RBS",
       "year": "2025",
       "title": {
-        "en": "AI-native practice notes",
-        "pt": "Notas de prática nativa com IA"
+        "en": "Planeta Atlântida",
+        "pt": "Planeta Atlântida"
       },
       "summary": {
-        "en": "Working method for AI as a daily teammate, not a tagline.",
-        "pt": "Método de trabalho com IA como parceira diária, não como slogan."
+        "en": "For the third time, we delivered a completely overhauled website for Planeta Atlântida.",
+        "pt": "Pela terceira vez, entregamos um site completamente reformulado para o Planeta Atlântida."
       },
-      "tone": "kinetic",
-      "caseSlug": null
+      "tone": "tonal",
+      "caseSlug": "Planeta"
+    },
+    {
+      "client": "Vinho Justo",
+      "year": "2025",
+      "title": {
+        "en": "Our own e-commerce",
+        "pt": "Nosso próprio e-commerce"
+      },
+      "summary": {
+        "en": "We did it! After months of planning, designing, and coding, we have the finished product.",
+        "pt": "Conseguimos! Depois de meses de planejamento, criação e desenvolvimento, o resultado finalmente ganhou vida."
+      },
+      "tone": "depth",
+      "caseSlug": "Vinho_Justo"
     }
   ],
   "blog": [
     {
       "slug": "post-1779818449908",
       "date": "2026",
-      "read": "5 min",
+      "read": "4 min",
       "title": {
         "en": "IMPERFECTION",
         "pt": "IMPERFEIÇÃO"
@@ -188,8 +174,8 @@
         {
           "kind": "p",
           "text": {
-            "en": "\nTennis taught me something about this. Watch Alcaraz play a five-set match. There are moments where he overcooks a forehand, double-faults at the worst time, argues with his coaching team between points. None of it looks controlled. All of it looks human. And somehow that's what makes it riveting, pure magic. It's like you're watching someone who could lose, choosing not to. A perfect machine winning a match is just a machine running its code. A person winning the same match, visibly fighting themselves to do it, is a story.",
-            "pt": "O tênis me ensinou algo sobre isso. Assista o Alcaraz jogar um jogo de cinco sets. Tem momentos em que ele força demais um forehand, dá dupla falta na hora errada, discute com a comissão técnica entre os pontos. Nada disso parece controlado. Tudo parece humano. E de alguma forma é exatamente isso que torna o jogo hipnotizante, pura magia. É como assistir alguém que poderia perder, escolhendo não perder. Uma máquina perfeita vencendo uma partida é só uma máquina rodando o seu código. Uma pessoa vencendo a mesma partida, visivelmente brigando consigo mesma pra conseguir, é uma história."
+            "en": "\nTennis taught me something about this. Watching Alcaraz play a five-set match, there are moments where he overcooks a forehand, double-faults at the worst time, and argues with his coaching team between points. None of it looks controlled. All of it looks human. And somehow that's what makes it riveting, pure magic. It's like you're watching someone who could lose, choosing not to. A perfect machine winning a match is just a machine running its code. A person winning the same match, visibly fighting themselves to do it, is a story.",
+            "pt": "O tênis me ensinou algo sobre isso. Assistir ao Alcaraz jogar um jogo de cinco sets: tem momentos em que ele força demais um forehand, dá dupla falta na hora errada e discute com a comissão técnica entre os pontos. Nada disso parece controlado. Tudo parece humano. E de alguma forma é exatamente isso que torna o jogo hipnotizante, pura magia. É como assistir a alguém que poderia perder, escolhendo não perder. Uma máquina perfeita vencendo uma partida é só uma máquina rodando o seu código. Uma pessoa vencendo a mesma partida, visivelmente brigando consigo mesma pra conseguir, é uma história."
           }
         },
         {
@@ -230,79 +216,8 @@
         {
           "kind": "p",
           "text": {
-            "en": "Abraços,\n[Alessandro Contes](https://www.linkedin.com/in/akcontes/)",
-            "pt": "Abraços,\n[Alessandro Contes](https://www.linkedin.com/in/akcontes/)"
-          }
-        }
-      ],
-      "tags": []
-    },
-    {
-      "slug": "post-1779817975943",
-      "date": "2026",
-      "read": "5 min",
-      "title": {
-        "en": "CHANGE",
-        "pt": "MUDANÇA"
-      },
-      "excerpt": {
-        "en": "Constant, inevitable, sometimes painful, and very necessary.",
-        "pt": "Constante, inevitável, às vezes dolorosa, e muito necessária."
-      },
-      "subtitle": {
-        "en": "Constant, inevitable, sometimes painful, and very necessary.",
-        "pt": "Constante, inevitável, às vezes dolorosa, e muito necessária."
-      },
-      "section": "Practice",
-      "coming": false,
-      "body": [
-        {
-          "kind": "p",
-          "text": {
-            "en": "For companies, changing is more than stepping outside your comfort zone — it's like jumping off a fast-moving boat into a stormy sea. It feels bad, and for a while, it keeps feeling bad. But the ability to see past that first step is what separates the winners from the rest, the pioneers from the followers. The brands that get uncomfortable with inertia even when they're happy and profitable tend to develop not just their products, but their people.",
-            "pt": "Para empresas, mudar é mais que sair da sua zona de conforto; é como pular de um barco em alta velocidade em um mar tempestuoso. Parece ruim e, por um tempo, continua ruim mesmo, entretanto a habilidade de enxergar além desse primeiro passo é característica dos vencedores, dos pioneiros. As marcas que, mesmo felizes e lucrativas, se incomodam com a inércia tendem a desenvolver não só seus produtos, mas também seu capital humano."
-          }
-        },
-        {
-          "kind": "p",
-          "text": {
-            "en": "In a scene from the third season of The Bear, Carmy receives his first instructions on how to prepare an ingredient perfectly, and when he finishes, the chef says: \"Got it? Now do that every day, getting a little better each time.\" That mindset makes all the difference. Improving 1% every day seems insignificant, but after one year or ten, it puts you closer to something like perfect.",
-            "pt": "Em uma cena da terceira temporada de \"The Bear\", Carmy recebe as primeiras instruções de como preparar um ingrediente de forma perfeita, e ao finalizar, o chef comenta: \"Aprendeu? Agora é fazer isso dia após dia, melhorando um pouco.\" Essa mentalidade faz toda a diferença. Melhorar 1% todos os dias parece insignificante, mas após 1 ou 10 anos, culmina em estar mais próximo do perfeito."
-          }
-        },
-        {
-          "kind": "p",
-          "text": {
-            "en": "A company that adopts the 1% strategy also gets one of the smartest and most meaningful side effects the market demands: the continuous growth of the people in it. Professionally, obviously. But personally too. We need challenges. We need support. We need the right environment.",
-            "pt": "Uma empresa que adota essa estratégia de 1% possui também um dos efeitos colaterais mais inteligentes e significativos que o mercado requer: o contínuo crescimento dos colaboradores. Obviamente no âmbito profissional, mas também no pessoal. Precisamos de desafios, precisamos de suporte, precisamos de ambiente."
-          }
-        },
-        {
-          "kind": "p",
-          "text": {
-            "en": "When confronted with new briefs and new goals, we're forced to leave the familiar and develop new skills, challenging even our own perspectives. That's essential for continuous improvement. Change drives self-discovery, letting people explore their limits and capabilities. As we overcome obstacles and adapt to new circumstances, the product gets better and the company earns the chance to be disruptive.",
-            "pt": "Quando confrontados com novos briefings e metas, somos forçados a sair do lugar comum e desenvolver novas habilidades, confrontando até nossas próprias perspectivas. Isso é essencial para o aprimoramento contínuo. A mudança incentiva a autodescoberta, permitindo que indivíduos explorem suas capacidades e limites. À medida que superamos obstáculos e nos adaptamos a novas circunstâncias, o produto melhora e a empresa tem a chance de ser disruptiva.\n"
-          }
-        },
-        {
-          "kind": "p",
-          "text": {
-            "en": "In change lives the capacity to drive growth, spark innovation, and build resilience — making it not just an element, but the element, of any brand's success.",
-            "pt": "Nela reside a capacidade de impulsionar o crescimento, estimular a inovação e promover a resiliência, tornando-se um elemento, ou O elemento, crucial para o sucesso de qualquer marca."
-          }
-        },
-        {
-          "kind": "p",
-          "text": {
-            "en": "Today I change something in the agency's identity; tomorrow it'll be the next item on a long list.\n",
-            "pt": "Hoje mudo algo na identidade da agência; amanhã será outro item de uma longa lista.\n"
-          }
-        },
-        {
-          "kind": "p",
-          "text": {
-            "en": "Abraços,\n[Alessandro Contes](https://www.linkedin.com/in/akcontes/)",
-            "pt": "Abraços,\n[Alessandro Contes](https://www.linkedin.com/in/akcontes/)"
+            "en": "See you soon,\nAle",
+            "pt": "Abraços,\nAle"
           }
         }
       ],
@@ -421,8 +336,8 @@
         {
           "kind": "p",
           "text": {
-            "en": "Abraços,\n[Alessandro Contes](https://www.linkedin.com/in/akcontes/) e [Diego Heinz](https://www.linkedin.com/in/diegohnz/)\n*(Diego é Creative Strategist na OPPO, China)*",
-            "pt": "Abraços,\n[Alessandro Contes](https://www.linkedin.com/in/akcontes/) and [Diego Heinz](https://www.linkedin.com/in/diegohnz/)\n*(Diego is Creative Strategist at OPPO, China)*"
+            "en": "See you soon,\nAle",
+            "pt": "Abraços,\nAle"
           }
         }
       ],
@@ -431,7 +346,7 @@
     {
       "slug": "post-1779817342877",
       "date": "2026",
-      "read": "5 min",
+      "read": "4 min",
       "title": {
         "en": "CURIOSITY",
         "pt": "CURIOSIDADE"
@@ -485,8 +400,8 @@
         {
           "kind": "p",
           "text": {
-            "en": "Abraços,\n[Alessandro Contes](https://www.linkedin.com/in/akcontes/)",
-            "pt": "Abraços,\n[Alessandro Contes](https://www.linkedin.com/in/akcontes/)"
+            "en": "See you soon,\nAle",
+            "pt": "Abraços,\nAle"
           }
         }
       ],
@@ -495,7 +410,7 @@
     {
       "slug": "post-1779817108573",
       "date": "2026",
-      "read": "5 min",
+      "read": "4 min",
       "title": {
         "en": "DISCIPLINE",
         "pt": "DISCIPLINA"
@@ -549,8 +464,8 @@
         {
           "kind": "p",
           "text": {
-            "en": "Abraços,\n[Alessandro Contes](https://www.linkedin.com/in/akcontes/)",
-            "pt": "Abraços,\n[Alessandro Contes](https://www.linkedin.com/in/akcontes/)"
+            "en": "See you soon,\nAle",
+            "pt": "Abraços,\nAle"
           }
         }
       ],
@@ -559,7 +474,7 @@
     {
       "slug": "post-1779816049890",
       "date": "2026",
-      "read": "5 min",
+      "read": "4 min",
       "title": {
         "en": "HONESTY",
         "pt": "HONESTIDADE"
@@ -613,8 +528,79 @@
         {
           "kind": "p",
           "text": {
-            "en": "Abraços,\n[Alessandro Contes](https://www.linkedin.com/in/akcontes/)",
-            "pt": "Abraços,\n[Alessandro Contes](https://www.linkedin.com/in/akcontes/)"
+            "en": "See you soon,\nAle",
+            "pt": "Abraços,\nAle"
+          }
+        }
+      ],
+      "tags": []
+    },
+    {
+      "slug": "post-1779817975943",
+      "date": "2025",
+      "read": "4 min",
+      "title": {
+        "en": "CHANGE",
+        "pt": "MUDANÇA"
+      },
+      "excerpt": {
+        "en": "Constant, inevitable, sometimes painful, and very necessary.",
+        "pt": "Constante, inevitável, às vezes dolorosa, e muito necessária."
+      },
+      "subtitle": {
+        "en": "Constant, inevitable, sometimes painful, and very necessary.",
+        "pt": "Constante, inevitável, às vezes dolorosa, e muito necessária."
+      },
+      "section": "Practice",
+      "coming": false,
+      "body": [
+        {
+          "kind": "p",
+          "text": {
+            "en": "For companies, changing is more than stepping outside your comfort zone — it's like jumping off a fast-moving boat into a stormy sea. It feels bad, and for a while, it keeps feeling bad. But the ability to see past that first step is what separates the winners from the rest, the pioneers from the followers. The brands that get uncomfortable with inertia even when they're happy and profitable tend to develop not just their products, but their people.",
+            "pt": "Para empresas, mudar é mais que sair da sua zona de conforto; é como pular de um barco em alta velocidade em um mar tempestuoso. Parece ruim e, por um tempo, continua ruim mesmo, entretanto a habilidade de enxergar além desse primeiro passo é característica dos vencedores, dos pioneiros. As marcas que, mesmo felizes e lucrativas, se incomodam com a inércia tendem a desenvolver não só seus produtos, mas também seu capital humano."
+          }
+        },
+        {
+          "kind": "p",
+          "text": {
+            "en": "In a scene from the third season of The Bear, Carmy receives his first instructions on how to prepare an ingredient perfectly, and when he finishes, the chef says: \"Got it? Now do that every day, getting a little better each time.\" That mindset makes all the difference. Improving 1% every day seems insignificant, but after one year or ten, it puts you closer to something like perfect.",
+            "pt": "Em uma cena da terceira temporada de \"The Bear\", Carmy recebe as primeiras instruções de como preparar um ingrediente de forma perfeita, e ao finalizar, o chef comenta: \"Aprendeu? Agora é fazer isso dia após dia, melhorando um pouco.\" Essa mentalidade faz toda a diferença. Melhorar 1% todos os dias parece insignificante, mas após 1 ou 10 anos, culmina em estar mais próximo do perfeito."
+          }
+        },
+        {
+          "kind": "p",
+          "text": {
+            "en": "A company that adopts the 1% strategy also gets one of the smartest and most meaningful side effects the market demands: the continuous growth of the people in it. Professionally, obviously. But personally too. We need challenges. We need support. We need the right environment.",
+            "pt": "Uma empresa que adota essa estratégia de 1% possui também um dos efeitos colaterais mais inteligentes e significativos que o mercado requer: o contínuo crescimento dos colaboradores. Obviamente no âmbito profissional, mas também no pessoal. Precisamos de desafios, precisamos de suporte, precisamos de ambiente."
+          }
+        },
+        {
+          "kind": "p",
+          "text": {
+            "en": "When confronted with new briefs and new goals, we're forced to leave the familiar and develop new skills, challenging even our own perspectives. That's essential for continuous improvement. Change drives self-discovery, letting people explore their limits and capabilities. As we overcome obstacles and adapt to new circumstances, the product gets better and the company earns the chance to be disruptive.",
+            "pt": "Quando confrontados com novos briefings e metas, somos forçados a sair do lugar comum e desenvolver novas habilidades, confrontando até nossas próprias perspectivas. Isso é essencial para o aprimoramento contínuo. A mudança incentiva a autodescoberta, permitindo que indivíduos explorem suas capacidades e limites. À medida que superamos obstáculos e nos adaptamos a novas circunstâncias, o produto melhora e a empresa tem a chance de ser disruptiva.\n"
+          }
+        },
+        {
+          "kind": "p",
+          "text": {
+            "en": "In change lives the capacity to drive growth, spark innovation, and build resilience — making it not just an element, but the element, of any brand's success.",
+            "pt": "Nela reside a capacidade de impulsionar o crescimento, estimular a inovação e promover a resiliência, tornando-se um elemento, ou O elemento, crucial para o sucesso de qualquer marca."
+          }
+        },
+        {
+          "kind": "p",
+          "text": {
+            "en": "Today I'll change something in the agency's identity; tomorrow it'll be the next item on a long list.\n",
+            "pt": "Hoje mudo algo na identidade da agência; amanhã será outro item de uma longa lista.\n"
+          }
+        },
+        {
+          "kind": "p",
+          "text": {
+            "en": "See you soon,\nAle",
+            "pt": "Abraços,\nAle"
           }
         }
       ],
@@ -623,77 +609,66 @@
   ],
   "inspiration": [
     {
-      "artist": "Felipe Pantone",
-      "note": "generative · 2024",
-      "tone": "depth"
+      "artist": "AKC",
+      "note": "Financial AI Agent built on n8n"
     },
     {
-      "artist": "A. Lange & Söhne",
-      "note": "watch · ref. 1815",
-      "tone": "tonal"
+      "artist": "Tobias van Schneider",
+      "note": "MyMind Artifact"
     },
     {
-      "artist": "Maceo Plex",
-      "note": "set art · awakenings",
-      "tone": "kinetic"
+      "artist": "solomun",
+      "note": "boiler room tulum 2015"
     },
     {
-      "artist": "Massimo Vignelli",
-      "note": "specimen · 1972",
-      "tone": "depth"
+      "artist": "AKC",
+      "note": "albania summer 2025"
     },
     {
-      "artist": "Rafa Nadal",
-      "note": "roland-garros · 2022",
-      "tone": "tonal"
+      "artist": "cut/copy",
+      "note": "in ghost colours 2018"
     },
     {
-      "artist": "Casey Reas",
-      "note": "process · 2023",
-      "tone": "kinetic"
-    },
-    {
-      "artist": "Jeremy Cowart",
-      "note": "portrait · 2021",
-      "tone": "depth"
+      "artist": "Djokovic X Fonseca",
+      "note": "Roland Garros 2026"
     }
   ],
   "marks": {
     "home": {
       "heroVersion": "v 0.3 · hi-fi",
       "heroDate": "2026-05-14",
-      "aboutNum": "02 · about",
-      "aboutAnno": "about · medium bio",
-      "workNum": "03 · selected work",
-      "workAnno": "3-up grid · §5.4",
-      "blogNum": "04 · blog",
-      "blogAnno": "text-led · §5.5",
-      "inspNum": "05 · weekly inspiration"
+      "aboutNum": "01 • about",
+      "aboutAnno": "updated 2026-06-04",
+      "workNum": "02 • work",
+      "workAnno": "updated 2026-06-04",
+      "blogNum": "03 • blog",
+      "blogAnno": "updated 2026-06-04",
+      "inspNum": "04 • inspiration"
     },
     "case": {
-      "coverAnno": "case study · template",
+      "coverAnno": "case study",
       "briefNum": "01 · brief",
-      "briefAnno": "the problem · template",
+      "briefAnno": "the problem",
       "approachNum": "02 · approach",
-      "approachAnno": "four moves · template",
+      "approachAnno": "the moves",
       "outputNum": "03 · output",
-      "outputAnno": "artifacts · placeholders",
+      "outputAnno": "artifacts",
       "resultsNum": "04 · results",
-      "resultsAnno": "numbers · template",
+      "resultsAnno": "the final feeling",
       "creditsNum": "05 · credits",
-      "creditsAnno": "team · static"
+      "creditsAnno": "team"
     },
     "post": {
-      "tagsLabel": "filed under",
+      "tagsLabel": "",
       "relatedNum": "related notes"
     },
     "about": {
       "practiceNum": "01 · practice",
-      "practiceAnno": "scope · template",
+      "practiceAnno": "the math behind",
       "timelineNum": "02 · timeline",
-      "timelineAnno": "20 years · selected",
+      "timelineAnno": "present to past",
       "clientsNum": "03 · clients",
-      "clientsAnno": "selected · public",
+      "clientsAnno": "the preferiti",
       "recogNum": "04 · recognition",
       "recogAnno": "light · honest"
     },
@@ -745,47 +720,537 @@
       "href": "mailto:hello@akcontes.com"
     },
     {
-      "label": "+55 51 99699 9909",
+      "label": "+5551996999909",
       "href": "tel:+5551996999909"
     },
     {
-      "label": "linkedin.com/in/akcontes",
+      "label": "LinkedIn",
       "href": "https://www.linkedin.com/in/akcontes/"
     },
     {
-      "label": "instagram.com/akcontes",
+      "label": "Instagram",
       "href": "https://www.instagram.com/akcontes/"
+    },
+    {
+      "label": "Twitter",
+      "href": "https://x.com/akcontes"
     }
   ],
   "cases": [
     {
-      "slug": "tgr-studio",
+      "slug": "ci",
       "meta": {
-        "num": "case 01",
-        "client": "TGR Studio",
-        "project": "Creative direction at TGR",
-        "year": "2024–present",
+        "num": "case 04",
+        "client": "Contextual Intel",
+        "project": "Not another personal CRM",
+        "year": "2026",
         "role": {
-          "en": "Creative Director · Brand & UX",
-          "pt": "Diretor Criativo · Marca & UX"
+          "en": "Creative Director",
+          "pt": "Diretor Criativo"
         },
-        "status": "ongoing",
-        "sector": "Enterprise B2B · Brazil",
+        "status": "shipped",
+        "sector": "Career Tech / SaaS",
         "deliverables": [
-          "Brand system",
-          "Platform UX",
-          "Marketing surfaces",
-          "Sales enablement"
+          "Brand strategy",
+          "Logo",
+          "Design system",
+          "Landing page"
         ]
       },
       "brief": {
         "head": {
-          "en": "Rebuild client trust. Grow the practice. Ship the work.",
-          "pt": "Reconstruir a confiança dos clientes. Fazer a prática crescer. Entregar o trabalho."
+          "en": "The name of the problem didn't exist yet.",
+          "pt": "O nome do problema ainda não existia."
         },
         "body": {
-          "en": "TGR Studio asked for senior creative leadership to reset the relationship with key enterprise accounts and turn the team into something that consistently ships at the bar the brief implies. The work sits at the intersection of brand, UX, and pipeline — the practice has to feel calibrated end-to-end, not just at the cover.",
-          "pt": "A TGR Studio precisou de liderança criativa sênior para resetar o relacionamento com as principais contas enterprise e transformar o time em algo que entrega consistentemente no nível que o brief implica. O trabalho fica na interseção de marca, UX e pipeline — a prática precisa soar calibrada do início ao fim, não apenas na capa."
+          "en": "Ricardo Shiroma had built something for senior professionals in the middle of a career move, the Director, the VP, the C-suite executive who knows the next role comes through a conversation, not a job board. Every serious search carries relationship context: the recruiter note, the referral path, the person who offered to connect, the follow-up that can't slip. No tool was built to hold any of it.\n\nHe came with a product, an audience, and one word.\n\nInter (the font).",
+          "pt": "Ricardo Shiroma havia construído algo para profissionais seniores em meio a uma transição de carreira: diretores, VPs e executivos C-level que sabem que o próximo cargo surge de uma conversa, não de um portal de vagas. Toda busca realmente estratégica é cercada de contexto relacional: a mensagem do recrutador, o caminho da indicação, a pessoa que se ofereceu para conectar, o acompanhamento que não pode ser esquecido. Nenhuma ferramenta havia sido criada para organizar tudo isso.\n\nEle chegou com um produto, um público e uma única palavra.\n\nInter (a fonte)."
+        },
+        "callouts": [
+          [
+            "Completed in",
+            "30 days"
+          ]
+        ]
+      },
+      "approach": [
+        {
+          "num": "01",
+          "title": {
+            "en": "Step",
+            "pt": "Passo"
+          },
+          "body": {
+            "en": "The hardest part wasn't designing. It was finding the name for the problem.\n\n\"Career management tool\" was too broad. \"Job tracker\" was too humble. The audience: Director+, VP, C-suite, doesn't apply for jobs. They navigate conversations. They work referral paths. They lose momentum not because they lack relationships, but because the context around those relationships is scattered across email threads, notes apps, and memory.\n\nThe positioning started there. The villain wasn't the hiring system. It was scattered context. The missed follow-up. The recruiter note buried in a thread. The conversation that moved the opportunity, and was never captured. Once that was clear, the tone of voice wrote itself. Direct. Private-feeling. No desperation language. Nothing that sounded like a job board.\n\nAnd one line that held the whole thing together:\n\n> Your next role may already be in your network.",
+            "pt": "A parte mais difícil não foi o design. Foi dar um nome ao problema.\n\n\"Ferramenta de gestão de carreira\" era excessivamente ampla. \"Rastreador de vagas\" era modesto demais. O público, diretores, VPs e executivos C-level, não se candidata a vagas. Eles constroem conversas. Ativam redes de indicação. Perdem oportunidades não por falta de relacionamentos, mas porque o contexto em torno deles fica espalhado entre e-mails, aplicativos de notas e a própria memória.\n\nFoi daí que nasceu o posicionamento. O vilão não era o sistema de contratação. Era o contexto fragmentado. O follow-up que nunca aconteceu. A observação do recrutador perdida em uma thread. A conversa que fez a oportunidade avançar nunca foi registrada. Quando isso ficou claro, o tom de voz praticamente se escreveu sozinho. Direto. Discreto. Pessoal. Sem linguagem de desespero. Nada que lembrasse um portal de vagas.\n\nE uma única frase sustentava toda a narrativa:\n\n> Seu próximo cargo talvez já esteja na sua rede de contatos."
+          }
+        },
+        {
+          "num": "02",
+          "title": {
+            "en": "Step",
+            "pt": "Passo"
+          },
+          "body": {
+            "en": "Ricardo came with a font.\n\nInter. Clean, rational, precise — and the default choice for everything AI-adjacent right now, which was exactly the problem. The space is full of products wearing Inter straight out of the box. The result is a visual category that reads serious, technical, and slightly cold. Everything ContextualIntel was trying not to be.\n\nThe work was in humanizing it without losing what made the choice right in the first place. The rationality of Inter is real, and appropriate for a tool that senior professionals would trust with compensation context, interview notes, and relationship history. That precision had to stay. What had to go were the harder edges, the proportions that read \"AI dashboard\" before you've read a word.\n\nRounded corners. Adjusted spacing. A mark calibrated to feel like a considered workspace, not a productivity template. The synergy between the product's purpose and the direction made the solution arrive fast. The execution, finding the exact radius, the exact weight, is where the time went.",
+            "pt": "Ricardo came with a font.\n\nInter. Clean, rational, precise — and the default choice for everything AI-adjacent right now, which was exactly the problem. The space is full of products wearing Inter straight out of the box. The result is a visual category that reads serious, technical, and slightly cold. Everything ContextualIntel was trying not to be.\n\nThe work was in humanizing it without losing what made the choice right in the first place. The rationality of Inter is real, and appropriate for a tool that senior professionals would trust with compensation context, interview notes, and relationship history. That precision had to stay. What had to go were the harder edges, the proportions that read \"AI dashboard\" before you've read a word.\n\nRounded corners. Adjusted spacing. A mark calibrated to feel like a considered workspace, not a productivity template. The synergy between the product's purpose and the direction made the solution arrive fast. The execution, finding the exact radius, the exact weight, is where the time went."
+          }
+        },
+        {
+          "num": "03",
+          "title": {
+            "en": "Step",
+            "pt": "Passo"
+          },
+          "body": {
+            "en": "One system. Two registers.\n\nThe landing page makes a promise. The CRM keeps it. Both had to feel like the same product, same visual grammar, same decision logic, different density. The system was built from the approved mark outward: deep indigo, periwinkle, warm white. Inter, extended, and adjusted. Component rules that could hold weight across a marketing surface and a functional UI without one drifting away from the other.",
+            "pt": "Um sistema. Duas expressões.\n\nA landing page faz uma promessa. O CRM a cumpre. Ambos precisavam transmitir a sensação de pertencer ao mesmo produto: a mesma linguagem visual, a mesma lógica de decisões, mas com diferentes níveis de densidade de informação. O sistema foi construído a partir da marca aprovada, expandindo sua identidade com uma paleta de índigo profundo, azul pervinca e branco quente. A Inter foi estendida e refinada. As regras de componentes foram desenhadas para sustentar tanto uma superfície de marketing quanto uma interface funcional, sem que uma se distanciasse da outra.\n\nO resultado é um ecossistema coeso. A experiência começa na primeira impressão da landing page e continua, sem rupturas, dentro da plataforma. A comunicação muda de intensidade conforme o contexto, mas nunca perde sua identidade."
+          }
+        },
+        {
+          "num": "04",
+          "title": {
+            "en": "Step",
+            "pt": "Passo"
+          },
+          "body": {
+            "en": "The landing page is where the category claim goes on trial.\n\nPartway through, Ricardo pushed to make privacy a structural feature, not a legal footnote at the bottom. He was right. For a professional sharing compensation discussions, interview feedback, and relationship history inside a workspace, privacy isn't a feature. It's the reason to trust the product at all. That conversation changed the shape of the page. The trust line moved to the hero. Privacy became its own beat in the narrative, equal to any product feature.\n\nThe big idea for the first fold:\n\n> Your next role may already be in your network.\n\nNot a slogan. A factual observation that the right reader recognizes immediately, and that disqualifies everyone else before they scroll.",
+            "pt": "A landing page é o lugar onde o posicionamento da categoria é colocado à prova.\n\nEm determinado momento do projeto, Ricardo insistiu que a privacidade deixasse de ser uma nota jurídica no rodapé para se tornar um elemento estrutural da experiência. Ele tinha razão. Para um profissional que compartilha discussões sobre remuneração, feedbacks de entrevistas e o histórico de seus relacionamentos em um único ambiente, privacidade não é uma funcionalidade. É o motivo pelo qual o produto merece confiança.\n\nEssa conversa mudou a arquitetura da página. A mensagem de confiança foi levada para o primeiro bloco. A privacidade ganhou um espaço próprio na narrativa, com a mesma importância de qualquer funcionalidade do produto.\n\nA grande ideia da primeira seção era simples:\n\n> Seu próximo cargo talvez já esteja na sua rede de contatos.\n\nNão como um slogan, mas como uma constatação. Quem faz parte do público certo reconhece essa verdade imediatamente. E quem não faz, entende logo nos primeiros segundos que o produto não foi feito para ele."
+          }
+        }
+      ],
+      "output": [
+        {
+          "kind": "full",
+          "label": "image · 16:9",
+          "note": {
+            "en": "",
+            "pt": ""
+          }
+        },
+        {
+          "kind": "full",
+          "label": "image · 16:9",
+          "note": {
+            "en": "",
+            "pt": ""
+          }
+        },
+        {
+          "kind": "full",
+          "label": "image · 16:9",
+          "note": {
+            "en": "",
+            "pt": ""
+          }
+        },
+        {
+          "kind": "full",
+          "label": "image · 16:9",
+          "note": {
+            "en": "",
+            "pt": ""
+          }
+        },
+        {
+          "kind": "full",
+          "label": "image · 16:9",
+          "note": {
+            "en": "",
+            "pt": ""
+          }
+        },
+        {
+          "kind": "full",
+          "label": "image · 16:9",
+          "note": {
+            "en": "",
+            "pt": ""
+          }
+        },
+        {
+          "kind": "twin",
+          "label": "image · 4:5",
+          "note": {
+            "en": "",
+            "pt": ""
+          }
+        },
+        {
+          "kind": "full",
+          "label": "image · 16:9",
+          "note": {
+            "en": "",
+            "pt": ""
+          }
+        }
+      ],
+      "results": [],
+      "quote": {
+        "text": {
+          "en": "\"I expected a brand. I got someone who understood the problem as well as I did.\"",
+          "pt": "\"Esperava uma marca. Recebi alguém que entendia o problema tão bem quanto eu.\""
+        },
+        "author": "Ricardo Shiroma",
+        "role": {
+          "en": "CEO / Founder",
+          "pt": "CEO / Fundador"
+        }
+      },
+      "credits": [
+        [
+          "Creative Direction, UX/UI Design",
+          "Alessandro Kuhn Contes"
+        ]
+      ],
+      "nextSlug": "IPE",
+      "coverVideo": "https://bg2ftoxpuaaaaewg.public.blob.vercel-storage.com/uploads/case-cover-video-ci-1781725836016.mp4"
+    },
+    {
+      "slug": "IPE",
+      "meta": {
+        "num": "case 01",
+        "client": "SETUR • Brasília",
+        "project": "IPÊ Fragment",
+        "year": "2026",
+        "role": {
+          "en": "Creative Director",
+          "pt": ""
+        },
+        "status": "shipped",
+        "sector": "Tourism",
+        "deliverables": [
+          "Technical proposal ",
+          "10 creative examples"
+        ]
+      },
+      "brief": {
+        "head": {
+          "en": "One of the most architecturally significant capitals on earth. Zero name recognition in the American travel market.",
+          "pt": "Uma das capitais arquitetonicamente mais significativas do mundo. Reconhecimento zero no mercado americano de viagens."
+        },
+        "body": {
+          "en": "Brasília is a UNESCO World Heritage Site, a creative city built from scratch, in 41 months, on an empty plateau in the Brazilian savannah. Designed by names like Oscar Niemeyer and Lúcio Costa, DF has modernist monuments on a scale the 1950s had no business producing. And almost no American tourist knows it exists as a destination.\n\nSETUR/DF, the city's tourism secretariat, opened a public tender for a live marketing action at the NY International Travel Show, September 2026. Pier 76, Manhattan. 8 days. An audience of American travelers who plan trips the way they pick music, by feel first, then by research. The brief asked for a \"promotional action.\" What we built was a reason to believe.",
+          "pt": "Brasília é Patrimônio Mundial da UNESCO, uma cidade criativa construída do zero em apenas 41 meses, sobre um planalto vazio no coração do Cerrado brasileiro. Idealizada por nomes como Oscar Niemeyer e Lúcio Costa, o Distrito Federal abriga monumentos modernistas em uma escala que os anos 1950 jamais deveriam ter sido capazes de produzir. E, ainda assim, quase nenhum turista americano a reconhece como um destino de viagem.\n\nA SETUR/DF, Secretaria de Turismo do Distrito Federal, abriu uma licitação pública para uma ação de live marketing durante a NY International Travel Show, em setembro de 2026. O local: Pier 76, em Manhattan. O período: 8 dias. O público: viajantes americanos que escolhem seus próximos destinos da mesma forma que descobrem novas músicas, primeiro pela emoção, depois pela pesquisa. O briefing pedia uma “ação promocional”. O que construímos foi um motivo para acreditar."
+        },
+        "callouts": [
+          [
+            "Completed in",
+            "5 days"
+          ]
+        ]
+      },
+      "approach": [
+        {
+          "num": "01",
+          "title": {
+            "en": "Step",
+            "pt": "Passo"
+          },
+          "body": {
+            "en": "We started with the honest constraint. Brasília can't compete on beach. It doesn't try to. The city was designed to be extraordinary, and it shows. The brief was to reposition it for an audience that associates Brazil with Rio, carnival, and football. The campaign platform wrote itself: BRASÍLIA: BRAZIL, REIMAGINED. Not a tourism slogan. A factual correction.",
+            "pt": "Começamos pela restrição honesta. Brasília não compete em praia. Nem tenta. A cidade foi projetada para ser extraordinária e mostra. O brief era reposicioná-la para um público que associa o Brasil ao Rio, ao carnaval e ao futebol. A plataforma de campanha se escreveu sozinha: BRASÍLIA: BRAZIL, REIMAGINED. Não é slogan de turismo. É uma correção factual."
+          }
+        },
+        {
+          "num": "02",
+          "title": {
+            "en": "Step",
+            "pt": "Passo"
+          },
+          "body": {
+            "en": "The installation concept became IPÊ NYC Fragment, a 400m² walkable structure at Pier 76, designed in three layers: a MDF platform with organic volumes referencing the rock formations of the cerrado; topped with columns of amber translucent plexiglass that read, at distance, like a forest of ipê-amarelo trees glowing against the Manhattan skyline. The key concept: this is a fragment. A literal piece of a larger mother installation planned for Brasília itself. The American visitor experiences the incomplete work and has to go to Brasília to see the rest. Creative territory: Future Tropicalism. Contemplative. Monumental. Not a single palm tree.",
+            "pt": "O conceito da instalação se tornou IPÊ NYC Fragment , uma estrutura habitável de 400 m² no Pier 76, concebida em três camadas: uma plataforma de MDF com volumes orgânicos que referenciam as formações rochosas do cerrado; sobre ela, colunas de plexiglass translúcido âmbar que, à distância, leem como uma floresta de ipês-amarelos brilhando contra o skyline de Manhattan. O conceito central: isso é um fragmento. Um pedaço literal de uma obra-mãe maior, prevista para Brasília. O visitante americano experimenta a obra incompleta e precisa ir a Brasília para ver o resto. Território criativo: Future Tropicalism. Contemplativo. Monumental. Sem uma palmeira sequer."
+          }
+        },
+        {
+          "num": "03",
+          "title": {
+            "en": "Step",
+            "pt": "Passo"
+          },
+          "body": {
+            "en": "This was a government procurement bid. Every creative decision had to map to a scoring rubric across four technical sub-items: strategic reasoning, marketing strategy, creative solution, implementation plan, 70 points total. We built the proposal as a single coherent document where every section was simultaneously a creative argument and a scored deliverable. Budget: R$5,000,000. Submitted anonymously, as required by Brazilian public procurement law. If anything identifies the tenderer, disqualification is automatic. The work speaks without a byline.",
+            "pt": "Era uma licitação pública. Cada decisão criativa precisava ser mapeada para uma pontuação dividida em quatro subquesitos: raciocínio básico, estratégia de marketing, solução criativa, plano de implementação, 70 pontos no total. Construímos a proposta como um documento único em que cada seção era simultaneamente argumento criativo e entregável pontuado. Orçamento: R$5.000.000. Entregue em via apócrifa, como exige a lei de licitações. Qualquer elemento que identifique o licitante é causa de desclassificação imediata. O trabalho fala sem assinatura."
+          }
+        }
+      ],
+      "output": [
+        {
+          "kind": "full",
+          "label": "image · 16:9",
+          "note": {
+            "en": "",
+            "pt": ""
+          }
+        },
+        {
+          "kind": "full",
+          "label": "image · 16:9",
+          "note": {
+            "en": "",
+            "pt": ""
+          }
+        },
+        {
+          "kind": "full",
+          "label": "image · 16:9",
+          "note": {
+            "en": "",
+            "pt": ""
+          }
+        },
+        {
+          "kind": "full",
+          "label": "image · 16:9",
+          "note": {
+            "en": "",
+            "pt": ""
+          }
+        },
+        {
+          "kind": "full",
+          "label": "image · 16:9",
+          "note": {
+            "en": "",
+            "pt": ""
+          }
+        },
+        {
+          "kind": "full",
+          "label": "image · 16:9",
+          "note": {
+            "en": "",
+            "pt": ""
+          }
+        },
+        {
+          "kind": "full",
+          "label": "image · 16:9",
+          "note": {
+            "en": "",
+            "pt": ""
+          }
+        },
+        {
+          "kind": "full",
+          "label": "image · 16:9",
+          "note": {
+            "en": "",
+            "pt": ""
+          }
+        },
+        {
+          "kind": "full",
+          "label": "image · 16:9",
+          "note": {
+            "en": "",
+            "pt": ""
+          }
+        }
+      ],
+      "results": [],
+      "quote": {
+        "text": {
+          "en": "Technical proposal (Plano de Ação Promocional), art direction brief for 10 physical creative examples: floor plan, perspective renderings, press kit, signage system, visual identity, Reels storyboard, circulation card, impact report, 8-day cultural programming schedule with 20–24 daily attractions, NY PR strategy (local agency + traveling press liaison), implementation plan with risk assessment and KPIs.",
+          "pt": "Proposta técnica (Plano de Ação Promocional), brief de direção de arte para 10 exemplos físicos: planta baixa, croquis perspectivados, press kit editorial bilíngue, sistema de sinalização, identidade visual, storyboard de Reels, card de circulação, relatório de impacto, cronograma de programação cultural para 8 dias com 20 a 24 atrações diárias, estratégia de PR para o mercado de Nova York (agência local + assessor de imprensa viajante), plano de implementação com gestão de riscos e KPIs."
+        },
+        "author": "Did we win?",
+        "role": {
+          "en": "No, but it was worth every minute.",
+          "pt": "Não, mas valeu cada minuto."
+        }
+      },
+      "credits": [
+        [
+          "Creative Direction",
+          "Alessandro Kuhn Contes"
+        ],
+        [
+          "Art Director",
+          "Guilherme Reinehr"
+        ],
+        [
+          "PM",
+          "Letícia Montipó"
+        ]
+      ],
+      "nextSlug": "Planeta",
+      "coverVideo": "https://bg2ftoxpuaaaaewg.public.blob.vercel-storage.com/uploads/case-cover-video-IPE_Fragment-1781375789646.mp4",
+      "disabled": true
+    },
+    {
+      "slug": "Planeta",
+      "meta": {
+        "num": "case 02",
+        "client": "Planeta Atlântida",
+        "project": "Planeta Atlântida",
+        "year": "2026",
+        "role": {
+          "en": "Creative Director",
+          "pt": "Diretor Criativo"
+        },
+        "status": "shipped",
+        "sector": "Entertainment",
+        "deliverables": [
+          "Website + CMS"
+        ]
+      },
+      "brief": {
+        "head": {
+          "en": "30 years and the feeling hasn't changed",
+          "pt": "30 anos e o sentimento não muda"
+        },
+        "body": {
+          "en": "When Planeta Atlântida releases its lineup, southern Brazil freezes for about 30 seconds. Then everyone opens the same page at once.\n\nThat's the spike we built for. A cultural moment, not a transaction. The kind that's been repeating, in one form or another, since 1996, when the festival started as a birthday party for a radio station and became the summer ritual of an entire region.",
+          "pt": "Quando o Planeta Atlântida solta o line-up, o sul do Brasil para por uns trinta segundos. Depois, todo mundo abre a mesma página ao mesmo tempo.\n\nFoi pra esse momento que a gente construiu. Um momento cultural, não uma transação. Do tipo que se repete, de uma forma ou outra, desde 1996, quando o festival começou como aniversário de uma rádio e virou o ritual de verão de uma região inteira."
+        },
+        "callouts": [
+          [
+            "Layout",
+            "7 days"
+          ],
+          [
+            "Backend",
+            "7 days"
+          ],
+          [
+            "Frontend",
+            "7 days"
+          ]
+        ]
+      },
+      "approach": [
+        {
+          "num": "01",
+          "title": {
+            "en": "Step",
+            "pt": "Passo"
+          },
+          "body": {
+            "en": "For the 30th edition, Planeta's agency came with a strong visual identity already defined. Our job wasn't to reinvent it. It was to extend it faithfully, across every page, every section, every interaction state, without losing what made it feel like Planeta and not like any other event platform. That's a different kind of brief. It requires knowing when to follow and when to make the call.",
+            "pt": "Para a edição de 30 anos, a agência do Planeta chegou com uma identidade visual forte já definida. Nossa função não era reinventá-la. Era expandi-la com fidelidade, em cada página, cada seção, cada estado de interação, sem perder o que fazia parecer Planeta e não qualquer outra plataforma de evento. É um briefing diferente. Exige saber quando seguir e quando tomar uma decisão."
+          }
+        },
+        {
+          "num": "02",
+          "title": {
+            "en": "Step",
+            "pt": "Passo"
+          },
+          "body": {
+            "en": "While the front-end was taking shape, we rebuilt the entire back-end in PHP. Security architecture with tiered access levels kept every piece of content locked from public view until the client was ready to release it. Nothing leaked early. When the site went live, the only surprise was that there were no surprises.",
+            "pt": "Enquanto o front-end tomava forma, reconstruímos todo o back-end em PHP. Uma arquitetura de segurança com níveis de acesso escalonados manteve todo o conteúdo bloqueado do público até o momento da liberação. Nada vazou antes da hora. Quando o site foi ao ar, a única surpresa foi que não houve nenhuma."
+          }
+        },
+        {
+          "num": "03",
+          "title": {
+            "en": "Step",
+            "pt": "Passo"
+          },
+          "body": {
+            "en": "Before launch, the infrastructure team validated the platform at 30,000 requests per minute. That's the number you need when a whole state checks the lineup at the same time.\n\nIn three weeks, start to handoff. Tested, clean, on time.",
+            "pt": "Antes do lançamento, o time de infraestrutura validou a plataforma em 30.000 acessos por minuto. É o número que você precisa quando 70.000 pessoas consultam o line-up ao mesmo tempo.\n\nTrês semanas, do início à entrega. Testado, limpo, no prazo."
+          }
+        }
+      ],
+      "output": [
+        {
+          "kind": "full",
+          "label": "image · 16:9",
+          "note": {
+            "en": "",
+            "pt": ""
+          }
+        },
+        {
+          "kind": "full",
+          "label": "image · 16:9",
+          "note": {
+            "en": "",
+            "pt": ""
+          }
+        },
+        {
+          "kind": "detail",
+          "label": "image · 16:9",
+          "note": {
+            "en": "",
+            "pt": ""
+          }
+        },
+        {
+          "kind": "full",
+          "label": "image · 16:9",
+          "note": {
+            "en": "",
+            "pt": ""
+          }
+        }
+      ],
+      "results": [],
+      "quote": {
+        "text": {
+          "en": "\"O sentimento não muda.\" That was Planeta's line for the anniversary. We didn't write it. We just made sure it loaded.",
+          "pt": "\"O sentimento não muda.\" Era a frase do Planeta para o aniversário. A gente não escreveu. A gente garantiu que carregasse."
+        },
+        "author": "",
+        "role": {
+          "en": "",
+          "pt": ""
+        }
+      },
+      "credits": [
+        [
+          "Creative Direction",
+          "Alessandro Kuhn Contes"
+        ],
+        [
+          "PM",
+          "Letícia Montipó"
+        ],
+        [
+          "Desginer",
+          "Guilherme Reinehr"
+        ],
+        [
+          "Front-end",
+          "Luciano Corrêa"
+        ],
+        [
+          "Back-end",
+          "João Apollo"
+        ]
+      ],
+      "nextSlug": "Vinho_Justo",
+      "coverVideo": "https://vimeo.com/1199850247?share=copy&fl=sv&fe=ci"
+    },
+    {
+      "slug": "Vinho_Justo",
+      "meta": {
+        "num": "case 03",
+        "client": "Vinho Justo ",
+        "project": "Our own e-commerce",
+        "year": "2025",
+        "role": {
+          "en": "Creative Director",
+          "pt": "Diretor Criativo"
+        },
+        "status": "shipped",
+        "sector": "E-commerce B2C",
+        "deliverables": [
+          "B2C E-Commerce Platform"
+        ]
+      },
+      "brief": {
+        "head": {
+          "en": "Vinho Justo is a brand driven by purpose, accessibility, and a passion for wine culture.",
+          "pt": "A Vinho Justo nasce da união entre propósito, acesso democrático e uma genuína paixão pelo universo do vinho."
+        },
+        "body": {
+          "en": "It is an example of how digital technology can democratize knowledge and transform people's relationship with wine. With a great sense of humor.\n\nVJ's proposal challenged us to create a digital experience that reflected Tom's meticulous curation, education, and passion for wine. With a focus on conversion, we combined design and purpose.",
+          "pt": "A Vinho Justo demonstra como a tecnologia pode tornar a cultura do vinho mais acessível, aproximando conhecimento e consumo de forma leve, descomplicada e bem-humorada.\n\nO desafio era traduzir para o ambiente digital a curadoria cuidadosa, o olhar educativo e a paixão de Tom pelo universo dos vinhos. Com uma estratégia orientada à conversão, desenvolvemos uma experiência que equilibra conteúdo, personalidade e performance, transformando descoberta em confiança e interesse em compra."
         },
         "callouts": [
           [
@@ -797,17 +1262,11 @@
           ],
           [
             "timeline",
-            {
-              "en": "12 months for the operational reset; brand + UX system overhaul is rolling.",
-              "pt": "12 meses para o reset operacional; o redesenho do sistema de marca + UX está em andamento."
-            }
+            "2 months from design do shipping."
           ],
           [
             "constraint",
-            {
-              "en": "No reset of the staff — same team, sharper bar.",
-              "pt": "Sem troca de equipe — mesmo time, barra mais alta."
-            }
+            "No extra staff, we just worked heads down."
           ]
         ]
       },
@@ -819,41 +1278,19 @@
             "pt": "Auditoria"
           },
           "body": {
-            "en": "Read every shipping artifact, sit in every recurring meeting, watch every client touchpoint. Map the gap between intent and output.",
-            "pt": "Ler todos os artefatos entregues, participar de todas as reuniões recorrentes, acompanhar cada touchpoint com o cliente. Mapear a distância entre intenção e output."
+            "en": "In a market dominated by giants, innovation is essential to stand out. In 2025, TGR launches its first client, Vinho Justo, on the new e-commerce platform, reaffirming its commitment to delivering a robust solution with personalized service and competitive value.",
+            "pt": "Em um segmento consolidado por grandes plataformas, a diferenciação exige mais do que tecnologia: exige visão. Em 2025, a TGR escolheu a Vinho Justo como o primeiro lançamento de sua nova plataforma de e-commerce.\n\nO projeto simboliza o compromisso da empresa em combinar tecnologia de alto desempenho, atendimento personalizado e uma proposta de valor competitiva. O resultado é uma solução pensada para entregar autonomia, escalabilidade e resultados concretos para marcas em crescimento."
           }
         },
         {
           "num": "02",
           "title": {
-            "en": "Set the bar",
-            "pt": "Definir a barra"
+            "en": "What we did",
+            "pt": "O que fizemos"
           },
           "body": {
-            "en": "Define the calibration register the studio operates at — visual + writing + interaction — then make the bar legible to the team in artifacts they can copy.",
-            "pt": "Definir o registro de calibração em que o estúdio opera — visual + escrita + interação — e tornar essa barra legível para o time em artefatos que possam ser copiados."
-          }
-        },
-        {
-          "num": "03",
-          "title": {
-            "en": "Process reset",
-            "pt": "Reset de processo"
-          },
-          "body": {
-            "en": "Rebuild the critique loop, the design review cadence, and the client-facing language. Reduce ceremony, raise the floor.",
-            "pt": "Reconstruir o loop de crítica, a cadência de revisão de design e a linguagem voltada ao cliente. Reduzir cerimônia, elevar o piso."
-          }
-        },
-        {
-          "num": "04",
-          "title": {
-            "en": "Ship",
-            "pt": "Entregar"
-          },
-          "body": {
-            "en": "Every new pitch and platform goes through the new register. Compound the work — each engagement raises the bar for the next.",
-            "pt": "Cada novo pitch e plataforma passa pelo novo registro. O trabalho se acumula — cada projeto eleva a barra para o próximo."
+            "en": "The VJ demanded exactly that, a complete dashboard, access to performance reports, and easy integration with their ERP.\n\nWe offer tailor-made experiences, aligned with each client's reality, with performance, agility, and differentials that the big players cannot replicate.\n\nCreate and scale your B2C store with ease. Our platform offers everything you need to stand out in digital commerce: a complete product catalog that enhances your brand and boosts your sales, always with TGR's personalized service at your side.",
+            "pt": "A Vinho Justo precisava exatamente disso: uma plataforma completa, com dashboard gerencial robusto, acesso a relatórios de performance e integração simplificada com seu ERP.\n\nNa TGR, desenvolvemos experiências sob medida, alinhadas à realidade de cada negócio. Combinamos performance, agilidade e flexibilidade para entregar soluções que vão além do padrão oferecido pelos grandes players, proporcionando um nível de personalização e proximidade que faz toda a diferença.\n\nNossa plataforma permite criar, operar e escalar lojas B2C com facilidade. Do catálogo de produtos à gestão da operação, oferecemos todas as ferramentas necessárias para fortalecer a marca, potencializar vendas e construir uma presença digital preparada para crescer, sempre com o suporte próximo e personalizado da equipe TGR."
           }
         }
       ],
@@ -867,14 +1304,14 @@
           }
         },
         {
-          "kind": "twin",
+          "kind": "full",
           "labels": [
             "component system · 4:5",
             "type specimen · 4:5"
           ],
           "note": {
-            "en": "Internal design system + Migra-anchored brand typography.",
-            "pt": "Design system interno + tipografia de marca ancorada na Migra."
+            "en": "",
+            "pt": ""
           }
         },
         {
@@ -886,22 +1323,11 @@
           }
         },
         {
-          "kind": "detail",
-          "label": "detail · 3:2",
+          "kind": "full",
+          "label": "",
           "note": {
-            "en": "Pitch artifact. Foil-stamped cobalt on bone.",
-            "pt": "Artefato de pitch. Hot stamping cobalto sobre bone."
-          }
-        },
-        {
-          "kind": "twin",
-          "labels": [
-            "mobile flow · 9:19",
-            "tablet · 4:3"
-          ],
-          "note": {
-            "en": "Responsive system across three breakpoints.",
-            "pt": "Sistema responsivo em três breakpoints."
+            "en": "",
+            "pt": ""
           }
         }
       ],
@@ -914,29 +1340,29 @@
           }
         },
         {
-          "stat": "12 mo.",
+          "stat": "2 mo.",
           "note": {
-            "en": "From audit to operational reset.",
-            "pt": "Do audit ao reset operacional."
+            "en": "From briefing to an operational system",
+            "pt": "Do briefing para o systema operacional"
           }
         },
         {
-          "stat": "6",
+          "stat": "4",
           "note": {
-            "en": "Enterprise platforms shipped under the new register.",
-            "pt": "Plataformas enterprise entregues sob o novo registro."
+            "en": "Integrations: ERP, Payment gateway, Shipping method, and SMTP.",
+            "pt": "Integrações: ERP, gateway de pagamento, método de envio e SMTP."
           }
         }
       ],
       "quote": {
         "text": {
-          "en": "It took twelve months to feel like the work matches the intent. The bar moved — and now it stays there.",
-          "pt": "Levou doze meses para o trabalho começar a corresponder à intenção. A barra subiu — e agora ela se mantém."
+          "en": "Before I had an e-commerce platform, generic and bland. Now I had a money-making beast.",
+          "pt": "Antes eu tinha um e-commerce comum e sem diferencial. Agora tenho uma verdadeira máquina de vendas."
         },
-        "author": "(client testimonial)",
+        "author": "Tomaz Saleme",
         "role": {
-          "en": "TGR Studio · senior stakeholder",
-          "pt": "TGR Studio · stakeholder sênior"
+          "en": "VJ CEO",
+          "pt": "VJ CEO"
         }
       },
       "credits": [
@@ -945,257 +1371,73 @@
           "Alessandro Kuhn Contes"
         ],
         [
-          "Brand & UX team",
-          "TGR Studio creative"
+          "PM",
+          "Letícia Montipó"
         ],
         [
-          "Client",
-          "TGR Studio leadership"
+          "Designer",
+          "Gabriel de Melo"
         ],
         [
-          "Period",
-          "2024 — present"
+          "Front-end",
+          "Luciano Corrêa"
         ],
         [
-          "Status",
-          "Ongoing engagement"
+          "Back-end",
+          "João Apollo"
         ]
       ],
-      "nextSlug": "k2-k1-group"
-    },
-    {
-      "slug": "k2-k1-group",
-      "meta": {
-        "num": "case 02",
-        "client": "K2 · K1 Group",
-        "project": "Productivity rebuild",
-        "year": "2022–2024",
-        "role": {
-          "en": "Creative Director · Operations",
-          "pt": "Diretor Criativo · Operações"
-        },
-        "status": "shipped",
-        "sector": "Holding company · Brazil",
-        "deliverables": [
-          "Team reset",
-          "Process redesign",
-          "Tool stack",
-          "Output system"
-        ]
-      },
-      "brief": {
-        "head": {
-          "en": "Turn a creative team from output-bound to outcome-bound.",
-          "pt": "Transformar um time criativo de orientado a output para orientado a resultado."
-        },
-        "body": {
-          "en": "K2 (inside K1 Group) had the talent and the budget — the throughput wasn't there. The mandate: rebuild the team's operating model without firing anyone, and make the gain legible at the holding-company level inside twelve months.",
-          "pt": "A K2 (dentro do K1 Group) tinha o talento e o orçamento — o throughput não estava lá. O mandato: reconstruir o modelo operacional do time sem demitir ninguém, e tornar o ganho legível no nível da holding em doze meses."
-        },
-        "callouts": [
-          [
-            "scope",
-            {
-              "en": "Internal creative org. ~22 people across creative, copy, motion.",
-              "pt": "Organização criativa interna. ~22 pessoas entre criação, copy e motion."
-            }
-          ],
-          [
-            "timeline",
-            {
-              "en": "12 months, two operational milestones at month 4 and 9.",
-              "pt": "12 meses, dois marcos operacionais no mês 4 e no mês 9."
-            }
-          ],
-          [
-            "constraint",
-            {
-              "en": "Zero staff reset. Same people, new system.",
-              "pt": "Zero reset de equipe. Mesmas pessoas, sistema novo."
-            }
-          ]
-        ]
-      },
-      "approach": [
-        {
-          "num": "01",
-          "title": {
-            "en": "Measure",
-            "pt": "Medir"
-          },
-          "body": {
-            "en": "Instrument the team. Track hours, briefs, revision cycles, time-to-first-draft, accept rate. Get a baseline that's defensible.",
-            "pt": "Instrumentar o time. Rastrear horas, briefs, ciclos de revisão, tempo até o primeiro rascunho, taxa de aprovação. Estabelecer uma baseline defensável."
-          }
-        },
-        {
-          "num": "02",
-          "title": {
-            "en": "Cut ceremony",
-            "pt": "Cortar cerimônia"
-          },
-          "body": {
-            "en": "Identify every meeting, hand-off, and approval gate that doesn't make the work better. Kill or compress.",
-            "pt": "Identificar cada reunião, handoff e gate de aprovação que não melhora o trabalho. Eliminar ou comprimir."
-          }
-        },
-        {
-          "num": "03",
-          "title": {
-            "en": "Re-tool",
-            "pt": "Re-ferramentar"
-          },
-          "body": {
-            "en": "Swap brittle tooling for a stack the team can actually move inside. Standardize the creative file model so handoffs aren't fragile.",
-            "pt": "Trocar ferramentas frágeis por um stack dentro do qual o time consiga se mover de verdade. Padronizar o modelo de arquivo criativo para que os handoffs não sejam frágeis."
-          }
-        },
-        {
-          "num": "04",
-          "title": {
-            "en": "Compound",
-            "pt": "Acumular"
-          },
-          "body": {
-            "en": "Every brief now ships through the new model. Throughput stacks every quarter as the team internalizes the rhythm.",
-            "pt": "Cada brief agora passa pelo novo modelo. O throughput cresce a cada trimestre conforme o time internaliza o ritmo."
-          }
-        }
-      ],
-      "output": [
-        {
-          "kind": "full",
-          "label": "ops dashboard · 16:9",
-          "note": {
-            "en": "Throughput tracking — visible to the team and the holding C-suite.",
-            "pt": "Rastreamento de throughput — visível para o time e para o C-suite da holding."
-          }
-        },
-        {
-          "kind": "twin",
-          "labels": [
-            "brief template · 4:5",
-            "review rubric · 4:5"
-          ],
-          "note": {
-            "en": "Two artifacts that did most of the work.",
-            "pt": "Dois artefatos que fizeram a maior parte do trabalho."
-          }
-        },
-        {
-          "kind": "wide",
-          "label": "creative system overview · 16:9",
-          "note": {
-            "en": "File model + handoff specification.",
-            "pt": "Modelo de arquivo + especificação de handoff."
-          }
-        }
-      ],
-      "results": [
-        {
-          "stat": "+274%",
-          "note": {
-            "en": "Team productivity lift, year over year.",
-            "pt": "Aumento de produtividade do time, ano a ano."
-          }
-        },
-        {
-          "stat": "12 mo.",
-          "note": {
-            "en": "Audit → fully re-tooled team.",
-            "pt": "Audit → time totalmente re-ferramentado."
-          }
-        },
-        {
-          "stat": "0",
-          "note": {
-            "en": "People let go in the reset.",
-            "pt": "Pessoas dispensadas no reset."
-          }
-        }
-      ],
-      "quote": {
-        "text": {
-          "en": "The team's better at the same headcount. The numbers are real, and they hold quarter over quarter.",
-          "pt": "O time está melhor com o mesmo headcount. Os números são reais e se mantêm trimestre a trimestre."
-        },
-        "author": "(K1 Group leadership)",
-        "role": {
-          "en": "K1 Group · senior leadership",
-          "pt": "K1 Group · liderança sênior"
-        }
-      },
-      "credits": [
-        [
-          "Creative Direction",
-          "Alessandro Kuhn Contes"
-        ],
-        [
-          "Team",
-          "K2 creative · 22 people"
-        ],
-        [
-          "Client",
-          "K1 Group leadership"
-        ],
-        [
-          "Period",
-          "2022 — 2024"
-        ],
-        [
-          "Status",
-          "Shipped · still in use"
-        ]
-      ],
-      "nextSlug": "tgr-studio"
+      "nextSlug": "IPE"
     }
   ],
-  "activeCaseSlug": "k2-k1-group",
+  "activeCaseSlug": "IPE",
   "activePostSlug": null,
   "aboutPage": {
     "eyebrow": {
-      "en": "About · the practice",
-      "pt": "Sobre · a prática"
+      "en": "Here we go",
+      "pt": "Bora lá"
     },
     "title": {
       "en": "Twenty years calibrating creative across two cultures.",
       "pt": "Vinte anos calibrando criatividade entre duas culturas."
     },
     "intro": {
-      "en": "I'm Alessandro Kuhn Contes — Creative Director and UX Designer working between Brazil and the United States. Currently leading creative at TGR Studio. The work sits at the intersection of brand, UX, and creative leadership.",
-      "pt": "Sou Alessandro Kuhn Contes — Diretor Criativo e Designer de UX atuando entre Brasil e Estados Unidos. Atualmente liderando a criação na TGR Studio. O trabalho situa-se na interseção de marca, UX e liderança criativa."
+      "en": "I'm Alessandro Kuhn Contes, Creative Director and UX Designer working between Brazil and the United States. Currently leading creative at TGR Studio. The work sits at the intersection of branding, UX, UI, AI, and creative leadership.",
+      "pt": "Sou Alessandro Kuhn Contes, Diretor Criativo e UX Designer com atuação entre o Brasil e os Estados Unidos. Atualmente lidero a área criativa da TGR Studio. Minha atuação está na interseção entre branding, UX, UI, inteligência artificial e liderança criativa."
     },
     "body": {
-      "en": "What makes the practice hold up across formats and decades isn't taste or trend — it's a calibration bar tuned in cultures that don't tolerate slack. Brazil teaches you to ship inside constraints; the U.S. teaches you to make the bar legible at scale. The output is a working method that ages: a brand system that reads the same in 2026 and 2036, a UX rhythm that survives the next platform shift, and a creative team that knows how to run without you in the room.",
-      "pt": "O que sustenta a prática ao longo de formatos e décadas não é gosto ou tendência — é uma barra de calibração afinada em culturas que não toleram imprecisão. O Brasil ensina a entregar dentro de restrições; os EUA ensinam a tornar a barra legível em escala. O resultado é um método de trabalho que envelhece bem: um sistema de marca que lê igual em 2026 e 2036, um ritmo de UX que sobrevive à próxima virada de plataforma, e um time criativo que sabe funcionar sem você na sala."
+      "en": "What makes the practice hold up across formats and decades isn't taste or trend. It's a benchmark calibrated in cultures that demand precision. Brazil teaches you to ship inside constraints, and the U.S. teaches you to make the bar legible at scale. The output is a working method that ages like fine wine: a brand system that reads the same in 2026 and 2036, a UX rhythm that survives the next platform shift, and a creative team that knows how to run without you in the room.",
+      "pt": "O que sustenta esse trabalho ao longo de diferentes formatos e décadas não é gosto nem tendência. É um padrão de excelência calibrado em culturas que exigem precisão. O Brasil ensina a criar e entregar dentro das restrições. Os Estados Unidos ensinam a transformar esse padrão em algo claro, consistente e escalável. O resultado é um método de trabalho que envelhece como um bom vinho: sistemas de marca que permanecem relevantes em 2026 e 2036, experiências de UX capazes de sobreviver à próxima mudança de plataforma e equipes criativas que continuam performando mesmo quando você não está na sala."
     },
     "practice": [
       [
-        "how",
         {
-          "en": "Senior creative direction, brand systems, UX leadership, team operating models.",
-          "pt": "Direção criativa sênior, sistemas de marca, liderança em UX, modelos operacionais de time."
+          "en": "how",
+          "pt": "como"
+        },
+        {
+          "en": "Creative direction, branding, UX, UI, AI.",
+          "pt": "Direção criativa, branding, UX, UI, AI."
         }
       ],
       [
-        "where",
         {
-          "en": "Remote-first from Novo Hamburgo. Travel for client work — São Paulo, New York, Lisbon.",
-          "pt": "Remote-first de Novo Hamburgo. Viagens para trabalho com clientes — São Paulo, Nova York, Lisboa."
+          "en": "where",
+          "pt": "onde"
+        },
+        {
+          "en": "Based in Novo Hamburgo, Brazil. Always open to relocating.",
+          "pt": "Baseado em Novo Hamburgo, Brasil. Sempre aberto à mudança."
         }
       ],
       [
-        "when",
         {
-          "en": "Selective. One major engagement at a time. Currently leading at TGR Studio.",
-          "pt": "Seletivo. Um grande projeto por vez. Atualmente liderando na TGR Studio."
-        }
-      ],
-      [
-        "who for",
+          "en": "who for",
+          "pt": "para quem"
+        },
         {
-          "en": "Enterprise B2B, civic + public-sector creative, senior personal brands.",
-          "pt": "Enterprise B2B, criativo cívico e setor público, marcas pessoais sênior."
+          "en": "Enterprise B2B, B2C, public-sector, and senior personal brands.",
+          "pt": "Marcas B2B, B2C, instituições públicas e lideranças executivas."
         }
       ]
     ]
@@ -1204,86 +1446,71 @@
     {
       "year": "2024 — present",
       "chapter": "TGR Studio",
-      "role": "Creative Director",
-      "location": "São Paulo, BR",
-      "note": "Brand, UX, and senior creative leadership across enterprise platforms. Live engagement."
+      "role": {
+        "en": "Creative Director",
+        "pt": "Diretor de Criação"
+      },
+      "location": "Novo Hamburgo, BR",
+      "note": {
+        "en": "Leading branding, UX, UI, and key account relationships for enterprise clients.\n• +25% revenue lift through rebuilt client trust.\n• Launched a new e-commerce platform, from concept to checkout.\n• Led the team's adoption of AI across design, development, and operations.\n\n",
+        "pt": "Liderando branding, UX, UI e o relacionamento com key accounts no segmento enterprise.\n• +25% de aumento de receita pela reconstrução da confiança com clientes.\n• Lancei uma nova plataforma de e-commerce, do conceito ao checkout.\n• Conduzi a adoção de IA pelo time em design, desenvolvimento e operações."
+      }
     },
     {
-      "year": "2022 — 2024",
+      "year": "2018 — 2024",
       "chapter": "K2 · K1 Group",
-      "role": "Creative Director",
-      "location": "São Paulo, BR",
-      "note": "Productivity rebuild — operational reset of the creative org. 274% throughput lift."
-    },
-    {
-      "year": "2020 — 2022",
-      "chapter": "Confidential · BR",
-      "role": "Senior Creative",
+      "role": {
+        "en": "Creative Services Manager",
+        "pt": "Gerente de Criação"
+      },
       "location": "Porto Alegre, BR",
-      "note": "Brand + UX system for a multi-product enterprise platform."
+      "note": {
+        "en": "Led the communications department for K1 Group's brands (Kappesberg, Idélli, My Home, UZ): branding, online and offline creative, and key account relationships.\n• Rebuilt lost client trust in 6 months.\n• Reworked workflow and collaboration. +274% team productivity in 8 months.\n• Developed Idélli's new positioning, \"Art transforms. The space transcends\", by anchoring the brand in the contemporary art world for the high-end target. Still running today.",
+        "pt": "Liderei o departamento de comunicação para as marcas do Grupo K1 (Kappesberg, Idélli, My Home, UZ): branding, criação online e offline e relacionamento com key accounts.\n• Reconstruí a confiança perdida com clientes em 6 meses.\n• Reformulei fluxos de trabalho e colaboração. +274% de produtividade do time em 8 meses.\n• Desenvolvi o novo posicionamento da Idélli, \"A arte transforma. O ambiente transcende\", ancorando a marca no universo da arte contemporânea para o segmento de alto padrão. Continua até hoje."
+      }
     },
     {
-      "year": "2018 — 2020",
-      "chapter": "Independent",
-      "role": "Creative Direction",
-      "location": "São Paulo · NY",
-      "note": "Bridge years — selective enterprise and civic brand work across markets."
-    },
-    {
-      "year": "2016 — 2018",
+      "year": "2016 — 2017",
       "chapter": "Bureau Blank",
-      "role": "Senior Creative",
+      "role": {
+        "en": "Senior Creative Art Director",
+        "pt": "Diretor de Arte Sênior"
+      },
       "location": "New York, US",
-      "note": "Civic and public-sector brand leadership. NYC Service subway campaign system."
+      "note": {
+        "en": "Led art direction and UX/UI for social impact organizations in New York.\n• Directed the NYC Service campaign across the New York City subway system.\n• Designed brand and digital systems for Bloomberg Philanthropies.\n• Built and documented design systems, mentoring other designers and raising the bar for craft and consistency across the agency.",
+        "pt": "Liderei direção de arte e UX/UI para organizações de impacto social em Nova York.\n• Dirigi a campanha do NYC Service em todo o sistema de metrô de Nova York.\n• Desenvolvi sistemas de marca e digitais para a Bloomberg Philanthropies.\n• Construí e documentei design systems, mentorando designers e elevando o padrão de qualidade e consistência em toda a agência."
+      }
     },
     {
-      "year": "2014 — 2016",
-      "chapter": "—",
-      "role": "Creative",
-      "location": "São Paulo, BR",
-      "note": "Agency-side senior creative on enterprise accounts."
-    },
-    {
-      "year": "2006 — 2014",
-      "chapter": "Early career",
-      "role": "Designer → Creative",
-      "location": "Porto Alegre · Curitiba",
-      "note": "Eight years calibrating the bar across editorial, brand, and digital."
+      "year": "2011 — 2015",
+      "chapter": "K2 · K1 Group",
+      "role": {
+        "en": "Senior Creative Art Director",
+        "pt": "Diretor de Arte Sênior"
+      },
+      "location": "Porto Alegre, BR",
+      "note": {
+        "en": "Hands-on art direction, branding, and UX/UI for K1 Group's brands: Kappesberg, Idélli, My Home, and UZ. Joined as Associate Art Director, promoted to Senior Creative Art Director.",
+        "pt": "Direção de arte, branding e UX/UI para as marcas do Grupo K1: Kappesberg, Idélli, My Home e UZ. Entrei como Diretor de Arte Associado, promovido a Diretor de Arte Sênior."
+      }
     }
   ],
   "clients": [
-    "TGR Studio",
-    "K1 Group / K2",
-    "NYC Service",
-    "Bureau Blank",
-    "Confidential · enterprise BR",
-    "Independent senior brands",
-    "Civic + public sector NY",
-    "Editorial · longform clients"
+    "Planeta Atlântida",
+    "Abicalçados",
+    "Grupo Herval",
+    "Grupo RBS",
+    "Kappesberg",
+    "Idélli",
+    "My Home",
+    "NYU",
+    "Bloomberg Philantropies",
+    "NYC Service"
   ],
-  "recognition": [
-    {
-      "year": "2024",
-      "item": "Featured speaker · Brazil enterprise UX summit (private)"
-    },
-    {
-      "year": "2022",
-      "item": "K1 Group leadership recognition · productivity reset case study"
-    },
-    {
-      "year": "2018",
-      "item": "NYC Service · subway campaign — public archive"
-    },
-    {
-      "year": "—",
-      "item": "Selected work across two decades. No award-show entries — by choice."
-    }
-  ],
+  "recognition": [],
   "contactPage": {
-    "eyebrow": {
-      "en": "Contact",
-      "pt": "Contato"
-    },
+    "eyebrow": "[object Object]",
     "title": {
       "en": "Let's talk.",
       "pt": "Vamos conversar."
@@ -1361,34 +1588,34 @@
   },
   "sections": {
     "aboutTitle": {
-      "en": "The practice in 200 words.",
-      "pt": "A prática em 200 palavras."
+      "en": "The practice in 200 words or less.",
+      "pt": "O que pratico em 200 palavras ou menos."
     },
     "aboutSub": {
-      "en": "Calibration sources, three numbers, sign-off.",
-      "pt": "Fontes de calibração, três números, encerramento."
+      "en": "Or should I say \"me in a tweet\"?",
+      "pt": "Ou deveria dizer \"eu em um tweet\"?"
     },
     "workTitle": {
       "en": "Selected work.",
       "pt": "Trabalhos selecionados."
     },
     "workSub": {
-      "en": "Six pieces. Placeholder images in phase 1 — real imagery via the CMS.",
-      "pt": "Seis peças. Imagens de rascunho na fase 1 — imagens reais via CMS."
+      "en": "Six pieces. A mix of the best and most recent projects I’ve had the honor of participating in.",
+      "pt": "Seis peças. Uma mistura entre os melhores e os mais recentes projetos dos quais tive a honra de participar."
     },
     "blogTitle": {
-      "en": "Notes.",
-      "pt": "Notas."
+      "en": "Mental Notes.",
+      "pt": "Notas mentais."
     },
     "blogSub": {
-      "en": "Low cadence, high substance.",
-      "pt": "Baixa cadência, alto conteúdo."
+      "en": "Updates every month",
+      "pt": "Atualizado todo mês"
     },
     "inspTitle": {
       "en": "What I'm looking at.",
-      "pt": "O que estou observando."
+      "pt": "O que está no meu radar."
     },
-    "inspWeek": "Week of Apr 27, 2026",
+    "inspWeek": "Week of Jun 14th, 2026",
     "footerQuote": "If you want to be a better designer, don't study design books. Study sculpture. Study paintings. Study cars, watches, philosophers, movies, fiction, music, people. Study the world.",
     "footerQuoteAuthor": "Tobias van Schneider",
     "footerVersion": "v 0.3 · hi-fi"

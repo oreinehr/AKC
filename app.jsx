@@ -1663,6 +1663,24 @@ function LangPane({ data, setData }) {
 
 // Master-detail editor for case studies. Reads/writes data.cases[], and
 // drives the case-study artboards via data.activeCaseSlug.
+// collectPtGaps(obj) — walk a case/work object and return every {en, pt} pair
+// whose `pt` is empty (or a bare em-dash placeholder) but whose `en` has real
+// copy. Each gap carries a setter so translations can be written straight back.
+function collectPtGaps(root) {
+  const gaps = [];
+  const isBlank = (v) => !v || !String(v).trim() || String(v).trim() === "—";
+  const walk = (node) => {
+    if (!node || typeof node !== "object") return;
+    if (typeof node.en === "string" && "pt" in node) {
+      if (!isBlank(node.en) && isBlank(node.pt)) gaps.push({ en: node.en, node });
+      return;
+    }
+    for (const k of Object.keys(node)) walk(node[k]);
+  };
+  walk(root);
+  return gaps;
+}
+
 function CasesPane({ data, setData }) {
   const cases = data.cases || [];
   const [selSlug, setSelSlug] = useState(data.activeCaseSlug || (cases[0] && cases[0].slug));
@@ -1749,6 +1767,48 @@ function CasesPane({ data, setData }) {
     else setSelSlug(null);
   };
 
+  // "traduzir" — fill every empty pt field of this case (and its linked work
+  // entry) from the English copy. Already-translated fields are left alone.
+  const [translating, setTranslating] = useState(false);
+  const translateCase = async () => {
+    const work = (data.work || []).find((w) => w.caseSlug === c.slug);
+    const probe = JSON.parse(JSON.stringify({ case: c, work: work || null }));
+    const gaps = collectPtGaps(probe);
+    if (!gaps.length) { alert("Nenhuma lacuna em pt-br neste case."); return; }
+    if (!confirm(`Traduzir ${gaps.length} campo(s) vazio(s) para pt-br?`)) return;
+
+    setTranslating(true);
+    try {
+      const r = await fetch("/api/translate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${sessionStorage.getItem("akc-admin-token") || ""}`,
+        },
+        body: JSON.stringify({ texts: gaps.map((g) => g.en) }),
+      });
+      const out = await r.json();
+      if (!r.ok) throw new Error(out.error || `HTTP ${r.status}`);
+
+      // Write translations into the probe, then commit both objects at once.
+      gaps.forEach((g, i) => { g.node.pt = out.translations[i]; });
+      setData((s) => {
+        const next = JSON.parse(JSON.stringify(s));
+        next.cases[idx] = probe.case;
+        if (probe.work) {
+          const wi = next.work.findIndex((w) => w.caseSlug === c.slug);
+          if (wi !== -1) next.work[wi] = probe.work;
+        }
+        return next;
+      });
+      alert(`${gaps.length} campo(s) traduzido(s). Revise antes de publicar.`);
+    } catch (e) {
+      alert(`Erro na tradução: ${e.message}`);
+    } finally {
+      setTranslating(false);
+    }
+  };
+
   if (!c) {
     return (
       <div>
@@ -1813,6 +1873,9 @@ function CasesPane({ data, setData }) {
             <div style={{ display: "flex", gap: 8 }}>
               <button className="add-btn" style={{ color: "var(--fg-secondary)" }} onClick={() => setCase(["disabled"], !c.disabled)}>
                 {c.disabled ? "reativar case" : "desativar case"}
+              </button>
+              <button className="add-btn" style={{ color: "var(--color-accent-loud)" }} onClick={translateCase} disabled={translating}>
+                {translating ? "traduzindo…" : "traduzir"}
               </button>
               <button className="add-btn" style={{ color: "var(--color-accent-quiet)" }} onClick={removeCase}>delete case</button>
             </div>

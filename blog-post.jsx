@@ -92,7 +92,7 @@ function BlogPost({ data, dark, setDark, lang, setLang, mobile, tablet, postData
           <span className="dot">·</span>
           <span>{meta.date}</span>
           <span className="dot">·</span>
-          <span>{meta.read} read</span>
+          <span>{meta.read} {lang === "pt" ? "de leitura" : "read"}</span>
         </div>
       </div>
 
@@ -130,12 +130,12 @@ function BlogPost({ data, dark, setDark, lang, setLang, mobile, tablet, postData
       <div className="post-end">
         <div className="page">
           <div className="post-tags">
-            <span className="k">{marks.tagsLabel || "filed under"}</span>
+            <span className="k">{marks.tagsLabel || (lang === "pt" ? "arquivado em" : "filed under")}</span>
             {tags.map((t, i) => <a key={i} href="#" className="tag">{t}</a>)}
           </div>
           <div className="post-share">
-            <span className="k">share</span>
-            <a href="#" onClick={(e) => { e.preventDefault(); navigator.clipboard.writeText(window.location.href); }}>Copy link</a>
+            <span className="k">{lang === "pt" ? "compartilhar" : "share"}</span>
+            <a href="#" onClick={(e) => { e.preventDefault(); navigator.clipboard.writeText(window.location.href); }}>{lang === "pt" ? "Copiar link" : "Copy link"}</a>
             <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`} target="_blank" rel="noreferrer">LinkedIn</a>
             <a href={`mailto:?subject=${encodeURIComponent(t(meta.title, lang))}&body=${encodeURIComponent(window.location.href)}`}>Email</a>
           </div>
@@ -148,7 +148,7 @@ function BlogPost({ data, dark, setDark, lang, setLang, mobile, tablet, postData
           <div className="pn-grid">
             <div>
               <div className="pn-num">{(typeof data.newsletter.title === "object" ? (data.newsletter.title[lang] || data.newsletter.title.en) : data.newsletter.title).toLowerCase()}</div>
-              <h2>Get the next one in your inbox.</h2>
+              <h2>{lang === "pt" ? "Receba o próximo na sua caixa." : "Get the next one in your inbox."}</h2>
               <p>{t(data.newsletter.blurb, lang)}</p>
             </div>
             <NewsletterForm n={data.newsletter} />
@@ -160,8 +160,8 @@ function BlogPost({ data, dark, setDark, lang, setLang, mobile, tablet, postData
       <section className="post-related">
         <div className="page">
           <div className="sec-head">
-            <div><div className="num">{marks.relatedNum || "related notes"}</div><span className="anno">{related.length} of {(data.blog || []).length}</span></div>
-            <div><h2>Keep reading.</h2></div>
+            <div><div className="num">{marks.relatedNum || (lang === "pt" ? "notas relacionadas" : "related notes")}</div><span className="anno">{related.length} {lang === "pt" ? "de" : "of"} {(data.blog || []).length}</span></div>
+            <div><h2>{lang === "pt" ? "Continue lendo." : "Keep reading."}</h2></div>
           </div>
           <div className="related-list">
             {related.map((r, i) => (
@@ -171,7 +171,7 @@ function BlogPost({ data, dark, setDark, lang, setLang, mobile, tablet, postData
                   <h3>{t(r.title, lang)}</h3>
                   <p>{t(r.excerpt, lang)}</p>
                 </div>
-                <div className="cta">{r.coming ? "soon" : "read →"}</div>
+                <div className="cta">{r.coming ? (lang === "pt" ? "em breve" : "soon") : (lang === "pt" ? "ler →" : "read →")}</div>
               </a>
             ))}
           </div>

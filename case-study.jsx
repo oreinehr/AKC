@@ -83,7 +83,7 @@ function CaseStudy({ data, dark, setDark, lang, setLang, mobile, tablet, caseDat
       <div className="page">
         <div className="cover-meta">
           <div className="cover-num">{c.meta.num}</div>
-          <div className="cover-anno"><span className="anno">// {m.coverAnno || "case study · template"}</span></div>
+          <div className="cover-anno"><span className="anno">// {m.coverAnno || (lang === "pt" ? "case study · modelo" : "case study · template")}</span></div>
         </div>
         <h1 className="cover-title">{c.meta.project}.</h1>
         <div className="cover-row">
@@ -95,7 +95,7 @@ function CaseStudy({ data, dark, setDark, lang, setLang, mobile, tablet, caseDat
         </div>
         <div className="cover-image">
           {c.coverVideo ? (
-            <VideoBlock url={c.coverVideo} aspect="16/9" autoPlay />
+            <VideoBlock url={c.coverVideo} aspect="16/9" autoPlay loop />
           ) : (
             <ImgSlot
               id={`case-cover-${c.slug || c.meta.client}`}
@@ -117,14 +117,14 @@ function CaseStudy({ data, dark, setDark, lang, setLang, mobile, tablet, caseDat
       <section className="sec" id="brief">
         <div className="page">
           <div className="sec-head">
-            <div><div className="num">{m.briefNum || "01 · brief"}</div><span className="anno">{m.briefAnno || "the problem · template"}</span></div>
+            <div><div className="num">{m.briefNum || "01 · brief"}</div><span className="anno">{m.briefAnno || (lang === "pt" ? "o problema · modelo" : "the problem · template")}</span></div>
             <div><h2>{t(c.brief.head, lang)}</h2></div>
           </div>
           <div className="brief-grid">
             <div className="brief-body">
               <p>{t(c.brief.body, lang)}</p>
               <ul className="brief-callouts">
-                {c.brief.callouts.map(([k, cv], i) => (
+                {(c.brief.callouts || []).map(([k, cv], i) => (
                   <li key={i}><span className="k">{k}</span><span className="v">{t(cv, lang)}</span></li>
                 ))}
               </ul>
@@ -132,7 +132,7 @@ function CaseStudy({ data, dark, setDark, lang, setLang, mobile, tablet, caseDat
             <aside className="brief-side">
               <h4>deliverables</h4>
               <ul>
-                {c.meta.deliverables.map((d, i) => <li key={i}>{d}</li>)}
+                {(c.meta.deliverables || []).map((d, i) => <li key={i}>{d}</li>)}
               </ul>
             </aside>
           </div>
@@ -143,11 +143,11 @@ function CaseStudy({ data, dark, setDark, lang, setLang, mobile, tablet, caseDat
       <section className="sec sec--dark" id="approach">
         <div className="page">
           <div className="sec-head">
-            <div><div className="num">{m.approachNum || "02 · approach"}</div><span className="anno">{m.approachAnno || "four moves · template"}</span></div>
+            <div><div className="num">{m.approachNum || (lang === "pt" ? "02 · abordagem" : "02 · approach")}</div><span className="anno">{m.approachAnno || (lang === "pt" ? "quatro movimentos · modelo" : "four moves · template")}</span></div>
             <div><h2>{lang === "pt" ? "Como o trabalho avançou." : "How the work moved."}</h2></div>
           </div>
           <ol className="approach">
-            {c.approach.map((s, i) => (
+            {(c.approach || []).map((s, i) => (
               <li key={i}>
                 <div className="step-num">{s.num}</div>
                 <div className="step-body">
@@ -164,11 +164,11 @@ function CaseStudy({ data, dark, setDark, lang, setLang, mobile, tablet, caseDat
       <section className="sec" id="output">
         <div className="page">
           <div className="sec-head">
-            <div><div className="num">{m.outputNum || "03 · output"}</div><span className="anno">{m.outputAnno || "artifacts · placeholders"}</span></div>
-            <div><h2>What shipped.</h2><p className="sub">Image placeholders for real artifacts. Captions stand in for credits.</p></div>
+            <div><div className="num">{m.outputNum || (lang === "pt" ? "03 · entregáveis" : "03 · output")}</div><span className="anno">{m.outputAnno || (lang === "pt" ? "artefatos · modelo" : "artifacts · placeholders")}</span></div>
+            <div><h2>{lang === "pt" ? "O que foi entregue." : "What shipped."}</h2><p className="sub">{lang === "pt" ? "Imagens dos artefatos reais. Legendas como créditos." : "Image placeholders for real artifacts. Captions stand in for credits."}</p></div>
           </div>
           <div className="gallery">
-            {c.output.map((blk, i) => {
+            {(c.output || []).map((blk, i) => {
               const baseId = `case-output-${c.slug || c.meta.client}-${i}`;
               if (blk.kind === "full") {
                 return (
@@ -199,10 +199,10 @@ function CaseStudy({ data, dark, setDark, lang, setLang, mobile, tablet, caseDat
                 return (
                   <figure className="g g--twin" key={i}>
                     <div>
-                      <ImgSlot id={`${baseId}-a`} label={blk.labels[0]} aspect={parseAspect(blk.labels[0])} />
+                      <ImgSlot id={`${baseId}-a`} label={(blk.labels || [])[0]} aspect={parseAspect((blk.labels || [])[0])} />
                     </div>
                     <div>
-                      <ImgSlot id={`${baseId}-b`} label={blk.labels[1]} aspect={parseAspect(blk.labels[1])} />
+                      <ImgSlot id={`${baseId}-b`} label={(blk.labels || [])[1]} aspect={parseAspect((blk.labels || [])[1])} />
                     </div>
                     <figcaption>{t(blk.note, lang)}</figcaption>
                   </figure>
@@ -211,7 +211,7 @@ function CaseStudy({ data, dark, setDark, lang, setLang, mobile, tablet, caseDat
               if (blk.kind === "video") {
                 return (
                   <figure className="g g--full" key={i}>
-                    <VideoBlock url={blk.url} aspect="16/9" autoPlay />
+                    <VideoBlock url={blk.url} aspect="16/9" autoPlay loop />
                     <figcaption>{t(blk.note, lang)}</figcaption>
                   </figure>
                 );
@@ -226,11 +226,11 @@ function CaseStudy({ data, dark, setDark, lang, setLang, mobile, tablet, caseDat
       <section className="sec sec--bone" id="results">
         <div className="page">
           <div className="sec-head">
-            <div><div className="num">{m.resultsNum || "04 · results"}</div><span className="anno">{m.resultsAnno || "numbers · template"}</span></div>
-            <div><h2>What it moved.</h2></div>
+            <div><div className="num">{m.resultsNum || (lang === "pt" ? "04 · resultados" : "04 · results")}</div><span className="anno">{m.resultsAnno || (lang === "pt" ? "números · modelo" : "numbers · template")}</span></div>
+            <div><h2>{lang === "pt" ? "O que mudou." : "What it moved."}</h2></div>
           </div>
           <div className="kpis">
-            {c.results.map((r, i) => (
+            {(c.results || []).map((r, i) => (
               <div className="kpi" key={i}>
                 <div className="kpi-stat">{r.stat}</div>
                 <div className="kpi-note">{t(r.note, lang)}</div>
@@ -239,13 +239,13 @@ function CaseStudy({ data, dark, setDark, lang, setLang, mobile, tablet, caseDat
           </div>
 
           {/* quote */}
-          <blockquote className="case-quote">
+          {c.quote && <blockquote className="case-quote">
             <p>"{t(c.quote.text, lang)}"</p>
             <cite>
               <b>{c.quote.author}</b>
               <span>{t(c.quote.role, lang)}</span>
             </cite>
-          </blockquote>
+          </blockquote>}
         </div>
       </section>
 
@@ -253,11 +253,11 @@ function CaseStudy({ data, dark, setDark, lang, setLang, mobile, tablet, caseDat
       <section className="sec" id="credits">
         <div className="page">
           <div className="sec-head">
-            <div><div className="num">{m.creditsNum || "05 · credits"}</div><span className="anno">{m.creditsAnno || "team · static"}</span></div>
-            <div><h2>Credits.</h2></div>
+            <div><div className="num">{m.creditsNum || (lang === "pt" ? "05 · créditos" : "05 · credits")}</div><span className="anno">{m.creditsAnno || (lang === "pt" ? "equipe · estático" : "team · static")}</span></div>
+            <div><h2>{lang === "pt" ? "Créditos." : "Credits."}</h2></div>
           </div>
           <ul className="credits">
-            {c.credits.map(([k, v], i) => (
+            {(c.credits || []).map(([k, v], i) => (
               <li key={i}><span className="k">{k}</span><span className="v">{v}</span></li>
             ))}
           </ul>
@@ -268,7 +268,7 @@ function CaseStudy({ data, dark, setDark, lang, setLang, mobile, tablet, caseDat
       <section className="next-case" id="next">
         <div className="page">
           <div className="nc-row">
-            <div className="nc-num">{next.num} · up next</div>
+            <div className="nc-num">{next.num} · {lang === "pt" ? "próximo" : "up next"}</div>
             <a href={next.slug ? `/case-study.html?slug=${next.slug}` : "/work.html"} className="nc-link">
               <span className="nc-client">{next.client.toLowerCase()} · {next.year}</span>
               <span className="nc-title">{next.title}</span>
