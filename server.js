@@ -321,7 +321,7 @@ app.post('/api/translate', requireAuth, async (req, res) => {
     const payload = texts.map((t, i) => ({ id: i, text: String(t) }));
 
     const stream = client.messages.stream({
-      model: 'claude-opus-5',
+      model: 'claude-sonnet-5',
       max_tokens: 64000,
       thinking: { type: 'adaptive' },
       system: SYSTEM,
