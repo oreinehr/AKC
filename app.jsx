@@ -733,7 +733,10 @@ function Nav({ darkOn, onToggleDark, lang = "en", onLang, location, mobile }) {
           <li><a href="/contact.html">{lang === "pt" ? "Contato" : "Contact"}</a></li>
         </ul>
         <div className="nav-right">
-          <span className="meta"><span className="now-dot" />{location} · <LiveTime /></span>
+          <span className="mode">
+            <a className="on" href="/" aria-current="page">human</a>|
+            <a href="/machine">machine</a>
+          </span>
           <span className="lang">
             <button className={lang === "en" ? "on" : ""} onClick={() => onLang && onLang("en")}>EN</button>|
             <button className={lang === "pt" ? "on" : ""} onClick={() => onLang && onLang("pt")}>PT</button>
@@ -795,6 +798,7 @@ function FullFooter({ data, lang }) {
               <li><a href="/work.html">{lang === "pt" ? "Trabalhos" : "Work"}</a></li>
               <li><a href="/blog.html">Blog</a></li>
               <li><a href="/contact.html">{lang === "pt" ? "Contato" : "Contact"}</a></li>
+              <li><a href="/machine">Machine</a></li>
             </ul>
           </div>
           <div className="f-col">

@@ -48,6 +48,8 @@ app.use((req, res, next) => {
 // Intercept blog-post.html and case-study.html before static middleware.
 const _ogEsc = (s) => String(s || '').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 const _str   = (v) => typeof v === 'object' ? (v.en || v.pt || '') : (v || '');
+// Fallback social card for posts with no cover image.
+const SITE_OG_IMAGE = 'https://www.akcontes.com/og-image.jpg';
 
 async function _getKvData() {
   if (USE_KV) return redis.get('akc:data');
@@ -83,15 +85,31 @@ app.get('/blog-post.html', async (req, res, next) => {
         `<meta property="og:title" content="${_ogEsc(title)} — Alessandro Kuhn Contes" />\n` +
         `<meta property="og:description" content="${_ogEsc(desc)}" />\n` +
         `<meta property="og:url" content="${canonical}" />\n` +
-        (coverUrl ? `<meta property="og:image" content="${_ogEsc(coverUrl)}" />\n` : '') +
-        `<meta name="twitter:card" content="${coverUrl ? 'summary_large_image' : 'summary'}" />\n` +
-        (coverUrl ? `<meta name="twitter:image" content="${_ogEsc(coverUrl)}" />\n` : '')
+        `<meta property="og:image" content="${_ogEsc(coverUrl || SITE_OG_IMAGE)}" />\n` +
+        `<meta name="twitter:card" content="summary_large_image" />\n` +
+        `<meta name="twitter:image" content="${_ogEsc(coverUrl || SITE_OG_IMAGE)}" />\n`
       );
 
     res.type('html').send(injected);
   } catch (e) {
     next();
   }
+});
+
+// ── Machine-readable reference ────────────────────────────────────────────
+// /machine serves the rendered page; /machine.md and /llms.txt serve the raw
+// markdown as text/plain. machine.md is the source of truth — machine.html
+// embeds a copy of it inside a <pre>, so both are read from disk at request
+// time and no build step is needed.
+const MACHINE_MD   = path.join(__dirname, 'machine.md');
+const MACHINE_HTML = path.join(__dirname, 'machine.html');
+
+app.get('/machine', (req, res) => {
+  res.type('html').set('Cache-Control', 'public, max-age=300').sendFile(MACHINE_HTML);
+});
+
+app.get(['/machine.md', '/llms.txt'], (req, res) => {
+  res.type('text/plain; charset=utf-8').set('Cache-Control', 'public, max-age=300').sendFile(MACHINE_MD);
 });
 
 app.use(express.static(__dirname));
@@ -364,6 +382,15 @@ app.post('/api/translate', requireAuth, async (req, res) => {
     res.status(500).json({ error: e.message });
   }
 });
+
+// ── 404 ───────────────────────────────────────────────────────────────────
+// Last route: anything not matched above (static files included) lands here
+// instead of Express's unstyled "Cannot GET /x". API paths get JSON.
+app.use((req, res) => {
+  if (req.path.startsWith('/api/')) return res.status(404).json({ error: 'Not found' });
+  res.status(404).sendFile(path.join(__dirname, '404.html'));
+});
+
 
 if (require.main === module) {
   app.listen(PORT, () => console.log(`AKC → http://localhost:${PORT}`));

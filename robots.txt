@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /admin.html
+Disallow: /api/
+
+# Machine-readable summary
+# https://www.akcontes.com/machine.md
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
